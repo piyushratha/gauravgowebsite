@@ -1,0 +1,870 @@
+{% load static %}
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="GauravGo Games: Innovative gaming experiences blending reality and imagination. Explore SENA MayaVerse, FPS, and more!">
+    <meta name="keywords" content="GauravGo Games, SENA MayaVerse, gaming, Indian game studio, free-to-play games">
+    <title>Gauravgo Games - Creating Dreams</title>
+    <link rel="icon" href="images and media/logo.png" type="image/x-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Rajdhani:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/style-home.css" />
+
+ <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            overflow-x: hidden;
+        }
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #0b0b0b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        #preloader h1 {
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            color: #9effd3;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px rgba(158, 255, 211, 0.7);
+            animation: pulseText 1.5s infinite alternate;
+        }
+        #preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        @keyframes pulseText {
+            0% { transform: scale(1); text-shadow: 0 0 10px rgba(158, 255, 211, 0.7); }
+            100% { transform: scale(1.05); text-shadow: 0 0 20px rgba(158, 255, 211, 1); }
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem sm:1rem 1.5rem md:1rem 2.5rem;
+            background-color: #111;
+            color: #fff;
+            flex-wrap: wrap;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 20;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem sm:0.75rem;
+        }
+        .logo img {
+            height: clamp(2rem, 8vw, 2.5rem);
+            width: auto;
+        }
+        .logo span {
+            font-size: clamp(1rem, 4vw, 1.25rem);
+        }
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            list-style: none;
+            margin: 0.5rem 0 0;
+            padding: 0.5rem 0;
+            background: #111;
+        }
+        .nav-links.active {
+            display: flex;
+        }
+        .nav-links li {
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            font-size: clamp(0.875rem, 3vw, 1rem);
+        }
+        .nav-links a:hover {
+            color: #9effd3;
+        }
+        .dropdown-menu {
+            position: static;
+            background-color: #222;
+            display: none;
+            list-style: none;
+            padding: 0.5rem 0;
+            min-width: 100%;
+            z-index: 10;
+        }
+        .dropdown.open .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #fff;
+            font-size: clamp(0.75rem, 2.5vw, 0.875rem);
+        }
+        .dropdown-menu li a:hover {
+            background-color: #333;
+            color: #9effd3;
+        }
+        .social-icons {
+            display: flex;
+            gap: 0.5rem sm:0.75rem;
+            margin-top: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .social-icons a {
+            color: #fff;
+            text-decoration: none;
+            font-size: clamp(0.875rem, 3vw, 1.1rem);
+        }
+        .social-icons a:hover {
+            color: #9effd3;
+        }
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 1.5rem;
+            height: 0.1875rem;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(45deg) translate(0.35rem, 0.35rem);
+        }
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(0.45rem, -0.45rem);
+        }
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                width: auto;
+                margin: 0;
+                background: transparent;
+            }
+            .nav-links li {
+                padding: 0 0.75rem;
+            }
+            .dropdown-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                min-width: 9rem;
+            }
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
+            .dropdown.open .dropdown-menu {
+                display: none;
+            }
+            .social-icons {
+                margin-top: 0;
+                justify-content: flex-end;
+            }
+        }
+        @media (min-width: 1024px) {
+            .nav-links li {
+                padding: 0 1rem;
+            }
+            .nav-links a {
+                padding: 0.5rem 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="no-scroll">
+    <div id="preloader">
+        <h1>Gaming is Passion</h1>
+    </div>
+
+    <main>
+        <header class="navbar">
+            <div class="logo">
+                <img src="/images and media/logo.png" alt="GauravGo Logo" />
+                <span>GauravGo</span>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Games</a></li>
+                    <li><a href="/Html files/services.html">Services</a></li>
+                    <li class="dropdown">
+                        <a href="#">More <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Advertisers</a></li>
+                            <li><a href="#">Supporters</a></li>
+                            <li><a href="#">Media</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Contact <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-heart"></i></a>
+            </div>
+        </header>
+    </main>
+
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                document.body.classList.remove('no-scroll');
+                setTimeout(() => preloader.remove(), 500);
+            }, 1500);
+        });
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.dropdown > a').forEach(drop => {
+            drop.addEventListener('click', function (e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = this.parentElement;
+                    const isOpen = dropdown.classList.contains('open');
+                    document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+                    if (!isOpen) {
+                        dropdown.classList.add('open');
+                    }
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+                document.querySelector('.nav-links').classList.remove('active');
+                document.querySelector('.hamburger').classList.remove('active');
+            }
+        });
+    </script>
+
+        <!-- Hero Section -->
+        <section
+    class="relative w-full h-screen bg-[#0b0b0b] text-white flex items-center justify-center px-6 md:px-20 overflow-hidden">
+
+    <!-- VIDEO BG -->
+    <div class="absolute inset-0 z-0">
+        <video autoplay muted loop playsinline
+            class="absolute top-0 left-0 w-full h-full object-cover">
+            <source src="/images and media/bg-video.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+
+    <!-- TEXT CONTENT -->
+    <div class="relative z-10 text-center max-w-3xl mx-auto px-4">
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-wide">
+            GauravGo Games
+        </h1>
+        <p class="text-lg md:text-2xl text-gray-300 mb-10">
+            Games That Connect Reality With Imagination
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-6">
+            <a href="#explore"
+                class="bg-green-500 hover:bg-green-600 text-black font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-full transition-all duration-300">
+                Explore Games
+            </a>
+            <a href="#join"
+                class="border border-white hover:border-green-400 text-white hover:text-green-400 py-3 px-6 sm:py-4 sm:px-8 rounded-full transition-all duration-300">
+                Join the Community
+            </a>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Page 1: Intro Text + Swiper -->
+        <section id="page1"
+            class="relative w-full py-20 px-6 md:px-16 bg-[#0e1616] text-white flex flex-col items-center justify-center z-10 font-[Montserrat]"
+            role="region" aria-label="Featured Games">
+            <div class="section-heading mb-12 text-center">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-wide text-[#38f9d7]">
+                    Featured Games
+                </h2>
+                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+                    Dive into handpicked action from GauravGo Games – your next favorite awaits!
+                </p>
+            </div>
+            <section id="swiperSection" class="py-16 bg-[#0e1414] px-6 md:px-8">
+                <div class="w-full max-w-6xl mx-auto px-4">
+                    <div class="swiper mySwiper rounded-2xl overflow-hidden bg-[#121a1a] shadow-2xl animate-fade-in-up">
+                        <div class="swiper-wrapper">
+                            <div
+                                class="swiper-slide group flex flex-col md:flex-row items-center bg-[#181f1f] hover:bg-[#1e2b2b] transition duration-300 ease-in-out">
+                                <img src="images and media/hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg"
+                                    alt="SENA: Strike & Encounter Gameplay"
+                                    class="w-full md:w-1/2 h-48 sm:h-64 object-cover rounded-l-2xl transform group-hover:scale-105 duration-500"
+                                    loading="lazy" />
+                                <div class="p-6 md:p-8 flex-1">
+                                    <h3 class="text-3xl font-extrabold mb-2 text-[#38f9d7]">SENA: Strike & Encounter
+                                    </h3>
+                                    <p class="text-gray-300 text-base mb-4">Take command as an IAF captain in this
+                                        mission-driven airstrike inspired by real events.</p>
+                                    <a href="#initialReleases"
+                                        class="inline-block bg-[#38f9d7] hover:bg-[#30d8ba] text-black font-semibold py-2 px-5 rounded-full transition-all duration-300">
+                                        Play Now
+                                    </a>
+                                </div>
+                            </div>
+                            <div
+                                class="swiper-slide group flex flex-col md:flex-row items-center bg-[#181f1f] hover:bg-[#1e2b2b] transition duration-300 ease-in-out">
+                                <img src="images and media/MayaVerse-800x500.jpg" alt="SENA: MayaVerse Gameplay"
+                                    class="w-full md:w-1/2 h-48 sm:h-64 object-cover rounded-l-2xl transform group-hover:scale-105 duration-500"
+                                    loading="lazy" />
+                                <div class="p-6 md:p-8 flex-1">
+                                    <h3 class="text-3xl font-extrabold mb-2 text-[#38f9d7]">SENA: MayaVerse</h3>
+                                    <p class="text-gray-300 text-base mb-4">A futuristic metaverse shooter merging
+                                        Indian lore with sci-fi survival gameplay.</p>
+                                    <a href="#initialReleases"
+                                        class="inline-block bg-[#38f9d7] hover:bg-[#30d8ba] text-black font-semibold py-2 px-5 rounded-full transition-all duration-300">
+                                        Enter Now
+                                    </a>
+                                </div>
+                            </div>
+                            <div
+                                class="swiper-slide group flex flex-col md:flex-row items-center bg-[#181f1f] hover:bg-[#1e2b2b] transition duration-300 ease-in-out">
+                                <img src="images and media/CITY-ENDLESS-RUNNER.png" alt="City Endless Runner Gameplay"
+                                    class="w-full md:w-1/2 h-48 sm:h-64 object-cover rounded-l-2xl transform group-hover:scale-105 duration-500"
+                                    loading="lazy" />
+                                <div class="p-6 md:p-8 flex-1">
+                                    <h3 class="text-3xl font-extrabold mb-2 text-[#3abeff]">City Endless Runner</h3>
+                                    <p class="text-gray-300 text-base mb-4">Test your reflexes as you sprint through a
+                                        fast-paced urban maze full of chaos.</p>
+                                    <a href="#initialReleases"
+                                        class="inline-block bg-[#3abeff] hover:bg-[#2fa1dc] text-black font-semibold py-2 px-5 rounded-full transition-all duration-300">
+                                        Dash In
+                                    </a>
+                                </div>
+                            </div>
+                            <div
+                                class="swiper-slide group flex flex-col md:flex-row items-center bg-[#181f1f] hover:bg-[#1e2b2b] transition duration-300 ease-in-out">
+                                <img src="images and media/emoji-wizard.png" alt="Emoji Wizard Gameplay"
+                                    class="w-full md:w-1/2 h-48 sm:h-64 object-cover rounded-l-2xl transform group-hover:scale-105 duration-500"
+                                    loading="lazy" />
+                                <div class="p-6 md:p-8 flex-1">
+                                    <h3 class="text-3xl font-extrabold mb-2 text-[#d96dff]">Emoji Wizard</h3>
+                                    <p class="text-gray-300 text-base mb-4">Solve magical puzzles and cast emoji-based
+                                        spells in this quirky, spellbinding game.</p>
+                                    <a href="#initialReleases"
+                                        class="inline-block bg-[#d96dff] hover:bg-[#b857da] text-white font-semibold py-2 px-5 rounded-full transition-all duration-300">
+                                        Cast Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination mt-4 !text-green-400"></div>
+                        <div class="swiper-button-next !text-green-400"></div>
+                        <div class="swiper-button-prev !text-green-400"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Page 3: Latest Releases -->
+        <section id="page3" class="min-h-screen bg-[#0d0d0d] py-20 px-6 md:px-20 text-white" role="region"
+            aria-label="Latest Releases">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-12 text-center">🚀 Latest Releases</h2>
+            <div id="initialReleases" class="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <div class="relative">
+                        <img src="images and media/MayaVerse-800x500.jpg" alt="SENA: MayaVerse Gameplay"
+                            class="w-full h-56 object-cover" loading="lazy" />
+                        <span
+                            class="absolute top-2 left-2 bg-green-500 text-black text-xs font-bold px-2 py-1 rounded-full shadow-md">BETA</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">SENA: MayaVerse</h3>
+                        <p class="text-sm text-gray-300 mb-4">
+                            A metaverse-based battle royale featuring immersive gameplay and futuristic Indian gaming
+                            lore.
+                        </p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <div class="relative">
+                        <img src="images and media/CITY-ENDLESS-RUNNER.png" alt="City Endless Runner Gameplay"
+                            class="w-full h-56 object-cover" loading="lazy">
+                        <span
+                            class="absolute top-2 left-2 bg-blue-500 text-black text-xs font-bold px-2 py-1 rounded-full shadow-md">NEW</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">City Endless Runner</h3>
+                        <p class="text-sm text-gray-300 mb-4">
+                            Dash, dodge, and survive through chaotic metropolitan streets in this high-speed endless
+                            runner.
+                        </p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <div class="relative">
+                        <img src="images and media/emoji-wizard.png" alt="Emoji Wizard Gameplay"
+                            class="w-full h-56 object-cover" loading="lazy">
+                        <span
+                            class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">HOT</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Emoji Wizard</h3>
+                        <p class="text-sm text-gray-300 mb-4">
+                            A magical emoji puzzle game where you become a powerful wizard who casts spells using emoji
+                            magic! Match, combine, and strategize your way through exciting, animated levels.
+                        </p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <div class="relative">
+                        <img src="images and media/hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg"
+                            alt="SENA: Strike & Encounter Gameplay" class="w-full h-56 object-cover" loading="lazy">
+                        <span
+                            class="absolute top-2 left-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full shadow-md">FPS</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">SENA: Strike & Encounter (1.0)</h3>
+                        <p class="text-sm text-gray-300 mb-4">
+                            A thrilling FPS based on the Indian Air Force’s Pulwama response. Take command as IAF pilot
+                            Abhinandan and lead a surgical strike mission.
+                        </p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <div class="relative">
+                        <img src="images and media/simulator-3d.png" alt="City Car Simulator 3D Gameplay"
+                            class="w-full h-56 object-cover" loading="lazy">
+                        <span
+                            class="absolute top-2 left-2 bg-indigo-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">SIM</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">City Car Simulator 3D</h3>
+                        <p class="text-sm text-gray-300 mb-4">
+                            Your ultimate 3D open-world driving experience. Cruise, explore, and conquer urban streets
+                            in fully customizable vehicles.
+                        </p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <div class="relative">
+                        <img src="images and media/Untitled-design-2.png" alt="Cosmic Alien Quest Gameplay"
+                            class="w-full h-56 object-cover" loading="lazy">
+                        <span
+                            class="absolute top-2 left-2 bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">F2P</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Cosmic Alien Quest</h3>
+                        <p class="text-sm text-gray-300 mb-4">
+                            Explore, battle, and conquer the universe as a fearless space explorer! Face alien forces
+                            and uncover secrets of distant galaxies.
+                        </p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <button id="toggleReleasesBtn" onclick="toggleReleases()"
+                    class="px-6 py-2 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition">
+                    More Releases
+                </button>
+            </div>
+            <div id="moreReleases" class="hidden grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3 mt-12">
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <img src="assets/m.png" alt="Starstrike Odyssey Gameplay" class="w-full h-56 object-cover"
+                        loading="lazy" />
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Starstrike Odyssey</h3>
+                        <p class="text-sm text-gray-300 mb-4">Command a fleet in this epic space strategy game...</p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <img src="assets/n.png" alt="CyberSmith's BattleForge Gameplay" class="w-full h-56 object-cover"
+                        loading="lazy" />
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">CyberSmith's BattleForge</h3>
+                        <p class="text-sm text-gray-300 mb-4">Craft weapons and fight in a cyberpunk arena...</p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <img src="assets/o.png" alt="Mystic Realms Gameplay" class="w-full h-56 object-cover"
+                        loading="lazy" />
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Mystic Realms</h3>
+                        <p class="text-sm text-gray-300 mb-4">Explore enchanted lands in this RPG adventure...</p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <img src="assets/p.png" alt="Quantum Drift Gameplay" class="w-full h-56 object-cover"
+                        loading="lazy" />
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Quantum Drift</h3>
+                        <p class="text-sm text-gray-300 mb-4">Race through time in this sci-fi racing game...</p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <img src="assets/q.png" alt="Shadow Tactics Gameplay" class="w-full h-56 object-cover"
+                        loading="lazy" />
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Shadow Tactics</h3>
+                        <p class="text-sm text-gray-300 mb-4">Master stealth in this tactical ninja game...</p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <img src="assets/r.png" alt="Neon Blitz Gameplay" class="w-full h-56 object-cover" loading="lazy" />
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Neon Blitz</h3>
+                        <p class="text-sm text-gray-300 mb-4">Battle in a neon-lit cyberworld...</p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+                <div
+                    class="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg border border-neutral-800 hover:shadow-xl transition duration-300">
+                    <img src="assets/s.png" alt="Astral Voyage Gameplay" class="w-full h-56 object-cover"
+                        loading="lazy" />
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Astral Voyage</h3>
+                        <p class="text-sm text-gray-300 mb-4">Navigate cosmic puzzles in this adventure...</p>
+                        <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-sm font-semibold">View
+                            Game</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Extra Page -->
+
+        <section class="relative bg-[#0b0f0b] text-white min-h-screen px-6 md:px-12 py-20 overflow-hidden"
+            style="font-family: 'Rajdhani', sans-serif;">
+            <div class="max-w-6xl mx-auto">
+                <!-- Header -->
+                <header class="text-center mb-16">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#2DEE84] via-[#2DEE84] to-[#2DEE84] animate-gradient-x"
+                        style="font-family: 'Orbitron', sans-serif;">
+                        GauravGo Games Technologies
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-400 mt-4 tracking-wide">
+                        Odisha's pioneering game studio redefining entertainment
+                    </p>
+                </header>
+
+                <!-- Content Card -->
+                <div
+                    class="bg-[#0f1610] border border-[#1f2b1f] rounded-3xl shadow-lg p-8 md:p-14 backdrop-blur-md transition hover:shadow-[0_0_25px_#2DEE84] hover:scale-[1.015] duration-300">
+                    <div class="flex flex-col md:flex-row items-center gap-12">
+                        <!-- Left Content -->
+                        <div class="flex-1">
+                            <h2 class="text-2xl md:text-3xl font-bold text-[#2DEE84] mb-6 animate-fadeInUp"
+                                style="font-family: 'Orbitron', sans-serif;">
+                                Connecting Reality and Imagination through Games
+                            </h2>
+                            <p class="text-gray-300 text-lg leading-relaxed mb-10">
+                                GauravGo Games Technologies is Odisha’s first game studio, pioneering innovation with
+                                the SENA Mayaverse — a unique world where gameplay meets purpose and brands interact
+                                with players.
+                                <br><br>
+                                Whether it's hyper-casual F2P experiences or high-end simulations, we break boundaries
+                                to deliver next-gen interactive entertainment.
+                            </p>
+
+                            <!-- 3-Column Info -->
+                            <div class="grid md:grid-cols-3 gap-8 text-center">
+                                <div
+                                    class="transition-all duration-300 p-4 rounded-xl bg-[#111c11]/40 border border-[#1e2a1e] hover:bg-[#1a2e1a]/50 hover:border-[#2DEE84]">
+                                    <h3 class="text-xl font-semibold text-white mb-2"
+                                        style="font-family: 'Orbitron', sans-serif;">Challenge</h3>
+                                    <p class="text-gray-400">Gamers seek deeper engagement and real-world value in their
+                                        gameplay.</p>
+                                </div>
+                                <div
+                                    class="transition-all duration-300 p-4 rounded-xl bg-[#111c11]/40 border border-[#1e2a1e] hover:bg-[#1a2e1a]/50 hover:border-[#2DEE84]">
+                                    <h3 class="text-xl font-semibold text-white mb-2"
+                                        style="font-family: 'Orbitron', sans-serif;">Vision</h3>
+                                    <p class="text-gray-400">We blend gameplay with rewards, enabling players to earn
+                                        and brands to grow.</p>
+                                </div>
+                                <div
+                                    class="transition-all duration-300 p-4 rounded-xl bg-[#111c11]/40 border border-[#1e2a1e] hover:bg-[#1a2e1a]/50 hover:border-[#2DEE84]">
+                                    <h3 class="text-xl font-semibold text-white mb-2"
+                                        style="font-family: 'Orbitron', sans-serif;">Team</h3>
+                                    <p class="text-gray-400">Creative engineers building the future of immersive digital
+                                        worlds.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Image Card -->
+                        <div class="relative group flex-shrink-0 mt-10 md:mt-0">
+                            <div
+                                class="absolute -inset-3 rounded-2xl blur-xl opacity-50 bg-gradient-to-tr from-[#2DEE84] via-[#2DEE84] to-transparent group-hover:opacity-90 transition duration-500">
+                            </div>
+                            <img src="images and media/pexels-owayn-11591876.jpg"
+                                alt="Game controller with futuristic background"
+                                class="relative w-52 md:w-64 rounded-2xl shadow-xl border border-[#333] group-hover:scale-105 transition-transform duration-300 animate-fadeInUp"
+                                loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HQ + Support -->
+        <section
+            class="bg-gradient-to-br from-[#101c1c] via-[#0d0d0d] to-[#181a1a] py-16 px-6 md:px-12 border-t border-gray-800">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div
+                    class="bg-[#181f1f] rounded-2xl shadow-xl p-8 flex flex-col items-start border border-[#222] hover:scale-[1.02] transition">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3 text-green-400"><i class="fas fa-building"></i></span>
+                        <h3 class="text-2xl font-bold text-green-400">Headquarters</h3>
+                    </div>
+                    <p class="text-gray-200 font-semibold mb-1">GauravGo Games Technologies</p>
+                    <p class="text-gray-400 mb-2">College Square, Kakatpur, Puri, Odisha – 752108</p>
+                    <span
+                        class="inline-block bg-green-900/30 text-green-400 text-xs px-3 py-1 rounded-full mt-2">India</span>
+                </div>
+                <div
+                    class="bg-[#181f1f] rounded-2xl shadow-xl p-8 flex flex-col items-start border border-[#222] hover:scale-[1.02] transition">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3 text-green-400"><i class="fas fa-headset"></i></span>
+                        <h3 class="text-2xl font-bold text-green-400">Support & Enquiries</h3>
+                    </div>
+                    <p class="text-gray-200 font-semibold mb-1">Email:</p>
+                    <a href="mailto:support@gauravgo.com"
+                        class="text-white hover:text-green-400 transition underline">support@gauravgo.com</a>
+                    <p class="text-gray-200 font-semibold mt-4 mb-1">Discord:</p>
+                    <a href="#" class="text-white hover:text-green-400 transition underline">Join Server</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Animated Gaming Footer -->
+    <footer
+        class="bg-gradient-to-br from-black via-[#0e0f10] to-[#141516] text-white py-20 border-t border-[#1f1f1f] font-mono relative overflow-hidden w-full"
+        role="contentinfo">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="w-80 h-80 bg-[#9effd315] blur-3xl rounded-full absolute -top-20 -left-20 animate-pulse">
+            </div>
+            <div
+                class="w-96 h-96 bg-[#9effd310] blur-3xl rounded-full absolute bottom-0 right-0 animate-pulse delay-300">
+            </div>
+        </div>
+        <div
+            class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 pb-12 border-b border-[#2a2a2a]">
+            <div class="animate-fade-in-up delay-100">
+                <h3 class="text-lg font-semibold text-[#9effd3] mb-5 uppercase tracking-widest glow-sm">Company</h3>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#" class="transition-all duration-200 hover:pl-2 hover:text-[#9effd3]">About</a></li>
+                    <li><a href="#" class="transition-all duration-200 hover:pl-2 hover:text-[#9effd3]">Blog</a></li>
+                    <li><a href="#" class="transition-all duration-200 hover:pl-2 hover:text-[#9effd3]">Careers</a></li>
+                    <li><a href="#" class="transition-all duration-200 hover:pl-2 hover:text-[#9effd3]">Press</a></li>
+                </ul>
+            </div>
+            <div class="animate-fade-in-up delay-200">
+                <h3 class="text-lg font-semibold text-[#9effd3] mb-5 uppercase tracking-widest glow-sm">Explore</h3>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#" class="transition-all duration-200 hover:pl-2 hover:text-[#9effd3]">New Releases</a>
+                    </li>
+                    <li><a href="#" class="transition-all duration-200 hover:pl-2 hover:text-[#9effd3]">Community</a>
+                    </li>
+                    <li><a href="#" class="transition-all duration-200 hover:pl-2 hover:text-[#9effd3]">Dev Console</a>
+                    </li>
+                    <li><a href="#" class="transition-all duration-200 hover:pl-2 hover:text-[#9effd3]">Game Events</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="animate-fade-in-up delay-300">
+                <h3 class="text-lg font-semibold text-[#9effd3] mb-5 uppercase tracking-widest glow-sm">Connect</h3>
+                <div class="flex items-center space-x-6 text-2xl mt-2">
+                    <a href="#" class="hover:scale-110 transition-all duration-300 text-[#9effd3] hover:text-white"><i
+                            class="fab fa-discord"></i></a>
+                    <a href="#" class="hover:scale-110 transition-all duration-300 text-[#9effd3] hover:text-white"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="#" class="hover:scale-110 transition-all duration-300 text-[#9effd3] hover:text-white"><i
+                            class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="hover:scale-110 transition-all duration-300 text-[#9effd3] hover:text-white"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+                <div class="mt-6">
+                    <span
+                        class="inline-block bg-[#9effd320] text-[#9effd3] text-[11px] px-4 py-[5px] rounded-full tracking-wider animate-bounce">#GauravGoGames</span>
+                </div>
+            </div>
+        </div>
+        <div class="relative z-10 text-center text-gray-500 mt-12 text-xs tracking-wide animate-fade-in-up delay-500">
+            ©
+            <script>document.write(new Date().getFullYear())</script> <span
+                class="text-[#9effd3] font-semibold">GauravGo Games</span>. All rights reserved. | Crafted with <span
+                class="text-[#9effd3]">💚</span> by Somya
+        </div>
+    </footer>
+
+    <!-- Swiper Core JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- GSAP Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollSmoother.min.js"></script>
+    <!-- Locomotive Scroll JS -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <!-- Custom Scripts -->
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                setTimeout(() => preloader.remove(), 500);
+            }, 2000); // 2-second delay for preloader
+        });
+
+        // Toggle Releases
+        function toggleReleases() {
+            const moreReleases = document.getElementById("moreReleases");
+            const button = document.getElementById("toggleReleasesBtn");
+            if (moreReleases.classList.contains("hidden")) {
+                moreReleases.classList.remove("hidden");
+                button.textContent = "Hide Releases";
+            } else {
+                moreReleases.classList.add("hidden");
+                button.textContent = "More Releases";
+            }
+        }
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Swiper Initialization
+        const swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            grabCursor: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
