@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Games - GauravGo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a1a 0%, #050510 100%);
+            font-family: 'Poppins', sans-serif;
+            color: #f0f0f0;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #2ecc71, #1abc9c, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradientAnimation 8s ease infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glow {
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.7), 0 0 30px rgba(46, 204, 113, 0.4);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: radial-gradient(circle at 20% 30%, rgba(46, 204, 113, 0.1) 0%, transparent 25%),
+                        radial-gradient(circle at 80% 70%, rgba(52, 152, 219, 0.1) 0%, transparent 25%),
+                        linear-gradient(135deg, #0a0a1a 0%, #050510 100%);
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232ecc71' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.4;
+        }
+        
+        .hero-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(46, 204, 113, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, 15px) rotate(45deg); }
+            50% { transform: translate(10px, 30px) rotate(90deg); }
+            75% { transform: translate(-15px, 20px) rotate(135deg); }
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 7vw, 5rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .hero-title span {
+            display: inline-block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .hero-title span:nth-child(n) {
+            animation-delay: calc(0.1s * var(--i));
+        }
+
+        .hero-title span:hover {
+            transform: scale(1.2);
+            color: #ffffff;
+            filter: drop-shadow(0 0 12px #2ecc71) drop-shadow(0 0 24px #2ecc71);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            max-width: 600px;
+            opacity: 0.8;
+            animation: fadeIn 1s ease 1.5s forwards;
+            z-index: 10;
+        }
+
+        /* Projects Section */
+        #projects {
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        #projects::before,
+        #projects::after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(46, 204, 113, 0.3) 0%, transparent 70%);
+            animation: floatGlow 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        #projects::before {
+            top: 10%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        #projects::after {
+            bottom: 15%;
+            right: 25%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatGlow {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-30px) scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #2ecc71, #3498db);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        .slider-section {
+            margin-bottom: 4rem;
+        }
+        
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+        }
+        
+        .slider-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #2ecc71, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-left: 0.5rem;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .view-all {
+            color: #2ecc71;
+            text-decoration: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .view-all:hover {
+            transform: translateX(5px);
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+        }
+
+        .swiper-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 0;
+            position: relative;
+        }
+
+        .swiper-slide {
+            width: clamp(260px, 25vw, 340px);
+            background: rgba(15, 15, 30, 0.7);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 0.75rem;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            backdrop-filter: blur(5px);
+            overflow: hidden;
+        }
+
+        .swiper-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2ecc71, #3498db);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .swiper-slide:hover {
+            transform: scale(1.05) translateY(-8px);
+            box-shadow: 0 10px 22px rgba(46, 204, 113, 0.4);
+            border-color: #27ae60;
+        }
+
+        .swiper-slide:hover::before {
+            transform: scaleX(1);
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .swiper-slide img:hover {
+            transform: scale(1.08);
+            filter: brightness(1.15);
+        }
+
+        .swiper-slide h3 {
+            font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+            font-weight: 700;
+            color: #2ecc71;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .swiper-slide:hover h3 {
+            color: #27ae60;
+        }
+
+        .swiper-slide p {
+            font-size: clamp(0.7rem, 1.3vw, 0.8rem);
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+            transition: color 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .swiper-slide:hover p {
+            color: #e0e0e0;
+        }
+
+        .game-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .game-btn {
+            flex: 1;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn {
+            background: linear-gradient(90deg, #2ecc71, #3498db);
+            color: #000;
+        }
+
+        .view-btn:hover {
+            background: linear-gradient(90deg, #27ae60, #2980b9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+        }
+
+        .play-btn {
+            background: transparent;
+            color: #2ecc71;
+            border: 1px solid #2ecc71;
+        }
+
+        .play-btn:hover {
+            background: rgba(46, 204, 113, 0.1);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            background: rgba(20, 20, 35, 0.6);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: "Orbitron", sans-serif;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .swiper-button-prev::after,
+        .swiper-button-next::after {
+            content: '';
+        }
+
+        .swiper-button-prev::before {
+            content: '←';
+        }
+
+        .swiper-button-next::before {
+            content: '→';
+        }
+
+        .swiper-button-prev:hover,
+        .swiper-button-next:hover {
+            background: linear-gradient(90deg, #2ecc71, #3498db);
+            color: #000;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.7);
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(90deg, #2ecc71, #3498db);
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .scroll-to-top.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.6);
+        }
+
+        /* Navbar styles */
+        :root {
+            --primary-green: #4ade80;
+            --crystal-blue: #38bdf8;
+            --dark-bg: #0a0a1a;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 26, 0.9);
+            backdrop-filter: blur(10px);
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar.scrolled {
+            padding: 0.75rem 2rem;
+            background: rgba(8, 8, 16, 0.98);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            position: relative;
+            z-index: 101;
+            height: 100%;
+        }
+
+        .logo img {
+            height: 2.5rem;
+            width: auto;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: rotate(15deg);
+            filter: drop-shadow(0 0 8px var(--primary-green));
+        }
+
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(to right, var(--primary-green), var(--crystal-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            transition: transform 0.4s ease-in-out;
+            height: 100%;
+            align-items: center;
+        }
+
+        .nav-links > li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-green), var(--crystal-blue));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .dropdown {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            height: 100%;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            min-width: 200px;
+            padding: 1rem 0;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1.5rem;
+            color: #ddd;
+            transition: all 0.2s ease;
+            height: auto;
+        }
+
+        .dropdown-menu li a:hover {
+            color: var(--primary-green);
+            background-color: rgba(255, 255, 255, 0.05);
+            padding-left: 1.75rem;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 0.25rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 101;
+            position: relative;
+            height: 100%;
+            justify-content: center;
+        }
+
+        .hamburger div {
+            width: 1.75rem;
+            height: 0.2rem;
+            background-color: white;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(45deg) translate(0.35rem, 0.35rem);
+            background-color: var(--primary-green);
+        }
+
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(0.35rem, -0.35rem);
+            background-color: var(--primary-green);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: rgba(10, 10, 26, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 6rem 2rem 2rem;
+                gap: 1.5rem;
+                transition: right 0.5s ease;
+                z-index: 99;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+                justify-content: flex-start;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links > li {
+                height: auto;
+                width: 100%;
+            }
+            
+            .nav-links a {
+                height: auto;
+                padding: 0.5rem 0;
+                width: 100%;
+            }
+            
+            .dropdown {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                height: auto;
+            }
+            
+            .dropdown > a {
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                display: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                width: 100%;
+                padding: 0.5rem 0;
+                margin: 0.5rem 0 0 1rem;
+                background: rgba(20, 20, 36, 0.8);
+                border-left: 2px solid var(--primary-green);
+                border-radius: 0.25rem;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                transform: none;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-section {
+                height: 100vh;
+            }
+
+            .hero-title {
+                font-size: clamp(1.8rem, 6vw, 3.5rem);
+            }
+
+            .swiper-slide {
+                width: clamp(240px, 35vw, 320px);
+            }
+
+            .navbar .nav-links {
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                height: 100vh;
+            }
+
+            .hero-title {
+                font-size: clamp(1.6rem, 5.5vw, 2.5rem);
+            }
+
+            .swiper-slide {
+                width: clamp(220px, 70vw, 280px);
+            }
+
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 1rem;
+                margin-top: 1rem;
+                text-align: center;
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+                background: transparent;
+            }
+
+            .navbar .dropdown-content a:hover {
+                background: transparent;
+                color: #2ecc71;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: clamp(1.4rem, 5vw, 2rem);
+            }
+
+            .swiper-slide {
+                width: clamp(200px, 80vw, 260px);
+            }
+
+            .navbar .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .navbar .nav-links li a {
+                font-size: 1rem;
+            }
+
+            .slider-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+            }
+
+            .swiper-slide {
+                width: clamp(180px, 85vw, 240px);
+            }
+
+            .navbar .nav-links {
+                gap: 0.8rem;
+            }
+        }
+
+        /* Footer styles */
+        .footer-wave {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .footer-wave svg {
+            display: block;
+            width: 100%;
+            height: 24px;
+        }
+
+        .footer-wave .shape-fill {
+            fill: #0f172a;
+        }
+
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-grow:hover {
+            transform: translateY(-6px);
+        }
+
+        .pulse {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.07);
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #4ade80, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/logo.png" alt="GauravGo Logo">
+            <span class="glow">GauravGo</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/GauravGoWeb/gauravgowebsite/templates/index.html">Home</a></li>
+            <li><a href="/GauravGoWeb/gauravgowebsite/templates/all-games.html">Games</a></li>
+            <li><a href="/GauravGoWeb/gauravgowebsite/templates/services.html">Services</a></li>
+            <li class="dropdown">
+                <a href="#">More <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/GauravGoWeb/gauravgowebsite/templates/advertisers.html">Advertisers</a></li>
+                    <li><a href="/GauravGoWeb/gauravgowebsite/templates/our-supporters.html">Supporters</a></li>
+                    <li><a href="/GauravGoWeb/gauravgowebsite/templates/media-coverage.html">Media</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Contact <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/GauravGoWeb/gauravgowebsite/templates/about-us.html">About</a></li>
+                    <li><a href="/GauravGoWeb/gauravgowebsite/templates/privacy-policy.html">Privacy</a></li>
+                </ul>
+            </li>
+            <li><a href="#careers">Careers</a></li>
+        </ul>
+
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-particles" id="particles"></div>
+        <div class="text-center">
+            <h1 class="hero-title orbitron">
+                <span style="--i: 1">O</span><span style="--i: 2">u</span><span style="--i: 3">r</span>
+                <span style="--i: 4">&nbsp;</span>
+                <span style="--i: 5" class="gradient-text glow">G</span><span style="--i: 6" class="gradient-text glow">a</span><span style="--i: 7" class="gradient-text glow">m</span><span style="--i: 8" class="gradient-text glow">e</span><span style="--i: 9" class="gradient-text glow">s</span>
+            </h1>
+            <p class="hero-subtitle">Discover our collection of immersive gaming experiences across multiple genres</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title orbitron">Our Game Collection</h2>
+            
+            <!-- All Games Slider -->
+            <div class="slider-section">
+                <div class="slider-header">
+                    <h3 class="slider-title orbitron">All Games</h3>
+                    <a href="#" class="view-all">
+                        <span>View All</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div id="all-games" class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/emoji-wizard.png" alt="Emoji Wizard">
+                            <h3>Emoji Wizard</h3>
+                            <p>A Magical Emoji Puzzle Adventure ✨<br>Match, combine, and strategize through exciting levels filled with animated emojis.</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/Untitled-design-2.png" alt="Cosmic Alien Quest">
+                            <h3>Cosmic Alien Quest</h3>
+                            <p>Explore, Battle, Conquer the Universe! 🌌🚀<br>Battle hostile extraterrestrial forces and uncover secrets of distant galaxies.</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/Ping-Pong-2.png" alt="Ping Pong">
+                            <h3>Ping Pong: Table Tennis Board</h3>
+                            <p>A fresh take on classic table tennis with engaging daily challenges.</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/toon-flyers-768x480.png" alt="Toon Flyers">
+                            <h3>Toon Flyers</h3>
+                            <p>A vibrant twist on the classic flying adventure game with daily challenges.</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/Bounce-Fall-768x480.png" alt="Bounce And Fall">
+                            <h3>Bounce And Fall</h3>
+                            <p>Test your reflexes in this arcade-style game with rotating circular discs.</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/Puzzle-7.png" alt="Puzzle Artful Armor">
+                            <h3>Puzzle Artful Armor</h3>
+                            <p>A puzzle game that challenges your artistic skills with intricate patterns.</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/MayaVerse-800x500.jpg" alt="Galactic Shooter">
+                            <h3>SENA : MayaVerse</h3>
+                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action and next-gen features…</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/1.jpg" alt="Survival Arena">
+                            <h3>Bhoomiputra</h3>
+                            <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay…</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg" alt="Epic Showdown">
+                            <h3>SENA : Strike & Encounter For Nation</h3>
+                            <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror in this high-action aerial game…</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            
+            <!-- Battle Royale Slider -->
+            <div class="slider-section">
+                <div class="slider-header">
+                    <h3 class="slider-title orbitron">Battle Royale Games</h3>
+                    <a href="#" class="view-all">
+                        <span>View All</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div id="battle-royale-games" class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/MayaVerse-800x500.jpg" alt="Galactic Shooter">
+                            <h3>SENA : MayaVerse</h3>
+                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action and next-gen features…</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/MayaVerse-800x500.jpg" alt="Galactic Shooter">
+                            <h3>SENA : MayaVerse</h3>
+                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action and next-gen features…</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/MayaVerse-800x500.jpg" alt="Galactic Shooter">
+                            <h3>SENA : MayaVerse</h3>
+                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action and next-gen features…</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/MayaVerse-800x500.jpg" alt="Galactic Shooter">
+                            <h3>SENA : MayaVerse</h3>
+                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action and next-gen features…</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            
+            <!-- FPS Slider -->
+            <div class="slider-section">
+                <div class="slider-header">
+                    <h3 class="slider-title orbitron">FPS Games</h3>
+                    <a href="#" class="view-all">
+                        <span>View All</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div id="fps-games" class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/1.jpg" alt="Survival Arena">
+                            <h3>Bhoomiputra</h3>
+                            <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay…</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg" alt="Epic Showdown">
+                            <h3>SENA : Strike & Encounter For Nation</h3>
+                            <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror in this high-action aerial game…</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/1.jpg" alt="Survival Arena">
+                            <h3>Bhoomiputra</h3>
+                            <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay…</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg" alt="Epic Showdown">
+                            <h3>SENA : Strike & Encounter For Nation</h3>
+                            <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror in this high-action aerial game…</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            
+            <!-- F2P Slider -->
+            <div class="slider-section">
+                <div class="slider-header">
+                    <h3 class="slider-title orbitron">Free to Play Games</h3>
+                    <a href="#" class="view-all">
+                        <span>View All</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div id="f2p-games" class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/emoji-wizard.png" alt="Emoji Wizard">
+                            <h3>Emoji Wizard</h3>
+                            <p>A Magical Emoji Puzzle Adventure ✨<br>Match, combine, and strategize through exciting levels filled with animated emojis.</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/Ping-Pong-2.png" alt="Ping Pong">
+                            <h3>Ping Pong: Table Tennis Board</h3>
+                            <p>A fresh take on classic table tennis with engaging daily challenges.</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/toon-flyers-768x480.png" alt="Toon Flyers">
+                            <h3>Toon Flyers</h3>
+                            <p>A vibrant twist on the classic flying adventure game with daily challenges.</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/Bounce-Fall-768x480.png" alt="Bounce And Fall">
+                            <h3>Bounce And Fall</h3>
+                            <p>Test your reflexes in this arcade-style game with rotating circular discs.</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/Puzzle-7.png" alt="Puzzle Artful Armor">
+                            <h3>Puzzle Artful Armor</h3>
+                            <p>A puzzle game that challenges your artistic skills with intricate patterns.</p>
+                            <div class="game-buttons">
+                                <a href="#" class="game-btn view-btn">View Game</a>
+                                <a href="#" class="game-btn play-btn">Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll to Top Button -->
+        <button id="scrollToTop" class="scroll-to-top">↑</button>
+    </section>
+
+    <!-- Redesigned Footer -->
+    <footer class="relative bg-slate-900 text-white overflow-hidden pt-20 pb-12" role="contentinfo">
+        <!-- Animated wave -->
+        <div class="footer-wave" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path class="shape-fill" opacity=".25"
+                    d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z">
+                </path>
+                <path class="shape-fill" opacity=".5"
+                    d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z">
+                </path>
+                <path class="shape-fill"
+                    d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z">
+                </path>
+            </svg>
+        </div>
+
+        <!-- Footer content -->
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mb-16">
+                <!-- Company Info -->
+                <div class="hover-grow">
+                    <div
+                        class="w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-green-500 flex items-center justify-center font-bold text-xl sm:text-2xl mb-5">
+                        <span class="gradient-text select-none">GG</span>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed mb-5">
+                        Innovative game technologies creating immersive experiences for players worldwide.
+                    </p>
+                    <div class="flex space-x-4 sm:space-x-5">
+                        <a href="#" aria-label="Twitter"
+                            class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-green-500 transition">
+                            <i class="fab fa-twitter text-sm sm:text-base"></i>
+                        </a>
+                        <a href="#" aria-label="Facebook"
+                            class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-green-500 transition">
+                            <i class="fab fa-facebook-f text-sm sm:text-base"></i>
+                        </a>
+                        <a href="#" aria-label="Instagram"
+                            class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-green-500 transition">
+                            <i class="fab fa-instagram text-sm sm:text-base"></i>
+                        </a>
+                        <a href="#" aria-label="LinkedIn"
+                            class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-green-500 transition">
+                            <i class="fab fa-linkedin-in text-sm sm:text-base"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="hover-grow">
+                    <h3
+                        class="text-lg sm:text-xl font-semibold mb-6 border-b-2 border-green-500 inline-block pb-1">
+                        Quick Links
+                    </h3>
+                    <ul class="space-y-4 text-sm sm:text-base">
+                        <li>
+                            <a href="#" class="flex items-center text-slate-300 hover:text-green-400 transition">
+                                <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center text-slate-300 hover:text-green-400 transition">
+                                <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                Our Supporters
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center text-slate-300 hover:text-green-400 transition">
+                                <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                Media Coverage
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center text-slate-300 hover:text-green-400 transition">
+                                <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                Careers
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="hover-grow">
+                    <h3
+                        class="text-lg sm:text-xl font-semibold mb-6 border-b-2 border-green-500 inline-block pb-1">
+                        Contact Us
+                    </h3>
+                    <ul class="space-y-5 text-sm sm:text-base">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
+                            </svg>
+                            <a href="tel:+919999999999" class="text-slate-300 hover:text-green-400 transition break-all">+91 99999
+                                99999</a>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <a href="mailto:contact@gauravgo.com" class="text-slate-300 hover:text-green-400 transition break-all">contact@gauravgo.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span class="text-slate-300 leading-relaxed break-words">College Square, Kakatpur - 752108, Puri, Odisha</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            offset: 100,
+        });
+
+        // Create particles for hero section
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size and position
+                const size = Math.random() * 8 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const opacity = Math.random() * 0.5 + 0.1;
+                const hue = Math.floor(Math.random() * 60) + 120; // Greenish hue
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.opacity = opacity;
+                particle.style.backgroundColor = `hsla(${hue}, 70%, 60%, ${opacity})`;
+                particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Initialize Swiper sliders
+        const allGamesSwiper = new Swiper('#all-games', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            navigation: {
+                nextEl: '#all-games .swiper-button-next',
+                prevEl: '#all-games .swiper-button-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+
+        const battleRoyaleSwiper = new Swiper('#battle-royale-games', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            navigation: {
+                nextEl: '#battle-royale-games .swiper-button-next',
+                prevEl: '#battle-royale-games .swiper-button-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+
+        const fpsSwiper = new Swiper('#fps-games', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            navigation: {
+                nextEl: '#fps-games .swiper-button-next',
+                prevEl: '#fps-games .swiper-button-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+
+        const f2pSwiper = new Swiper('#f2p-games', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            navigation: {
+                nextEl: '#f2p-games .swiper-button-next',
+                prevEl: '#f2p-games .swiper-button-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('active');
+            } else {
+                scrollToTopBtn.classList.remove('active');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const dropdowns = document.querySelectorAll('.dropdown');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Close all dropdowns when mobile menu closes
+            if (!navLinks.classList.contains('active')) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+            hamburger.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar') && window.innerWidth <= 768) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                
+                // Close all dropdowns
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+        
+        // Mobile dropdown functionality
+        dropdowns.forEach(dropdown => {
+            const trigger = dropdown.querySelector('a');
+            
+            trigger.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                    
+                    // Close other dropdowns
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Animate navbar on scroll
+        gsap.from('.navbar', {
+            y: -50,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out"
+        });
+        
+        // Animate logo on load
+        gsap.from('.logo', {
+            duration: 1,
+            x: -50,
+            opacity: 0,
+            ease: 'power3.out'
+        });
+        
+        // Animate nav items sequentially
+        gsap.from('.nav-links li', {
+            duration: 0.5,
+            y: 20,
+            opacity: 0,
+            stagger: 0.1,
+            delay: 0.3,
+            ease: 'back.out(1.7)'
+        });
+        
+        // Animate hero title
+        gsap.from('.hero-title', {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            delay: 0.3,
+            ease: "power3.out"
+        });
+        
+        // Animate section titles
+        gsap.utils.toArray('.section-title').forEach(title => {
+            gsap.from(title, {
+                scrollTrigger: {
+                    trigger: title,
+                    start: 'top 90%'
+                },
+                y: 30,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            });
+        });
+        
+        // Animate game cards
+        gsap.utils.toArray('.swiper-slide').forEach(slide => {
+            gsap.from(slide, {
+                scrollTrigger: {
+                    trigger: slide,
+                    start: 'top 90%'
+                },
+                y: 30,
+                opacity: 0,
+                duration: 0.6,
+                ease: "power3.out"
+            });
+        });
+        
+        // Animate footer elements
+        gsap.from('.hover-grow', {
+            scrollTrigger: {
+                trigger: 'footer',
+                start: 'top bottom',
+                toggleActions: 'play none none none'
+            },
+            y: 50,
+            opacity: 0,
+            stagger: 0.25,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        // Wave morph animation
+        const wave = document.querySelector('.footer-wave path:last-child');
+        gsap.fromTo(
+            wave,
+            { attr: { d: "M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8" } },
+            { attr: { d: "M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8" }, repeat: -1, yoyo: true, duration: 5, ease: "sine.inOut" }
+        );
+        
+        // Create particles after DOM loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+    </script>
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GauravGo Games - Privacy Policy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #2ecc71, #3498db);
+            --bg-gradient: linear-gradient(135deg, #0a0a1a, #050510);
+            --cta-gradient: linear-gradient(135deg, #0c1d2f, #091622);
+            --chaos-card: linear-gradient(135deg, #0c1d2f, #091622);
+            --arena-card: linear-gradient(135deg, #1a0c2f, #160922);
+            --electric-green: #2ecc71;
+            --crystal-blue: #3498db;
+            --royal-purple: #9b59b6;
+            --fiery-red: #e74c3c;
+            --sun-orange: #f39c12;
+            --teal: #1abc9c;
+            --text-primary: #f0f0f0;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-gradient: linear-gradient(90deg, #2ecc71, #1abc9c, #3498db);
+            --feature-card-bg: rgba(15, 15, 30, 0.7);
+            --stat-card-bg: rgba(20, 20, 35, 0.6);
+            --team-card-bg: rgba(20, 20, 35, 0.6);
+        }
+        
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+        
+        nav {
+            font-family: 'Orbitron', sans-serif;
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(46, 204, 113, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .dropdown-content {
+            background: var(--feature-card-bg);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .dropdown-content a:hover {
+            background: var(--primary-gradient);
+            color: #0a0a1a;
+        }
+        
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--feature-card-bg);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            background: var(--text-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
+        }
+        
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.75rem;
+            color: var(--electric-green);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            height: 60%;
+            width: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+        
+        p, ul {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+        
+        ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--electric-green);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        a {
+            color: var(--crystal-blue);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--electric-green);
+            text-decoration: none;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .contact-info {
+            background: var(--stat-card-bg);
+            padding: 20px;
+            border-left: 4px solid var(--electric-green);
+            border-radius: 6px;
+        }
+        
+        .scroll-top {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--primary-gradient);
+            color: #050510;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.5);
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(20, 20, 35, 0.4);
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .footer-heading {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+        
+        .footer-link {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-link:hover {
+            color: var(--electric-green);
+            transform: translateX(5px);
+        }
+        
+        .glow {
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
+        }
+        
+        .tag {
+            background: rgba(46, 204, 113, 0.1);
+            color: var(--electric-green);
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 25px 20px;
+                margin: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            nav {
+                padding: 15px 20px;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(10, 10, 26, 0.98);
+                backdrop-filter: blur(10px);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.4s ease;
+                z-index: 40;
+                display: flex;
+                flex-direction: column;
+                padding: 30px 20px;
+            }
+            
+            .nav-open .nav-menu {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                background: transparent;
+                display: none;
+                margin-top: 10px;
+                border: none;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+            
+            .dropdown-content a {
+                padding-left: 20px;
+            }
+            
+            .scroll-top {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="text-white py-4 fixed w-full z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="text-3xl font-bold" style="background: var(--text-gradient); -webkit-background-clip: text; background-clip: text; color: transparent;">GauravGo</div>
+            <div class="flex items-center">
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link hover:text-[#2ecc71] transition">Home</a>
+                    <a href="#" class="nav-link hover:text-[#2ecc71] transition">Games</a>
+                    <a href="#" class="nav-link hover:text-[#2ecc71] transition">Services</a>
+                    <a href="#" class="nav-link hover:text-[#2ecc71] transition">Careers</a>
+                    <div class="dropdown relative group">
+                        <a href="#" class="nav-link hover:text-[#2ecc71] transition">More</a>
+                        <div class="dropdown-content absolute hidden group-hover:block min-w-[200px] py-2">
+                            <a href="#" class="block px-4 py-2 hover:bg-[#2ecc71] hover:text-[#0e0e0e] transition">Advertisers</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-[#2ecc71] hover:text-[#0e0e0e] transition">Media Coverage</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-[#2ecc71] hover:text-[#0e0e0e] transition">Our Supporters</a>
+                        </div>
+                    </div>
+                    <div class="dropdown relative group">
+                        <a href="#" class="nav-link hover:text-[#2ecc71] transition">Contact</a>
+                        <div class="dropdown-content absolute hidden group-hover:block min-w-[200px] py-2">
+                            <a href="#" class="block px-4 py-2 hover:bg-[#2ecc71] hover:text-[#0e0e0e] transition">Support</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-[#2ecc71] hover:text-[#0e0e0e] transition">Feedback</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="md:hidden nav-toggle text-[#2ecc71] focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="nav-menu md:hidden">
+            <div class="flex flex-col space-y-6 p-4">
+                <a href="#" class="text-xl py-2 hover:text-[#2ecc71] transition border-b border-[rgba(255,255,255,0.1)]">Home</a>
+                <a href="#" class="text-xl py-2 hover:text-[#2ecc71] transition border-b border-[rgba(255,255,255,0.1)]">Games</a>
+                <a href="#" class="text-xl py-2 hover:text-[#2ecc71] transition border-b border-[rgba(255,255,255,0.1)]">Services</a>
+                <a href="#" class="text-xl py-2 hover:text-[#2ecc71] transition border-b border-[rgba(255,255,255,0.1)]">Careers</a>
+                <div class="dropdown">
+                    <a href="#" class="text-xl py-2 hover:text-[#2ecc71] transition border-b border-[rgba(255,255,255,0.1)]">More</a>
+                    <div class="dropdown-content mt-2 ml-4">
+                        <a href="#" class="block py-2 hover:text-[#2ecc71] transition">Advertisers</a>
+                        <a href="#" class="block py-2 hover:text-[#2ecc71] transition">Media Coverage</a>
+                        <a href="#" class="block py-2 hover:text-[#2ecc71] transition">Our Supporters</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="text-xl py-2 hover:text-[#2ecc71] transition border-b border-[rgba(255,255,255,0.1)]">Contact</a>
+                    <div class="dropdown-content mt-2 ml-4">
+                        <a href="#" class="block py-2 hover:text-[#2ecc71] transition">Support</a>
+                        <a href="#" class="block py-2 hover:text-[#2ecc71] transition">Feedback</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-20 pt-28">
+        <div class="content">
+            <h1 class="glow">Privacy Policy</h1>
+            <p class="text-center text-lg mb-8 font-medium"><strong>GauravGo Games Technologies Private Limited</strong></p>
+            <p class="mb-8">Welcome to GauravGo Games Technologies Private Limited, a premier gaming startup dedicated to crafting immersive experiences inspired by real stories and cinematic scenarios through cutting-edge technology. This Privacy Policy elucidates our practices for collecting, processing, and safeguarding your personal data, reflecting our commitment to fostering a secure and trusted community of gamers while positioning our state as a global gaming hub.</p>
+            <p class="mb-8 text-center">Visit our website: <a href="https://gauravgo.com" class="font-medium hover:underline">https://gauravgo.com</a></p>
+
+            <div class="section">
+                <h2>1. Comments and User Data</h2>
+                <p>When visitors submit comments, we collect the data provided in the comment form, including the visitor’s IP address and browser user agent, to aid in spam detection. Upon approval, your profile picture may be displayed alongside your comment.</p>
+            </div>
+
+            <div class="section">
+                <h2>2. Media</h2>
+                <p>To protect your privacy, please refrain from uploading images containing EXIF GPS location data. Visitors may download images from our site and extract any embedded location information.</p>
+            </div>
+
+            <div class="section">
+                <h2>3. Cookies</h2>
+                <ul>
+                    <li><strong>Comments:</strong> If you opt to save your name, email, and website in cookies when leaving a comment, these will persist for one year for your convenience.</li>
+                    <li><strong>Login:</strong> A temporary cookie checks browser compatibility upon visiting the login page and is deleted upon closing. Post-login, cookies store your login details and display preferences for two days, with display settings lasting one year. Selecting “Remember Me” extends login cookies to two weeks.</li>
+                    <li><strong>Content Editing:</strong> Editing or publishing content triggers a cookie to track the post ID, expiring after one day.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>4. Embedded Content</h2>
+                <p>Embedded content (e.g., videos or articles) from third-party sites may function as if you visited those sites directly, potentially allowing data collection, cookie usage, and interaction tracking by the third party.</p>
+            </div>
+
+            <div class="section">
+                <h2>5. Data Sharing</h2>
+                <p>For security, your IP address is included in password reset emails if you request one.</p>
+            </div>
+
+            <div class="section">
+                <h2>6. Data Retention</h2>
+                <p>Comments and metadata are retained indefinitely to facilitate future approvals. For registered users, profile data is stored and can be viewed, edited, or deleted (excluding usernames) at any time, with administrators retaining full edit access.</p>
+            </div>
+
+            <div class="section">
+                <h2>7. User Data Rights</h2>
+                <p>If you hold an account or have commented, you may request an export of your personal data or request its deletion, subject to exceptions for administrative, legal, or security purposes.</p>
+            </div>
+
+            <div class="section">
+                <h2>8. Data Transmission</h2>
+                <p>Visitor comments may be screened using automated spam detection services.</p>
+            </div>
+
+            <div class="section">
+                <h2>9. Games Download</h2>
+                <ul>
+                    <li>Games on our website are free unless otherwise specified, with all intellectual property rights reserved by GauravGo Games Technologies Private Limited. While inspired by real events, game narratives are fictional, created for entertainment, with no intent to resemble actual persons or offend.</li>
+                    <li>We uphold the highest data protection standards, regularly updating our practices to align with global regulations. Your data is securely managed to enhance your gaming experience, and we welcome any privacy concerns you may have.</li>
+                    <li>This policy underscores our commitment to data privacy, ensuring secure handling of personal information (e.g., name, email, IP address) in compliance with international standards, providing a seamless and confidential gaming experience.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>10. Contact Information for Data Protection Inquiries</h2>
+                <div class="contact-info mt-6">
+                    <p class="mb-3"><strong>Email:</strong> <a href="mailto:contact@gauravgo.com" class="font-medium">contact@gauravgo.com</a></p>
+                    <p class="mb-4"><strong>Phone:</strong> <a href="tel:+917352279074" class="font-medium">+91 7352279074</a></p>
+                    <p>We are dedicated to safeguarding your personal data and respecting your rights. Please contact us for any inquiries regarding data protection, access, rectification, or deletion.</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#" class="scroll-top">Scroll to Top</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-20 relative overflow-hidden w-full" role="contentinfo" style="background: var(--cta-gradient);">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="w-80 h-80 bg-[#2ecc7120] blur-[100px] rounded-full absolute -top-20 -left-20 animate-pulse"></div>
+            <div class="w-96 h-96 bg-[#3498db20] blur-[100px] rounded-full absolute bottom-0 right-0 animate-pulse delay-300"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 pb-12 border-b border-[rgba(255,255,255,0.1)]">
+            <div>
+                <h3 class="text-xl font-bold mb-5 footer-heading">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="footer-link">About</a></li>
+                    <li><a href="#" class="footer-link">Blog</a></li>
+                    <li><a href="#" class="footer-link">Careers</a></li>
+                    <li><a href="#" class="footer-link">Press</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-5 footer-heading">Explore</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="footer-link">New Releases</a></li>
+                    <li><a href="#" class="footer-link">Community</a></li>
+                    <li><a href="#" class="footer-link">Dev Console</a></li>
+                    <li><a href="#" class="footer-link">Game Events</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-5 footer-heading">Connect</h3>
+                <div class="flex items-center space-x-4 mt-2">
+                    <a href="#" class="social-icon" style="color: #2ecc71;">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="#" class="social-icon" style="color: #e74c3c;">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-icon" style="color: #3498db;">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" style="color: #4267B2;">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-icon" style="color: #9b59b6;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="mt-8">
+                    <span class="tag glow">#GauravGoGames</span>
+                </div>
+            </div>
+        </div>
+        <div class="relative z-10 text-center mt-12 text-sm tracking-wide">
+            © <script>document.write(new Date().getFullYear())</script> <span class="font-bold" style="background: var(--text-gradient); -webkit-background-clip: text; background-clip: text; color: transparent;">GauravGo Games</span>. All rights reserved. | Crafted with <span style="color: #e74c3c;">❤️</span> by Somya
+        </div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const body = document.body;
+
+        navToggle.addEventListener('click', () => {
+            body.classList.toggle('nav-open');
+        });
+
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            const toggle = dropdown.querySelector('a');
+            const content = dropdown.querySelector('.dropdown-content');
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        document.querySelector('.scroll-top').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Add animations to sections
+        gsap.utils.toArray('.section').forEach((section, i) => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 90%',
+                },
+                opacity: 0,
+                y: 30,
+                duration: 0.6,
+                delay: i * 0.1
+            });
+        });
+
+        // Animate the footer elements
+        gsap.from('footer > *', {
+            scrollTrigger: {
+                trigger: 'footer',
+                start: 'top 90%',
+            },
+            opacity: 0,
+            y: 40,
+            duration: 0.8,
+            stagger: 0.2
+        });
+    </script>
+</body>
+</html>
