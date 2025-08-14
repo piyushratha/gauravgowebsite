@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -649,22 +651,22 @@
         </div>
 
         <ul class="nav-links">
-            <li><a href="/GauravGoWeb/gauravgowebsite/templates/index.html">Home</a></li>
-            <li><a href="/GauravGoWeb/gauravgowebsite/templates/all-games.html">Games</a></li>
-            <li><a href="/GauravGoWeb/gauravgowebsite/templates/services.html">Services</a></li>
+            <li><a class="nav-link {% if request.path == '/' %} active {% endif %}" href="{% url 'index' %}">Home</a></li>
+            <li><a class="nav-link {% if request.path == '/' %} active {% endif %}" href="{% url 'games' %}">Games</a></li>
+            <li><a class="nav-link {% if request.path == '/' %} active {% endif %}" href="{% url 'services' %}">Services</a></li>
             <li class="dropdown">
-                <a href="#" class="dropdown-trigger">More <i class="fas fa-chevron-down"></i></a>
+                <a href="#">More <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/GauravGoWeb/gauravgowebsite/templates/advertisers.html">Advertisers</a></li>
-                    <li><a href="/GauravGoWeb/gauravgowebsite/templates/our-supporters.html">Supporters</a></li>
-                    <li><a href="/GauravGoWeb/gauravgowebsite/templates/media-coverage.html">Media</a></li>
+                    <li style="padding-top: 1rem;"><a class="nav-link {% if request.path == '/' %} active {% endif %}" href="{% url 'advertisers' %}">Advertisers</a></li>
+                    <li style="padding-top: 1rem;"><a class="nav-link {% if request.path == '/' %} active {% endif %}" href="{% url 'our_supporters' %}">Supporters</a></li>
+                    <li style="padding-top: 1rem;"><a  class="nav-link {% if request.path == '/' %} active {% endif %}" href="{% url 'media_coverage' %}">Media</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-trigger">Contact <i class="fas fa-chevron-down"></i></a>
+                <a href="#">Contact <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/GauravGoWeb/gauravgowebsite/templates/about-us.html">About</a></li>
-                    <li><a href="/GauravGoWeb/gauravgowebsite/templates/privacy-policy.html">Privacy</a></li>
+                    <li style="padding-top: 1rem;"><a class="nav-link {% if request.path == '/' %} active {% endif %}" href="{% url 'about' %}">About</a></li>
+                    <li style="padding-top: 1rem;"><a class="nav-link {% if request.path == '/' %} active {% endif %}" href="{% url 'privacy_policy' %}">Privacy</a></li>
                 </ul>
             </li>
             <li><a href="#careers">Careers</a></li>
