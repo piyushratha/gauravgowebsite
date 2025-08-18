@@ -1,6 +1,5 @@
 {% load static %}
 
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -955,15 +954,16 @@
         }
     </style>
 </head>
-<body>
+<body> 
+
+    {% include 'header.html' %}
+
     <!-- Preloader -->
     <div id="preloader">
         <h1>GauravGo Games</h1>
         <div class="loader"></div>
     </div>
-
     
-
     <!-- Hero Section -->
     <section id="home" class="hero">
         <video class="hero-video" autoplay muted loop playsinline>
@@ -1311,5 +1311,8 @@
             }
         });
     </script>
+
+    {% include 'footer.html' %}
+    
 </body>
 </html>

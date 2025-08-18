@@ -29,6 +29,8 @@ urlpatterns = [
     path('media_coverage', media_coverage, name="media_coverage"),
     path('our_supporters', our_supporters, name="our_supporters"),
     path('privacy_policy', privacy_policy, name="privacy_policy"),
+    path('header', header, name="header"),
+    path('footer', footer, name="footer"),
     
         
 ]

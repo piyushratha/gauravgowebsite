@@ -28,5 +28,11 @@ def privacy_policy(request):
     return render(request, 'privacy_policy.html')
 
 
+def footer(request):
+    return render(request, 'footer.html')
+
+def header(request):
+    return render(request, 'header.html')
+
 
 
