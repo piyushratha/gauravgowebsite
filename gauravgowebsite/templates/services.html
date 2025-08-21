@@ -1,6 +1,4 @@
 {% load static %}
-{% include 'navbar.html' %}
-{% include 'footer.html' %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -420,6 +418,10 @@
 </head>
 
 <body>
+  {% include "header.html" %}
+
+
+
     <!-- Enhanced Navbar -->
     
 
@@ -704,5 +706,9 @@
     });
   });
 </script>
+
+{% include 'footer.html' %}
+
+
 </body>
 </html>

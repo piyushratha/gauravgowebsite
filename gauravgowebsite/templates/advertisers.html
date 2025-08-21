@@ -1,7 +1,4 @@
 {% load static %}
-{% include 'navbar.html' %}
-{% include 'footer.html' %}
-
 
 
 <html lang="en">
@@ -440,6 +437,8 @@
     </style>
 </head>
 <body>
+
+    {% include "header.html" %}
     
     
 
@@ -778,5 +777,9 @@
             stagger: 0.2
         });
     </script>
+
+    {% include 'footer.html' %}
+
+    
 </body>
 </html>

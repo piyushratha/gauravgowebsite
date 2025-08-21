@@ -1,6 +1,4 @@
 {% load static %}
-{% include 'navbar.html' %}
-{% include 'footer.html' %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -160,6 +158,8 @@
   </style>
 </head>
 <body class="overflow-x-hidden">
+
+  {% include "header.html" %}
   
 
   <!-- Hero Section -->
@@ -502,5 +502,10 @@
       });
     });
   </script>
+
+
+  {% include 'footer.html' %}
+
+
 </body>
 </html>

@@ -1,6 +1,4 @@
 {% load static %}
-{% include 'navbar.html' %}
-{% include 'footer.html' %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -350,6 +348,8 @@
     </style>
 </head>
 <body>
+
+    {% include "header.html" %}
     
 
     <main class="container mx-auto px-4 py-20 pt-24">
@@ -529,5 +529,9 @@
             document.querySelectorAll("footer").forEach((section) => observer.observe(section));
         });
     </script>
-</body>
+
+    {% include 'footer.html' %}
+
+
+    </body>
 </html>

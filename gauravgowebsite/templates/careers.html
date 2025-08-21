@@ -1,6 +1,4 @@
 {% load static %}
-{% include 'navbar.html' %}
-{% include 'footer.html' %}
 
 <html lang="en">
 
@@ -329,6 +327,9 @@
 </head>
 
 <body>
+
+  {% include "header.html" %}
+  
   <section class="hero">
     <div class="hero-content">
       <h1>
@@ -495,6 +496,10 @@
 
     document.querySelectorAll(".hero, #why-join, #requirements").forEach((section) => observer.observe(section));
   </script>
+
+  {% include 'footer.html' %}
+
+  
 </body>
 
 </html>

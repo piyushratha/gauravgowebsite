@@ -1,6 +1,4 @@
 {% load static %}
-{% include 'navbar.html' %}
-{% include 'footer.html' %}
 
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -439,6 +437,10 @@
 </head>
 <body>
     
+
+    {% include "header.html" %}
+
+
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-particles" id="particles"></div>
@@ -1011,5 +1013,9 @@
         // Create particles after DOM loads
         document.addEventListener('DOMContentLoaded', createParticles);
     </script>
+
+    {% include 'footer.html' %}
+
+    
 </body>
 </html>

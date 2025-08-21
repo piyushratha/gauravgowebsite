@@ -1,7 +1,4 @@
 {% load static %}
-{% include 'navbar.html' %}
-{% include 'footer.html' %}
-
 
 <html lang="en">
 
@@ -283,6 +280,9 @@
 </head>
 
 <body>
+
+    {% include "header.html" %}
+
     <!-- New Navbar -->
     
 
@@ -492,6 +492,11 @@
             ease: "power3.out"
         });
     </script>
+
+    {% include 'footer.html' %}
+
+
+
 </body>
 
 </html>
