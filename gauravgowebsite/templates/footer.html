@@ -228,6 +228,8 @@
     </style>
 </head>
 <body>
+
+
     <footer class="new-footer">
         <div class="footer-wave">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -246,7 +248,7 @@
         <div class="footer-content">
             <div>
                 <div class="footer-logo">
-                    <img src="images/logo.png" alt="GauravGo Logo">
+                    <img src="{% static 'images/media-home-page/logo.png' %}">
                     <span>GauravGo</span>
                 </div>
                 <div class="footer-about">
@@ -270,15 +272,29 @@
 
             <div class="footer-links">
                 <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/games">Games</a></li>
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/advertisers">Advertisers</a></li>
-                    <li><a href="/our-supporters">Supporters</a></li>
-                    <li><a href="/media-coverage">Media</a></li>
+               <ul>
+                    <li>
+                        <a  href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li>
+                        <a  href="{% url 'games' %}">Games</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'services' %}">Services</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'advertisers' %}">Advertisers</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'our_supporters' %}">Supporters</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'media_coverage' %}">Media</a>
+                    </li>
                 </ul>
+
             </div>
+
 
             <div class="footer-links">
                 <h3>Contact Us</h3>
@@ -310,5 +326,7 @@
     <script>
         // No JavaScript is required for the footer or background animation.
     </script>
+
+    
 </body>
 </html>
