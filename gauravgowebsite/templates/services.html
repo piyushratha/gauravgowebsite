@@ -14,6 +14,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- Added GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         :root {
             --primary-gradient-start: #2ecc71;
@@ -45,6 +48,10 @@
             padding-top: 80px; /* For fixed navbar */
         }
         
+        /* Remove the gap between navbar and header */
+        body {
+            padding-top: 0;
+        }
         
         /* Header Styling */
         header {
@@ -55,6 +62,7 @@
             justify-content: center;
             overflow: hidden;
             background: linear-gradient(135deg, var(--cta-bg-start), var(--cta-bg-end));
+            margin-top: 0; /* Ensure no margin at the top */
         }
         
         .bg-video {
@@ -71,7 +79,7 @@
             display: inline-block;
             opacity: 0;
             animation: fadeIn 0.8s ease forwards;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             background: linear-gradient(90deg, var(--primary-gradient-start), var(--teal), var(--primary-gradient-end));
             -webkit-background-clip: text;
             background-clip: text;
@@ -81,6 +89,8 @@
         
         .letter:hover {
             transform: scale(1.3);
+            text-shadow: 0 0 25px rgba(46, 204, 113, 0.8), 0 0 35px rgba(46, 204, 113, 0.6);
+            filter: brightness(1.2);
         }
         
         @keyframes fadeIn {
@@ -113,9 +123,11 @@
             border-radius: 16px;
             overflow: hidden;
             transition: all 0.3s ease;
-            height: 100%;
+            height: 450px; /* Fixed height as requested */
             display: flex;
             flex-direction: column;
+            position: relative;
+            cursor: pointer;
         }
         
         .card:hover {
@@ -145,6 +157,21 @@
             padding: 0 1.5rem 1.5rem;
             color: var(--text-secondary);
             flex-grow: 1;
+            text-align: justify; /* Justified text as requested */
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 6; /* Limit to approximately 150 words */
+            -webkit-box-orient: vertical;
+            line-height: 1.6;
+        }
+        
+        .card-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
         
         .glide__arrow {
@@ -155,11 +182,17 @@
             border-radius: 50%;
             color: var(--text-primary);
             transition: all 0.3s ease;
+            z-index: 2; /* Ensure arrows are above card links */
         }
         
         .glide__arrow:hover {
             background: linear-gradient(90deg, var(--primary-gradient-start), var(--primary-gradient-end));
             border-color: transparent;
+        }
+        
+        /* Add padding above slider */
+        .glide {
+            padding-top: 2rem;
         }
         
         /* HQ + Support Section */
@@ -199,8 +232,6 @@
             display: inline-block;
             margin-top: 1rem;
         }
-        
-        
         
         .hover-grow {
             transition: transform 0.3s ease;
@@ -385,6 +416,14 @@
                 width: 35px;
                 height: 35px;
             }
+            
+            .card {
+                height: 420px; /* Slightly reduced height for mobile */
+            }
+            
+            .card p {
+                -webkit-line-clamp: 5; /* Show fewer lines on mobile */
+            }
         }
         
         @media (max-width: 480px) {
@@ -413,17 +452,20 @@
                 padding: 0.7rem 1.25rem;
                 font-size: 0.95rem;
             }
+            
+            .card {
+                height: 400px; /* Further reduced height for small mobile */
+            }
+            
+            .card p {
+                -webkit-line-clamp: 4; /* Show even fewer lines on small mobile */
+            }
         }
     </style>
 </head>
 
 <body>
   {% include "header.html" %}
-
-
-
-    <!-- Enhanced Navbar -->
-    
 
     <!-- Header -->
     <header id="services" aria-label="Services section" class="relative">
@@ -462,253 +504,248 @@
             <div class="glide">
                 <div class="glide__track" data-glide-el="track">
                     <div class="glide__slides">
-                        <!-- Card 1 -->
+                        <!-- Card 1 - Fixed image URL and added more content -->
                         <div class="glide__slide card opacity-0 scale-90 transition-all duration-700">
-                            <img src="https://images.unsplash.com/photo-1607853554439-0069ec0f29b9?q=80&w=1470&auto=format&fit=crop" alt="Drone Simulators" loading="lazy">
+                            <a href="/simulation-projects" class="card-link"></a>
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=1470&auto=format&fit=crop" alt="Simulation Projects" loading="lazy">
                             <h3>Simulation Based Projects</h3>
-                            <p>Realistic drone simulation for training and testing in a safe, controlled virtual environment.</p>
+                            <p>Experience cutting-edge simulation technology with our realistic drone and vehicle simulations. Perfect for training and testing in a safe, controlled virtual environment. Our simulations provide accurate physics, real-world scenarios, and detailed analytics to help you master complex operations without any risk. Whether you're training pilots or testing autonomous systems, our simulation solutions deliver unparalleled realism and performance.</p>
                         </div>
 
                         <!-- Card 2 -->
                         <div class="glide__slide card opacity-0 scale-90 transition-all duration-700 delay-100">
+                            <a href="/3d-assets" class="card-link"></a>
                             <img src="https://images.unsplash.com/photo-1633287387306-f08b4b3671c6?q=80&w=1470&auto=format&fit=crop" alt="3D Assets" loading="lazy">
                             <h3>3D Assets/Environment Creation</h3>
-                            <p>Bring your visions to reality with 3D asset and environment design services.</p>
+                            <p>Bring your visions to reality with our professional 3D asset and environment design services. Our team of talented artists creates stunning, high-quality 3D models, textures, and environments for games, simulations, and virtual experiences. From character design to entire worlds, we deliver assets that meet your specific requirements and elevate your project to the next level. Our meticulous attention to detail ensures every asset is optimized for performance while maintaining visual fidelity.</p>
                         </div>
 
                         <!-- Card 3 -->
                         <div class="glide__slide card opacity-0 scale-90 transition-all duration-700 delay-200">
+                            <a href="/game-development" class="card-link"></a>
                             <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1390&auto=format&fit=crop" alt="AR VR" loading="lazy">
                             <h3>Game Development & AR-VR</h3>
-                            <p>Dive into the future of interactive entertainment with immersive experiences.</p>
+                            <p>Dive into the future of interactive entertainment with our immersive game development and AR/VR experiences. We create engaging games and applications that leverage the latest technologies to provide unforgettable user experiences. From mobile games to complex VR simulations, our team handles all aspects of development including design, programming, testing, and deployment. Our solutions are optimized for various platforms and designed to captivate your audience with innovative gameplay and stunning visuals.</p>
                         </div>
 
                         <!-- Card 4 -->
                         <div class="glide__slide card opacity-0 scale-90 transition-all duration-700 delay-300">
-                            <img src="https://images.unsplash.com/photo-1633287387306-f08b4b3671c6?q=80&w=1470&auto=format&fit=crop" alt="2D 3D Animation" loading="lazy">
+                            <a href="/animation" class="card-link"></a>
+                            <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1400&auto=format&fit=crop" alt="2D 3D Animation" loading="lazy">
                             <h3>Animation 2D/3D</h3>
-            <p>2D and 3D animations that tell stories and engage your audience.</p>
-          </div>
+                            <p>Tell compelling stories with our professional 2D and 3D animation services. Our skilled animators create fluid, expressive animations that bring characters and objects to life. Whether you need traditional 2D animation, cutting-edge 3D character animation, or motion graphics for your project, we deliver high-quality results that engage your audience. We follow a meticulous process from storyboarding to final rendering, ensuring that every animation aligns with your vision and enhances your narrative.</p>
+                        </div>
 
-          <!-- Card 5 -->
-          <div class="glide__slide card opacity-0 scale-90 transition-all duration-700 delay-400">
-            <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=1332&auto=format&fit=crop" alt="Blender VFX" loading="lazy">
-            <h3>Blender VFX/Films</h3>
-            <p>Add stunning visual effects to your projects using Blender.</p>
-          </div>
+                        <!-- Card 5 -->
+                        <div class="glide__slide card opacity-0 scale-90 transition-all duration-700 delay-400">
+                            <a href="/blender-vfx" class="card-link"></a>
+                            <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=1332&auto=format&fit=crop" alt="Blender VFX" loading="lazy">
+                            <h3>Blender VFX/Films</h3>
+                            <p>Add stunning visual effects to your projects using Blender, the powerful open-source 3D creation suite. Our team specializes in creating breathtaking VFX for films, commercials, and other media projects. From particle simulations and fluid dynamics to complex compositing and motion tracking, we leverage Blender's extensive toolset to produce Hollywood-quality visual effects. We work closely with our clients to understand their vision and deliver effects that seamlessly integrate with their footage and enhance the overall production value.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="glide__arrows" data-glide-el="controls">
-        <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i
-            class="fas fa-chevron-left"></i></button>
-        <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i
-            class="fas fa-chevron-right"></i></button>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- HQ + Support Section -->
-<section class="hq-support reveal opacity-0 translate-y-10 transition duration-1000 ease-out">
-  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6 md:px-12">
-    <!-- Headquarters Card -->
-    <div class="hq-card opacity-0 scale-90 transition transform">
-      <div class="flex items-center mb-6">
-        <span class="text-3xl mr-3 text-[#2ecc71]"><i class="fas fa-building"></i></span>
-        <h3 class="text-2xl font-bold">Headquarters</h3>
-      </div>
-      <p class="text-gray-200 font-semibold mb-1">GauravGo Games Technologies</p>
-      <p class="text-gray-400 mb-4">College Square, Kakatpur, Puri, Odisha – 752108</p>
-      <span class="tag">India</span>
-    </div>
+    <!-- HQ + Support Section -->
+    <section class="hq-support reveal opacity-0 translate-y-10 transition duration-1000 ease-out">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6 md:px-12">
+            <!-- Headquarters Card -->
+            <div class="hq-card opacity-0 scale-90 transition transform">
+                <div class="flex items-center mb-6">
+                    <span class="text-3xl mr-3 text-[#2ecc71]"><i class="fas fa-building"></i></span>
+                    <h3 class="text-2xl font-bold">Headquarters</h3>
+                </div>
+                <p class="text-gray-200 font-semibold mb-1">GauravGo Games Technologies</p>
+                <p class="text-gray-400 mb-4">College Square, Kakatpur, Puri, Odisha – 752108</p>
+                <span class="tag">India</span>
+            </div>
 
-    <!-- Support Card -->
-    <div class="hq-card opacity-0 scale-90 transition transform">
-      <div class="flex items-center mb-6">
-        <span class="text-3xl mr-3 text-[#2ecc71]"><i class="fas fa-headset"></i></span>
-        <h3 class="text-2xl font-bold">Support & Enquiries</h3>
-      </div>
-      <p class="text-gray-200 font-semibold mb-1">Email:</p>
-      <a href="mailto:support@gauravgo.com"
-        class="text-white hover:text-[#2ecc71] transition underline block mb-4">support@gauravgo.com</a>
-      <p class="text-gray-200 font-semibold mb-1">Discord:</p>
-      <a href="#" class="text-white hover:text-[#2ecc71] transition underline">Join Server</a>
-    </div>
-  </div>
-</section>
+            <!-- Support Card -->
+            <div class="hq-card opacity-0 scale-90 transition transform">
+                <div class="flex items-center mb-6">
+                    <span class="text-3xl mr-3 text-[#2ecc71]"><i class="fas fa-headset"></i></span>
+                    <h3 class="text-2xl font-bold">Support & Enquiries</h3>
+                </div>
+                <p class="text-gray-200 font-semibold mb-1">Email:</p>
+                <a href="mailto:support@gauravgo.com"
+                    class="text-white hover:text-[#2ecc71] transition underline block mb-4">support@gauravgo.com</a>
+                <p class="text-gray-200 font-semibold mb-1">Discord:</p>
+                <a href="#" class="text-white hover:text-[#2ecc71] transition underline">Join Server</a>
+            </div>
+        </div>
+    </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Glide slider with proper configuration
+            const glide = new Glide('.glide', {
+                type: 'carousel',
+                perView: 4,
+                gap: 24,
+                autoplay: 3000,
+                hoverpause: true,
+                breakpoints: {
+                    1280: { perView: 3 },
+                    1024: { perView: 3 },
+                    768: { perView: 2 },
+                    480: { perView: 1 }
+                }
+            });
+            
+            // Mount the glide instance
+            glide.mount();
 
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                    
+                    // Close all dropdowns when mobile menu closes
+                    if (!navLinks.classList.contains('active')) {
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                });
+            }
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                const navbar = document.querySelector('.navbar');
+                if (navbar && !navbar.contains(e.target) && window.innerWidth <= 768) {
+                    if (hamburger) hamburger.classList.remove('active');
+                    if (navLinks) navLinks.classList.remove('active');
+                    
+                    // Close all dropdowns
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+            
+            // Enhanced dropdown functionality for mobile and desktop
+            dropdowns.forEach(dropdown => {
+                const trigger = dropdown.querySelector('.dropdown-trigger');
+                
+                if (trigger) {
+                    // Handle click events
+                    trigger.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        if (window.innerWidth <= 768) {
+                            // Toggle dropdown on mobile
+                            const isActive = dropdown.classList.contains('active');
+                            
+                            // Close other dropdowns
+                            dropdowns.forEach(otherDropdown => {
+                                if (otherDropdown !== dropdown) {
+                                    otherDropdown.classList.remove('active');
+                                }
+                            });
+                            
+                            // Toggle current dropdown
+                            dropdown.classList.toggle('active');
+                        } else {
+                            // Toggle dropdown on desktop
+                            dropdown.classList.toggle('active');
+                        }
+                    });
+                    
+                    // Close dropdown when clicking outside on desktop
+                    if (window.innerWidth > 768) {
+                        document.addEventListener('click', (e) => {
+                            if (!dropdown.contains(e.target)) {
+                                dropdown.classList.remove('active');
+                            }
+                        });
+                    }
+                }
+            });
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (navbar) {
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+            });
 
-<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-<script>
-  // Initialize Glide slider
-  const glide = new Glide('.glide', {
-    type: 'carousel',
-    perView: 4,
-    gap: 24,
-    autoplay: 3000,
-    hoverpause: true,
-    breakpoints: {
-      1024: { perView: 3 },
-      768: { perView: 2 },
-      480: { perView: 1 }
-    }
-  });
-  glide.mount();
+            // Scroll animations
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
 
-  // Mobile menu toggle
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  const dropdowns = document.querySelectorAll('.dropdown');
-  
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
-    
-    // Close all dropdowns when mobile menu closes
-    if (!navLinks.classList.contains('active')) {
-      dropdowns.forEach(dropdown => {
-        dropdown.classList.remove('active');
-      });
-    }
-  });
-  
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', (e) => {
-    const isClickInsideNavbar = document.querySelector('.navbar').contains(e.target);
-    
-    if (!isClickInsideNavbar && window.innerWidth <= 768) {
-      hamburger.classList.remove('active');
-      navLinks.classList.remove('active');
-      
-      // Close all dropdowns
-      dropdowns.forEach(dropdown => {
-        dropdown.classList.remove('active');
-      });
-    }
-  });
-  
-  // Enhanced dropdown functionality for mobile and desktop
-  dropdowns.forEach(dropdown => {
-    const trigger = dropdown.querySelector('.dropdown-trigger');
-    
-    // Handle click events
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      if (window.innerWidth <= 768) {
-        // Toggle dropdown on mobile
-        const isActive = dropdown.classList.contains('active');
-        
-        // Close other dropdowns
-        dropdowns.forEach(otherDropdown => {
-          if (otherDropdown !== dropdown) {
-            otherDropdown.classList.remove('active');
-          }
+                        const cards = entry.target.querySelectorAll('.card, .hq-card');
+                        cards.forEach((card, i) => {
+                            setTimeout(() => {
+                                card.classList.remove('opacity-0', 'scale-90');
+                                card.classList.add('opacity-100', 'scale-100');
+                            }, i * 150);
+                        });
+
+                        sectionObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                sectionObserver.observe(el);
+            });
+
+            // Initialize AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    once: true,
+                });
+            }
+
+            // Animate letters in header
+            document.querySelectorAll('.letter').forEach((letter, index) => {
+                letter.style.animationDelay = `${index * 100}ms`;
+            });
+            
+            // Footer animations
+            if (typeof gsap !== 'undefined') {
+                // Stagger fade-up for footer sections
+                gsap.from(".hover-grow", {
+                    scrollTrigger: {
+                        trigger: "footer",
+                        start: "top bottom",
+                        toggleActions: "play none none none"
+                    },
+                    y: 50,
+                    opacity: 0,
+                    stagger: 0.25,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            }
         });
-        
-        // Toggle current dropdown
-        dropdown.classList.toggle('active');
-      } else {
-        // Toggle dropdown on desktop
-        dropdown.classList.toggle('active');
-      }
-    });
-    
-    // Close dropdown when clicking outside on desktop
-    if (window.innerWidth > 768) {
-      document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target)) {
-          dropdown.classList.remove('active');
-        }
-      });
-    }
-  });
-  
-  // Close dropdowns when clicking outside on mobile
-  document.addEventListener('click', (e) => {
-    if (window.innerWidth <= 768) {
-      let isDropdownClick = false;
-      dropdowns.forEach(dropdown => {
-        if (dropdown.contains(e.target)) {
-          isDropdownClick = true;
-        }
-      });
-      
-      if (!isDropdownClick) {
-        dropdowns.forEach(dropdown => {
-          dropdown.classList.remove('active');
-        });
-      }
-    }
-  });
-  
-  // Navbar scroll effect
-  window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
+    </script>
 
-  // Scroll animations
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove('opacity-0', 'translate-y-10');
-        entry.target.classList.add('opacity-100', 'translate-y-0');
-
-        const cards = entry.target.querySelectorAll('.card, .hq-card');
-        cards.forEach((card, i) => {
-          setTimeout(() => {
-            card.classList.remove('opacity-0', 'scale-90');
-            card.classList.add('opacity-100', 'scale-100');
-          }, i * 150);
-        });
-
-        sectionObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  document.querySelectorAll('.reveal').forEach(el => {
-    sectionObserver.observe(el);
-  });
-
-  // Initialize AOS
-  AOS.init({
-    duration: 800,
-    once: true,
-  });
-
-  // Animate letters in header
-  document.querySelectorAll('.letter').forEach((letter, index) => {
-    letter.style.animationDelay = `${index * 100}ms`;
-  });
-  
-  // Footer animations
-  document.addEventListener('DOMContentLoaded', () => {
-    // Stagger fade-up for footer sections
-    gsap.from(".hover-grow", {
-      scrollTrigger: {
-        trigger: "footer",
-        start: "top bottom",
-        toggleActions: "play none none none"
-      },
-      y: 50,
-      opacity: 0,
-      stagger: 0.25,
-      duration: 1,
-      ease: "power3.out"
-    });
-  });
-</script>
-
-{% include 'footer.html' %}
-
-
+    {% include 'footer.html' %}
 </body>
 </html>

@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR/VR Simulators</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Primary Gradient Colors */
+            --primary-gradient-start: #2ecc71;
+            --primary-gradient-end: #3498db;
+
+            /* Main Background Gradient */
+            --main-bg-start: #0a0a1a;
+            --main-bg-end: #050510;
+
+            /* CTA Background Gradient */
+            --cta-bg-start: #0c1d2f;
+            --cta-bg-end: #091622;
+
+            /* Chaos Card Gradient */
+            --chaos-card-start: #0c1d2f;
+            --chaos-card-end: #091622;
+
+            /* Arena Card Gradient */
+            --arena-card-start: #1a0c2f;
+            --arena-card-end: #160922;
+
+            /* Accent Colors */
+            --electric-green: #2ecc71;
+            --crystal-blue: #3498db;
+            --royal-purple: #9b59b6;
+            --fiery-red: #e74c3c;
+            --sun-orange: #f39c12;
+            --teal: #1abc9c;
+
+            /* Text Colors */
+            --text-primary: #f0f0f0;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+
+            /* Additional Colors */
+            --card-bg: rgba(15, 15, 30, 0.7);
+            --card-border: rgba(46, 204, 113, 0.2);
+            --tag-bg: rgba(46, 204, 113, 0.1);
+            --hq-card-bg: rgba(20, 20, 35, 0.6);
+            --arrow-bg: rgba(20, 20, 35, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--main-bg-start), var(--main-bg-end));
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .header-placeholder {
+            background: linear-gradient(to right, var(--cta-bg-start), var(--cta-bg-end));
+            height: 70px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-placeholder {
+            background: linear-gradient(to right, var(--cta-bg-start), var(--cta-bg-end));
+            height: 100px;
+            border-radius: 10px;
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 3.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            padding: 20px 0;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+        }
+
+        .title-wrapper {
+            display: inline-block;
+            position: relative;
+        }
+
+        .title-letter {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .section-title:hover .title-letter {
+            animation: letterGlow 0.5s ease forwards;
+        }
+
+        .section-title:hover .title-letter:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .section-title:hover .title-letter:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .section-title:hover .title-letter:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .section-title:hover .title-letter:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .section-title:hover .title-letter:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .section-title:hover .title-letter:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .section-title:hover .title-letter:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        .section-title:hover .title-letter:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+
+        .section-title:hover .title-letter:nth-child(10) {
+            animation-delay: 0.9s;
+        }
+
+        .section-title:hover .title-letter:nth-child(11) {
+            animation-delay: 1.0s;
+        }
+
+        @keyframes letterGlow {
+            0% {
+                transform: translateY(0) scale(1);
+                text-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+                color: var(--text-primary);
+            }
+
+            50% {
+                transform: translateY(-10px) scale(1.2);
+                text-shadow: 0 0 20px var(--electric-green), 0 0 30px var(--electric-green);
+                color: var(--electric-green);
+            }
+
+            100% {
+                transform: translateY(0) scale(1.1);
+                text-shadow: 0 0 15px rgba(46, 204, 113, 0.9);
+                color: var(--electric-green);
+            }
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-gradient-start), transparent);
+            border-radius: 3px;
+            animation: pulseLine 2s infinite;
+        }
+
+        @keyframes pulseLine {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 1300px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 30px 0;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .card {
+            flex: 0 0 calc(50% - 20px);
+            margin: 0 10px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 320px;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+            z-index: 2;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: rgba(46, 204, 113, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(46, 204, 113, 0.5);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-image {
+            height: 140px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a1a;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.15);
+        }
+
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--electric-green);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
+        }
+
+        .card-description {
+            flex: 1;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .card-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            margin-top: auto;
+        }
+
+        .card-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .card-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .card-button:hover::before {
+            left: 100%;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 20px;
+        }
+
+        .slider-arrow {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--arrow-bg);
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider-arrow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .slider-arrow i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slider-arrow:hover {
+            transform: scale(1.1);
+            border-color: var(--electric-green);
+        }
+
+        .slider-arrow:hover::before {
+            opacity: 1;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dot::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--electric-green);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--electric-green);
+            transform: scale(1.2);
+        }
+
+        .dot.active::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        @media (max-width: 1200px) {
+            .card {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .card {
+                flex: 0 0 calc(100% - 20px);
+            }
+            .section-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                flex: 0 0 calc(100% - 20px);
+            }
+            .section-title {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header placeholder for Django inclusion -->
+    <div class="header-placeholder">
+        {% include "header.html" %}
+    </div>
+
+    <h1 class="section-title">
+        <span class="title-wrapper">
+            <span class="title-letter">A</span>
+            <span class="title-letter">R</span>
+            <span class="title-letter">/</span>
+            <span class="title-letter">V</span>
+            <span class="title-letter">R</span>
+            <span class="title-letter"> </span>
+            <span class="title-letter">S</span>
+            <span class="title-letter">I</span>
+            <span class="title-letter">M</span>
+            <span class="title-letter">U</span>
+            <span class="title-letter">L</span>
+            <span class="title-letter">A</span>
+            <span class="title-letter">T</span>
+            <span class="title-letter">O</span>
+            <span class="title-letter">R</span>
+            <span class="title-letter">S</span>
+        </span>
+    </h1>
+
+    <div class="slider-container">
+        <div class="slider">
+            <!-- Card 1 - Industrial Simulator -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                        alt="Industrial Simulator">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Industrial AR/VR Simulator</h3>
+                    <p class="card-description">
+                        Immerse yourself in our cutting-edge industrial AR/VR simulator that replicates complex manufacturing environments. Train employees safely in hazardous scenarios, optimize assembly line processes, and visualize machinery operations with real-time data overlay. Perfect for training, prototyping, and remote assistance in industrial settings.
+                    </p>
+                    <a href="#" class="card-button">Explore</a>
+                </div>
+            </div>
+
+            <!-- Card 2 - Automobile Simulator -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1535732820275-9ffd998cac22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                        alt="Automobile Simulator">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Automobile AR/VR Simulator</h3>
+                    <p class="card-description">
+                        Experience the future of automotive design and training with our automobile AR/VR simulator. Visualize car designs in 3D space, simulate driving conditions, train mechanics on virtual vehicles, and showcase features to customers through immersive experiences. Revolutionize how automobiles are designed, manufactured, marketed, and maintained with our advanced simulation technology.
+                    </p>
+                    <a href="#" class="card-button">Explore</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-controls">
+            <div class="slider-arrow prev">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="slider-arrow next">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+
+        <div class="slider-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Footer placeholder for Django inclusion -->
+    <div class="footer-placeholder">
+        {% include 'footer.html' %}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const slider = document.querySelector('.slider');
+            const sliderContainer = document.querySelector('.slider-container');
+            const cards = document.querySelectorAll('.card');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+
+            let currentIndex = 0;
+            const cardCount = cards.length;
+            let autoSlideInterval;
+            let isTransitioning = false;
+
+            // Calculate the width of a card including margins
+            function getCardWidth() {
+                const style = getComputedStyle(cards[0]);
+                return cards[0].offsetWidth + 
+                       parseInt(style.marginLeft) + 
+                       parseInt(style.marginRight);
+            }
+
+            function updateSlider(transition = true) {
+                const cardWidth = getCardWidth();
+                slider.style.transition = transition ? 'transform 0.5s ease' : 'none';
+                slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function nextSlide() {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex = (currentIndex + 1) % cardCount;
+                updateSlider();
+            }
+
+            function prevSlide() {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex = (currentIndex - 1 + cardCount) % cardCount;
+                updateSlider();
+            }
+
+            // Add event listeners to arrows
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetAutoSlide();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetAutoSlide();
+            });
+
+            // Add event listeners to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    if (isTransitioning) return;
+                    currentIndex = index;
+                    updateSlider();
+                    resetAutoSlide();
+                });
+            });
+
+            // Auto-slide function
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 4000);
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            // Pause auto-slide on hover
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+
+            sliderContainer.addEventListener('mouseleave', () => {
+                startAutoSlide();
+            });
+
+            slider.addEventListener('transitionend', () => {
+                isTransitioning = false;
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                updateSlider(false);
+            });
+
+            // Initialize the slider
+            updateSlider(false);
+            startAutoSlide();
+        });
+    </script>
+</body>
+
+</html>
