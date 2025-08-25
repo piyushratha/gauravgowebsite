@@ -1,6 +1,6 @@
 {% load static %}
 
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,24 +26,24 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: var(--near-black); /* Matches footer for consistency */
+            background: var(--near-black);
         }
 
         .orbitron {
             font-family: 'Orbitron', sans-serif;
         }
 
-        /* Fixed Footer Styles */
+        /* Footer Container */
         .new-footer {
             position: relative;
             background: linear-gradient(to bottom, #080808, #0b0b0b);
-            padding: 5rem 2rem 3rem;
+            padding: 3rem 1rem 2rem;
             overflow: hidden;
             width: 100%;
-            z-index: 1; /* Ensure footer content is above animated background */
+            z-index: 1;
         }
 
-        /* Animated Background */
+        /* Animated Background Layers */
         .new-footer::before {
             content: '';
             position: absolute;
@@ -52,7 +52,7 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-            z-index: -1; /* Place behind footer content */
+            z-index: -1;
             animation: pulseGlow 8s ease-in-out infinite;
         }
 
@@ -69,33 +69,22 @@
             animation: particleDrift 15s linear infinite;
         }
 
+        /* Animations */
         @keyframes pulseGlow {
-            0% {
-                transform: scale(1);
-                opacity: 0.7;
-            }
-            50% {
-                transform: scale(1.15);
-                opacity: 0.3;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 0.7;
-            }
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.15); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.7; }
         }
 
         @keyframes particleDrift {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 150px 150px;
-            }
+            0% { background-position: 0 0; }
+            100% { background-position: 150px 150px; }
         }
 
+        /* Wave Divider */
         .footer-wave {
             position: absolute;
-            top: -20px;
+            top: -10px;
             left: 0;
             width: 100%;
             overflow: hidden;
@@ -108,36 +97,38 @@
         .footer-wave svg {
             display: block;
             width: 100%;
-            height: 24px;
+            height: 12px;
         }
 
         .footer-wave .shape-fill {
             fill: #0f172a;
         }
 
+        /* Main Content Grid */
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            position: relative; /* Ensure content is above animated background */
+            position: relative;
         }
 
+        /* Logo Section */
         .footer-logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .footer-logo img {
-            height: 2.5rem;
+            height: 2rem;
             width: auto;
         }
 
         .footer-logo span {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 700;
             font-family: 'Orbitron', sans-serif;
             background: linear-gradient(to right, var(--primary-green), var(--crystal-blue));
@@ -146,23 +137,25 @@
             color: transparent;
         }
 
+        /* About Section */
         .footer-about p {
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1.5rem;
-            font-size: 0.9375rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
         }
 
+        /* Social Icons */
         .footer-social {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .footer-social a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.05);
             color: white;
@@ -170,15 +163,16 @@
         }
 
         .footer-social a:hover {
-            background: var(--crystal-blue); /* Changed to blue for hover to match theme */
+            background: var(--crystal-blue);
             color: #111;
             transform: translateY(-3px);
         }
 
+        /* Links Sections */
         .footer-links h3 {
-            font-size: 1.125rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: white;
             font-family: 'Orbitron', sans-serif;
             position: relative;
@@ -188,41 +182,42 @@
         .footer-links h3::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -4px;
             left: 0;
-            width: 40px;
+            width: 30px;
             height: 2px;
-            background: var(--crystal-blue); /* Changed to blue to match theme */
+            background: var(--crystal-blue);
         }
 
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
             display: inline-block;
         }
 
         .footer-links a:hover {
-            color: var(--crystal-blue); /* Changed to blue for hover to match theme */
+            color: var(--crystal-blue);
             transform: translateX(5px);
         }
 
+        /* Bottom Copyright */
         .footer-bottom {
             text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
+            margin-top: 2rem;
+            padding-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.5);
-            font-size: 0.875rem;
-            position: relative; /* Ensure above animated background */
+            font-size: 0.8125rem;
+            position: relative;
         }
 
-        /* Responsive Styles */
+        /* Responsive Adjustments */
         @media (max-width: 480px) {
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
         }
     </style>
@@ -231,6 +226,7 @@
 
 
     <footer class="new-footer">
+        <!-- Wave Divider -->
         <div class="footer-wave">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path class="shape-fill" opacity=".25"
@@ -245,31 +241,26 @@
             </svg>
         </div>
 
+        <!-- Footer Content Grid -->
         <div class="footer-content">
+            <!-- Company Info -->
             <div>
                 <div class="footer-logo">
-                    <img src="{% static 'images/media-home-page/logo.png' %}">
+                    <img src="{% static '{% static 'images/media-home-page/logo.png' %}' %}">
                     <span>GauravGo</span>
                 </div>
                 <div class="footer-about">
                     <p>Innovative game technologies creating immersive experiences for players worldwide.</p>
                 </div>
                 <div class="footer-social">
-                    <a href="#" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
 
+            <!-- Quick Links -->
             <div class="footer-links">
                 <h3>Quick Links</h3>
                <ul>
@@ -296,33 +287,25 @@
             </div>
 
 
+            <!-- Contact Us -->
             <div class="footer-links">
                 <h3>Contact Us</h3>
                 <ul>
-                    <li>
-                        <i class="fas fa-map-marker-alt mr-2"></i>
-                        <span>College Square, Kakatpur, Puri, Odisha – 752108</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone mr-2"></i>
-                        <a href="tel:+919999999999">+91 99999 99999</a>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope mr-2"></i>
-                        <a href="mailto:support@gauravgo.com">support@gauravgo.com</a>
-                    </li>
-                    <li>
-                        <i class="fab fa-discord mr-2"></i>
-                        <a href="#">Join Discord Server</a>
-                    </li>
+                    <li><i class="fas fa-map-marker-alt mr-2"></i><span>College Square, Kakatpur, Puri, Odisha – 752108</span></li>
+                    <li><i class="fas fa-phone mr-2"></i><a href="tel:+919999999999">+91 99999 99999</a></li>
+                    <li><i class="fas fa-envelope mr-2"></i><a href="mailto:support@gauravgo.com">support@gauravgo.com</a></li>
+                    <li><i class="fab fa-discord mr-2"></i><a href="#">Join Discord Server</a></li>
                 </ul>
             </div>
         </div>
 
+        <!-- Copyright -->
         <div class="footer-bottom">
             <p>&copy; 2023 GauravGo Games Technologies. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- No JS needed, but here's a placeholder if you add any later -->
     <script>
         // No JavaScript is required for the footer or background animation.
     </script>

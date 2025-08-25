@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blender VFX/Films</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Primary Gradient Colors */
+            --primary-gradient-start: #2ecc71;
+            --primary-gradient-end: #3498db;
+
+            /* Main Background Gradient */
+            --main-bg-start: #0a0a1a;
+            --main-bg-end: #050510;
+
+            /* CTA Background Gradient */
+            --cta-bg-start: #0c1d2f;
+            --cta-bg-end: #091622;
+
+            /* Chaos Card Gradient */
+            --chaos-card-start: #0c1d2f;
+            --chaos-card-end: #091622;
+
+            /* Arena Card Gradient */
+            --arena-card-start: #1a0c2f;
+            --arena-card-end: #160922;
+
+            /* Accent Colors */
+            --electric-green: #2ecc71;
+            --crystal-blue: #3498db;
+            --royal-purple: #9b59b6;
+            --fiery-red: #e74c3c;
+            --sun-orange: #f39c12;
+            --teal: #1abc9c;
+
+            /* Text Colors */
+            --text-primary: #f0f0f0;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+
+            /* Additional Colors */
+            --card-bg: rgba(15, 15, 30, 0.7);
+            --card-border: rgba(46, 204, 113, 0.2);
+            --tag-bg: rgba(46, 204, 113, 0.1);
+            --hq-card-bg: rgba(20, 20, 35, 0.6);
+            --arrow-bg: rgba(20, 20, 35, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--main-bg-start), var(--main-bg-end));
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .header-placeholder {
+            background: linear-gradient(to right, var(--cta-bg-start), var(--cta-bg-end));
+            height: 70px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-placeholder {
+            background: linear-gradient(to right, var(--cta-bg-start), var(--cta-bg-end));
+            height: 100px;
+            border-radius: 10px;
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 3.5rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            padding: 20px 0;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+        }
+
+        .title-wrapper {
+            display: inline-block;
+            position: relative;
+        }
+
+        .title-letter {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .section-title:hover .title-letter {
+            animation: letterGlow 0.5s ease forwards;
+        }
+
+        .section-title:hover .title-letter:nth-child(2) { animation-delay: 0.1s; }
+        .section-title:hover .title-letter:nth-child(3) { animation-delay: 0.2s; }
+        .section-title:hover .title-letter:nth-child(4) { animation-delay: 0.3s; }
+        .section-title:hover .title-letter:nth-child(5) { animation-delay: 0.4s; }
+        .section-title:hover .title-letter:nth-child(6) { animation-delay: 0.5s; }
+        .section-title:hover .title-letter:nth-child(7) { animation-delay: 0.6s; }
+        .section-title:hover .title-letter:nth-child(8) { animation-delay: 0.7s; }
+        .section-title:hover .title-letter:nth-child(9) { animation-delay: 0.8s; }
+        .section-title:hover .title-letter:nth-child(10) { animation-delay: 0.9s; }
+        .section-title:hover .title-letter:nth-child(11) { animation-delay: 1.0s; }
+        .section-title:hover .title-letter:nth-child(12) { animation-delay: 1.1s; }
+        .section-title:hover .title-letter:nth-child(13) { animation-delay: 1.2s; }
+        .section-title:hover .title-letter:nth-child(14) { animation-delay: 1.3s; }
+        .section-title:hover .title-letter:nth-child(15) { animation-delay: 1.4s; }
+        .section-title:hover .title-letter:nth-child(16) { animation-delay: 1.5s; }
+        .section-title:hover .title-letter:nth-child(17) { animation-delay: 1.6s; }
+
+        @keyframes letterGlow {
+            0% {
+                transform: translateY(0) scale(1);
+                text-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+                color: var(--text-primary);
+            }
+            50% {
+                transform: translateY(-10px) scale(1.2);
+                text-shadow: 0 0 20px var(--electric-green), 0 0 30px var(--electric-green);
+                color: var(--electric-green);
+            }
+            100% {
+                transform: translateY(0) scale(1.1);
+                text-shadow: 0 0 15px rgba(46, 204, 113, 0.9);
+                color: var(--electric-green);
+            }
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-gradient-start), transparent);
+            border-radius: 3px;
+            animation: pulseLine 2s infinite;
+        }
+
+        @keyframes pulseLine {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 1300px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 30px 0;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .card {
+            flex: 0 0 calc(25% - 20px);
+            margin: 0 10px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 320px;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: rgba(46, 204, 113, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(46, 204, 113, 0.5);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-image {
+            height: 140px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.15);
+        }
+
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--electric-green);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
+        }
+
+        .card-description {
+            flex: 1;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .card-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            margin-top: auto;
+        }
+
+        .card-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .card-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .card-button:hover::before {
+            left: 100%;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 20px;
+        }
+
+        .slider-arrow {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--arrow-bg);
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider-arrow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .slider-arrow i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slider-arrow:hover {
+            transform: scale(1.1);
+            border-color: var(--electric-green);
+        }
+
+        .slider-arrow:hover::before {
+            opacity: 1;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dot::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--electric-green);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--electric-green);
+            transform: scale(1.2);
+        }
+
+        .dot.active::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        @media (max-width: 1200px) {
+            .card {
+                flex: 0 0 calc(33.333% - 20px);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .card {
+                flex: 0 0 calc(50% - 20px);
+            }
+            .section-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                flex: 0 0 calc(100% - 20px);
+            }
+            .section-title {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header placeholder for Django inclusion -->
+    <div class="header-placeholder">
+        {% include "header.html" %}
+    </div>
+
+    <h1 class="section-title">
+        <span class="title-wrapper">
+            <span class="title-letter">B</span>
+            <span class="title-letter">L</span>
+            <span class="title-letter">E</span>
+            <span class="title-letter">N</span>
+            <span class="title-letter">D</span>
+            <span class="title-letter">E</span>
+            <span class="title-letter">R</span>
+            <span class="title-letter"> </span>
+            <span class="title-letter">V</span>
+            <span class="title-letter">F</span>
+            <span class="title-letter">X</span>
+            <span class="title-letter">/</span>
+            <span class="title-letter">F</span>
+            <span class="title-letter">I</span>
+            <span class="title-letter">L</span>
+            <span class="title-letter">M</span>
+            <span class="title-letter">S</span>
+        </span>
+    </h1>
+
+    <div class="slider-container">
+        <div class="slider">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                        alt="Product Showcase Demo">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Product Showcase Demo</h3>
+                    <p class="card-description">
+                        Create stunning 3D product visualizations using Blender for marketing and demos.
+                    </p>
+                    <a href="#" class="card-button">Explore</a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1531497862610-7eb1c9e71c3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                        alt="Custom VFX">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Custom VFX</h3>
+                    <p class="card-description">
+                        Design bespoke visual effects in Blender for films and dynamic media projects.
+                    </p>
+                    <a href="#" class="card-button">Explore</a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1517148815978-75f6acaaf32c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                        alt="Short Stories and Films">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Short Stories and Films</h3>
+                    <p class="card-description">
+                        Produce captivating short films and stories with Blender’s powerful tools.
+                    </p>
+                    <a href="#" class="card-button">Explore</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-controls">
+            <div class="slider-arrow prev">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="slider-arrow next">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+
+        <div class="slider-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Footer placeholder for Django inclusion -->
+    <div class="footer-placeholder">
+        {% include 'footer.html' %}
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const slider = document.querySelector('.slider');
+    const sliderContainer = document.querySelector('.slider-container');
+    const cards = document.querySelectorAll('.card');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+    let currentIndex = 0;
+    const cardCount = cards.length;
+    let autoSlideInterval;
+    let isTransitioning = false;
+
+    // 🔥 Clone ALL cards on both ends (fixes multi-card glitch)
+    cards.forEach(card => {
+        slider.appendChild(card.cloneNode(true)); // clone to end
+        slider.insertBefore(card.cloneNode(true), slider.firstChild); // clone to start
+    });
+
+    const allCards = slider.querySelectorAll('.card'); // include clones
+    let visibleCards = getVisibleCards();
+
+    function getCardWidth() {
+        const style = getComputedStyle(allCards[0]);
+        return allCards[0].offsetWidth +
+               parseInt(style.marginLeft) +
+               parseInt(style.marginRight);
+    }
+
+    function getVisibleCards() {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 900) return 2;
+        if (window.innerWidth <= 1200) return 3;
+        return 4;
+    }
+
+    function updateSlider(transition = true) {
+        const cardWidth = getCardWidth();
+        slider.style.transition = transition ? 'transform 0.5s ease' : 'none';
+        slider.style.transform = `translateX(-${(currentIndex + cardCount) * cardWidth}px)`;
+
+        // update dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === (currentIndex % cardCount + cardCount) % cardCount);
+        });
+    }
+
+    function handleTransitionEnd() {
+        isTransitioning = false;
+
+        if (currentIndex >= cardCount) {
+            currentIndex = 0;
+            updateSlider(false);
+        } else if (currentIndex < 0) {
+            currentIndex = cardCount - 1;
+            updateSlider(false);
+        }
+    }
+
+    function nextSlide() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentIndex++;
+        updateSlider();
+    }
+
+    function prevSlide() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        currentIndex--;
+        updateSlider();
+    }
+
+    // Controls
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoSlide();
+    });
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoSlide();
+    });
+
+    // Dots navigation
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            if (isTransitioning) return;
+            currentIndex = i;
+            updateSlider();
+            resetAutoSlide();
+        });
+    });
+
+    // Auto slide
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 4000);
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    }
+
+    // Hover pause
+    sliderContainer.addEventListener('mouseenter', () => {
+        clearInterval(autoSlideInterval);
+    });
+    sliderContainer.addEventListener('mouseleave', startAutoSlide);
+
+    slider.addEventListener('transitionend', handleTransitionEnd);
+
+    // Recalculate on resize
+    window.addEventListener('resize', () => {
+        visibleCards = getVisibleCards();
+        updateSlider(false);
+    });
+
+    // Init
+    slider.style.display = 'flex';
+    updateSlider(false);
+    startAutoSlide();
+});
+</script>
+</body>
+
+</html>
