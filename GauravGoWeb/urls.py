@@ -31,6 +31,11 @@ urlpatterns = [
     path('privacy_policy', privacy_policy, name="privacy_policy"),
     path('header', header, name="header"),
     path('footer', footer, name="footer"),
+    path('simulation-projects', simulation_projects, name="simulation_projects"),
+    path('3d-assets', three_d_assets, name="three_d_assets"),
+    path('game-development', game_development, name="game_development"),
+    path('animation', animation, name="animation"),
+    path('blender-vfx', blender_vfx, name="blender_vfx"),
     
         
 ]
