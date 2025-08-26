@@ -34,5 +34,20 @@ def footer(request):
 def header(request):
     return render(request, 'header.html')
 
+def simulation_projects(request):
+    return render(request, 'simulation-projects.html')
+
+def three_d_assets(request):
+    return render(request, '3d-assets.html')
+
+def game_development(request):
+    return render(request, 'game-development.html')
+
+def animation(request):
+    return render(request, 'animation.html')
+
+def blender_vfx(request):
+    return render(request, 'blender-vfx.html')
+
 
 
