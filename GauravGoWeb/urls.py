@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from gauravgowebsite import views
 from gauravgowebsite.views import *
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('djadmin/', admin.site.urls),  
+    path('admin/', views.admin_home, name="admin_home"),
     path('', index, name="index"),
     path('games', games, name="games"),
     path('services', services, name="services"),
@@ -36,6 +39,10 @@ urlpatterns = [
     path('game-development', game_development, name="game_development"),
     path('animation', animation, name="animation"),
     path('blender-vfx', blender_vfx, name="blender_vfx"),
+    path('admin_login', admin_login, name="admin_login"),
+    path('admin_home', admin_home, name="admin_home"),
+    path('logout', Logout, name="logout"),
     
+        
         
 ]
