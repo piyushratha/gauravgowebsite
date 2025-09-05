@@ -65,22 +65,6 @@
             font-family: 'Rajdhani', sans-serif;
         }
 
-        .header-placeholder {
-            background: linear-gradient(to right, var(--cta-bg-start), var(--cta-bg-end));
-            height: 70px;
-            border-radius: 10px;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
         .footer-placeholder {
             background: linear-gradient(to right, var(--cta-bg-start), var(--cta-bg-end));
             height: 100px;
@@ -468,9 +452,7 @@
 
 <body>
     <!-- Header placeholder for Django inclusion -->
-    <div class="header-placeholder">
-        {% include "header.html" %}
-    </div>
+    {% include "header.html" %}
 
     <h1 class="section-title">
         <span class="title-wrapper">

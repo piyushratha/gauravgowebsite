@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -51,11 +49,11 @@
             text-shadow: 0 0 15px rgba(46, 204, 113, 0.7), 0 0 30px rgba(46, 204, 113, 0.4);
         }
 
-        /* Hero Section */
+        /* Hero Section - Reduced height */
         .hero-section {
             position: relative;
             width: 100vw;
-            height: 100vh;
+            height: 80vh; /* Reduced from 100vh */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -98,7 +96,7 @@
         }
 
         .hero-title {
-            font-size: clamp(2rem, 7vw, 5rem);
+            font-size: clamp(2rem, 7vw, 4rem); /* Slightly reduced max size */
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -130,8 +128,8 @@
         }
         
         .hero-subtitle {
-            font-size: 1.2rem;
-            margin-top: 1.5rem;
+            font-size: 1.1rem; /* Slightly smaller */
+            margin-top: 1.2rem; /* Reduced margin */
             text-align: center;
             max-width: 600px;
             opacity: 0.8;
@@ -139,9 +137,9 @@
             z-index: 10;
         }
 
-        /* Projects Section */
+        /* Projects Section - Reduced padding */
         #projects {
-            padding: 4rem 0;
+            padding: 2.5rem 0; /* Reduced from 4rem */
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -151,8 +149,8 @@
         #projects::after {
             content: "";
             position: absolute;
-            width: 400px;
-            height: 400px;
+            width: 300px; /* Slightly smaller */
+            height: 300px; /* Slightly smaller */
             background: radial-gradient(circle, rgba(46, 204, 113, 0.3) 0%, transparent 70%);
             animation: floatGlow 8s ease-in-out infinite;
             z-index: 0;
@@ -182,9 +180,9 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem; /* Slightly smaller */
             font-weight: 800;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem; /* Reduced from 2rem */
             text-align: center;
             position: relative;
         }
@@ -192,42 +190,42 @@
         .section-title::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 4px;
+            width: 70px; /* Slightly smaller */
+            height: 3px; /* Slightly thinner */
             background: linear-gradient(90deg, #2ecc71, #3498db);
-            margin: 10px auto;
+            margin: 8px auto; /* Reduced margin */
             border-radius: 2px;
         }
         
         .slider-section {
-            margin-bottom: 4rem;
+            margin-bottom: 2.5rem; /* Reduced from 4rem */
         }
         
         .slider-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem; /* Reduced from 1.5rem */
             padding: 0 1rem;
         }
         
         .slider-title {
-            font-size: 1.8rem;
+            font-size: 1.6rem; /* Slightly smaller */
             font-weight: 700;
             background: linear-gradient(90deg, #2ecc71, #3498db);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             padding-left: 0.5rem;
-            border-left: 4px solid #2ecc71;
+            border-left: 3px solid #2ecc71; /* Slightly thinner */
         }
         
         .view-all {
             color: #2ecc71;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.95rem; /* Slightly smaller */
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem; /* Reduced gap */
             transition: all 0.3s ease;
         }
         
@@ -239,7 +237,7 @@
         .swiper-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 0;
+            padding: 0.8rem 0; /* Reduced padding */
             position: relative;
         }
 
@@ -248,7 +246,7 @@
             background: rgba(15, 15, 30, 0.7);
             border: 1px solid rgba(46, 204, 113, 0.2);
             border-radius: 0.75rem;
-            padding: 1.75rem;
+            padding: 1.5rem; /* Reduced from 1.75rem */
             display: flex;
             flex-direction: column;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
@@ -286,7 +284,7 @@
             aspect-ratio: 16/9;
             object-fit: cover;
             border-radius: 0.5rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem; /* Reduced from 0.75rem */
             transition: transform 0.3s ease, filter 0.3s ease;
         }
 
@@ -299,7 +297,7 @@
             font-size: clamp(0.9rem, 1.6vw, 1.1rem);
             font-weight: 700;
             color: #2ecc71;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem; /* Reduced from 0.5rem */
             transition: color 0.3s ease;
         }
 
@@ -312,7 +310,12 @@
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.5;
             transition: color 0.3s ease;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem; /* Reduced from 1rem */
+            text-align: justify; /* Added justified text */
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Limit to 3 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .swiper-slide:hover p {
@@ -321,16 +324,16 @@
 
         .game-buttons {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.4rem; /* Reduced from 0.5rem */
             margin-top: auto;
         }
 
         .game-btn {
             flex: 1;
-            padding: 0.5rem;
+            padding: 0.45rem; /* Slightly reduced */
             text-align: center;
             border-radius: 0.25rem;
-            font-size: 0.8rem;
+            font-size: 0.75rem; /* Slightly smaller */
             font-weight: 600;
             transition: all 0.3s ease;
         }
@@ -364,13 +367,13 @@
             background: rgba(20, 20, 35, 0.6);
             border: 1px solid rgba(46, 204, 113, 0.2);
             color: #2ecc71;
-            width: 3.5rem;
-            height: 3.5rem;
+            width: 3rem; /* Smaller */
+            height: 3rem; /* Smaller */
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.5rem; /* Smaller */
             font-weight: 700;
             font-family: "Orbitron", sans-serif;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -406,13 +409,13 @@
             right: 20px;
             background: linear-gradient(90deg, #2ecc71, #3498db);
             color: #000;
-            width: 50px;
-            height: 50px;
+            width: 45px; /* Slightly smaller */
+            height: 45px; /* Slightly smaller */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem; /* Slightly smaller */
             transition: all 0.3s ease;
             opacity: 0;
             visibility: hidden;
@@ -431,15 +434,11 @@
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 0 15px rgba(46, 204, 113, 0.6);
         }
-
-        
     </style>
 </head>
 <body>
     
-
     {% include "header.html" %}
-
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -473,7 +472,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\emoji-wizard.png' %}" alt="Emoji Wizard">
                             <h3>Emoji Wizard</h3>
-                            <p>A Magical Emoji Puzzle Adventure ✨<br>Match, combine, and strategize through exciting levels filled with animated emojis.</p>
+                            <p>A Magical Emoji Puzzle Adventure ✨ Match, combine, and strategize through exciting levels filled with animated emojis.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -482,7 +481,7 @@
                         <div class="swiper-slide">
                             <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/Untitled-design-2.png" alt="Cosmic Alien Quest">
                             <h3>Cosmic Alien Quest</h3>
-                            <p>Explore, Battle, Conquer the Universe! 🌌🚀<br>Battle hostile extraterrestrial forces and uncover secrets of distant galaxies.</p>
+                            <p>Explore, Battle, Conquer the Universe! 🌌🚀 Battle hostile extraterrestrial forces and uncover secrets of distant galaxies.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -491,7 +490,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\Untitled-design-2.png' %}" alt="Ping Pong">
                             <h3>Ping Pong: Table Tennis Board</h3>
-                            <p>A fresh take on classic table tennis with engaging daily challenges.</p>
+                            <p>A fresh take on classic table tennis with engaging daily challenges and competitive gameplay for all skill levels.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -500,7 +499,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\toon-flyers-768x480.png' %}" alt="Toon Flyers">
                             <h3>Toon Flyers</h3>
-                            <p>A vibrant twist on the classic flying adventure game with daily challenges.</p>
+                            <p>A vibrant twist on the classic flying adventure game with daily challenges and colorful cartoon graphics.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -509,7 +508,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\Bounce-Fall-768x480.png' %}" alt="Bounce And Fall">
                             <h3>Bounce And Fall</h3>
-                            <p>Test your reflexes in this arcade-style game with rotating circular discs.</p>
+                            <p>Test your reflexes in this arcade-style game with rotating circular discs and challenging obstacles.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -518,7 +517,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\Puzzle-7.png' %}" alt="Puzzle Artful Armor">
                             <h3>Puzzle Artful Armor</h3>
-                            <p>A puzzle game that challenges your artistic skills with intricate patterns.</p>
+                            <p>A puzzle game that challenges your artistic skills with intricate patterns and mind-bending challenges.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -527,7 +526,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\MayaVerse-800x500.jpg' %}" alt="Galactic Shooter">
                             <h3>SENA : MayaVerse</h3>
-                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action and next-gen features…</p>
+                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -536,7 +535,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\1.jpg' %}" alt="Survival Arena">
                             <h3>Bhoomiputra</h3>
-                            <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay…</p>
+                            <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -544,8 +543,8 @@
                         </div>
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg' %}" alt="Epic Showdown">
-                            <h3>SENA : Strike & Encounter For Nation</h3>
-                            <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror in this high-action aerial game…</p>
+                            <h3>SENA : Strike & Encounter</h3>
+                            <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -571,7 +570,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\MayaVerse-800x500.jpg' %}" alt="Galactic Shooter">
                             <h3>SENA : MayaVerse</h3>
-                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action and next-gen features…</p>
+                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -580,7 +579,7 @@
                         <div class="swiper-slide">
                             <img src= "{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\MayaVerse-800x500.jpg' %}" alt="Galactic Shooter">
                             <h3>SENA : MayaVerse</h3>
-                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action and next-gen features…</p>
+                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -589,7 +588,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\MayaVerse-800x500.jpg' %}" alt="Galactic Shooter">
                             <h3>SENA : MayaVerse</h3>
-                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action and next-gen features…</p>
+                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -598,7 +597,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\MayaVerse-800x500.jpg' %}" alt="Galactic Shooter">
                             <h3>SENA : MayaVerse</h3>
-                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action and next-gen features…</p>
+                            <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -624,7 +623,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\1.jpg' %}" alt="Survival Arena">
                             <h3>Bhoomiputra</h3>
-                            <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay…</p>
+                            <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -632,8 +631,8 @@
                         </div>
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg' %}" alt="Epic Showdown">
-                            <h3>SENA : Strike & Encounter For Nation</h3>
-                            <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror in this high-action aerial game…</p>
+                            <h3>SENA : Strike & Encounter</h3>
+                            <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -642,7 +641,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\1.jpg' %}" alt="Survival Arena">
                             <h3>Bhoomiputra</h3>
-                            <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay…</p>
+                            <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -650,8 +649,8 @@
                         </div>
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg' %}" alt="Epic Showdown">
-                            <h3>SENA : Strike & Encounter For Nation</h3>
-                            <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror in this high-action aerial game…</p>
+                            <h3>SENA : Strike & Encounter</h3>
+                            <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -677,7 +676,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\emoji-wizard.png' %}" alt="Emoji Wizard">
                             <h3>Emoji Wizard</h3>
-                            <p>A Magical Emoji Puzzle Adventure ✨<br>Match, combine, and strategize through exciting levels filled with animated emojis.</p>
+                            <p>A Magical Emoji Puzzle Adventure ✨ Match, combine, and strategize through exciting levels filled with animated emojis.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -686,7 +685,7 @@
                         <div class="swiper-slide">
                             <img src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\Ping-Pong-2.png' %}" alt="Ping Pong">
                             <h3>Ping Pong: Table Tennis Board</h3>
-                            <p>A fresh take on classic table tennis with engaging daily challenges.</p>
+                            <p>A fresh take on classic table tennis with engaging daily challenges and competitive gameplay for all skill levels.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -695,7 +694,7 @@
                         <div class="swiper-slide">
                             <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/toon-flyers-768x480.png" alt="Toon Flyers">
                             <h3>Toon Flyers</h3>
-                            <p>A vibrant twist on the classic flying adventure game with daily challenges.</p>
+                            <p>A vibrant twist on the classic flying adventure game with daily challenges and colorful cartoon graphics.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -704,7 +703,7 @@
                         <div class="swiper-slide">
                             <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/Bounce-Fall-768x480.png" alt="Bounce And Fall">
                             <h3>Bounce And Fall</h3>
-                            <p>Test your reflexes in this arcade-style game with rotating circular discs.</p>
+                            <p>Test your reflexes in this arcade-style game with rotating circular discs and challenging obstacles.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -713,7 +712,7 @@
                         <div class="swiper-slide">
                             <img src="/GauravGoWeb/gauravgowebsite/static/images/media-home-page/Puzzle-7.png" alt="Puzzle Artful Armor">
                             <h3>Puzzle Artful Armor</h3>
-                            <p>A puzzle game that challenges your artistic skills with intricate patterns.</p>
+                            <p>A puzzle game that challenges your artistic skills with intricate patterns and mind-bending challenges.</p>
                             <div class="game-buttons">
                                 <a href="#" class="game-btn view-btn">View Game</a>
                                 <a href="#" class="game-btn play-btn">Play Now</a>
@@ -746,8 +745,6 @@
                 </path>
             </svg>
         </div>
-
-        
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -787,66 +784,33 @@
             }
         }
 
-        // Initialize Swiper sliders
-        const allGamesSwiper = new Swiper('#all-games', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: { delay: 3000, disableOnInteraction: false },
-            navigation: {
-                nextEl: '#all-games .swiper-button-next',
-                prevEl: '#all-games .swiper-button-prev',
-            },
-            breakpoints: {
-                640: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-            }
-        });
+        // Initialize Swiper sliders with hover pause functionality
+        const initSwiper = (selector) => {
+            return new Swiper(selector, {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true,
+                autoplay: { 
+                    delay: 3000, 
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true // Pause on hover
+                },
+                speed: 800, // Smoother transitions
+                navigation: {
+                    nextEl: `${selector} .swiper-button-next`,
+                    prevEl: `${selector} .swiper-button-prev`,
+                },
+                breakpoints: {
+                    640: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 }
+                }
+            });
+        };
 
-        const battleRoyaleSwiper = new Swiper('#battle-royale-games', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: { delay: 3000, disableOnInteraction: false },
-            navigation: {
-                nextEl: '#battle-royale-games .swiper-button-next',
-                prevEl: '#battle-royale-games .swiper-button-prev',
-            },
-            breakpoints: {
-                640: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-            }
-        });
-
-        const fpsSwiper = new Swiper('#fps-games', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: { delay: 3000, disableOnInteraction: false },
-            navigation: {
-                nextEl: '#fps-games .swiper-button-next',
-                prevEl: '#fps-games .swiper-button-prev',
-            },
-            breakpoints: {
-                640: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-            }
-        });
-
-        const f2pSwiper = new Swiper('#f2p-games', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: { delay: 3000, disableOnInteraction: false },
-            navigation: {
-                nextEl: '#f2p-games .swiper-button-next',
-                prevEl: '#f2p-games .swiper-button-prev',
-            },
-            breakpoints: {
-                640: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-            }
-        });
+        const allGamesSwiper = initSwiper('#all-games');
+        const battleRoyaleSwiper = initSwiper('#battle-royale-games');
+        const fpsSwiper = initSwiper('#fps-games');
+        const f2pSwiper = initSwiper('#f2p-games');
 
         // Scroll to top functionality
         const scrollToTopBtn = document.getElementById('scrollToTop');
@@ -867,24 +831,26 @@
         const navLinks = document.querySelector('.nav-links');
         const dropdowns = document.querySelectorAll('.dropdown');
         
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            
-            // Close all dropdowns when mobile menu closes
-            if (!navLinks.classList.contains('active')) {
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-            hamburger.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-        });
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                
+                // Close all dropdowns when mobile menu closes
+                if (!navLinks.classList.contains('active')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+                hamburger.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+        }
         
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.navbar') && window.innerWidth <= 768) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
+                if (hamburger) hamburger.classList.remove('active');
+                if (navLinks) navLinks.classList.remove('active');
                 
                 // Close all dropdowns
                 dropdowns.forEach(dropdown => {
@@ -915,9 +881,9 @@
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
+            if (navbar && window.scrollY > 50) {
                 navbar.classList.add('scrolled');
-            } else {
+            } else if (navbar) {
                 navbar.classList.remove('scrolled');
             }
         });
@@ -926,30 +892,36 @@
         gsap.registerPlugin(ScrollTrigger);
         
         // Animate navbar on scroll
-        gsap.from('.navbar', {
-            y: -50,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power3.out"
-        });
+        if (document.querySelector('.navbar')) {
+            gsap.from('.navbar', {
+                y: -50,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            });
+        }
         
         // Animate logo on load
-        gsap.from('.logo', {
-            duration: 1,
-            x: -50,
-            opacity: 0,
-            ease: 'power3.out'
-        });
+        if (document.querySelector('.logo')) {
+            gsap.from('.logo', {
+                duration: 1,
+                x: -50,
+                opacity: 0,
+                ease: 'power3.out'
+            });
+        }
         
         // Animate nav items sequentially
-        gsap.from('.nav-links li', {
-            duration: 0.5,
-            y: 20,
-            opacity: 0,
-            stagger: 0.1,
-            delay: 0.3,
-            ease: 'back.out(1.7)'
-        });
+        if (document.querySelector('.nav-links li')) {
+            gsap.from('.nav-links li', {
+                duration: 0.5,
+                y: 20,
+                opacity: 0,
+                stagger: 0.1,
+                delay: 0.3,
+                ease: 'back.out(1.7)'
+            });
+        }
         
         // Animate hero title
         gsap.from('.hero-title', {
@@ -1004,18 +976,19 @@
 
         // Wave morph animation
         const wave = document.querySelector('.footer-wave path:last-child');
-        gsap.fromTo(
-            wave,
-            { attr: { d: "M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8" } },
-            { attr: { d: "M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8" }, repeat: -1, yoyo: true, duration: 5, ease: "sine.inOut" }
-        );
+        if (wave) {
+            gsap.fromTo(
+                wave,
+                { attr: { d: "M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8" } },
+                { attr: { d: "M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8" }, repeat: -1, yoyo: true, duration: 5, ease: "sine.inOut" }
+            );
+        }
         
         // Create particles after DOM loads
         document.addEventListener('DOMContentLoaded', createParticles);
     </script>
 
     {% include 'footer.html' %}
-
     
 </body>
 </html>

@@ -101,7 +101,7 @@
         
         /* Projects Section */
         #projects {
-            padding: 6rem 0;
+            padding: 8rem 0; /* Increased padding for better spacing */
             background: linear-gradient(135deg, var(--main-bg-start), var(--main-bg-end));
         }
         
@@ -109,7 +109,7 @@
             display: inline-block;
             margin: 0 2px;
             font-size: 3rem;
-            font-weight: 700;
+            font-weight: 800; /* Bolder font */
             background: linear-gradient(90deg, var(--primary-gradient-start), var(--teal), var(--primary-gradient-end));
             -webkit-background-clip: text;
             background-clip: text;
@@ -149,6 +149,7 @@
         
         .card h3 {
             font-size: 1.4rem;
+            font-weight: 700; /* Bold */
             margin: 1rem 1.5rem 0.5rem;
             color: var(--text-primary);
         }
@@ -163,6 +164,7 @@
             -webkit-line-clamp: 6; /* Limit to approximately 150 words */
             -webkit-box-orient: vertical;
             line-height: 1.6;
+            font-weight: 500; /* Semi-bold for professionalism */
         }
         
         .card-link {
@@ -192,12 +194,12 @@
         
         /* Add padding above slider */
         .glide {
-            padding-top: 2rem;
+            padding-top: 3rem; /* Increased padding */
         }
         
         /* HQ + Support Section */
         .hq-support {
-            padding: 6rem 0;
+            padding: 8rem 0; /* Increased padding */
             background: linear-gradient(135deg, var(--cta-bg-start), var(--cta-bg-end));
             border-top: 1px solid rgba(46, 204, 113, 0.1);
         }
@@ -219,6 +221,7 @@
         
         .hq-card h3 {
             font-size: 1.8rem;
+            font-weight: 700; /* Bold */
             margin-bottom: 1.5rem;
             color: var(--electric-green);
         }
@@ -555,31 +558,65 @@
         </div>
     </section>
 
+    <!-- Contact/Query Form Section (Moved above HQ) -->
+    <section class="py-16 bg-gradient-to-br from-[var(--cta-bg-start)] to-[var(--cta-bg-end)]"> <!-- Matched color scheme and increased padding -->
+        <div class="max-w-4xl mx-auto bg-[rgba(20,20,35,0.6)] rounded-2xl shadow-lg p-10 border border-[rgba(46,204,113,0.2)]"> <!-- Wider form, matched bg and border -->
+            <h2 class="text-3xl font-bold text-center mb-8 text-[var(--electric-green)] font-orbitron">Send Us a Query</h2> <!-- Bolder and larger title -->
+            <form method="post" action="#" class="space-y-6">
+                <!-- CSRF token if using Django backend -->
+                {% csrf_token %}
+                <div>
+                    <label for="name" class="block text-sm font-bold mb-2 text-[var(--crystal-blue)]">Name *</label> <!-- Bold label, matched color -->
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg bg-[rgba(15,15,30,0.7)] border border-[rgba(46,204,113,0.2)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--electric-green)] transition placeholder-[var(--text-secondary)]" placeholder="Enter your full name">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-bold mb-2 text-[var(--crystal-blue)]">Email *</label>
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-[rgba(15,15,30,0.7)] border border-[rgba(46,204,113,0.2)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--electric-green)] transition placeholder-[var(--text-secondary)]" placeholder="Enter your email address">
+                </div>
+                <div>
+                    <label for="contact" class="block text-sm font-bold mb-2 text-[var(--crystal-blue)]">Contact *</label>
+                    <input type="tel" id="contact" name="contact" required class="w-full px-4 py-3 rounded-lg bg-[rgba(15,15,30,0.7)] border border-[rgba(46,204,113,0.2)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--electric-green)] transition placeholder-[var(--text-secondary)]" placeholder="Enter your phone number">
+                </div>
+                <div>
+                    <label for="company" class="block text-sm font-bold mb-2 text-[var(--crystal-blue)]">Company</label>
+                    <input type="text" id="company" name="company" class="w-full px-4 py-3 rounded-lg bg-[rgba(15,15,30,0.7)] border border-[rgba(46,204,113,0.2)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--electric-green)] transition placeholder-[var(--text-secondary)]" placeholder="Enter your company name (optional)">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-bold mb-2 text-[var(--crystal-blue)]">Message/Query *</label>
+                    <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg bg-[rgba(15,15,30,0.7)] border border-[rgba(46,204,113,0.2)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--electric-green)] transition placeholder-[var(--text-secondary)]" placeholder="Describe your query or message in detail..."></textarea>
+                </div>
+                <div class="text-center pt-4">
+                    <button type="submit" class="px-10 py-3 rounded-full bg-gradient-to-r from-[var(--primary-gradient-start)] to-[var(--primary-gradient-end)] text-[var(--main-bg-start)] font-bold font-orbitron uppercase tracking-wider shadow-lg hover:from-[var(--primary-gradient-end)] hover:to-[var(--primary-gradient-start)] transition">Submit Query</button> <!-- Matched gradient and professional text -->
+                </div>
+            </form>
+        </div>
+    </section>
+
     <!-- HQ + Support Section -->
     <section class="hq-support reveal opacity-0 translate-y-10 transition duration-1000 ease-out">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6 md:px-12">
             <!-- Headquarters Card -->
             <div class="hq-card opacity-0 scale-90 transition transform">
                 <div class="flex items-center mb-6">
-                    <span class="text-3xl mr-3 text-[#2ecc71]"><i class="fas fa-building"></i></span>
+                    <span class="text-3xl mr-3 text-[var(--electric-green)]"><i class="fas fa-building"></i></span>
                     <h3 class="text-2xl font-bold">Headquarters</h3>
                 </div>
-                <p class="text-gray-200 font-semibold mb-1">GauravGo Games Technologies</p>
-                <p class="text-gray-400 mb-4">College Square, Kakatpur, Puri, Odisha – 752108</p>
+                <p class="text-[var(--text-primary)] font-semibold mb-1">GauravGo Games Technologies</p>
+                <p class="text-[var(--text-secondary)] mb-4">College Square, Kakatpur, Puri, Odisha – 752108</p>
                 <span class="tag">India</span>
             </div>
 
             <!-- Support Card -->
             <div class="hq-card opacity-0 scale-90 transition transform">
                 <div class="flex items-center mb-6">
-                    <span class="text-3xl mr-3 text-[#2ecc71]"><i class="fas fa-headset"></i></span>
+                    <span class="text-3xl mr-3 text-[var(--electric-green)]"><i class="fas fa-headset"></i></span>
                     <h3 class="text-2xl font-bold">Support & Enquiries</h3>
                 </div>
-                <p class="text-gray-200 font-semibold mb-1">Email:</p>
+                <p class="text-[var(--text-primary)] font-semibold mb-1">Email:</p>
                 <a href="mailto:support@gauravgo.com"
-                    class="text-white hover:text-[#2ecc71] transition underline block mb-4">support@gauravgo.com</a>
-                <p class="text-gray-200 font-semibold mb-1">Discord:</p>
-                <a href="#" class="text-white hover:text-[#2ecc71] transition underline">Join Server</a>
+                    class="text-[var(--text-primary)] hover:text-[var(--electric-green)] transition underline block mb-4">support@gauravgo.com</a>
+                <p class="text-[var(--text-primary)] font-semibold mb-1">Discord:</p>
+                <a href="#" class="text-[var(--text-primary)] hover:text-[var(--electric-green)] transition underline">Join Server</a>
             </div>
         </div>
     </section>
@@ -587,13 +624,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Glide slider with proper configuration
+            // Initialize Glide slider with proper configuration - Reduced autoplay and added bound to reduce lag
             const glide = new Glide('.glide', {
                 type: 'carousel',
                 perView: 4,
                 gap: 24,
-                autoplay: 3000,
+                autoplay: 5000, // Slower autoplay to reduce lag
                 hoverpause: true,
+                bound: true, // Prevent overscrolling lag
+                animationDuration: 600, // Smoother transitions
                 breakpoints: {
                     1280: { perView: 3 },
                     1024: { perView: 3 },
