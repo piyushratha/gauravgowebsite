@@ -80,8 +80,8 @@
     }
 
     .profile img {
-      width: 90px;
-      height: 90px;
+      width: 150px;
+      height: 100px;
       border-radius: 50%;
       border: 3px solid #00f0ff;
       margin-bottom: 10px;
@@ -92,7 +92,7 @@
     .page-content {
       margin-left: 250px;
       padding: 30px;
-      background-color: #0d1117;
+      background-color: #121829;
     }
 
     .navbar-custom {
@@ -201,7 +201,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="{% url 'logout' %}" class="nav-link">
           <i class="fas fa-sign-out-alt"></i> Logout
         </a>
       </li>
@@ -212,7 +212,7 @@
   <div class="page-content" id="content">
     <nav class="navbar navbar-custom d-flex justify-content-between">
       <button id="sidebarCollapse" class="btn"><i class="fas fa-bars"></i></button>
-      <a href="#" class="btn">Logout</a>
+      <a href="{% url 'logout' %}" class="btn">Logout</a>
     </nav>
 
     <div class="welcome-area mt-4">

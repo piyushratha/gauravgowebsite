@@ -78,3 +78,37 @@ def Logout(request):
     logout(request)
     return redirect(index)
 
+def search(request):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+    sd = None
+    if request.method == 'POST':
+        sd = request.POST['searchdata']
+    try:
+        booking = SiteUser.objects.filter(Q(name=sd) | Q(mobile=sd))
+    except:
+        booking = ""
+    print(booking)
+    return render(request, 'search.html', locals())
+
+
+def change_password(request):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+    error = ""
+
+    if request.method == "POST":
+        o = request.POST['currentpassword']
+        n = request.POST['newpassword']
+        try:
+            u = User.objects.get(id=request.user.id) 
+            if u.check_password(o):
+                u.set_password(n)
+                u.save()
+                error = "no"
+            else:
+                error = "not"
+        except:
+            error = "yes"
+    return render(request, 'change_password.html', locals())
+
