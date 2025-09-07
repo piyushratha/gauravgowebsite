@@ -960,20 +960,19 @@
 </head>
 <body>
     
-    {% include "header.html" %}
 
-    <!-- Preloader 
+    <!-- Preloader -->
     <div id="preloader">
         <h1>GauravGo Games</h1>
         <div class="loader"></div>
-    </div> -->
+    </div>
     
-    
+    {% include "header.html" %}
     
     <!-- Hero Section -->
     <section id="home" class="hero">
         <video class="hero-video" autoplay muted loop playsinline>
-            <source src="{% static 'C:\Users\piyus\OneDrive\Documents\GitHub\gauravgowebsite\gauravgowebsite\static\images\media-home-page\bg-video.mp4' %}" type="video/mp4">
+            <source src="{% static 'images\media-home-page\bg-video.mp4' %}" type="video/mp4">
         </video>
         <div class="hero-content animate-fadeInUp">
             <h1><b>GauravGo Games</b></h1>
