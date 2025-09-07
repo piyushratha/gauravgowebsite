@@ -1,58 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Style Simulation</title>
+    <title>All Games Slider</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
-        :root {
-            /* Primary Gradient Colors */
-            --primary-gradient-start: #2ecc71;
-            --primary-gradient-end: #3498db;
-
-            /* Main Background Gradient */
-            --main-bg-start: #0a0a1a;
-            --main-bg-end: #050510;
-
-            /* CTA Background Gradient */
-            --cta-bg-start: #0c1d2f;
-            --cta-bg-end: #091622;
-
-            /* Chaos Card Gradient */
-            --chaos-card-start: #0c1d2f;
-            --chaos-card-end: #091622;
-
-            /* Arena Card Gradient */
-            --arena-card-start: #1a0c2f;
-            --arena-card-end: #160922;
-
-            /* Accent Colors */
-            --electric-green: #2ecc71;
-            --crystal-blue: #3498db;
-            --royal-purple: #9b59b6;
-            --fiery-red: #e74c3c;
-            --sun-orange: #f39c12;
-            --teal: #1abc9c;
-
-            /* Text Colors */
-            --text-primary: #f0f0f0;
-            --text-secondary: rgba(255, 255, 255, 0.8);
-
-            /* Additional Colors */
-            --card-bg: rgba(15, 15, 30, 0.7);
-            --card-border: rgba(46, 204, 113, 0.2);
-            --tag-bg: rgba(46, 204, 113, 0.1);
-            --hq-card-bg: rgba(20, 20, 35, 0.6);
-            --arrow-bg: rgba(20, 20, 35, 0.6);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -60,159 +16,43 @@
         }
 
         body {
-            background: linear-gradient(135deg, var(--main-bg-start), var(--main-bg-end));
-            color: var(--text-primary);
+            background: linear-gradient(135deg, #0a0a1a 0%, #050510 100%);
+            font-family: 'Poppins', sans-serif;
+            color: #f0f0f0;
+            overflow-x: hidden;
+            line-height: 1.6;
             min-height: 100vh;
             padding: 20px;
-            font-family: 'Rajdhani', sans-serif;
         }
 
-        .navbar-placeholder {
-            background: linear-gradient(to right, var(--cta-bg-start), var(--cta-bg-end));
-            height: 80px;
-            border-radius: 10px;
-            margin-bottom: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        .orbitron {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
         }
 
-        .footer-placeholder {
-            background: linear-gradient(to right, var(--cta-bg-start), var(--cta-bg-end));
-            height: 100px;
-            border-radius: 10px;
-            margin-top: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
+        .gradient-text {
+            background: linear-gradient(90deg, #2ecc71, #1abc9c, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradientAnimation 8s ease infinite;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            font-size: 3.5rem;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            padding: 20px 0;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-            text-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .title-wrapper {
-            display: inline-block;
-            position: relative;
+        .glow {
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.7), 0 0 30px rgba(46, 204, 113, 0.4);
         }
 
-        .title-letter {
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .section-title:hover .title-letter {
-            animation: letterGlow 0.5s ease forwards;
-        }
-
-        .section-title:hover .title-letter:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-
-        .section-title:hover .title-letter:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
-        .section-title:hover .title-letter:nth-child(4) {
-            animation-delay: 0.3s;
-        }
-
-        .section-title:hover .title-letter:nth-child(5) {
-            animation-delay: 0.4s;
-        }
-
-        .section-title:hover .title-letter:nth-child(6) {
-            animation-delay: 0.5s;
-        }
-
-        .section-title:hover .title-letter:nth-child(7) {
-            animation-delay: 0.6s;
-        }
-
-        .section-title:hover .title-letter:nth-child(8) {
-            animation-delay: 0.7s;
-        }
-
-        .section-title:hover .title-letter:nth-child(9) {
-            animation-delay: 0.8s;
-        }
-
-        .section-title:hover .title-letter:nth-child(10) {
-            animation-delay: 0.9s;
-        }
-
-        .section-title:hover .title-letter:nth-child(11) {
-            animation-delay: 1.0s;
-        }
-
-        @keyframes letterGlow {
-            0% {
-                transform: translateY(0) scale(1);
-                text-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
-                color: var(--text-primary);
-            }
-
-            50% {
-                transform: translateY(-10px) scale(1.2);
-                text-shadow: 0 0 20px var(--electric-green), 0 0 30px var(--electric-green);
-                color: var(--electric-green);
-            }
-
-            100% {
-                transform: translateY(0) scale(1.1);
-                text-shadow: 0 0 15px rgba(46, 204, 113, 0.9);
-                color: var(--electric-green);
-            }
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--primary-gradient-start), transparent);
-            border-radius: 3px;
-            animation: pulseLine 2s infinite;
-        }
-
-        @keyframes pulseLine {
-            0%, 100% {
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 1;
-            }
-        }
-
-        /* Slider Styles from the first code */
         .slider-section {
-            margin: 80px auto;
+            margin-bottom: 2.5rem;
+            margin-top: 2rem;
             max-width: 1400px;
-            position: relative;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .slider-header {
@@ -231,7 +71,6 @@
             -webkit-text-fill-color: transparent;
             padding-left: 0.5rem;
             border-left: 3px solid #2ecc71;
-            font-family: 'Orbitron', sans-serif;
         }
 
         .view-all {
@@ -251,7 +90,7 @@
 
         .swiper-container {
             width: 100%;
-            padding: 2rem 0;
+            padding: 0.8rem 0;
             position: relative;
         }
 
@@ -318,7 +157,6 @@
             color: #2ecc71;
             margin-bottom: 0.4rem;
             transition: color 0.3s ease;
-            font-family: 'Orbitron', sans-serif;
         }
 
         .swiper-slide:hover h3 {
@@ -436,6 +274,29 @@
             box-shadow: 0 0 20px rgba(46, 204, 113, 0.7);
         }
 
+        .header-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #2ecc71, #1abc9c, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradientAnimation 8s ease infinite;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         @media (max-width: 768px) {
             .swiper-button-prev,
             .swiper-button-next {
@@ -448,87 +309,113 @@
                 align-items: flex-start;
             }
             
-            .section-title {
-                font-size: 2.5rem;
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+                padding: 0 15px;
             }
         }
     </style>
 </head>
-
 <body>
-    {% include "header.html" %}
+    <div class="header-container">
+        <h1 class="main-title orbitron">Game Center</h1>
+        <p class="subtitle">Explore our collection of exciting games. Hover over any game to pause the slider.</p>
+    </div>
 
-    <h1 class="section-title">
-        <span class="title-wrapper">
-            <span class="title-letter">S</span>
-            <span class="title-letter">I</span>
-            <span class="title-letter">M</span>
-            <span class="title-letter">U</span>
-            <span class="title-letter">L</span>
-            <span class="title-letter">A</span>
-            <span class="title-letter">T</span>
-            <span class="title-letter">I</span>
-            <span class="title-letter">O</span>
-            <span class="title-letter">N</span>
-        </span>
-    </h1>
-
-    <!-- Slider Section -->
+    <!-- All Games Slider -->
     <div class="slider-section">
         <div class="slider-header">
-            <h3 class="slider-title orbitron">Simulation Games</h3>
+            <h3 class="slider-title orbitron">All Games</h3>
             <a href="#" class="view-all">
                 <span>View All</span>
                 <i class="fas fa-arrow-right"></i>
             </a>
         </div>
-        <div id="simulation-slider" class="swiper-container">
+        <div id="all-games" class="swiper-container">
             <div class="swiper-wrapper">
-                <!-- Card 1 -->
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-                        alt="Customizable Drone">
-                    <h3>End-to-End Customizable Drone</h3>
-                    <p>Customize drone components and test flight in a realistic virtual environment.</p>
+                    <img src="https://via.placeholder.com/400x225/2ecc71/ffffff?text=Emoji+Wizard" alt="Emoji Wizard">
+                    <h3>Emoji Wizard</h3>
+                    <p>A Magical Emoji Puzzle Adventure ✨ Match, combine, and strategize through exciting levels filled with animated emojis.</p>
                     <div class="game-buttons">
-                        <a href="#" class="game-btn view-btn">View Details</a>
-                        <a href="#" class="game-btn play-btn">Try Now</a>
+                        <a href="#" class="game-btn view-btn">View Game</a>
+                        <a href="#" class="game-btn play-btn">Play Now</a>
                     </div>
                 </div>
-
-                <!-- Card 2 -->
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1598009279576-1d7fca2bb5bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-                        alt="Flight Simulator">
-                    <h3>Advanced Flight Simulator</h3>
-                    <p>Realistic flight simulation with dynamic weather and customizable scenarios.</p>
+                    <img src="https://via.placeholder.com/400x225/3498db/ffffff?text=Cosmic+Alien+Quest" alt="Cosmic Alien Quest">
+                    <h3>Cosmic Alien Quest</h3>
+                    <p>Explore, Battle, Conquer the Universe! 🌌🚀 Battle hostile extraterrestrial forces and uncover secrets of distant galaxies.</p>
                     <div class="game-buttons">
-                        <a href="#" class="game-btn view-btn">View Details</a>
-                        <a href="#" class="game-btn play-btn">Try Now</a>
+                        <a href="#" class="game-btn view-btn">View Game</a>
+                        <a href="#" class="game-btn play-btn">Play Now</a>
                     </div>
                 </div>
-
-                <!-- Card 3 -->
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1533924275610-4ff8475e8f15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-                        alt="Dock Simulator">
-                    <h3>Dock/Port Simulator</h3>
-                    <p>Simulate maritime operations and optimize port logistics in various conditions.</p>
+                    <img src="https://via.placeholder.com/400x225/e74c3c/ffffff?text=Ping+Pong" alt="Ping Pong">
+                    <h3>Ping Pong: Table Tennis Board</h3>
+                    <p>A fresh take on classic table tennis with engaging daily challenges and competitive gameplay for all skill levels.</p>
                     <div class="game-buttons">
-                        <a href="#" class="game-btn view-btn">View Details</a>
-                        <a href="#" class="game-btn play-btn">Try Now</a>
+                        <a href="#" class="game-btn view-btn">View Game</a>
+                        <a href="#" class="game-btn play-btn">Play Now</a>
                     </div>
                 </div>
-
-                <!-- Card 4 -->
                 <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-                        alt="Mission Planner">
-                    <h3>Mission Planning Simulator</h3>
-                    <p>Plan and visualize complex missions in 3D to optimize strategies.</p>
+                    <img src="https://via.placeholder.com/400x225/9b59b6/ffffff?text=Toon+Flyers" alt="Toon Flyers">
+                    <h3>Toon Flyers</h3>
+                    <p>A vibrant twist on the classic flying adventure game with daily challenges and colorful cartoon graphics.</p>
                     <div class="game-buttons">
-                        <a href="#" class="game-btn view-btn">View Details</a>
-                        <a href="#" class="game-btn play-btn">Try Now</a>
+                        <a href="#" class="game-btn view-btn">View Game</a>
+                        <a href="#" class="game-btn play-btn">Play Now</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://via.placeholder.com/400x225/f1c40f/ffffff?text=Bounce+And+Fall" alt="Bounce And Fall">
+                    <h3>Bounce And Fall</h3>
+                    <p>Test your reflexes in this arcade-style game with rotating circular discs and challenging obstacles.</p>
+                    <div class="game-buttons">
+                        <a href="#" class="game-btn view-btn">View Game</a>
+                        <a href="#" class="game-btn play-btn">Play Now</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://via.placeholder.com/400x225/1abc9c/ffffff?text=Puzzle+Armor" alt="Puzzle Artful Armor">
+                    <h3>Puzzle Artful Armor</h3>
+                    <p>A puzzle game that challenges your artistic skills with intricate patterns and mind-bending challenges.</p>
+                    <div class="game-buttons">
+                        <a href="#" class="game-btn view-btn">View Game</a>
+                        <a href="#" class="game-btn play-btn">Play Now</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://via.placeholder.com/400x225/34495e/ffffff?text=MayaVerse" alt="Galactic Shooter">
+                    <h3>SENA : MayaVerse</h3>
+                    <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action.</p>
+                    <div class="game-buttons">
+                        <a href="#" class="game-btn view-btn">View Game</a>
+                        <a href="#" class="game-btn play-btn">Play Now</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://via.placeholder.com/400x225/e67e22/ffffff?text=Bhoomiputra" alt="Survival Arena">
+                    <h3>Bhoomiputra</h3>
+                    <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay.</p>
+                    <div class="game-buttons">
+                        <a href="#" class="game-btn view-btn">View Game</a>
+                        <a href="#" class="game-btn play-btn">Play Now</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://via.placeholder.com/400x225/2c3e50/ffffff?text=Strike+Encounter" alt="Epic Showdown">
+                    <h3>SENA : Strike & Encounter</h3>
+                    <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror.</p>
+                    <div class="game-buttons">
+                        <a href="#" class="game-btn view-btn">View Game</a>
+                        <a href="#" class="game-btn play-btn">Play Now</a>
                     </div>
                 </div>
             </div>
@@ -537,9 +424,6 @@
         </div>
     </div>
 
-    {% include 'footer.html' %}
-
-    <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -577,20 +461,19 @@
                 return swiper;
             };
 
-            const simulationSwiper = initSwiper('#simulation-slider');
+            const allGamesSwiper = initSwiper('#all-games');
             
             // Enhanced hover control
-            const swiperContainer = document.querySelector('#simulation-slider');
+            const swiperContainer = document.querySelector('#all-games');
             
             swiperContainer.addEventListener('mouseenter', () => {
-                simulationSwiper.autoplay.stop();
+                allGamesSwiper.autoplay.stop();
             });
             
             swiperContainer.addEventListener('mouseleave', () => {
-                simulationSwiper.autoplay.start();
+                allGamesSwiper.autoplay.start();
             });
         });
     </script>
 </body>
-
 </html>

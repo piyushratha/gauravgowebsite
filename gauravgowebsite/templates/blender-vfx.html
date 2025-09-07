@@ -298,16 +298,18 @@
         }
 
         .slider-controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 40px;
-            gap: 20px;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            pointer-events: none;
+            z-index: 2;
         }
 
         .slider-arrow {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            border-radius: 0;
             background: var(--arrow-bg);
             border: 1px solid var(--card-border);
             display: flex;
@@ -317,8 +319,19 @@
             transition: all 0.3s ease;
             color: var(--text-primary);
             font-size: 1.5rem;
-            position: relative;
-            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: auto;
+            z-index: 3;
+        }
+
+        .slider-arrow.prev {
+            left: 0;
+        }
+
+        .slider-arrow.next {
+            right: 0;
         }
 
         .slider-arrow::before {
@@ -340,7 +353,7 @@
         }
 
         .slider-arrow:hover {
-            transform: scale(1.1);
+            transform: translateY(-50%) scale(1.1);
             border-color: var(--electric-green);
         }
 
@@ -348,59 +361,12 @@
             opacity: 1;
         }
 
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 25px;
-            gap: 12px;
-        }
-
-        .dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .dot::after {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border-radius: 50%;
-            border: 2px solid var(--electric-green);
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background: var(--electric-green);
-            transform: scale(1.2);
-        }
-
-        .dot.active::after {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        @media (max-width: 1200px) {
-            .card {
-                flex: 0 0 calc(33.333% - 20px);
-            }
-        }
-
+        /* Responsive: hide arrows on mobile */
         @media (max-width: 900px) {
-            .card {
-                flex: 0 0 calc(50% - 20px);
-            }
-            .section-title {
-                font-size: 2.8rem;
+            .slider-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
 
@@ -411,6 +377,9 @@
             .section-title {
                 font-size: 2.2rem;
                 letter-spacing: 2px;
+            }
+            .slider-arrow {
+                display: none;
             }
         }
     </style>
@@ -442,7 +411,7 @@
         </span>
     </h1>
 
-    <div class="slider-container">
+    <div class="slider-container" style="position:relative;">
         <div class="slider">
             <!-- Card 1 -->
             <div class="card">
@@ -507,9 +476,7 @@
     </div>
 
     <!-- Footer placeholder for Django inclusion -->
-    <div class="footer-placeholder">
-        {% include 'footer.html' %}
-    </div>
+    {% include 'footer.html' %}
 
     <script>
 document.addEventListener('DOMContentLoaded', function () {

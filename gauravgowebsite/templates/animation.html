@@ -195,8 +195,8 @@
             position: relative;
             max-width: 1300px;
             margin: 0 auto;
-            overflow: hidden;
-            padding: 30px 0;
+            overflow: visible; /* changed from hidden */
+            padding: 0; /* remove extra padding */
         }
 
         .slider {
@@ -334,7 +334,7 @@
         .slider-controls {
             display: flex;
             justify-content: center;
-            margin-top: 40px;
+            margin-top: 20px; /* reduced from 40px */
             gap: 20px;
         }
 
@@ -385,7 +385,7 @@
         .slider-dots {
             display: flex;
             justify-content: center;
-            margin-top: 25px;
+            margin-top: 15px; /* reduced from 25px */
             gap: 12px;
         }
 
@@ -523,10 +523,7 @@
         </div>
     </div>
 
-    <!-- Footer placeholder for Django inclusion -->
-    <div class="footer-placeholder">
-        {% include 'footer.html' %}
-    </div>
+    {% include 'footer.html' %}
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -542,11 +539,10 @@
             let autoSlideInterval;
             let isTransitioning = false;
 
-            // Calculate the width of a card including margins
             function getCardWidth() {
                 const style = getComputedStyle(cards[0]);
-                return cards[0].offsetWidth + 
-                       parseInt(style.marginLeft) + 
+                return cards[0].offsetWidth +
+                       parseInt(style.marginLeft) +
                        parseInt(style.marginRight);
             }
 
@@ -554,8 +550,6 @@
                 const cardWidth = getCardWidth();
                 slider.style.transition = transition ? 'transform 0.5s ease' : 'none';
                 slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-                
-                // Update dots
                 dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === currentIndex);
                 });
@@ -575,7 +569,6 @@
                 updateSlider();
             }
 
-            // Add event listeners to arrows
             nextBtn.addEventListener('click', () => {
                 nextSlide();
                 resetAutoSlide();
@@ -586,7 +579,6 @@
                 resetAutoSlide();
             });
 
-            // Add event listeners to dots
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     if (isTransitioning) return;
@@ -596,7 +588,6 @@
                 });
             });
 
-            // Auto-slide function
             function startAutoSlide() {
                 autoSlideInterval = setInterval(nextSlide, 4000);
             }
@@ -606,7 +597,6 @@
                 startAutoSlide();
             }
 
-            // Pause auto-slide on hover
             sliderContainer.addEventListener('mouseenter', () => {
                 clearInterval(autoSlideInterval);
             });
@@ -619,12 +609,10 @@
                 isTransitioning = false;
             });
 
-            // Handle window resize
             window.addEventListener('resize', function() {
                 updateSlider(false);
             });
 
-            // Initialize the slider
             updateSlider(false);
             startAutoSlide();
         });
