@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,287 +6,284 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GauravGo Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+    <!-- Swiper CSS -->
+    <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <!-- Added GSAP for animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            start: '#64ffda', // Brighter green
+                            end: '#0a192f',   // Dark navy
+                        },
+                        dark: {
+                            start: '#0a192f', // Dark navy
+                            end: '#020c1b',   // Very dark navy
+                        },
+                        cta: {
+                            start: '#112240',  // Medium navy
+                            end: '#0a192f',    // Dark navy
+                        },
+                        accent: {
+                            green: '#64ffda',  // Bright green
+                            blue: '#112240',   // Medium navy
+                        }
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         :root {
-            --primary-gradient-start: #2ecc71;
-            --primary-gradient-end: #3498db;
-            --main-bg-start: #0a0a1a;
-            --main-bg-end: #050510;
-            --cta-bg-start: #0c1d2f;
-            --cta-bg-end: #091622;
-            --chaos-card-start: #0c1d2f;
-            --chaos-card-end: #091622;
-            --arena-card-start: #1a0c2f;
-            --arena-card-end: #160922;
-            --electric-green: #2ecc71;
-            --crystal-blue: #3498db;
-            --royal-purple: #9b59b6;
-            --fiery-red: #e74c3c;
-            --sun-orange: #f39c12;
-            --teal: #1abc9c;
-            --text-primary: #f0f0f0;
-            --text-secondary: rgba(255, 255, 255, 0.8);
+            --primary-gradient-start: #00ffb3;
+            --primary-gradient-end: #00bfae;
+            --main-bg-start: #0a0f13;
+            --main-bg-end: #05080c;
+            --cta-bg-start: #10171c;
+            --cta-bg-end: #0a0f13;
+            --electric-green: #00ffb3;
+            --crystal-blue: #00bfae;
+            --text-primary: #e6ffe6;
+            --text-secondary: #7fffd4;
         }
         
         body {
-            font-family: 'Orbitron', sans-serif;
             background: linear-gradient(135deg, var(--main-bg-start), var(--main-bg-end));
             color: var(--text-primary);
-            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-            padding-top: 80px; /* For fixed navbar */
         }
         
-        /* Remove the gap between navbar and header */
-        body {
-            padding-top: 0;
-        }
-        
-        /* Header Styling */
-        header {
-            position: relative;
-            height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--cta-bg-start), var(--cta-bg-end));
-            margin-top: 0; /* Ensure no margin at the top */
-        }
-        
-        .bg-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.3;
-        }
-        
-        .letter {
-            display: inline-block;
-            opacity: 0;
-            animation: fadeIn 0.8s ease forwards;
-            transition: all 0.3s ease;
-            background: linear-gradient(90deg, var(--primary-gradient-start), var(--teal), var(--primary-gradient-end));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
-        }
-        
-        .letter:hover {
-            transform: scale(1.3);
-            text-shadow: 0 0 25px rgba(46, 204, 113, 0.8), 0 0 35px rgba(46, 204, 113, 0.6);
-            filter: brightness(1.2);
-        }
-        
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-        
-        /* Projects Section */
-        #projects {
-            padding: 8rem 0; /* Increased padding for better spacing */
-            background: linear-gradient(135deg, var(--main-bg-start), var(--main-bg-end));
-        }
-        
-        #text-holder h2 span {
-            display: inline-block;
-            margin: 0 2px;
-            font-size: 3rem;
-            font-weight: 800; /* Bolder font */
-            background: linear-gradient(90deg, var(--primary-gradient-start), var(--teal), var(--primary-gradient-end));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
-        }
-        
-        .card {
-            background: rgba(15, 15, 30, 0.7);
-            border: 1px solid rgba(46, 204, 113, 0.2);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            height: 450px; /* Fixed height as requested */
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-            border-color: rgba(46, 204, 113, 0.5);
-        }
-        
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .card:hover img {
-            transform: scale(1.05);
-        }
-        
-        .card h3 {
-            font-size: 1.4rem;
-            font-weight: 700; /* Bold */
-            margin: 1rem 1.5rem 0.5rem;
-            color: var(--text-primary);
-        }
-        
-        .card p {
-            padding: 0 1.5rem 1.5rem;
-            color: var(--text-secondary);
-            flex-grow: 1;
-            text-align: justify; /* Justified text as requested */
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 6; /* Limit to approximately 150 words */
-            -webkit-box-orient: vertical;
-            line-height: 1.6;
-            font-weight: 500; /* Semi-bold for professionalism */
-        }
-        
-        .card-link {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .glide__arrow {
-            background: rgba(20, 20, 35, 0.6);
-            border: 1px solid rgba(46, 204, 113, 0.2);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-            z-index: 2; /* Ensure arrows are above card links */
-        }
-        
-        .glide__arrow:hover {
-            background: linear-gradient(90deg, var(--primary-gradient-start), var(--primary-gradient-end));
-            border-color: transparent;
-        }
-        
-        /* Add padding above slider */
-        .glide {
-            padding-top: 3rem; /* Increased padding */
-        }
-        
-        /* HQ + Support Section */
-        .hq-support {
-            padding: 8rem 0; /* Increased padding */
-            background: linear-gradient(135deg, var(--cta-bg-start), var(--cta-bg-end));
-            border-top: 1px solid rgba(46, 204, 113, 0.1);
-        }
-        
-        .hq-card {
-            background: rgba(20, 20, 35, 0.6);
-            border: 1px solid rgba(46, 204, 113, 0.2);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .hq-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            border-color: rgba(46, 204, 113, 0.4);
-        }
-        
-        .hq-card h3 {
-            font-size: 1.8rem;
-            font-weight: 700; /* Bold */
-            margin-bottom: 1.5rem;
-            color: var(--electric-green);
-        }
-        
-        .tag {
-            background: rgba(46, 204, 113, 0.1);
-            color: var(--electric-green);
-            border-radius: 20px;
-            padding: 0.3rem 1rem;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-top: 1rem;
-        }
-        
-        .hover-grow {
-            transition: transform 0.3s ease;
-        }
-        
-        .hover-grow:hover {
-            transform: translateY(-6px);
-        }
-        
-        .pulse {
-            animation: pulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.07);
-            }
-        }
-        
-        .circle-animation {
-            animation: rotate 25s linear infinite;
-            transform-origin: center;
-        }
-        
-        @keyframes rotate {
-            100% {
-                transform: rotate(360deg);
-            }
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
         }
         
         .gradient-text {
-            background: linear-gradient(90deg, #4ade80, #3b82f6);
+            background: linear-gradient(90deg, var(--electric-green), var(--crystal-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradientAnimation 8s ease infinite;
         }
         
-        .glow-sm {
-            text-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        .glow {
+            text-shadow: 0 0 15px #00ffb366, 0 0 30px #00bfae44;
+        }
+        
+        .card-gradient {
+            background: linear-gradient(145deg, #10171c 80%, #0a0f13 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--cta-bg-start), var(--cta-bg-end));
+        }
+        
+        .section-padding {
+            padding: 5rem 0;
+        }
+        
+        .hq-card {
+            background: linear-gradient(135deg, #10171c 60%, #0a0f13 100%);
+            border: 1.5px solid #00ffb322;
+            border-radius: 1.25rem;
+            padding: 2.5rem;
+            transition: all 0.3s cubic-bezier(.4,2,.3,1);
+            height: 100%;
+            box-shadow: 0 6px 32px 0 #00ffb315;
+            position: relative;
+        }
+        
+        .hq-card:hover {
+            transform: translateY(-8px) scale(1.025);
+            border-color: var(--primary-gradient-end);
+            box-shadow: 0 16px 40px 0 #00bfae33;
+        }
+        
+        .swiper-container {
+            padding: 2rem 0 4rem;
+            position: relative; /* Ensure arrows are positioned relative to container */
+            overflow: visible;  /* Prevent arrows from being clipped */
+        }
+        
+        .swiper-slide {
+            background: #10171c;
+            border: 1px solid #00ffb322;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 6px 18px #00ffb315;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            overflow: hidden;
+            height: 400px;
+        }
+        
+        .swiper-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--electric-green), var(--crystal-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .swiper-slide:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 22px #00ffb344;
+            border-color: #00ffb3;
+        }
+        
+        .swiper-slide:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .swiper-slide img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .swiper-slide:hover img {
+            transform: scale(1.05);
+        }
+        
+        .swiper-button-prev,
+        .swiper-button-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #10171c 60%, #0a0f13 100%);
+            border: 2px solid #00ffb366;
+            color: var(--electric-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            box-shadow: 0 2px 16px #00ffb322, 0 0 0 4px #00ffb311 inset;
+            transition: 
+                background 0.3s,
+                color 0.3s,
+                border-color 0.3s,
+                box-shadow 0.3s,
+                transform 0.2s;
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .swiper-button-prev {
+            left: -24px;
+        }
+        .swiper-button-next {
+            right: -24px;
+        }
+        .swiper-button-prev::before,
+        .swiper-button-next::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, #00ffb3 0%, #00bfae 100%);
+            opacity: 0;
+            z-index: 0;
+            transition: opacity 0.3s;
+        }
+        .swiper-button-prev:hover,
+        .swiper-button-next:hover {
+            background: linear-gradient(120deg, #00ffb3 0%, #00bfae 100%);
+            color: #10171c;
+            border-color: #00ffb3;
+            box-shadow: 0 4px 24px #00ffb366, 0 0 0 6px #00ffb311 inset;
+            transform: translateY(-50%) scale(1.12) rotate(-6deg);
+        }
+        .swiper-button-prev:hover::before,
+        .swiper-button-next:hover::before {
+            opacity: 0.12;
+        }
+        .swiper-button-prev i,
+        .swiper-button-next i {
+            position: relative;
+            z-index: 1;
+            font-size: 2rem;
+            transition: color 0.3s, text-shadow 0.3s;
+            text-shadow: 0 0 8px #00ffb355, 0 0 16px #00bfae33;
+        }
+        .swiper-button-prev:hover i,
+        .swiper-button-next:hover i {
+            color: #10171c;
+            text-shadow: 0 0 16px #00ffb3, 0 0 32px #00bfae;
+        }
+        /* Add a subtle glowing border animation */
+        @keyframes arrowGlow {
+            0%, 100% { box-shadow: 0 2px 16px #00ffb322, 0 0 0 4px #00ffb311 inset; }
+            50% { box-shadow: 0 4px 32px #00ffb366, 0 0 0 8px #00ffb322 inset; }
+        }
+        .swiper-button-prev,
+        .swiper-button-next {
+            animation: arrowGlow 2.5s infinite alternate;
+        }
+        @media (max-width: 768px) {
+            .swiper-button-prev,
+            .swiper-button-next { display: none; }
+        }
+        
+        .form-input {
+            background: #10171c;
+            border: 1px solid #00ffb322;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--electric-green);
+            box-shadow: 0 0 0 3px #00ffb315;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(90deg, var(--electric-green), var(--crystal-blue));
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(90deg, var(--crystal-blue), var(--electric-green));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px #00ffb344;
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
         }
         
         @keyframes float {
@@ -296,495 +292,299 @@
             100% { transform: translateY(0px); }
         }
         
-        .floating {
-            animation: float 3s ease-in-out infinite;
+        .particle {
+            position: absolute;
+            background: #00ffb344;
+            border-radius: 50%;
+            pointer-events: none;
         }
         
-        /* Responsive Design - Enhanced */
-        @media (max-width: 1024px) {
-            .glide__slide {
-                padding: 0 10px;
-            }
-        }
-        
-        /* Redesigned Responsive Navbar */
         @media (max-width: 768px) {
-            .navbar {
-                padding: 0.8rem 1rem;
-            }
-            
-            .hamburger {
-                display: flex;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background: rgba(10, 10, 26, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 6rem 2rem 2rem;
-                gap: 1.5rem;
-                transition: right 0.5s ease;
-                z-index: 99;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
-                justify-content: flex-start;
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .nav-links > li {
-                height: auto;
-                width: 100%;
-            }
-            
-            .nav-links a {
-                height: auto;
-                padding: 0.8rem 0;
-                width: 100%;
-                font-size: 1.1rem;
-            }
-            
-            .dropdown {
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-                height: auto;
-            }
-            
-            .dropdown > a {
-                width: 100%;
-                justify-content: space-between;
-                padding-right: 1rem;
-            }
-            
-            .dropdown-menu {
-                position: static;
-                display: none;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                width: 100%;
-                padding: 0.5rem 0;
-                margin: 0.5rem 0 0 1rem;
-                background: rgba(20, 20, 36, 0.8);
-                border-left: 2px solid var(--electric-green);
-                border-radius: 0.25rem;
-            }
-            
-            .dropdown:hover .dropdown-menu {
-                transform: none;
-            }
-            
-            .dropdown.active .dropdown-menu {
-                display: block;
-            }
-            
-            header {
-                height: 50vh;
-            }
-            
-            #text-holder h2 span {
-                font-size: 2rem;
-            }
-            
-            .hq-card {
-                padding: 1.5rem;
-            }
-            
-            .hq-support .grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            footer .grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                text-align: center;
-            }
-            
-            footer .flex {
-                justify-content: center;
-            }
-            
-            .glide__arrow {
-                width: 35px;
-                height: 35px;
-            }
-            
-            .card {
-                height: 420px; /* Slightly reduced height for mobile */
-            }
-            
-            .card p {
-                -webkit-line-clamp: 5; /* Show fewer lines on mobile */
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .nav-links {
-                gap: 1.5rem;
-                padding: 6rem 1.5rem 2rem;
-            }
-            
-            header {
-                height: 40vh;
-            }
-            
-            #text-holder h2 span {
-                font-size: 1.8rem;
-            }
-            
-            .card h3 {
-                font-size: 1.2rem;
-            }
-            
-            .card p {
-                font-size: 0.9rem;
-            }
-            
-            .dropdown-menu li a {
-                padding: 0.7rem 1.25rem;
-                font-size: 0.95rem;
-            }
-            
-            .card {
-                height: 400px; /* Further reduced height for small mobile */
-            }
-            
-            .card p {
-                -webkit-line-clamp: 4; /* Show even fewer lines on small mobile */
-            }
+            .section-padding { padding: 3rem 0; }
+            .hq-card { padding: 1.5rem; }
+            .swiper-button-prev,
+            .swiper-button-next { display: none; }
+            .swiper-slide { height: 380px; }
         }
     </style>
 </head>
 
-<body>
-  {% include "header.html" %}
+<body class="min-h-screen">
+    <!-- Navigation -->
+    {% include "header.html" %}
 
-    <!-- Header -->
-    <header id="services" aria-label="Services section" class="relative">
-        <video autoplay muted loop playsinline class="bg-video">
-            <source src="/media-services-page/11387073-hd_1920_1080_24fps.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="font-bold text-white text-[clamp(1.25rem,7vw,3.5rem)] tracking-wide leading-tight"
-                id="our-services">
-                <span class="letter" style="animation-delay: 0ms;">O</span>
-                <span class="letter" style="animation-delay: 100ms;">U</span>
-                <span class="letter" style="animation-delay: 200ms;">R</span>
-                <span class="letter" style="animation-delay: 300ms;">&nbsp;</span>
-                <span class="letter" style="animation-delay: 400ms;">S</span>
-                <span class="letter" style="animation-delay: 500ms;">E</span>
-                <span class="letter" style="animation-delay: 600ms;">R</span>
-                <span class="letter" style="animation-delay: 700ms;">V</span>
-                <span class="letter" style="animation-delay: 800ms;">I</span>
-                <span class="letter" style="animation-delay: 900ms;">C</span>
-                <span class="letter" style="animation-delay: 1000ms;">E</span>
-                <span class="letter" style="animation-delay: 1100ms;">S</span>
+    <!-- Hero Section -->
+    <header class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="particle" style="top: 20%; left: 10%; width: 20px; height: 20px; animation-delay: 0s;"></div>
+            <div class="particle" style="top: 60%; left: 80%; width: 15px; height: 15px; animation-delay: 1s;"></div>
+            <div class="particle" style="top: 40%; left: 65%; width: 25px; height: 25px; animation-delay: 2s;"></div>
+            <div class="particle" style="top: 70%; left: 25%; width: 18px; height: 18px; animation-delay: 3s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold orbitron mb-6">
+                <span class="gradient-text glow">OUR SERVICES</span>
             </h1>
+            <p class="text-xl md:text-2xl text-[#a8b2d1] max-w-3xl mx-auto mb-10">
+                Innovative solutions for simulation, gaming, and immersive experiences
+            </p>
+            <div class="flex justify-center space-x-6">
+                <a href="#projects" class="px-8 py-3 bg-gradient-to-r from-[#64ffda] to-[#112240] rounded-full font-bold text-[#0a192f] hover:shadow-lg hover:shadow-[#64ffda]/30 transition">Explore Projects</a>
+                <a href="#contact" class="px-8 py-3 border border-[#64ffda] text-[#64ffda] rounded-full font-bold hover:bg-[#64ffda]/10 transition">Contact Us</a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 w-full flex justify-center py-6">
+            <a href="#projects" class="text-[#64ffda] animate-bounce">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
         </div>
     </header>
 
     <!-- Projects Section -->
-    <section id="projects" aria-label="Projects section"
-        class="reveal opacity-0 translate-y-10 transition-all duration-700 ease-out py-16">
+    <section id="projects" class="section-padding bg-[#0a192f]">
         <div class="container mx-auto px-6">
-            <div id="text-holder" class="text-center mb-12">
-                <h2>
-                    <span>P</span><span>R</span><span>O</span><span>J</span><span>E</span><span>C</span><span>T</span><span>S</span>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold orbitron mb-6">
+                    <span class="gradient-text">FEATURED PROJECTS</span>
                 </h2>
+                <p class="text-xl text-[#a8b2d1] max-w-3xl mx-auto">
+                    Discover our innovative solutions in simulation, gaming, and immersive technologies
+                </p>
             </div>
-            <div class="glide">
-                <div class="glide__track" data-glide-el="track">
-                    <div class="glide__slides">
-                        <!-- Card 1 - Simulation Based Projects -->
-                        <div class="glide__slide card opacity-0 scale-90 transition-all duration-700">
-                            <a href="{% url 'simulation_projects' %}" class="card-link"></a>
-                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=1470&auto=format&fit=crop" alt="Simulation Projects" loading="lazy">
-                            <h3>Simulation Based Projects</h3>
-                            <p>Experience cutting-edge simulation technology with our realistic drone and vehicle simulations. Perfect for training and testing in a safe, controlled virtual environment. Our simulations provide accurate physics, real-world scenarios, and detailed analytics to help you master complex operations without any risk. Whether you're training pilots or testing autonomous systems, our simulation solutions deliver unparalleled realism and performance.</p>
+            
+            <!-- Swiper Slider -->
+            <div class="swiper-container" id="services-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Card 1 - Simulation Based Projects -->
+                    <div class="swiper-slide">
+                        <a href="{% url 'simulation_projects' %}" class="absolute inset-0 z-10"></a>
+                        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=1470&auto=format&fit=crop" alt="Simulation Projects" loading="lazy">
+                        <h3 class="text-xl font-bold orbitron text-[#64ffda] mb-3">Simulation Based Projects</h3>
+                        <p class="text-[#a8b2d1] flex-grow">Experience cutting-edge simulation technology with our realistic drone and vehicle simulations. Perfect for training and testing in a safe, controlled virtual environment.</p>
+                        <div class="mt-4 pt-4 border-t border-[#112240] flex justify-between items-center">
+                            <span class="text-[#64ffda] text-sm"><i class="fas fa-tag mr-2"></i>Simulation</span>
+                            <span class="text-[#64ffda] text-sm"><i class="fas fa-clock mr-2"></i>Ongoing</span>
                         </div>
+                    </div>
 
-                        <!-- Card 2 - 3D Assets/Environment Creation -->
-                        <div class="glide__slide card opacity-0 scale-90 transition-all duration-700 delay-100">
-                            <a href="{% url 'three_d_assets' %}" class="card-link"></a>
-                            <img src="https://images.unsplash.com/photo-1633287387306-f08b4b3671c6?q=80&w=1470&auto=format&fit=crop" alt="3D Assets" loading="lazy">
-                            <h3>3D Assets/Environment Creation</h3>
-                            <p>Bring your visions to reality with our professional 3D asset and environment design services. Our team of talented artists creates stunning, high-quality 3D models, textures, and environments for games, simulations, and virtual experiences. From character design to entire worlds, we deliver assets that meet your specific requirements and elevate your project to the next level. Our meticulous attention to detail ensures every asset is optimized for performance while maintaining visual fidelity.</p>
+                    <!-- Card 2 - 3D Assets/Environment Creation -->
+                    <div class="swiper-slide">
+                        <a href="{% url 'three_d_assets' %}" class="absolute inset-0 z-10"></a>
+                        <img src="https://images.unsplash.com/photo-1633287387306-f08b4b3671c6?q=80&w=1470&auto=format&fit=crop" alt="3D Assets" loading="lazy">
+                        <h3 class="text-xl font-bold orbitron text-[#64ffda] mb-3">3D Assets/Environment Creation</h3>
+                        <p class="text-[#a8b2d1] flex-grow">Bring your visions to reality with our professional 3D asset and environment design services. Our team creates stunning, high-quality 3D models for games and simulations.</p>
+                        <div class="mt-4 pt-4 border-t border-[#112240] flex justify-between items-center">
+                            <span class="text-[#64ffda] text-sm"><i class="fas fa-tag mr-2"></i>3D Design</span>
+                            <span class="text-[#64ffda] text-sm"><i class="fas fa-clock mr-2"></i>Ongoing</span>
                         </div>
+                    </div>
 
-                        <!-- Card 3 - Game Development & AR-VR -->
-                        <div class="glide__slide card opacity-0 scale-90 transition-all duration-700 delay-200">
-                            <a href="{% url 'game_development' %}" class="card-link"></a>
-                            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1390&auto=format&fit=crop" alt="AR VR" loading="lazy">
-                            <h3>Game Development & AR-VR</h3>
-                            <p>Dive into the future of interactive entertainment with our immersive game development and AR/VR experiences. We create engaging games and applications that leverage the latest technologies to provide unforgettable user experiences. From mobile games to complex VR simulations, our team handles all aspects of development including design, programming, testing, and deployment. Our solutions are optimized for various platforms and designed to captivate your audience with innovative gameplay and stunning visuals.</p>
+                    <!-- Card 3 - Game Development & AR-VR -->
+                    <div class="swiper-slide">
+                        <a href="{% url 'game_development' %}" class="absolute inset-0 z-10"></a>
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1390&auto=format&fit=crop" alt="AR VR" loading="lazy">
+                        <h3 class="text-xl font-bold orbitron text-[#64ffda] mb-3">Game Development & AR-VR</h3>
+                        <p class="text-[#a8b2d1] flex-grow">Dive into the future of interactive entertainment with our immersive game development and AR/VR experiences. We create engaging games with the latest technologies.</p>
+                        <div class="mt-4 pt-4 border-t border-[#112240] flex justify-between items-center">
+                            <span class="text-[#64ffda] text-sm"><i class="fas fa-tag mr-2"></i>Game Dev</span>
+                            <span class="text-[#64ffda] text-sm"><i class="fas fa-clock mr-2"></i>Ongoing</span>
                         </div>
+                    </div>
 
-                        <!-- Card 4 - Animation 2D/3D -->
-                        <div class="glide__slide card opacity-0 scale-90 transition-all duration-700 delay-300">
-                            <a href="{% url 'animation' %}" class="card-link"></a>
-                            <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1400&auto=format&fit=crop" alt="2D 3D Animation" loading="lazy">
-                            <h3>Animation 2D/3D</h3>
-                            <p>Tell compelling stories with our professional 2D and 3D animation services. Our skilled animators create fluid, expressive animations that bring characters and objects to life. Whether you need traditional 2D animation, cutting-edge 3D character animation, or motion graphics for your project, we deliver high-quality results that engage your audience. We follow a meticulous process from storyboarding to final rendering, ensuring that every animation aligns with your vision and enhances your narrative.</p>
+                    <!-- Card 4 - Animation 2D/3D -->
+                    <div class="swiper-slide">
+                        <a href="{% url 'animation' %}" class="absolute inset-0 z-10"></a>
+                        <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1400&auto=format&fit=crop" alt="2D 3D Animation" loading="lazy">
+                        <h3 class="text-xl font-bold orbitron text-[#64ffda] mb-3">Animation 2D/3D</h3>
+                        <p class="text-[#a8b2d1] flex-grow">Tell compelling stories with our professional 2D and 3D animation services. Our skilled animators create fluid, expressive animations that bring characters to life.</p>
+                        <div class="mt-4 pt-4 border-t border-[#112240] flex justify-between items-center">
+                            <span class="text-[#64ffda] text-sm"><i class="fas fa-tag mr-2"></i>Animation</span>
+                            <span class="text-[#64ffda] text-sm"><i class="fas fa-clock mr-2"></i>Ongoing</span>
                         </div>
+                    </div>
 
-                        <!-- Card 5 - Blender VFX/Films -->
-                        <div class="glide__slide card opacity-0 scale-90 transition-all duration-700 delay-400">
-                            <a href="{% url 'blender_vfx' %}" class="card-link"></a>
-                            <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=1332&auto=format&fit=crop" alt="Blender VFX" loading="lazy">
-                            <h3>Blender VFX/Films</h3>
-                            <p>Add stunning visual effects to your projects using Blender, the powerful open-source 3D creation suite. Our team specializes in creating breathtaking VFX for films, commercials, and other media projects. From particle simulations and fluid dynamics to complex compositing and motion tracking, we leverage Blender's extensive toolset to produce Hollywood-quality visual effects. We work closely with our clients to understand their vision and deliver effects that seamlessly integrate with their footage and enhance the overall production value.</p>
+                    <!-- Card 5 - Blender VFX/Films -->
+                    <div class="swiper-slide">
+                        <a href="{% url 'blender_vfx' %}" class="absolute inset-0 z-10"></a>
+                        <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=1332&auto=format&fit=crop" alt="Blender VFX" loading="lazy">
+                        <h3 class="text-xl font-bold orbitron text-[#64ffda] mb-3">Blender VFX/Films</h3>
+                        <p class="text-[#a8b2d1] flex-grow">Add stunning visual effects to your projects using Blender. Our team specializes in creating breathtaking VFX for films, commercials, and other media projects.</p>
+                        <div class="mt-4 pt-4 border-t border-[#112240] flex justify-between items-center">
+                            <span class="text-[#64ffda] text-sm"><i class="fas fa-tag mr-2"></i>VFX</span>
+                            <span class="text-[#64ffda] text-sm"><i class="fas fa-clock mr-2"></i>Ongoing</span>
                         </div>
                     </div>
                 </div>
-                <div class="glide__arrows" data-glide-el="controls">
-                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i
-                            class="fas fa-chevron-left"></i></button>
-                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i
-                            class="fas fa-chevron-right"></i></button>
-                </div>
+                
+                <!-- Navigation buttons (must be inside swiper-container for correct placement) -->
+                <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
+                <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center text-[#64ffda] hover:text-[#64ffda] transition">
+                    <span class="mr-2">View All Projects</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Contact/Query Form Section (Moved above HQ) -->
-    <section class="py-16 bg-gradient-to-br from-[var(--cta-bg-start)] to-[var(--cta-bg-end)]"> <!-- Matched color scheme and increased padding -->
-        <div class="max-w-4xl mx-auto bg-[rgba(20,20,35,0.6)] rounded-2xl shadow-lg p-10 border border-[rgba(46,204,113,0.2)]"> <!-- Wider form, matched bg and border -->
-            <h2 class="text-3xl font-bold text-center mb-8 text-[var(--electric-green)] font-orbitron">Send Us a Query</h2> <!-- Bolder and larger title -->
-            <form method="post" action="#" class="space-y-6">
-                <!-- CSRF token if using Django backend -->
-                {% csrf_token %}
-                <div>
-                    <label for="name" class="block text-sm font-bold mb-2 text-[var(--crystal-blue)]">Name *</label> <!-- Bold label, matched color -->
-                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg bg-[rgba(15,15,30,0.7)] border border-[rgba(46,204,113,0.2)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--electric-green)] transition placeholder-[var(--text-secondary)]" placeholder="Enter your full name">
+    <!-- Contact Form Section -->
+    <section id="contact" class="section-padding bg-gradient-to-br from-[#112240] to-[#0a192f]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto card-gradient rounded-2xl shadow-2xl p-8 md:p-12 border border-[#64ffda]/20">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-bold orbitron text-[#64ffda] mb-4">Send Us a Query</h2>
+                    <p class="text-[#a8b2d1]">Have questions about our services? Reach out to our team for more information.</p>
                 </div>
-                <div>
-                    <label for="email" class="block text-sm font-bold mb-2 text-[var(--crystal-blue)]">Email *</label>
-                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-[rgba(15,15,30,0.7)] border border-[rgba(46,204,113,0.2)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--electric-green)] transition placeholder-[var(--text-secondary)]" placeholder="Enter your email address">
-                </div>
-                <div>
-                    <label for="contact" class="block text-sm font-bold mb-2 text-[var(--crystal-blue)]">Contact *</label>
-                    <input type="tel" id="contact" name="contact" required class="w-full px-4 py-3 rounded-lg bg-[rgba(15,15,30,0.7)] border border-[rgba(46,204,113,0.2)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--electric-green)] transition placeholder-[var(--text-secondary)]" placeholder="Enter your phone number">
-                </div>
-                <div>
-                    <label for="company" class="block text-sm font-bold mb-2 text-[var(--crystal-blue)]">Company</label>
-                    <input type="text" id="company" name="company" class="w-full px-4 py-3 rounded-lg bg-[rgba(15,15,30,0.7)] border border-[rgba(46,204,113,0.2)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--electric-green)] transition placeholder-[var(--text-secondary)]" placeholder="Enter your company name (optional)">
-                </div>
-                <div>
-                    <label for="message" class="block text-sm font-bold mb-2 text-[var(--crystal-blue)]">Message/Query *</label>
-                    <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg bg-[rgba(15,15,30,0.7)] border border-[rgba(46,204,113,0.2)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--electric-green)] transition placeholder-[var(--text-secondary)]" placeholder="Describe your query or message in detail..."></textarea>
-                </div>
-                <div class="text-center pt-4">
-                    <button type="submit" class="px-10 py-3 rounded-full bg-gradient-to-r from-[var(--primary-gradient-start)] to-[var(--primary-gradient-end)] text-[var(--main-bg-start)] font-bold font-orbitron uppercase tracking-wider shadow-lg hover:from-[var(--primary-gradient-end)] hover:to-[var(--primary-gradient-start)] transition">Submit Query</button> <!-- Matched gradient and professional text -->
-                </div>
-            </form>
+                
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-[#a8b2d1] mb-2">Name *</label>
+                            <input type="text" id="name" name="name" required class="w-full form-input px-4 py-3 rounded-lg placeholder-[#a8b2d1]" placeholder="Your full name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-[#a8b2d1] mb-2">Email *</label>
+                            <input type="email" id="email" name="email" required class="w-full form-input px-4 py-3 rounded-lg placeholder-[#a8b2d1]" placeholder="Your email address">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="contact" class="block text-sm font-medium text-[#a8b2d1] mb-2">Contact *</label>
+                            <input type="tel" id="contact" name="contact" required class="w-full form-input px-4 py-3 rounded-lg placeholder-[#a8b2d1]" placeholder="Your phone number">
+                        </div>
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-[#a8b2d1] mb-2">Company</label>
+                            <input type="text" id="company" name="company" class="w-full form-input px-4 py-3 rounded-lg placeholder-[#a8b2d1]" placeholder="Your company name">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-[#a8b2d1] mb-2">Message/Query *</label>
+                        <textarea id="message" name="message" rows="5" required class="w-full form-input px-4 py-3 rounded-lg placeholder-[#a8b2d1]" placeholder="Describe your query or message in detail..."></textarea>
+                    </div>
+                    
+                    <div class="text-center pt-4">
+                        <button type="submit" class="submit-btn px-10 py-4 rounded-full text-[#0a192f] font-bold orbitron uppercase tracking-wider">
+                            Submit Query
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- HQ + Support Section -->
-    <section class="hq-support reveal opacity-0 translate-y-10 transition duration-1000 ease-out">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6 md:px-12">
-            <!-- Headquarters Card -->
-            <div class="hq-card opacity-0 scale-90 transition transform">
-                <div class="flex items-center mb-6">
-                    <span class="text-3xl mr-3 text-[var(--electric-green)]"><i class="fas fa-building"></i></span>
-                    <h3 class="text-2xl font-bold">Headquarters</h3>
+    <section class="section-padding bg-[#0a192f]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Headquarters Card -->
+                <div class="hq-card floating-element">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-[#64ffda]/10 flex items-center justify-center mr-4">
+                            <i class="fas fa-building text-2xl text-[#64ffda]"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold orbitron text-[#64ffda]">Headquarters</h3>
+                    </div>
+                    <p class="text-[#e6f1ff] font-semibold mb-1">GauravGo Games Technologies</p>
+                    <p class="text-[#a8b2d1] mb-4">College Square, Kakatpur, Puri, Odisha – 752108</p>
+                    <span class="inline-block px-4 py-1 bg-[#64ffda]/10 text-[#64ffda] rounded-full text-sm">India</span>
                 </div>
-                <p class="text-[var(--text-primary)] font-semibold mb-1">GauravGo Games Technologies</p>
-                <p class="text-[var(--text-secondary)] mb-4">College Square, Kakatpur, Puri, Odisha – 752108</p>
-                <span class="tag">India</span>
-            </div>
 
-            <!-- Support Card -->
-            <div class="hq-card opacity-0 scale-90 transition transform">
-                <div class="flex items-center mb-6">
-                    <span class="text-3xl mr-3 text-[var(--electric-green)]"><i class="fas fa-headset"></i></span>
-                    <h3 class="text-2xl font-bold">Support & Enquiries</h3>
+                <!-- Support Card -->
+                <div class="hq-card floating-element">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-[#64ffda]/10 flex items-center justify-center mr-4">
+                            <i class="fas fa-headset text-2xl text-[#64ffda]"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold orbitron text-[#64ffda]">Support & Enquiries</h3>
+                    </div>
+                    <div class="mb-6">
+                        <p class="text-[#e6f1ff] font-semibold mb-2">Email:</p>
+                        <a href="mailto:support@gauravgo.com" class="text-[#64ffda] hover:text-[#64ffda] transition flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            support@gauravgo.com
+                        </a>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <p class="text-[#e6f1ff] font-semibold mb-2">Discord:</p>
+                        <a href="#" class="text-[#64ffda] hover:text-[#64ffda] transition flex items-center">
+                            <i class="fab fa-discord mr-3"></i>
+                            Join Our Server
+                        </a>
+                    </div>
                 </div>
-                <p class="text-[var(--text-primary)] font-semibold mb-1">Email:</p>
-                <a href="mailto:support@gauravgo.com"
-                    class="text-[var(--text-primary)] hover:text-[var(--electric-green)] transition underline block mb-4">support@gauravgo.com</a>
-                <p class="text-[var(--text-primary)] font-semibold mb-1">Discord:</p>
-                <a href="#" class="text-[var(--text-primary)] hover:text-[var(--electric-green)] transition underline">Join Server</a>
             </div>
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Glide slider with proper configuration - Reduced autoplay and added bound to reduce lag
-            const glide = new Glide('.glide', {
-                type: 'carousel',
-                perView: 4,
-                gap: 24,
-                autoplay: 5000, // Slower autoplay to reduce lag
-                hoverpause: true,
-                bound: true, // Prevent overscrolling lag
-                animationDuration: 600, // Smoother transitions
+            // Initialize Swiper with unique selectors for navigation
+            const swiper = new Swiper('#services-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                },
+                navigation: {
+                    nextEl: '#services-swiper .swiper-button-next',
+                    prevEl: '#services-swiper .swiper-button-prev',
+                },
                 breakpoints: {
-                    1280: { perView: 3 },
-                    1024: { perView: 3 },
-                    768: { perView: 2 },
-                    480: { perView: 1 }
-                }
-            });
-            
-            // Mount the glide instance
-            glide.mount();
-
-            // Mobile menu toggle
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.querySelector('.nav-links');
-            const dropdowns = document.querySelectorAll('.dropdown');
-            
-            if (hamburger) {
-                hamburger.addEventListener('click', () => {
-                    hamburger.classList.toggle('active');
-                    navLinks.classList.toggle('active');
-                    
-                    // Close all dropdowns when mobile menu closes
-                    if (!navLinks.classList.contains('active')) {
-                        dropdowns.forEach(dropdown => {
-                            dropdown.classList.remove('active');
-                        });
-                    }
-                });
-            }
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', (e) => {
-                const navbar = document.querySelector('.navbar');
-                if (navbar && !navbar.contains(e.target) && window.innerWidth <= 768) {
-                    if (hamburger) hamburger.classList.remove('active');
-                    if (navLinks) navLinks.classList.remove('active');
-                    
-                    // Close all dropdowns
-                    dropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('active');
-                    });
-                }
-            });
-            
-            // Enhanced dropdown functionality for mobile and desktop
-            dropdowns.forEach(dropdown => {
-                const trigger = dropdown.querySelector('.dropdown-trigger');
-                
-                if (trigger) {
-                    // Handle click events
-                    trigger.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        if (window.innerWidth <= 768) {
-                            // Toggle dropdown on mobile
-                            const isActive = dropdown.classList.contains('active');
-                            
-                            // Close other dropdowns
-                            dropdowns.forEach(otherDropdown => {
-                                if (otherDropdown !== dropdown) {
-                                    otherDropdown.classList.remove('active');
-                                }
-                            });
-                            
-                            // Toggle current dropdown
-                            dropdown.classList.toggle('active');
-                        } else {
-                            // Toggle dropdown on desktop
-                            dropdown.classList.toggle('active');
-                        }
-                    });
-                    
-                    // Close dropdown when clicking outside on desktop
-                    if (window.innerWidth > 768) {
-                        document.addEventListener('click', (e) => {
-                            if (!dropdown.contains(e.target)) {
-                                dropdown.classList.remove('active');
-                            }
-                        });
-                    }
-                }
-            });
-            
-            // Navbar scroll effect
-            window.addEventListener('scroll', () => {
-                const navbar = document.querySelector('.navbar');
-                if (navbar) {
-                    if (window.scrollY > 50) {
-                        navbar.classList.add('scrolled');
-                    } else {
-                        navbar.classList.remove('scrolled');
-                    }
-                }
-            });
-
-            // Scroll animations
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.remove('opacity-0', 'translate-y-10');
-                        entry.target.classList.add('opacity-100', 'translate-y-0');
-
-                        const cards = entry.target.querySelectorAll('.card, .hq-card');
-                        cards.forEach((card, i) => {
-                            setTimeout(() => {
-                                card.classList.remove('opacity-0', 'scale-90');
-                                card.classList.add('opacity-100', 'scale-100');
-                            }, i * 150);
-                        });
-
-                        sectionObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.2 });
-
-            document.querySelectorAll('.reveal').forEach(el => {
-                sectionObserver.observe(el);
-            });
-
-            // Initialize AOS
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    duration: 800,
-                    once: true,
-                });
-            }
-
-            // Animate letters in header
-            document.querySelectorAll('.letter').forEach((letter, index) => {
-                letter.style.animationDelay = `${index * 100}ms`;
-            });
-            
-            // Footer animations
-            if (typeof gsap !== 'undefined') {
-                // Stagger fade-up for footer sections
-                gsap.from(".hover-grow", {
-                    scrollTrigger: {
-                        trigger: "footer",
-                        start: "top bottom",
-                        toggleActions: "play none none none"
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
                     },
-                    y: 50,
-                    opacity: 0,
-                    stagger: 0.25,
-                    duration: 1,
-                    ease: "power3.out"
-                });
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 25
+                    },
+                    1280: {
+                        slidesPerView: 3,
+                        spaceBetween: 30
+                    }
+                }
+            });
+            
+            // Add particles to hero section
+            function createParticles() {
+                const heroSection = document.querySelector('.hero-gradient');
+                for (let i = 0; i < 15; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    const size = Math.random() * 15 + 5;
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    const delay = Math.random() * 5;
+                    
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${posX}%`;
+                    particle.style.top = `${posY}%`;
+                    particle.style.animationDelay = `${delay}s`;
+                    
+                    heroSection.appendChild(particle);
+                }
             }
+            
+            createParticles();
         });
     </script>
-
-    {% include 'footer.html' %}
 </body>
 </html>

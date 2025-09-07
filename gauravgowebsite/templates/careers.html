@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.0/dist/css/glide.core.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.0/dist/css/glide.theme.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <style>
     :root {
       --primary-gradient-start: #2ecc71;
@@ -42,108 +41,195 @@
     }
 
     /* Hero Section */
-    .hero {
-      min-height: 100vh;
+    .hero-careers {
+      min-height: 60vh;
       background: linear-gradient(135deg, var(--cta-bg-start), var(--cta-bg-end));
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1rem;
-      opacity: 0;
-      transition: opacity 0.5s ease;
+      padding: 4rem 1rem 6rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-careers::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120vw;
+      height: 120vw;
+      background: radial-gradient(circle, rgba(46,204,113,0.08) 0%, transparent 70%);
+      z-index: 0;
     }
 
     .hero-content {
       text-align: center;
-      max-width: 800px;
+      max-width: 900px;
       width: 100%;
+      position: relative;
+      z-index: 1;
+      padding: 2rem 1rem;
     }
 
-    .hero-content h1 span {
-      opacity: 0;
-      display: inline-block;
-      transition: all 0.5s ease;
-      color: #f0f0f0;
-    }
-
-    .hero-content h1 span:hover {
-      transform: scale(1.2);
-      text-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
-      color: #fff;
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      background: linear-gradient(90deg, var(--primary-gradient-start), var(--primary-gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(46,204,113,0.2);
     }
 
     .hero-content p {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.8);
-      margin-top: 1rem;
-      opacity: 0;
-      transition: opacity 0.5s ease;
+      font-size: 1.35rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 2.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .form-card {
+    .apply-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--primary-gradient-start), var(--primary-gradient-end));
+      color: #111;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      padding: 1.1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 32px rgba(46,204,113,0.15);
+      text-decoration: none;
+      transition: all 0.3s;
+      margin-bottom: 1.5rem;
+    }
+
+    .apply-btn:hover {
+      background: linear-gradient(90deg, var(--primary-gradient-end), var(--primary-gradient-start));
+      color: var(--electric-green);
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 12px 32px rgba(46,204,113,0.25);
+    }
+
+    .hero-visual {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual .icon-block {
+      background: rgba(15,15,30,0.7);
+      border: 1.5px solid rgba(46,204,113,0.18);
+      border-radius: 1.5rem;
+      padding: 2.2rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 180px;
+      box-shadow: 0 8px 32px rgba(46,204,113,0.08);
+      font-size: 2.5rem;
+      color: var(--electric-green);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      transition: transform 0.3s;
+    }
+
+    .hero-visual .icon-block span {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-top: 1rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .hero-visual .icon-block:hover {
+      transform: translateY(-8px) scale(1.04);
+      border-color: var(--primary-gradient-end);
+      color: var(--primary-gradient-end);
+    }
+
+    /* Section Titles */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin: 4rem 0 2rem 0;
+      color: var(--electric-green);
+      text-shadow: 0 0 10px rgba(46,204,113,0.3);
+    }
+
+    /* Glide Slider */
+    .glide__slide {
       background: rgba(15, 15, 30, 0.7);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(46, 204, 113, 0.2);
+      border: 1px solid rgba(46, 204, 113, 0.2);
       border-radius: 1rem;
       padding: 2rem;
-      margin-top: 2rem;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
+      min-height: 300px;
+      margin: 0 10px;
+      box-shadow: 0 8px 24px rgba(46,204,113,0.07);
+      transition: all 0.4s;
     }
 
-    .form-card input,
-    .form-card select,
-    .form-card textarea {
-      background: rgba(20, 20, 35, 0.6);
-      border: 1px solid #2ecc71;
+    .glide__slide h3 {
       color: #f0f0f0;
-      border-radius: 0.5rem;
-      padding: 0.75rem;
-      width: 100%;
-      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
     }
 
-    .form-card button {
+    .glide__slide p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .glide__arrow {
       background: linear-gradient(to right, #2ecc71, #3498db);
       color: #f0f0f0;
-      transition: background 0.3s;
+      border: none;
+      padding: 0.5rem;
       border-radius: 0.5rem;
-      padding: 0.75rem;
-      font-weight: 600;
-      width: 100%;
+      transition: background 0.3s;
+      font-size: 1.3rem;
+      margin: 0 0.5rem;
     }
 
-    .form-card button:hover {
+    .glide__arrow:hover {
       background: linear-gradient(to right, #27ae60, #2980b9);
     }
 
-    /* Why Join Section */
+    /* Why Join Us Section */
     #why-join {
-      padding: 4rem 2rem;
+      padding: 5rem 2rem 7rem 2rem;
       background: linear-gradient(135deg, var(--main-bg-start), var(--main-bg-end));
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
     }
 
-    #why-join h2 span {
-      opacity: 0;
-      display: inline-block;
-      transition: all 0.5s ease;
-      color: #f0f0f0;
-    }
-
-    #why-join h2 span:hover {
-      transform: scale(1.2);
-      text-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
-      color: #fff;
+    #why-join h2 {
+      font-size: 2.2rem;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--primary-gradient-end);
+      margin-bottom: 2.5rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(52,152,219,0.2);
     }
 
     .benefits-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.5rem;
       margin-top: 2rem;
       max-width: 1200px;
       margin-left: auto;
@@ -154,246 +240,88 @@
       background: rgba(15, 15, 30, 0.7);
       border: 1px solid rgba(46, 204, 113, 0.2);
       border-radius: 1rem;
-      padding: 2rem;
+      padding: 2.2rem 1.5rem;
       text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
+      box-shadow: 0 8px 24px rgba(46,204,113,0.07);
+      transition: all 0.4s;
     }
 
     .benefit-card:hover {
-      transform: translateY(-10px);
-      border-color: #9b59b6; /* Royal Purple on hover */
+      transform: translateY(-10px) scale(1.03);
+      border-color: #9b59b6;
     }
 
     .benefit-card h3 {
       color: #f0f0f0;
       font-family: "Orbitron", sans-serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.7rem;
     }
 
     .benefit-card p {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
     }
 
-    /* Requirements Section */
-    #requirements {
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, var(--cta-bg-start), var(--cta-bg-end));
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-visual { flex-direction: column; gap: 1.5rem; }
+      .benefits-grid { grid-template-columns: 1fr; }
     }
-
-    #requirements h2 span {
-      opacity: 0;
-      display: inline-block;
-      transition: all 0.5s ease;
-      color: #f0f0f0;
-    }
-
-    #requirements h2 span:hover {
-      transform: scale(1.2);
-      text-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
-      color: #fff;
-    }
-
-    .glide__slide {
-      background: rgba(15, 15, 30, 0.7);
-      border: 1px solid rgba(46, 204, 113, 0.2);
-      border-radius: 1rem;
-      padding: 2rem;
-      min-height: 300px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-    }
-
-    .glide__slide h3 {
-      color: #f0f0f0;
-    }
-
-    .glide__slide p {
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .glide__arrow {
-      background: linear-gradient(to right, #2ecc71, #3498db);
-      color: #f0f0f0;
-      border: none;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      transition: background 0.3s;
-    }
-
-    .glide__arrow:hover {
-      background: linear-gradient(to right, #27ae60, #2980b9);
-    }
-
-    .hover-grow {
-      transition: transform 0.3s ease;
-    }
-
-    .hover-grow:hover {
-      transform: translateY(-6px);
-    }
-
-    .pulse {
-      animation: pulse 3s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.07);
-      }
-    }
-
-    .gradient-text {
-      background: linear-gradient(90deg, #4ade80, #3b82f6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .glow-sm {
-      text-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
-    }
-
-    /* Animations */
-    @keyframes fadeInDown {
-      from {
-        transform: translateY(-20px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-
-    .floating {
-      animation: float 3s ease-in-out infinite;
-    }
-
-    /* Responsive Design */
     @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2rem;
-      }
-      
-      .hero-content p {
-        font-size: 1rem;
-      }
-      
-      .form-card {
-        padding: 1.5rem;
-      }
-      
-      #why-join, #requirements {
-        padding: 2rem 1rem;
-      }
-      
-      .benefits-grid {
-        grid-template-columns: 1fr;
-      }
+      .hero-content h1 { font-size: 2rem; }
+      .section-title { font-size: 2rem; }
+      #why-join { padding: 3rem 1rem 5rem 1rem; }
     }
-    
     @media (max-width: 480px) {
-      .hero {
-        height: auto;
-        min-height: 80vh;
-      }
-      
-      .hero-content h1 {
-        font-size: 1.8rem;
-      }
-      
-      .benefit-card h3 {
-        font-size: 1.2rem;
-      }
-      
-      .benefit-card p {
-        font-size: 0.9rem;
-      }
+      .hero-careers { padding: 2rem 0 3rem 0; }
+      .hero-content h1 { font-size: 1.3rem; }
+      .section-title { font-size: 1.2rem; }
+      .benefit-card { padding: 1.2rem 0.5rem; }
     }
   </style>
 </head>
 
 <body>
-
   {% include "header.html" %}
-  
-  <section class="hero">
+
+  <!-- Hero Section -->
+  <section class="hero-careers">
     <div class="hero-content">
-      <h1>
-        <span>C</span><span>a</span><span>r</span><span>e</span><span>e</span><span>r</span><span>s</span>
-        <span>a</span><span>t</span>
-        <span>G</span><span>a</span><span>u</span><span>r</span><span>a</span><span>v</span><span>G</span><span>o</span>
-      </h1>
-      <p>Join us to innovate and shape the future of gaming!</p>
-      <div class="form-card max-w-md mx-auto mt-6">
-        <h3 class="text-xl font-bold text-[#3498db] mb-4">Apply Now</h3>
-        <div class="space-y-4">
-          <input type="text" placeholder="Full Name" class="w-full p-2 rounded" />
-          <input type="email" placeholder="Email" class="w-full p-2 rounded" />
-          <select class="w-full p-2 rounded">
-            <option value="" disabled selected>Select Role</option>
-            <option value="developer">Game Developer</option>
-            <option value="designer">Game Designer</option>
-            <option value="artist">3D Artist</option>
-          </select>
-          <textarea placeholder="Tell us about yourself" class="w-full p-2 rounded" rows="4"></textarea>
-          <button class="w-full p-2 rounded font-semibold">Submit</button>
+      <h1>Careers at GauravGo Games</h1>
+      <p>
+        Join our mission to revolutionize gaming in India and beyond.<br>
+        We’re looking for passionate creators, developers, artists, and visionaries to help us build the future of interactive entertainment.<br>
+        <span style="color:var(--primary-gradient-end);font-weight:600;">Ready to level up your career?</span>
+      </p>
+      <a href="https://forms.gle/your-google-form-link" target="_blank" class="apply-btn">
+        <i class="fas fa-external-link-alt mr-2"></i>Apply via Google Form
+      </a>
+      <div class="hero-visual">
+        <div class="icon-block">
+          <i class="fas fa-gamepad"></i>
+          <span>Game Dev</span>
+        </div>
+        <div class="icon-block">
+          <i class="fas fa-vr-cardboard"></i>
+          <span>AR/VR</span>
+        </div>
+        <div class="icon-block">
+          <i class="fas fa-paint-brush"></i>
+          <span>3D Art</span>
+        </div>
+        <div class="icon-block">
+          <i class="fas fa-users"></i>
+          <span>Community</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="why-join">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-12">
-        <span>W</span><span>h</span><span>y</span> <span>J</span><span>o</span><span>i</span><span>n</span>
-        <span>U</span><span>s</span>?
-      </h2>
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="w-16 h-16 mx-auto rounded-full bg-[#2ecc7120] flex items-center justify-center mb-4">
-            <i class="fas fa-lightbulb text-2xl text-[#2ecc71]"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Innovative Work</h3>
-          <p>Create cutting-edge games with the latest technology.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="w-16 h-16 mx-auto rounded-full bg-[#3498db20] flex items-center justify-center mb-4">
-            <i class="fas fa-users text-2xl text-[#3498db]"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Team Spirit</h3>
-          <p>Collaborate with a passionate and diverse team.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="w-16 h-16 mx-auto rounded-full bg-[#9b59b620] flex items-center justify-center mb-4">
-            <i class="fas fa-chart-line text-2xl text-[#9b59b6]"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Growth Opportunities</h3>
-          <p>Advance your career with training and mentorship.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- System Requirements Section -->
   <section id="requirements">
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-12">
-        <span>S</span><span>y</span><span>s</span><span>t</span><span>e</span><span>m</span>
-        <span>R</span><span>e</span><span>q</span><span>u</span><span>i</span><span>r</span><span>e</span><span>m</span><span>e</span><span>n</span><span>t</span><span>s</span>
-      </h2>
+      <div class="section-title">System Requirements</div>
       <div class="glide mt-6">
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
@@ -401,7 +329,7 @@
               <div class="w-16 h-16 mx-auto rounded-full bg-[#e74c3c20] flex items-center justify-center mb-4">
                 <i class="fas fa-code text-2xl text-[#e74c3c]"></i>
               </div>
-              <h3 class="text-xl font-bold mb-4">Game Developer</h3>
+              <h3>Game Developer</h3>
               <p><strong>CPU:</strong> Intel i7 or Ryzen 7 (3.0GHz+)</p>
               <p><strong>RAM:</strong> 16GB DDR4</p>
               <p><strong>GPU:</strong> NVIDIA GTX 1660 Ti (4GB VRAM)</p>
@@ -412,7 +340,7 @@
               <div class="w-16 h-16 mx-auto rounded-full bg-[#f39c1220] flex items-center justify-center mb-4">
                 <i class="fas fa-pen-nib text-2xl text-[#f39c12]"></i>
               </div>
-              <h3 class="text-xl font-bold mb-4">Game Designer</h3>
+              <h3>Game Designer</h3>
               <p><strong>CPU:</strong> Intel i5 or Ryzen 5 (2.5GHz+)</p>
               <p><strong>RAM:</strong> 8GB DDR4</p>
               <p><strong>GPU:</strong> NVIDIA GTX 1050 (2GB VRAM)</p>
@@ -423,7 +351,7 @@
               <div class="w-16 h-16 mx-auto rounded-full bg-[#3498db20] flex items-center justify-center mb-4">
                 <i class="fas fa-paint-brush text-2xl text-[#3498db]"></i>
               </div>
-              <h3 class="text-xl font-bold mb-4">3D Artist</h3>
+              <h3>3D Artist</h3>
               <p><strong>CPU:</strong> Intel i5 or Ryzen 5 (2.8GHz+)</p>
               <p><strong>RAM:</strong> 8GB DDR4</p>
               <p><strong>GPU:</strong> NVIDIA RTX 2060 (6GB VRAM)</p>
@@ -435,6 +363,50 @@
         <div class="glide__arrows" data-glide-el="controls">
           <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fas fa-chevron-left"></i></button>
           <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Join Us Section -->
+  <section id="why-join">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2>Why Join Us?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="w-16 h-16 mx-auto rounded-full bg-[#2ecc7120] flex items-center justify-center mb-4">
+            <i class="fas fa-lightbulb text-2xl text-[#2ecc71]"></i>
+          </div>
+          <h3>Innovative Work</h3>
+          <p>Create cutting-edge games with the latest technology.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="w-16 h-16 mx-auto rounded-full bg-[#3498db20] flex items-center justify-center mb-4">
+            <i class="fas fa-users text-2xl text-[#3498db]"></i>
+          </div>
+          <h3>Team Spirit</h3>
+          <p>Collaborate with a passionate and diverse team.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="w-16 h-16 mx-auto rounded-full bg-[#9b59b620] flex items-center justify-center mb-4">
+            <i class="fas fa-chart-line text-2xl text-[#9b59b6]"></i>
+          </div>
+          <h3>Growth Opportunities</h3>
+          <p>Advance your career with training and mentorship.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="w-16 h-16 mx-auto rounded-full bg-[#f39c1220] flex items-center justify-center mb-4">
+            <i class="fas fa-globe-asia text-2xl text-[#f39c12]"></i>
+          </div>
+          <h3>Global Impact</h3>
+          <p>Be part of a team making a mark on the Indian and global gaming industry.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="w-16 h-16 mx-auto rounded-full bg-[#e74c3c20] flex items-center justify-center mb-4">
+            <i class="fas fa-heart text-2xl text-[#e74c3c]"></i>
+          </div>
+          <h3>Inclusive Culture</h3>
+          <p>Work in a supportive, inclusive, and fun environment.</p>
         </div>
       </div>
     </div>
@@ -452,54 +424,8 @@
         640: { perView: 1 },
       },
     }).mount();
-
-    // Scroll animations
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (entry.target.classList.contains("hero")) {
-              entry.target.style.opacity = "1";
-              entry.target.querySelectorAll("h1 span").forEach((span, index) => {
-                setTimeout(() => (span.style.opacity = "1"), index * 100);
-              });
-              entry.target.querySelector("p").style.opacity = "1";
-              entry.target.querySelector(".form-card").style.opacity = "1";
-              entry.target.querySelector(".form-card").style.transform = "translateY(0)";
-            } else if (entry.target.id === "why-join") {
-              entry.target.style.opacity = "1";
-              entry.target.style.transform = "translateY(0)";
-              entry.target.querySelectorAll("h2 span").forEach((span, index) => {
-                setTimeout(() => (span.style.opacity = "1"), index * 100);
-              });
-              entry.target.querySelectorAll(".benefit-card").forEach((card, index) => {
-                setTimeout(() => (card.style.opacity = "1"), index * 200);
-                setTimeout(() => (card.style.transform = "translateY(0)"), index * 200);
-              });
-            } else if (entry.target.id === "requirements") {
-              entry.target.style.opacity = "1";
-              entry.target.style.transform = "translateY(0)";
-              entry.target.querySelectorAll("h2 span").forEach((span, index) => {
-                setTimeout(() => (span.style.opacity = "1"), index * 100);
-              });
-              entry.target.querySelectorAll(".glide__slide").forEach((slide, index) => {
-                setTimeout(() => (slide.style.opacity = "1"), index * 200);
-                setTimeout(() => (slide.style.transform = "translateY(0)"), index * 200);
-              });
-            }
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll(".hero, #why-join, #requirements").forEach((section) => observer.observe(section));
   </script>
 
   {% include 'footer.html' %}
-
-  
 </body>
-
 </html>
