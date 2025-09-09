@@ -1,12 +1,12 @@
 {% load static %}
-
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Games - GauravGo</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -257,15 +257,15 @@
             background: rgba(15, 15, 30, 0.7);
             border: 1px solid rgba(46, 204, 113, 0.2);
             border-radius: 0.75rem;
-            padding: 1.5rem;
+            padding: 1.2rem 1.2rem 1rem 1.2rem;
             display: flex;
             flex-direction: column;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             backdrop-filter: blur(5px);
             overflow: hidden;
-            height: auto;
-            min-height: 370px; /* Ensures all cards have the same minimum height */
+            min-height: 300px;
+            max-height: 340px;
         }
 
         .swiper-slide::before {
@@ -396,19 +396,13 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(5px);
             position: absolute;
-            top: 50%;
+            top: 45%;
             transform: translateY(-50%);
             z-index: 10;
             cursor: pointer;
         }
-
-        .swiper-button-prev {
-            left: 10px;
-        }
-
-        .swiper-button-next {
-            right: 10px;
-        }
+        .swiper-button-prev { left: 0.5rem; }
+        .swiper-button-next { right: 0.5rem; }
 
         .swiper-button-prev::after,
         .swiper-button-next::after {
@@ -518,7 +512,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-                <div id="all-games" class="swiper-container">
+                <div id="all-games" class="swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <img src="{% static 'images/media-home-page/emoji-wizard.png' %}" alt="Emoji Wizard">
@@ -602,8 +596,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev all-games-prev"></div>
+                    <div class="swiper-button-next all-games-next"></div>
                 </div>
             </div>
             
@@ -616,7 +610,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-                <div id="battle-royale-games" class="swiper-container">
+                <div id="battle-royale-games" class="swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <img src="{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}" alt="Galactic Shooter">
@@ -655,8 +649,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev battle-royale-prev"></div>
+                    <div class="swiper-button-next battle-royale-next"></div>
                 </div>
             </div>
             
@@ -669,7 +663,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-                <div id="fps-games" class="swiper-container">
+                <div id="fps-games" class="swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <img src="{% static 'images/media-home-page/1.jpg' %}" alt="Survival Arena">
@@ -708,8 +702,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev fps-prev"></div>
+                    <div class="swiper-button-next fps-next"></div>
                 </div>
             </div>
             
@@ -722,7 +716,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-                <div id="f2p-games" class="swiper-container">
+                <div id="f2p-games" class="swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <img src="{% static 'images/media-home-page/emoji-wizard.png' %}" alt="Emoji Wizard">
@@ -770,8 +764,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev f2p-prev"></div>
+                    <div class="swiper-button-next f2p-next"></div>
                 </div>
             </div>
         </div>
@@ -780,7 +774,7 @@
         <button id="scrollToTop" class="scroll-to-top">↑</button>
     </section>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
         // Initialize AOS
@@ -818,9 +812,10 @@
             }
         }
 
-        // Initialize Swiper sliders with hover pause functionality
-        const initSwiper = (selector) => {
-            const swiper = new Swiper(selector, {
+        // Initialize Swiper sliders with proper configuration
+        function initSwipers() {
+            // All Games
+            new Swiper('#all-games', {
                 slidesPerView: 1,
                 spaceBetween: 20,
                 loop: true,
@@ -831,64 +826,102 @@
                 },
                 speed: 900,
                 navigation: {
-                    nextEl: `${selector} .swiper-button-next`,
-                    prevEl: `${selector} .swiper-button-prev`,
+                    nextEl: '.all-games-next',
+                    prevEl: '.all-games-prev',
                 },
                 breakpoints: {
-                    640: { 
-                        slidesPerView: 2,
-                        spaceBetween: 20
-                    },
-                    1024: { 
-                        slidesPerView: 3,
-                        spaceBetween: 25
-                    },
-                    1280: {
-                        slidesPerView: 4,
-                        spaceBetween: 30
-                    }
+                    640: { slidesPerView: 2, spaceBetween: 20 },
+                    1024: { slidesPerView: 3, spaceBetween: 25 },
+                    1280: { slidesPerView: 4, spaceBetween: 30 }
                 }
             });
-            
-            // Enhanced hover control
-            const swiperContainer = document.querySelector(selector);
-            
-            swiperContainer.addEventListener('mouseenter', () => {
-                swiper.autoplay.stop();
+            // Battle Royale
+            new Swiper('#battle-royale-games', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                },
+                speed: 900,
+                navigation: {
+                    nextEl: '.battle-royale-next',
+                    prevEl: '.battle-royale-prev',
+                },
+                breakpoints: {
+                    640: { slidesPerView: 2, spaceBetween: 20 },
+                    1024: { slidesPerView: 3, spaceBetween: 25 },
+                    1280: { slidesPerView: 4, spaceBetween: 30 }
+                }
             });
-            
-            swiperContainer.addEventListener('mouseleave', () => {
-                swiper.autoplay.start();
+            // FPS
+            new Swiper('#fps-games', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                },
+                speed: 900,
+                navigation: {
+                    nextEl: '.fps-next',
+                    prevEl: '.fps-prev',
+                },
+                breakpoints: {
+                    640: { slidesPerView: 2, spaceBetween: 20 },
+                    1024: { slidesPerView: 3, spaceBetween: 25 },
+                    1280: { slidesPerView: 4, spaceBetween: 30 }
+                }
             });
-            
-            return swiper;
-        };
-
-        const allGamesSwiper = initSwiper('#all-games');
-        const battleRoyaleSwiper = initSwiper('#battle-royale-games');
-        const fpsSwiper = initSwiper('#fps-games');
-        const f2pSwiper = initSwiper('#f2p-games');
+            // F2P
+            new Swiper('#f2p-games', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                },
+                speed: 900,
+                navigation: {
+                    nextEl: '.f2p-next',
+                    prevEl: '.f2p-prev',
+                },
+                breakpoints: {
+                    640: { slidesPerView: 2, spaceBetween: 20 },
+                    1024: { slidesPerView: 3, spaceBetween: 25 },
+                    1280: { slidesPerView: 4, spaceBetween: 30 }
+                }
+            });
+        }
 
         // Scroll to top functionality
         const scrollToTopBtn = document.getElementById('scrollToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.classList.add('active');
-            } else {
-                scrollToTopBtn.classList.remove('active');
-            }
-        });
+        if (scrollToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('active');
+                } else {
+                    scrollToTopBtn.classList.remove('active');
+                }
+            });
 
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
 
         // Hamburger menu toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         const dropdowns = document.querySelectorAll('.dropdown');
         
-        if (hamburger) {
+        if (hamburger && navLinks) {
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('active');
                 navLinks.classList.toggle('active');
@@ -920,19 +953,21 @@
         dropdowns.forEach(dropdown => {
             const trigger = dropdown.querySelector('a');
             
-            trigger.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    dropdown.classList.toggle('active');
-                    
-                    // Close other dropdowns
-                    dropdowns.forEach(otherDropdown => {
-                        if (otherDropdown !== dropdown) {
-                            otherDropdown.classList.remove('active');
-                        }
-                    });
-                }
-            });
+            if (trigger) {
+                trigger.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                        
+                        // Close other dropdowns
+                        dropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }
         });
         
         // Navbar scroll effect
@@ -1017,8 +1052,11 @@
             });
         });
         
-        // Create particles after DOM loads
-        document.addEventListener('DOMContentLoaded', createParticles);
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            initSwipers();
+        });
     </script>
 
     {% include 'footer.html' %}
