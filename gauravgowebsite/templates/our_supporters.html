@@ -5,34 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gauravgo Games - Our Supporters</title>
+    <title>Gauravgo Games - Media Coverage</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #2ecc71, #3498db);
-            --bg-main: linear-gradient(135deg, #0a0a1a, #050510);
-            --bg-cta: linear-gradient(135deg, #0c1d2f, #091622);
-            --bg-project-chaos: linear-gradient(135deg, #0c1d2f, #091622);
-            --bg-nexus-arena: linear-gradient(135deg, #1a0c2f, #160922);
             --electric-green: #2ecc71;
             --crystal-blue: #3498db;
             --royal-purple: #9b59b6;
-            --fiery-red: #e74c3c;
-            --sun-orange: #f39c12;
-            --teal: #1abc9c;
             --text-primary: #f0f0f0;
-            --text-secondary: rgba(255, 255, 255, 0.8);
-            --feature-card-bg: rgba(15, 15, 30, 0.7);
-            --feature-card-border: rgba(46, 204, 113, 0.2);
-            --stat-card-bg: rgba(20, 20, 35, 0.6);
-            --stat-card-border: rgba(46, 204, 113, 0.2);
-            --team-card-bg: rgba(20, 20, 35, 0.6);
-            --facebook: #4267B2;
-            --navbar-height: 80px;
         }
 
         * {
@@ -42,75 +27,170 @@
         }
 
         body {
-            background: var(--bg-main);
+            background: linear-gradient(135deg, #0a0a1a, #050510);
             color: var(--text-primary);
             font-family: 'Orbitron', sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
-            padding-top: var(--navbar-height);
+            padding-top: 80px;
         }
 
-        /* Supporters Page Styles */
-        .logo-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            background: var(--feature-card-bg);
-            border: 1px solid var(--feature-card-border);
-            border-radius: 8px;
+        /* Particle background effect */
+        .particle-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
             overflow: hidden;
         }
 
-        .logo-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.5), 0 0 15px rgba(46, 204, 113, 0.3);
-        }
-
-        .logo-card:hover::after {
-            content: 'Partner';
+        .particle {
             position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--electric-green);
-            font-size: 1rem;
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(46, 204, 113, 0.8), 0 0 20px rgba(46, 204, 113, 0.6);
-            opacity: 0;
-            animation: fadeInGlow 0.3s ease forwards;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: floatParticle 15s infinite linear;
         }
 
-        @keyframes fadeInGlow {
-            to {
-                opacity: 1;
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(-100vh) translateX(20vw);
             }
         }
 
-        .supporters-title,
-        .recognitions-title {
-            font-size: 3rem;
-            background: linear-gradient(to right, #2ecc71, #1abc9c, #3498db);
+        /* Section titles */
+        .section-title {
+            font-size: 3.5rem;
+            background: linear-gradient(to right, var(--electric-green), var(--crystal-blue), var(--royal-purple));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-align: center;
-            margin-top: 80px;
-            margin-bottom: 40px;
+            margin-bottom: 3rem;
             text-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
+            position: relative;
+            padding-bottom: 1rem;
         }
 
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--electric-green), var(--crystal-blue));
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--electric-green);
+        }
+
+        /* Logo cards */
+        .logo-card {
+            position: relative;
+            background: rgba(15, 15, 30, 0.7);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .logo-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--electric-green), var(--crystal-blue), var(--royal-purple), var(--electric-green));
+            background-size: 400% 400%;
+            z-index: -1;
+            border-radius: 14px;
+            animation: gradientBorder 3s ease infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes gradientBorder {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .logo-card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 15px 35px rgba(46, 204, 113, 0.4);
+        }
+
+        .logo-card:hover::before {
+            opacity: 1;
+            box-shadow: 0 0 20px var(--electric-green), 0 0 40px var(--crystal-blue);
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .logo-card:hover .logo-img {
+            transform: scale(1.05);
+        }
+
+        /* Section divider */
+        .angled-divider {
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            margin: 5rem 0;
+        }
+
+        .angled-divider::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -5%;
+            width: 110%;
+            height: 200%;
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.1) 0%, rgba(52, 152, 219, 0.1) 50%, rgba(155, 89, 182, 0.1) 100%);
+            transform: rotate(3deg);
+            z-index: -1;
+        }
+
+        /* Scroll to top button */
         .scroll-to-top {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--primary-gradient);
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--electric-green), var(--crystal-blue));
             color: #0e0e0e;
-            padding: 12px;
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.8);
+            transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(20px);
             z-index: 100;
+            cursor: pointer;
         }
 
         .scroll-to-top.visible {
@@ -119,161 +199,64 @@
         }
 
         .scroll-to-top:hover {
-            background: linear-gradient(135deg, #27ae60, #2980b9);
-            box-shadow: 0 0 15px rgba(46, 204, 113, 1);
-        }
-
-        
-
-        .hover-grow {
-            transition: transform 0.3s ease;
-        }
-
-        .hover-grow:hover {
-            transform: translateY(-6px);
-        }
-
-        .pulse {
-            animation: pulse 3s ease-in-out infinite;
+            box-shadow: 0 0 30px var(--electric-green), 0 0 40px var(--crystal-blue);
+            animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
-
-            0%,
+            0% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(46, 204, 113, 0);
+            }
             100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.07);
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
             }
         }
 
-        .circle-animation {
-            animation: rotate 25s linear infinite;
-            transform-origin: center;
-        }
-
-        @keyframes rotate {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #4ade80, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Responsive styles */
+        /* Responsive adjustments */
         @media (max-width: 1024px) {
-            .nav-links {
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .supporters-title,
-            .recognitions-title {
-                font-size: 2.5rem;
+            .section-title {
+                font-size: 3rem;
             }
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                padding: 0 1rem;
+            .section-title {
+                font-size: 2.5rem;
             }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background: rgba(10, 10, 26, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 6rem 2rem 2rem;
-                gap: 1.5rem;
-                transition: right 0.5s ease;
-                z-index: 99;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
-                justify-content: flex-start;
-                display: flex;
-                /* Ensure display is set to flex when active */
+            
+            .logo-img {
+                height: 180px;
             }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links>li {
-                height: auto;
-                width: 100%;
-            }
-
-            .nav-links a {
-                height: auto;
-                padding: 0.5rem 0;
-                width: 100%;
-            }
-
-            .dropdown {
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-                height: auto;
-            }
-
-            .dropdown>a {
-                width: 100%;
-            }
-
-            .dropdown-menu {
-                position: static;
-                display: none;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                width: 100%;
-                padding: 0.5rem 0;
-                margin: 0.5rem 0 0 1rem;
-                background: rgba(20, 20, 36, 0.8);
-                border-left: 2px solid #4ade80;
-                border-radius: 0.25rem;
-            }
-
-            .dropdown:hover .dropdown-menu {
-                transform: none;
-            }
-
-            .dropdown.active .dropdown-menu {
-                display: block;
-            }
-
-            .supporters-title,
-            .recognitions-title {
-                font-size: 2rem;
+            
+            .angled-divider {
+                height: 70px;
+                margin: 4rem 0;
             }
         }
 
-        @media (max-width: 480px) {
-
-            .supporters-title,
-            .recognitions-title {
-                font-size: 1.8rem;
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .logo-img {
+                height: 150px;
+                padding: 1.5rem;
+            }
+            
+            .angled-divider {
+                height: 50px;
+                margin: 3rem 0;
+            }
+            
+            .scroll-to-top {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
             }
         }
     </style>
@@ -283,219 +266,184 @@
 
     {% include "header.html" %}
 
-    <!-- New Navbar -->
-    
+    <!-- Particle background -->
+    <div class="particle-bg" id="particle-bg"></div>
 
-    <!-- Supporters Page Content -->
+    <!-- Media Coverage Page Content -->
     <main class="container mx-auto px-4 py-12">
-        <h1 class="supporters-title">Our Supporters</h1>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/supp-1.png' %}" alt="Supporter 1 Logo"
-                    class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/supp-2.png' %}" alt="Supporter 2 Logo"
-                    class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/supp-3.png' %}" alt="Supporter 3 Logo"
-                    class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/supp-4.png' %}" alt="Supporter 4 Logo"
-                    class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/supp-5.png' %}" alt="Supporter 5 Logo"
-                    class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/supp-6.png' %}" alt="Supporter 6 Logo"
-                    class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/supp-7.png' %}" alt="Supporter 7 Logo"
-                    class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/supp-8.png' %}" alt="Supporter 8 Logo"
-                    class="w-full h-96 object-contain p-4">
+        <h1 class="section-title">Media Coverage</h1>
+        <div class="mb-12">
+            <h2 class="section-title" style="font-size:2rem;">BHOOMIPUTRA COVERAGE</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="logo-card"><iframe class="w-full h-64" src="https://www.youtube.com/embed/mYurblD-c2U" title="Bhoomiputra Gameplay" frameborder="0" allowfullscreen></iframe></div>
+                <div class="logo-card"><iframe class="w-full h-64" src="https://www.youtube.com/embed/NRd46b8jFdg" title="Developer Interview" frameborder="0" allowfullscreen></iframe></div>
+                <div class="logo-card"><iframe class="w-full h-64" src="https://www.youtube.com/embed/n6fEwMWxcFc" title="Behind the Scenes" frameborder="0" allowfullscreen></iframe></div>
+                <div class="logo-card"><iframe class="w-full h-64" src="https://www.youtube.com/embed/_i8ZM4u54tE" title="Cultural Impact" frameborder="0" allowfullscreen></iframe></div>
+                <div class="logo-card"><iframe class="w-full h-64" src="https://www.youtube.com/embed/6gY-Yhcm6SA" title="Technical Breakdown" frameborder="0" allowfullscreen></iframe></div>
+                <div class="logo-card"><iframe class="w-full h-64" src="https://www.youtube.com/embed/71SbaUOOjHw" title="Player Reactions" frameborder="0" allowfullscreen></iframe></div>
+                <div class="logo-card"><iframe class="w-full h-64" src="https://www.youtube.com/embed/CTvun6MFUQU" title="Media Coverage Compilation" frameborder="0" allowfullscreen></iframe></div>
             </div>
         </div>
-
-        <h2 class="recognitions-title">Recognitions</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/reco1.png' %}"
-                    alt="Recognition 1 Logo" class="w-full h-96 object-contain p-4">
+        <div class="mb-12">
+            <h2 class="section-title" style="font-size:2rem;">SENA PC COVERAGE</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="logo-card"><iframe class="w-full h-64" src="https://www.youtube.com/embed/qg6SMKZMbaw" title="Sena Game Trailer" frameborder="0" allowfullscreen></iframe></div>
+                <div class="logo-card"><iframe class="w-full h-64" src="https://www.youtube.com/embed/f0lNhVt3QMI" title="Sena Gameplay" frameborder="0" allowfullscreen></iframe></div>
             </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/reco-2.png' %}"
-                    alt="Recognition 2 Logo" class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/reco-3.png' %}"
-                    alt="Recognition 3 Logo" class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/reco-4.png' %}"
-                    alt="Recognition 4 Logo" class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/reco-5.png' %}"
-                    alt="Recognition 5 Logo" class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/reco-6.png' %}"
-                    alt="Recognition 6 Logo" class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/reco-7.png' %}"
-                    alt="Recognition 7 Logo" class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/reco-8.png' %}"
-                    alt="Recognition 8 Logo" class="w-full h-96 object-contain p-4">
-            </div>
-            <div class="logo-card opacity-0">
-                <img src="{% static 'images/supporters-media/reco-9.png' %}"
-                    alt="Recognition 9 Logo" class="w-full h-96 object-contain p-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="logo-card flex flex-col items-center p-4">
+                    <img src="https://gauravgo.com/wp-content/uploads/2024/09/image_2024-09-26_142517208.jpg" alt="Sena Article" class="logo-img mb-4" style="height:120px;object-fit:contain;">
+                    <a href="https://www.prabhatkhabar.com/state/jharkhand/dhanbad/indian-air-force-wing-commander-abhinandan-sena-video-game-jharkhand-news-indian-army-prt" target="_blank" class="text-[#2ecc71] hover:text-[#3498db] font-bold">Read Article →</a>
+                </div>
+                <div class="logo-card flex flex-col items-center p-4">
+                    <img src="https://gauravgo.com/wp-content/uploads/2024/09/sena_coverage.png" alt="Sena Article" class="logo-img mb-4" style="height:120px;object-fit:contain;">
+                    <a href="https://jharkhandupdates.com/students-from-jharkhand-develop-video-game-sena-based-on-balakot-air-strikes/" target="_blank" class="text-[#2ecc71] hover:text-[#3498db] font-bold">Read Article →</a>
+                </div>
+                <div class="logo-card flex flex-col items-center p-4">
+                    <img src="https://gauravgo.com/wp-content/uploads/2024/09/sena_dainik_jagran.png" alt="Sena Article" class="logo-img mb-4" style="height:120px;object-fit:contain;">
+                    <a href="https://www.jagran.com/jharkhand/dhanbad-local-video-game-sena-strike-encounter-for-nation-by-abhinandanlaunches-today-at-dhanbad-20985484.html" target="_blank" class="text-[#2ecc71] hover:text-[#3498db] font-bold">Read Article →</a>
+                </div>
             </div>
         </div>
-
-        <button class="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
-                </path>
-            </svg>
-        </button>
+        <div class="mb-12">
+            <h2 class="section-title" style="font-size:2rem;">COMPANY/TEAM COVERAGE</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="logo-card flex flex-col items-center p-4">
+                    <img src="https://gauravgo.com/wp-content/uploads/2024/10/times_of_india-1-1024x611.png" alt="Times of India" class="logo-img mb-4" style="height:120px;object-fit:contain;">
+                    <a href="https://timesofindia.indiatimes.com/technology/times-techies/they-learnt-to-build-games-from-free-online-sites/articleshow/112851603.cms" target="_blank" class="text-[#2ecc71] hover:text-[#3498db] font-bold">Read Article →</a>
+                </div>
+                <div class="logo-card flex flex-col items-center p-4">
+                    <img src="https://gauravgo.com/wp-content/uploads/2024/11/GG_AIGF_COVERAGE-transformed.png" alt="AIGF Coverage" class="logo-img mb-4" style="height:120px;object-fit:contain;">
+                    <a href="https://www.linkedin.com/pulse/have-query-online-gaming-india-write-relationsaigfin-kwohc/" target="_blank" class="text-[#2ecc71] hover:text-[#3498db] font-bold">Read Article →</a>
+                </div>
+                <div class="logo-card flex flex-col items-center p-4">
+                    <img src="https://gauravgo.com/wp-content/uploads/2025/03/img.jpg" alt="Tech Panda" class="logo-img mb-4" style="height:120px;object-fit:contain;">
+                    <a href="https://thetechpanda.com/startup-watch-gauravgo-games-a-battle-royale-game-launched-by-a-group-of-btech-students-from-a-tier-2-college-in-odisha/41499/" target="_blank" class="text-[#2ecc71] hover:text-[#3498db] font-bold">Read Article →</a>
+                </div>
+                <div class="logo-card flex flex-col items-center p-4">
+                    <img src="https://gauravgo.com/wp-content/uploads/2024/11/GG_Coverage-transformed-e1730961634621.png" alt="Interview Times" class="logo-img mb-4" style="height:120px;object-fit:contain;">
+                    <a href="https://interviewtimes.net/gaming-revolution-unveiling-the-vision-of-gauravgo-games/" target="_blank" class="text-[#2ecc71] hover:text-[#3498db] font-bold">Read Article →</a>
+                </div>
+                <div class="logo-card"><iframe class="w-full h-64" src="https://www.youtube.com/embed/JKbYD3jyBy0" title="Team Interview" frameborder="0" allowfullscreen></iframe></div>
+                <div class="logo-card flex flex-col items-center p-4">
+                    <img src="https://gauravgo.com/wp-content/uploads/2025/03/img2.jpg" alt="Inside Sport" class="logo-img mb-4" style="height:120px;object-fit:contain;">
+                    <a href="https://www.insidesport.in/gaming/sena-mayaverse-indias-own-battle-royale-from-gauravgo-games/" target="_blank" class="text-[#2ecc71] hover:text-[#3498db] font-bold">Read Article →</a>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <!-- New Footer -->
-    
-
     <script>
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const dropdowns = document.querySelectorAll('.dropdown');
-
-        // Ensure hamburger and navLinks exist before adding event listeners
-        if (hamburger && navLinks) {
-            hamburger.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent event bubbling to document
-                hamburger.classList.toggle('active');
-                navLinks.classList.toggle('active');
-
-                // Update accessibility attributes
-                const isActive = hamburger.classList.contains('active');
-                hamburger.setAttribute('aria-expanded', isActive);
-                hamburger.setAttribute('aria-label', isActive ? 'Close menu' : 'Open menu');
-
-                // Close all dropdowns when mobile menu toggles
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('active');
+        // Create particle background
+        function createParticles() {
+            const container = document.getElementById('particle-bg');
+            const colors = ['rgba(46, 204, 113, 0.5)', 'rgba(52, 152, 219, 0.5)', 'rgba(155, 89, 182, 0.5)'];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 6 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Apply styles
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.background = color;
+                particle.style.boxShadow = `0 0 ${size * 2}px ${size}px ${color}`;
+                
+                container.appendChild(particle);
+            }
+        }
+        
+        // Initialize GSAP animations
+        function initAnimations() {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Animate logo cards with stagger and 3D effect
+            gsap.utils.toArray('.logo-card').forEach((card, i) => {
+                gsap.fromTo(card,
+                    { 
+                        opacity: 0, 
+                        y: 100,
+                        rotationX: -15,
+                        rotationY: 10
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        rotationX: 0,
+                        rotationY: 0,
+                        duration: 0.8,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        },
+                        delay: i * 0.1
+                    }
+                );
+            });
+            
+            // Animate section titles
+            gsap.utils.toArray('.section-title').forEach(title => {
+                gsap.fromTo(title,
+                    { opacity: 0, y: 50 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: title,
+                            start: 'top 90%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+        }
+        
+        // Scroll to top functionality
+        function initScrollToTop() {
+            const scrollBtn = document.getElementById('scrollToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollBtn.classList.add('visible');
+                } else {
+                    scrollBtn.classList.remove('visible');
+                }
+            });
+            
+            scrollBtn.addEventListener('click', () => {
+                gsap.to(window, {
+                    duration: 1.5,
+                    scrollTo: { y: 0, autoKill: true },
+                    ease: 'power3.inOut'
                 });
             });
         }
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.navbar') && window.innerWidth <= 768) {
-                if (hamburger && navLinks) {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded', 'false');
-                    hamburger.setAttribute('aria-label', 'Open menu');
-
-                    // Close all dropdowns
-                    dropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('active');
-                    });
-                }
-            }
-        });
-
-        // Mobile dropdown functionality
-        dropdowns.forEach(dropdown => {
-            const trigger = dropdown.querySelector('a');
-
-            if (trigger) {
-                trigger.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        e.stopPropagation(); // Prevent closing the menu
-                        dropdown.classList.toggle('active');
-
-                        // Close other dropdowns
-                        dropdowns.forEach(otherDropdown => {
-                            if (otherDropdown !== dropdown) {
-                                otherDropdown.classList.remove('active');
-                            }
-                        });
-                    }
-                });
-            }
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            const scrollToTopBtn = document.querySelector('.scroll-to-top');
-
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            if (window.scrollY > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        });
-
-        // GSAP animations for logo cards
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.utils.toArray('.logo-card').forEach(card => {
-            gsap.fromTo(card,
-                { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: card,
-                        start: 'top 80%',
-                        toggleActions: 'play none none none'
-                    }
-                }
-            );
-        });
-
-        // Footer animations
-        gsap.from(".hover-grow", {
-            scrollTrigger: {
-                trigger: "footer",
-                start: "top bottom",
-                toggleActions: "play none none none"
-            },
-            y: 50,
-            opacity: 0,
-            stagger: 0.25,
-            duration: 1,
-            ease: "power3.out"
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            initAnimations();
+            initScrollToTop();
         });
     </script>
 
     {% include 'footer.html' %}
-
-
 
 </body>
 

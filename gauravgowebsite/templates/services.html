@@ -9,8 +9,6 @@
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Swiper CSS -->
-    <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -25,10 +23,6 @@
                         dark: {
                             start: '#0a192f', // Dark navy
                             end: '#020c1b',   // Very dark navy
-                        },
-                        cta: {
-                            start: '#112240',  // Medium navy
-                            end: '#0a192f',    // Dark navy
                         },
                         accent: {
                             green: '#64ffda',  // Bright green
@@ -49,20 +43,16 @@
     </script>
     <style>
         :root {
-            --primary-gradient-start: #00ffb3;
-            --primary-gradient-end: #00bfae;
-            --main-bg-start: #0a0f13;
-            --main-bg-end: #05080c;
-            --cta-bg-start: #10171c;
-            --cta-bg-end: #0a0f13;
-            --electric-green: #00ffb3;
-            --crystal-blue: #00bfae;
+            --primary-gradient-start: #64ffda;
+            --primary-gradient-end: #0a192f;
+            --electric-green: #64ffda;
+            --crystal-blue: #112240;
             --text-primary: #e6ffe6;
-            --text-secondary: #7fffd4;
+            --text-secondary: #a8b2d1;
         }
         
         body {
-            background: linear-gradient(135deg, var(--main-bg-start), var(--main-bg-end));
+            background: linear-gradient(135deg, var(--primary-gradient-end), #020c1b);
             color: var(--text-primary);
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
@@ -87,60 +77,21 @@
         }
         
         .glow {
-            text-shadow: 0 0 15px #00ffb366, 0 0 30px #00bfae44;
+            text-shadow: 0 0 15px rgba(100, 255, 218, 0.4), 0 0 30px rgba(100, 255, 218, 0.2);
         }
         
         .card-gradient {
-            background: linear-gradient(145deg, #10171c 80%, #0a0f13 100%);
+            background: linear-gradient(145deg, #0d2038 0%, #081528 100%);
+            border: 1px solid rgba(100, 255, 218, 0.1);
         }
         
-        .hero-gradient {
-            background: linear-gradient(135deg, var(--cta-bg-start), var(--cta-bg-end));
-        }
-        
-        .section-padding {
-            padding: 5rem 0;
-        }
-        
-        .hq-card {
-            background: linear-gradient(135deg, #10171c 60%, #0a0f13 100%);
-            border: 1.5px solid #00ffb322;
-            border-radius: 1.25rem;
-            padding: 2.5rem;
-            transition: all 0.3s cubic-bezier(.4,2,.3,1);
-            height: 100%;
-            box-shadow: 0 6px 32px 0 #00ffb315;
+        .project-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
             position: relative;
         }
         
-        .hq-card:hover {
-            transform: translateY(-8px) scale(1.025);
-            border-color: var(--primary-gradient-end);
-            box-shadow: 0 16px 40px 0 #00bfae33;
-        }
-        
-        .swiper-container {
-            padding: 2rem 0 4rem;
-            position: relative; /* Ensure arrows are positioned relative to container */
-            overflow: visible;  /* Prevent arrows from being clipped */
-        }
-        
-        .swiper-slide {
-            background: #10171c;
-            border: 1px solid #00ffb322;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 6px 18px #00ffb315;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            overflow: hidden;
-            min-height: 320px;
-            max-height: 360px;
-        }
-        
-        .swiper-slide::before {
+        .project-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -153,106 +104,38 @@
             transition: transform 0.5s ease;
         }
         
-        .swiper-slide:hover {
+        .project-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 10px 22px #00ffb344;
-            border-color: #00ffb3;
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.15);
+            border-color: rgba(100, 255, 218, 0.3);
         }
         
-        .swiper-slide:hover::before {
+        .project-card:hover::before {
             transform: scaleX(1);
         }
         
-        .swiper-slide img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease;
+        .project-card img {
+            transition: transform 0.5s ease;
         }
         
-        .swiper-slide:hover img {
+        .project-card:hover img {
             transform: scale(1.05);
         }
         
-        .swiper-button-prev,
-        .swiper-button-next {
-            background: rgba(20, 20, 35, 0.6);
-            border: 1px solid rgba(46, 204, 113, 0.2);
-            color: #2ecc71;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            font-family: "Orbitron", sans-serif;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            cursor: pointer;
-        }
-        .swiper-button-prev { left: 10px; }
-        .swiper-button-next { right: 10px; }
-        .swiper-button-prev::before,
-        .swiper-button-next::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, #00ffb3 0%, #00bfae 100%);
+        .animate-fade-in {
             opacity: 0;
-            z-index: 0;
-            transition: opacity 0.3s;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        .swiper-button-prev:hover,
-        .swiper-button-next:hover {
-            background: linear-gradient(120deg, #00ffb3 0%, #00bfae 100%);
-            color: #10171c;
-            border-color: #00ffb3;
-            box-shadow: 0 4px 24px #00ffb366, 0 0 0 6px #00ffb311 inset;
-            transform: translateY(-50%) scale(1.12) rotate(-6deg);
-        }
-        .swiper-button-prev:hover::before,
-        .swiper-button-next:hover::before {
-            opacity: 0.12;
-        }
-        .swiper-button-prev i,
-        .swiper-button-next i {
-            position: relative;
-            z-index: 1;
-            font-size: 2rem;
-            transition: color 0.3s, text-shadow 0.3s;
-            text-shadow: 0 0 8px #00ffb355, 0 0 16px #00bfae33;
-        }
-        .swiper-button-prev:hover i,
-        .swiper-button-next:hover i {
-            color: #10171c;
-            text-shadow: 0 0 16px #00ffb3, 0 0 32px #00bfae;
-        }
-        /* Add a subtle glowing border animation */
-        @keyframes arrowGlow {
-            0%, 100% { box-shadow: 0 2px 16px #00ffb322, 0 0 0 4px #00ffb311 inset; }
-            50% { box-shadow: 0 4px 32px #00ffb366, 0 0 0 8px #00ffb322 inset; }
-        }
-        .swiper-button-prev,
-        .swiper-button-next {
-            animation: arrowGlow 2.5s infinite alternate;
-        }
-        @media (max-width: 768px) {
-            .swiper-button-prev,
-            .swiper-button-next { display: none; }
+        
+        .animate-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .form-input {
-            background: #10171c;
-            border: 1px solid #00ffb322;
+            background: rgba(17, 34, 64, 0.5);
+            border: 1px solid rgba(100, 255, 218, 0.1);
             color: var(--text-primary);
             transition: all 0.3s ease;
         }
@@ -260,7 +143,7 @@
         .form-input:focus {
             outline: none;
             border-color: var(--electric-green);
-            box-shadow: 0 0 0 3px #00ffb315;
+            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
         }
         
         .submit-btn {
@@ -269,9 +152,8 @@
         }
         
         .submit-btn:hover {
-            background: linear-gradient(90deg, var(--crystal-blue), var(--electric-green));
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px #00ffb344;
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.3);
         }
         
         .floating-element {
@@ -286,17 +168,37 @@
         
         .particle {
             position: absolute;
-            background: #00ffb344;
+            background: rgba(100, 255, 218, 0.2);
             border-radius: 50%;
             pointer-events: none;
         }
         
-        @media (max-width: 768px) {
-            .section-padding { padding: 3rem 0; }
-            .hq-card { padding: 1.5rem; }
-            .swiper-button-prev,
-            .swiper-button-next { display: none; }
-            .swiper-slide { height: 380px; }
+        /* Custom animations for scroll effects */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-up {
+            animation: fadeUp 0.8s ease forwards;
+        }
+        
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-300 {
+            animation-delay: 0.3s;
         }
     </style>
 </head>
@@ -306,7 +208,7 @@
     {% include "header.html" %}
 
     <!-- Hero Section -->
-    <header class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <header class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 bg-gradient-to-br from-[#112240] to-[#0a192f]">
         <div class="absolute inset-0 overflow-hidden">
             <div class="particle" style="top: 20%; left: 10%; width: 20px; height: 20px; animation-delay: 0s;"></div>
             <div class="particle" style="top: 60%; left: 80%; width: 15px; height: 15px; animation-delay: 1s;"></div>
@@ -315,19 +217,19 @@
         </div>
         
         <div class="container mx-auto px-6 text-center relative z-10">
-            <h1 class="text-5xl md:text-7xl font-bold orbitron mb-6">
+            <h1 class="text-5xl md:text-7xl font-bold orbitron mb-6 fade-up">
                 <span class="gradient-text glow">OUR SERVICES</span>
             </h1>
-            <p class="text-xl md:text-2xl text-[#a8b2d1] max-w-3xl mx-auto mb-10">
+            <p class="text-xl md:text-2xl text-[#a8b2d1] max-w-3xl mx-auto mb-10 fade-up delay-100">
                 Innovative solutions for simulation, gaming, and immersive experiences
             </p>
-            <div class="flex justify-center space-x-6">
-                <a href="#projects" class="px-8 py-3 bg-gradient-to-r from-[#64ffda] to-[#112240] rounded-full font-bold text-[#0a192f] hover:shadow-lg hover:shadow-[#64ffda]/30 transition">Explore Projects</a>
-                <a href="#contact" class="px-8 py-3 border border-[#64ffda] text-[#64ffda] rounded-full font-bold hover:bg-[#64ffda]/10 transition">Contact Us</a>
+            <div class="flex justify-center space-x-6 fade-up delay-200">
+                <a href="#projects" class="px-8 py-3 bg-gradient-to-r from-[#64ffda] to-[#112240] rounded-full font-bold text-[#0a192f] hover:shadow-lg hover:shadow-[#64ffda]/30 transition-all duration-300">Explore Projects</a>
+                <a href="#contact" class="px-8 py-3 border border-[#64ffda] text-[#64ffda] rounded-full font-bold hover:bg-[#64ffda]/10 transition-all duration-300">Contact Us</a>
             </div>
         </div>
         
-        <div class="absolute bottom-0 left-0 w-full flex justify-center py-6">
+        <div class="absolute bottom-0 left-0 w-full flex justify-center py-6 fade-up delay-300">
             <a href="#projects" class="text-[#64ffda] animate-bounce">
                 <i class="fas fa-chevron-down text-2xl"></i>
             </a>
@@ -335,106 +237,128 @@
     </header>
 
     <!-- Projects Section -->
-    <section id="projects" class="section-padding bg-[#0a192f]">
+    <section id="projects" class="py-20 bg-[#0a192f]">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold orbitron mb-6">
+                <h2 class="text-4xl md:text-5xl font-bold orbitron mb-6 fade-up">
                     <span class="gradient-text">FEATURED PROJECTS</span>
                 </h2>
-                <p class="text-xl text-[#a8b2d1] max-w-3xl mx-auto">
+                <p class="text-xl text-[#a8b2d1] max-w-3xl mx-auto fade-up delay-100">
                     Discover our innovative solutions in simulation, gaming, and immersive technologies
                 </p>
             </div>
             
-            <!-- Swiper Slider -->
-            <div class="swiper-container" id="services-swiper">
-                <div class="swiper-wrapper">
-                    <!-- Card 1 - Simulation Based Projects -->
-                    <div class="swiper-slide">
-                        <a href="{% url 'simulation_projects' %}" class="absolute inset-0 z-10"></a>
-                        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=1470&auto=format&fit=crop" alt="Simulation Projects" loading="lazy">
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 - Simulation Based Projects -->
+                <div class="project-card card-gradient rounded-xl p-6 fade-up">
+                    <a href="{% url 'simulation_projects' %}" class="block">
+                        <div class="overflow-hidden rounded-lg mb-4">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=1470&auto=format&fit=crop" alt="Simulation Projects" loading="lazy" class="w-full h-48 object-cover">
+                        </div>
                         <h3 class="text-xl font-bold orbitron text-[#64ffda] mb-3">Simulation Based Projects</h3>
-                        <p class="text-[#a8b2d1] flex-grow">Experience cutting-edge simulation technology with our realistic drone and vehicle simulations. Perfect for training and testing in a safe, controlled virtual environment.</p>
-                        <div class="mt-4 pt-4 border-t border-[#112240] flex justify-between items-center">
+                        <p class="text-[#a8b2d1] mb-4">Experience cutting-edge simulation technology with our realistic drone and vehicle simulations.</p>
+                        <div class="pt-4 border-t border-[#112240] flex justify-between items-center">
                             <span class="text-[#64ffda] text-sm"><i class="fas fa-tag mr-2"></i>Simulation</span>
                             <span class="text-[#64ffda] text-sm"><i class="fas fa-clock mr-2"></i>Ongoing</span>
                         </div>
-                    </div>
+                    </a>
+                </div>
 
-                    <!-- Card 2 - 3D Assets/Environment Creation -->
-                    <div class="swiper-slide">
-                        <a href="{% url 'three_d_assets' %}" class="absolute inset-0 z-10"></a>
-                        <img src="https://images.unsplash.com/photo-1633287387306-f08b4b3671c6?q=80&w=1470&auto=format&fit=crop" alt="3D Assets" loading="lazy">
+                <!-- Card 2 - 3D Assets/Environment Creation -->
+                <div class="project-card card-gradient rounded-xl p-6 fade-up delay-100">
+                    <a href="{% url 'three_d_assets' %}" class="block">
+                        <div class="overflow-hidden rounded-lg mb-4">
+                            <img src="https://images.unsplash.com/photo-1633287387306-f08b4b3671c6?q=80&w=1470&auto=format&fit=crop" alt="3D Assets" loading="lazy" class="w-full h-48 object-cover">
+                        </div>
                         <h3 class="text-xl font-bold orbitron text-[#64ffda] mb-3">3D Assets/Environment Creation</h3>
-                        <p class="text-[#a8b2d1] flex-grow">Bring your visions to reality with our professional 3D asset and environment design services. Our team creates stunning, high-quality 3D models for games and simulations.</p>
-                        <div class="mt-4 pt-4 border-t border-[#112240] flex justify-between items-center">
+                        <p class="text-[#a8b2d1] mb-4">Bring your visions to reality with our professional 3D asset and environment design services.</p>
+                        <div class="pt-4 border-t border-[#112240] flex justify-between items-center">
                             <span class="text-[#64ffda] text-sm"><i class="fas fa-tag mr-2"></i>3D Design</span>
                             <span class="text-[#64ffda] text-sm"><i class="fas fa-clock mr-2"></i>Ongoing</span>
                         </div>
-                    </div>
+                    </a>
+                </div>
 
-                    <!-- Card 3 - Game Development & AR-VR -->
-                    <div class="swiper-slide">
-                        <a href="{% url 'game_development' %}" class="absolute inset-0 z-10"></a>
-                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1390&auto=format&fit=crop" alt="AR VR" loading="lazy">
+                <!-- Card 3 - Game Development & AR-VR -->
+                <div class="project-card card-gradient rounded-xl p-6 fade-up delay-200">
+                    <a href="{% url 'game_development' %}" class="block">
+                        <div class="overflow-hidden rounded-lg mb-4">
+                            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1390&auto=format&fit=crop" alt="AR VR" loading="lazy" class="w-full h-48 object-cover">
+                        </div>
                         <h3 class="text-xl font-bold orbitron text-[#64ffda] mb-3">Game Development & AR-VR</h3>
-                        <p class="text-[#a8b2d1] flex-grow">Dive into the future of interactive entertainment with our immersive game development and AR/VR experiences. We create engaging games with the latest technologies.</p>
-                        <div class="mt-4 pt-4 border-t border-[#112240] flex justify-between items-center">
+                        <p class="text-[#a8b2d1] mb-4">Dive into the future of interactive entertainment with our immersive game development and AR/VR experiences.</p>
+                        <div class="pt-4 border-t border-[#112240] flex justify-between items-center">
                             <span class="text-[#64ffda] text-sm"><i class="fas fa-tag mr-2"></i>Game Dev</span>
                             <span class="text-[#64ffda] text-sm"><i class="fas fa-clock mr-2"></i>Ongoing</span>
                         </div>
-                    </div>
+                    </a>
+                </div>
 
-                    <!-- Card 4 - Animation 2D/3D -->
-                    <div class="swiper-slide">
-                        <a href="{% url 'animation' %}" class="absolute inset-0 z-10"></a>
-                        <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1400&auto=format&fit=crop" alt="2D 3D Animation" loading="lazy">
-                        <h3 class="text-xl font-bold orbitron text-[#64ffda] mb-3">Animation 2D/3D</h3>
-                        <p class="text-[#a8b2d1] flex-grow">Tell compelling stories with our professional 2D and 3D animation services. Our skilled animators create fluid, expressive animations that bring characters to life.</p>
-                        <div class="mt-4 pt-4 border-t border-[#112240] flex justify-between items-center">
-                            <span class="text-[#64ffda] text-sm"><i class="fas fa-tag mr-2"></i>Animation</span>
-                            <span class="text-[#64ffda] text-sm"><i class="fas fa-clock mr-2"></i>Ongoing</span>
+                <!-- Card 4 - Animation 2D/3D -->
+                <div class="project-card card-gradient rounded-xl p-6 fade-up">
+                    <a href="{% url 'animation' %}" class="block">
+                        <div class="overflow-hidden rounded-lg mb-4">
+                            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="2D 3D Animation" loading="lazy" class="w-full h-48 object-cover">
                         </div>
-                    </div>
+                        <h3 class="text-xl font-bold orbitron text-[#4ade80] mb-3">Animation 2D/3D</h3>
+                        <p class="text-[#a8b2d1] mb-4">Tell compelling stories with our professional 2D and 3D animation services.</p>
+                        <div class="pt-4 border-t border-[#112240] flex justify-between items-center">
+                            <span class="text-[#4ade80] text-sm"><i class="fas fa-tag mr-2"></i>Animation</span>
+                            <span class="text-[#4ade80] text-sm"><i class="fas fa-clock mr-2"></i>Ongoing</span>
+                        </div>
+                    </a>
+                </div>
 
-                    <!-- Card 5 - Blender VFX/Films -->
-                    <div class="swiper-slide">
-                        <a href="{% url 'blender_vfx' %}" class="absolute inset-0 z-10"></a>
-                        <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=1332&auto=format&fit=crop" alt="Blender VFX" loading="lazy">
-                        <h3 class="text-xl font-bold orbitron text-[#64ffda] mb-3">Blender VFX/Films</h3>
-                        <p class="text-[#a8b2d1] flex-grow">Add stunning visual effects to your projects using Blender. Our team specializes in creating breathtaking VFX for films, commercials, and other media projects.</p>
-                        <div class="mt-4 pt-4 border-t border-[#112240] flex justify-between items-center">
-                            <span class="text-[#64ffda] text-sm"><i class="fas fa-tag mr-2"></i>VFX</span>
-                            <span class="text-[#64ffda] text-sm"><i class="fas fa-clock mr-2"></i>Ongoing</span>
+                <!-- Card 5 - Blender VFX/Films -->
+                <div class="project-card card-gradient rounded-xl p-6 fade-up delay-100">
+                    <a href="{% url 'blender_vfx' %}" class="block">
+                        <div class="overflow-hidden rounded-lg mb-4">
+                            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Blender VFX" loading="lazy" class="w-full h-48 object-cover">
                         </div>
+                        <h3 class="text-xl font-bold orbitron text-[#4ade80] mb-3">Blender VFX/Films</h3>
+                        <p class="text-[#a8b2d1] mb-4">Add stunning visual effects to your projects using Blender for films and media projects.</p>
+                        <div class="pt-4 border-t border-[#112240] flex justify-between items-center">
+                            <span class="text-[#4ade80] text-sm"><i class="fas fa-tag mr-2"></i>VFX</span>
+                            <span class="text-[#4ade80] text-sm"><i class="fas fa-clock mr-2"></i>Ongoing</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 6 - More Coming in the Future -->
+                <div class="project-card rounded-xl p-6 fade-up delay-200" style="background: linear-gradient(145deg, #091622 0%, #050510 100%); border: 1px solid #4ade80;">
+                    <div class="overflow-hidden rounded-lg mb-4 bg-[#0a0a1a] h-48 flex items-center justify-center">
+                        <i class="fas fa-hourglass-half text-5xl text-[#4ade80] animate-pulse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold orbitron text-[#4ade80] mb-3">More Coming in the Future</h3>
+                    <p class="text-[#a8b2d1] mb-4">Stay tuned for more innovative services and projects. We're always working on something new to push the boundaries of gaming and technology!</p>
+                    <div class="pt-4 border-t border-[#112240] flex justify-between items-center">
+                        <span class="text-[#4ade80] text-sm"><i class="fas fa-tag mr-2"></i>Future</span>
+                        <span class="text-[#4ade80] text-sm"><i class="fas fa-clock mr-2"></i>Upcoming</span>
                     </div>
                 </div>
-                
-                <!-- Navigation buttons (must be inside swiper-container for correct placement) -->
-                <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
-                <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
             </div>
             
-            <div class="text-center mt-12">
-                <a href="#" class="inline-flex items-center text-[#64ffda] hover:text-[#64ffda] transition">
+            <div class="text-center mt-12 fade-up">
+                <a href="#" class="inline-flex items-center text-[#64ffda] hover:text-[#64ffda] transition group">
                     <span class="mr-2">View All Projects</span>
-                    <i class="fas fa-arrow-right"></i>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Contact Form Section -->
-    <section id="contact" class="section-padding bg-gradient-to-br from-[#112240] to-[#0a192f]">
+    <section id="contact" class="py-20 bg-gradient-to-br from-[#112240] to-[#0a192f]">
         <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto card-gradient rounded-2xl shadow-2xl p-8 md:p-12 border border-[#64ffda]/20">
-                <div class="text-center mb-10">
+            <div class="max-w-4xl mx-auto card-gradient rounded-2xl shadow-2xl p-8 md:p-12">
+                <div class="text-center mb-10 fade-up">
                     <h2 class="text-3xl md:text-4xl font-bold orbitron text-[#64ffda] mb-4">Send Us a Query</h2>
                     <p class="text-[#a8b2d1]">Have questions about our services? Reach out to our team for more information.</p>
                 </div>
                 
                 <form class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up">
                         <div>
                             <label for="name" class="block text-sm font-medium text-[#a8b2d1] mb-2">Name *</label>
                             <input type="text" id="name" name="name" required class="w-full form-input px-4 py-3 rounded-lg placeholder-[#a8b2d1]" placeholder="Your full name">
@@ -445,7 +369,7 @@
                         </div>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up delay-100">
                         <div>
                             <label for="contact" class="block text-sm font-medium text-[#a8b2d1] mb-2">Contact *</label>
                             <input type="tel" id="contact" name="contact" required class="w-full form-input px-4 py-3 rounded-lg placeholder-[#a8b2d1]" placeholder="Your phone number">
@@ -456,12 +380,12 @@
                         </div>
                     </div>
                     
-                    <div>
+                    <div class="fade-up delay-200">
                         <label for="message" class="block text-sm font-medium text-[#a8b2d1] mb-2">Message/Query *</label>
                         <textarea id="message" name="message" rows="5" required class="w-full form-input px-4 py-3 rounded-lg placeholder-[#a8b2d1]" placeholder="Describe your query or message in detail..."></textarea>
                     </div>
                     
-                    <div class="text-center pt-4">
+                    <div class="text-center pt-4 fade-up delay-300">
                         <button type="submit" class="submit-btn px-10 py-4 rounded-full text-[#0a192f] font-bold orbitron uppercase tracking-wider">
                             Submit Query
                         </button>
@@ -472,11 +396,11 @@
     </section>
 
     <!-- HQ + Support Section -->
-    <section class="section-padding bg-[#0a192f]">
+    <section class="py-20 bg-[#0a192f]">
         <div class="container mx-auto px-6">
-            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Headquarters Card -->
-                <div class="hq-card floating-element">
+                <div class="card-gradient rounded-xl p-8 fade-up">
                     <div class="flex items-center mb-6">
                         <div class="w-12 h-12 rounded-full bg-[#64ffda]/10 flex items-center justify-center mr-4">
                             <i class="fas fa-building text-2xl text-[#64ffda]"></i>
@@ -489,7 +413,7 @@
                 </div>
 
                 <!-- Support Card -->
-                <div class="hq-card floating-element">
+                <div class="card-gradient rounded-xl p-8 fade-up delay-100">
                     <div class="flex items-center mb-6">
                         <div class="w-12 h-12 rounded-full bg-[#64ffda]/10 flex items-center justify-center mr-4">
                             <i class="fas fa-headset text-2xl text-[#64ffda]"></i>
@@ -498,17 +422,19 @@
                     </div>
                     <div class="mb-6">
                         <p class="text-[#e6f1ff] font-semibold mb-2">Email:</p>
-                        <a href="mailto:support@gauravgo.com" class="text-[#64ffda] hover:text-[#64ffda] transition flex items-center">
+                        <a href="mailto:support@gauravgo.com" class="text-[#64ffda] hover:text-[#64ffda] transition flex items-center group">
                             <i class="fas fa-envelope mr-3"></i>
                             support@gauravgo.com
+                            <i class="fas fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 transition-opacity"></i>
                         </a>
                     </div>
                     
                     <div class="mb-6">
                         <p class="text-[#e6f1ff] font-semibold mb-2">Discord:</p>
-                        <a href="#" class="text-[#64ffda] hover:text-[#64ffda] transition flex items-center">
+                        <a href="#" class="text-[#64ffda] hover:text-[#64ffda] transition flex items-center group">
                             <i class="fab fa-discord mr-3"></i>
                             Join Our Server
+                            <i class="fas fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 transition-opacity"></i>
                         </a>
                     </div>
                 </div>
@@ -519,43 +445,11 @@
     <!-- Footer -->
     {% include 'footer.html' %}
 
-    <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Swiper with unique selectors for navigation
-            const swiper = new Swiper('#services-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 20,
-                loop: true,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true
-                },
-                navigation: {
-                    nextEl: '#services-swiper .swiper-button-next',
-                    prevEl: '#services-swiper .swiper-button-prev',
-                },
-                breakpoints: {
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 25
-                    },
-                    1280: {
-                        slidesPerView: 3,
-                        spaceBetween: 30
-                    }
-                }
-            });
-            
             // Add particles to hero section
             function createParticles() {
-                const heroSection = document.querySelector('.hero-gradient');
+                const heroSection = document.querySelector('header');
                 for (let i = 0; i < 15; i++) {
                     const particle = document.createElement('div');
                     particle.classList.add('particle');
@@ -576,6 +470,27 @@
             }
             
             createParticles();
+            
+            // Scroll animation implementation
+            const fadeElements = document.querySelectorAll('.fade-up');
+            
+            function checkFade() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementBottom = element.getBoundingClientRect().bottom;
+                    const isVisible = (elementTop < window.innerHeight - 100) && (elementBottom > 0);
+                    
+                    if (isVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkFade();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkFade);
         });
     </script>
 </body>

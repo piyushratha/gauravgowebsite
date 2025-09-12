@@ -25,32 +25,18 @@
             --cta-bg-start: #0c1d2f;
             --cta-bg-end: #091622;
 
-            /* Chaos Card Gradient */
-            --chaos-card-start: #0c1d2f;
-            --chaos-card-end: #091622;
-
-            /* Arena Card Gradient */
-            --arena-card-start: #1a0c2f;
-            --arena-card-end: #160922;
-
             /* Accent Colors */
             --electric-green: #2ecc71;
             --crystal-blue: #3498db;
             --royal-purple: #9b59b6;
-            --fiery-red: #e74c3c;
-            --sun-orange: #f39c12;
-            --teal: #1abc9c;
 
             /* Text Colors */
             --text-primary: #f0f0f0;
             --text-secondary: rgba(255, 255, 255, 0.8);
 
-            /* Additional Colors */
+            /* Card Colors */
             --card-bg: rgba(15, 15, 30, 0.7);
             --card-border: rgba(46, 204, 113, 0.2);
-            --tag-bg: rgba(46, 204, 113, 0.1);
-            --hq-card-bg: rgba(20, 20, 35, 0.6);
-            --arrow-bg: rgba(20, 20, 35, 0.6);
         }
 
         * {
@@ -63,54 +49,48 @@
             background: linear-gradient(135deg, var(--main-bg-start), var(--main-bg-end));
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 20px;
             font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
         }
 
-        .navbar-placeholder {
+        /* Header & Footer Fixes */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             background: linear-gradient(to right, var(--cta-bg-start), var(--cta-bg-end));
-            height: 80px;
-            border-radius: 10px;
-            margin-bottom: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
         }
 
-        .footer-placeholder {
+        main {
+            padding: 2rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: calc(100vh - 160px);
+        }
+
+        footer {
             background: linear-gradient(to right, var(--cta-bg-start), var(--cta-bg-end));
-            height: 100px;
-            border-radius: 10px;
-            margin-top: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
+            border-top: 1px solid var(--card-border);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+            padding: 2rem 1rem;
+            margin-top: 4rem;
         }
 
+        /* Title Animation */
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin: 3rem 0 4rem;
             font-size: 3.5rem;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 4px;
-            padding: 20px 0;
             position: relative;
             display: inline-block;
             left: 50%;
             transform: translateX(-50%);
-            text-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
         }
 
         .title-wrapper {
@@ -120,68 +100,38 @@
 
         .title-letter {
             display: inline-block;
-            transition: all 0.3s ease;
+            color: var(--text-primary);
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .section-title:hover .title-letter {
-            animation: letterGlow 0.5s ease forwards;
+            animation: letterFloat 1.2s ease forwards;
         }
 
-        .section-title:hover .title-letter:nth-child(2) {
-            animation-delay: 0.1s;
-        }
+        .section-title:hover .title-letter:nth-child(2) { animation-delay: 0.05s; }
+        .section-title:hover .title-letter:nth-child(3) { animation-delay: 0.1s; }
+        .section-title:hover .title-letter:nth-child(4) { animation-delay: 0.15s; }
+        .section-title:hover .title-letter:nth-child(5) { animation-delay: 0.2s; }
+        .section-title:hover .title-letter:nth-child(6) { animation-delay: 0.25s; }
+        .section-title:hover .title-letter:nth-child(7) { animation-delay: 0.3s; }
+        .section-title:hover .title-letter:nth-child(8) { animation-delay: 0.35s; }
+        .section-title:hover .title-letter:nth-child(9) { animation-delay: 0.4s; }
+        .section-title:hover .title-letter:nth-child(10) { animation-delay: 0.45s; }
 
-        .section-title:hover .title-letter:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
-        .section-title:hover .title-letter:nth-child(4) {
-            animation-delay: 0.3s;
-        }
-
-        .section-title:hover .title-letter:nth-child(5) {
-            animation-delay: 0.4s;
-        }
-
-        .section-title:hover .title-letter:nth-child(6) {
-            animation-delay: 0.5s;
-        }
-
-        .section-title:hover .title-letter:nth-child(7) {
-            animation-delay: 0.6s;
-        }
-
-        .section-title:hover .title-letter:nth-child(8) {
-            animation-delay: 0.7s;
-        }
-
-        .section-title:hover .title-letter:nth-child(9) {
-            animation-delay: 0.8s;
-        }
-
-        .section-title:hover .title-letter:nth-child(10) {
-            animation-delay: 0.9s;
-        }
-
-        .section-title:hover .title-letter:nth-child(11) {
-            animation-delay: 1.0s;
-        }
-
-        @keyframes letterGlow {
+        @keyframes letterFloat {
             0% {
                 transform: translateY(0) scale(1);
                 text-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
                 color: var(--text-primary);
             }
-
             50% {
-                transform: translateY(-10px) scale(1.2);
+                transform: translateY(-15px) scale(1.2);
                 text-shadow: 0 0 20px var(--electric-green), 0 0 30px var(--electric-green);
                 color: var(--electric-green);
             }
-
             100% {
-                transform: translateY(0) scale(1.1);
+                transform: translateY(0) scale(1.05);
                 text-shadow: 0 0 15px rgba(46, 204, 113, 0.9);
                 color: var(--electric-green);
             }
@@ -190,7 +140,7 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -10px;
             left: 0;
             width: 100%;
             height: 3px;
@@ -200,18 +150,13 @@
         }
 
         @keyframes pulseLine {
-            0%, 100% {
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 1;
-            }
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
-        /* Slider Styles from the first code */
+        /* Slider Styles */
         .slider-section {
-            margin: 80px auto;
-            max-width: 1400px;
+            margin: 4rem auto;
             position: relative;
         }
 
@@ -219,29 +164,30 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.2rem;
+            margin-bottom: 2.5rem;
             padding: 0 1rem;
         }
 
         .slider-title {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(90deg, #2ecc71, #3498db);
+            background: linear-gradient(90deg, var(--electric-green), var(--crystal-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            padding-left: 0.5rem;
-            border-left: 3px solid #2ecc71;
+            padding-left: 1rem;
+            border-left: 4px solid var(--electric-green);
             font-family: 'Orbitron', sans-serif;
         }
 
         .view-all {
-            color: #2ecc71;
+            color: var(--electric-green);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 1rem;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.5rem;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .view-all:hover {
@@ -251,27 +197,28 @@
 
         .swiper-container {
             width: 100%;
-            padding: 2rem 0;
+            padding: 2rem 0 3rem;
             position: relative;
         }
 
         .swiper-wrapper {
-            padding: 10px 0;
+            padding: 20px 0;
         }
 
         .swiper-slide {
-            width: clamp(260px, 25vw, 340px);
-            background: rgba(15, 15, 30, 0.7);
-            border: 1px solid rgba(46, 204, 113, 0.2);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
+            width: 320px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.8rem;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
             overflow: hidden;
             height: auto;
+            position: relative;
         }
 
         .swiper-slide::before {
@@ -280,17 +227,17 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #2ecc71, #3498db);
+            height: 5px;
+            background: linear-gradient(90deg, var(--electric-green), var(--crystal-blue));
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         .swiper-slide:hover {
-            transform: scale(1.05) translateY(-8px);
-            box-shadow: 0 10px 22px rgba(46, 204, 113, 0.4);
-            border-color: #27ae60;
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(46, 204, 113, 0.25);
+            border-color: rgba(46, 204, 113, 0.4);
         }
 
         .swiper-slide:hover::before {
@@ -299,24 +246,23 @@
 
         .swiper-slide img {
             width: 100%;
-            height: auto;
-            aspect-ratio: 16/9;
+            height: 180px;
             object-fit: cover;
-            border-radius: 0.5rem;
-            margin-bottom: 0.6rem;
-            transition: transform 0.3s ease, filter 0.3s ease;
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            transition: all 0.4s ease;
         }
 
-        .swiper-slide img:hover {
-            transform: scale(1.08);
-            filter: brightness(1.15);
+        .swiper-slide:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1) contrast(1.1);
         }
 
         .swiper-slide h3 {
-            font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+            font-size: 1.3rem;
             font-weight: 700;
-            color: #2ecc71;
-            margin-bottom: 0.4rem;
+            color: var(--electric-green);
+            margin-bottom: 0.8rem;
             transition: color 0.3s ease;
             font-family: 'Orbitron', sans-serif;
         }
@@ -326,78 +272,77 @@
         }
 
         .swiper-slide p {
-            font-size: clamp(0.7rem, 1.3vw, 0.8rem);
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.5;
-            transition: color 0.3s ease;
-            margin-bottom: 0.8rem;
-            text-align: justify;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-        }
-
-        .swiper-slide:hover p {
-            color: #e0e0e0;
+            flex-grow: 1;
         }
 
         .game-buttons {
             display: flex;
-            gap: 0.4rem;
+            gap: 0.8rem;
             margin-top: auto;
         }
 
         .game-btn {
             flex: 1;
-            padding: 0.45rem;
+            padding: 0.7rem 0;
             text-align: center;
-            border-radius: 0.25rem;
-            font-size: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
             font-weight: 600;
             transition: all 0.3s ease;
             text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         .view-btn {
-            background: linear-gradient(90deg, #2ecc71, #3498db);
+            background: linear-gradient(90deg, var(--electric-green), var(--crystal-blue));
             color: #000;
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
         }
 
         .view-btn:hover {
             background: linear-gradient(90deg, #27ae60, #2980b9);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(46, 204, 113, 0.4);
         }
 
         .play-btn {
             background: transparent;
-            color: #2ecc71;
-            border: 1px solid #2ecc71;
+            color: var(--electric-green);
+            border: 1.5px solid var(--electric-green);
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
         }
 
         .play-btn:hover {
-            background: rgba(46, 204, 113, 0.1);
+            background: rgba(46, 204, 113, 0.15);
             color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(46, 204, 113, 0.3);
         }
 
         .swiper-button-prev,
         .swiper-button-next {
-            background: rgba(20, 20, 35, 0.6);
-            border: 1px solid rgba(46, 204, 113, 0.2);
-            color: #2ecc71;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 8px;
+            background: rgba(20, 20, 35, 0.8);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            color: var(--electric-green);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             font-weight: 700;
             font-family: "Orbitron", sans-serif;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             backdrop-filter: blur(5px);
             position: absolute;
@@ -408,11 +353,11 @@
         }
 
         .swiper-button-prev {
-            left: 10px;
+            left: -25px;
         }
 
         .swiper-button-next {
-            right: 10px;
+            right: -25px;
         }
 
         .swiper-button-prev::after,
@@ -430,26 +375,81 @@
 
         .swiper-button-prev:hover,
         .swiper-button-next:hover {
-            background: linear-gradient(90deg, #2ecc71, #3498db);
+            background: linear-gradient(90deg, var(--electric-green), var(--crystal-blue));
             color: #000;
             transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 0 20px rgba(46, 204, 113, 0.7);
+            box-shadow: 0 0 25px rgba(46, 204, 113, 0.6);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .section-title {
+                font-size: 3rem;
+            }
+            
+            .swiper-button-prev {
+                left: 10px;
+            }
+            
+            .swiper-button-next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .slider-title {
+                font-size: 1.6rem;
+            }
         }
 
         @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+            }
+            
+            .slider-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+                margin-bottom: 2rem;
+            }
+            
             .swiper-button-prev,
             .swiper-button-next {
                 display: none;
             }
             
-            .slider-header {
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
+            .swiper-slide {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
             }
             
-            .section-title {
-                font-size: 2.5rem;
+            .slider-title {
+                font-size: 1.4rem;
+            }
+            
+            .view-all {
+                font-size: 0.9rem;
+            }
+            
+            .swiper-slide {
+                width: 260px;
+                padding: 1.5rem;
+            }
+            
+            .game-buttons {
+                flex-direction: column;
+                gap: 0.6rem;
             }
         }
     </style>
@@ -458,84 +458,98 @@
 <body>
     {% include "header.html" %}
 
-    <h1 class="section-title">
-        <span class="title-wrapper">
-            <span class="title-letter">S</span>
-            <span class="title-letter">I</span>
-            <span class="title-letter">M</span>
-            <span class="title-letter">U</span>
-            <span class="title-letter">L</span>
-            <span class="title-letter">A</span>
-            <span class="title-letter">T</span>
-            <span class="title-letter">I</span>
-            <span class="title-letter">O</span>
-            <span class="title-letter">N</span>
-        </span>
-    </h1>
+    <main>
+        <h1 class="section-title">
+            <span class="title-wrapper">
+                <span class="title-letter">S</span>
+                <span class="title-letter">I</span>
+                <span class="title-letter">M</span>
+                <span class="title-letter">U</span>
+                <span class="title-letter">L</span>
+                <span class="title-letter">A</span>
+                <span class="title-letter">T</span>
+                <span class="title-letter">I</span>
+                <span class="title-letter">O</span>
+                <span class="title-letter">N</span>
+            </span>
+        </h1>
 
-    <!-- Slider Section -->
-    <div class="slider-section">
-        <div class="slider-header">
-            <h3 class="slider-title orbitron">Simulation Games</h3>
-            <a href="#" class="view-all">
-                <span>View All</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-        <div id="simulation-slider" class="swiper-container">
-            <div class="swiper-wrapper">
-                <!-- Card 1 -->
-                <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-                        alt="Customizable Drone">
-                    <h3>End-to-End Customizable Drone</h3>
-                    <p>Customize drone components and test flight in a realistic virtual environment.</p>
-                    <div class="game-buttons">
-                        <a href="#" class="game-btn view-btn">View Details</a>
-                        <a href="#" class="game-btn play-btn">Try Now</a>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1598009279576-1d7fca2bb5bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-                        alt="Flight Simulator">
-                    <h3>Advanced Flight Simulator</h3>
-                    <p>Realistic flight simulation with dynamic weather and customizable scenarios.</p>
-                    <div class="game-buttons">
-                        <a href="#" class="game-btn view-btn">View Details</a>
-                        <a href="#" class="game-btn play-btn">Try Now</a>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1533924275610-4ff8475e8f15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-                        alt="Dock Simulator">
-                    <h3>Dock/Port Simulator</h3>
-                    <p>Simulate maritime operations and optimize port logistics in various conditions.</p>
-                    <div class="game-buttons">
-                        <a href="#" class="game-btn view-btn">View Details</a>
-                        <a href="#" class="game-btn play-btn">Try Now</a>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="swiper-slide">
-                    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-                        alt="Mission Planner">
-                    <h3>Mission Planning Simulator</h3>
-                    <p>Plan and visualize complex missions in 3D to optimize strategies.</p>
-                    <div class="game-buttons">
-                        <a href="#" class="game-btn view-btn">View Details</a>
-                        <a href="#" class="game-btn play-btn">Try Now</a>
-                    </div>
-                </div>
+        <!-- Slider Section -->
+        <div class="slider-section">
+            <div class="slider-header">
+                <h3 class="slider-title">Simulation Games</h3>
+                <a href="#" class="view-all">
+                    <span>View All</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div id="simulation-slider" class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Card 1 -->
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                            alt="Customizable Drone">
+                        <h3>End-to-End Customizable Drone</h3>
+                        <p>Customize drone components and test flight in a realistic virtual environment with advanced physics simulation.</p>
+                        <div class="game-buttons">
+                            <a href="#" class="game-btn view-btn">View Details</a>
+                            <a href="#" class="game-btn play-btn">Try Now</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1598009279576-1d7fca2bb5bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                            alt="Flight Simulator">
+                        <h3>Advanced Flight Simulator</h3>
+                        <p>Realistic flight simulation with dynamic weather and customizable scenarios for professional training.</p>
+                        <div class="game-buttons">
+                            <a href="#" class="game-btn view-btn">View Details</a>
+                            <a href="#" class="game-btn play-btn">Try Now</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1533924275610-4ff8475e8f15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                            alt="Dock Simulator">
+                        <h3>Dock/Port Simulator</h3>
+                        <p>Simulate maritime operations and optimize port logistics in various challenging conditions.</p>
+                        <div class="game-buttons">
+                            <a href="#" class="game-btn view-btn">View Details</a>
+                            <a href="#" class="game-btn play-btn">Try Now</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                            alt="Mission Planner">
+                        <h3>Mission Planning Simulator</h3>
+                        <p>Plan and visualize complex missions in 3D to optimize strategies and improve outcomes.</p>
+                        <div class="game-buttons">
+                            <a href="#" class="game-btn view-btn">View Details</a>
+                            <a href="#" class="game-btn play-btn">Try Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 5 -->
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+                            alt="Space Simulator">
+                        <h3>Space Exploration Simulator</h3>
+                        <p>Experience space travel with realistic physics and stunning visuals of our solar system.</p>
+                        <div class="game-buttons">
+                            <a href="#" class="game-btn view-btn">View Details</a>
+                            <a href="#" class="game-btn play-btn">Try Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
         </div>
-    </div>
+    </main>
 
     {% include 'footer.html' %}
 
@@ -549,11 +563,11 @@
                     spaceBetween: 20,
                     loop: true,
                     autoplay: {
-                        delay: 3000,
+                        delay: 4000,
                         disableOnInteraction: false,
                         pauseOnMouseEnter: true
                     },
-                    speed: 900,
+                    speed: 800,
                     navigation: {
                         nextEl: `${selector} .swiper-button-next`,
                         prevEl: `${selector} .swiper-button-prev`,

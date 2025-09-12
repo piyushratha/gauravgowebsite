@@ -43,7 +43,7 @@
             scroll-behavior: smooth;
             line-height: 1.6;
             min-height: 100vh;
-            padding: 20px;
+            /* REMOVED the 20px padding that was causing the space on the left */
         }
 
         .orbitron {
@@ -75,6 +75,7 @@
             max-width: 1400px;
             margin-left: auto;
             margin-right: auto;
+            padding: 0 20px; /* Added padding to contain content */
         }
 
         .slider-header {
@@ -401,6 +402,9 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            /* ADDED to fix the left space */
+            margin-left: 0;
+            left: 0;
         }
 
         .hero::before {
@@ -579,6 +583,7 @@
             margin-bottom: 1.5rem;
             font-family: 'Orbitron', sans-serif;
             color: var(--primary-green);
+            padding: 0 20px; /* Added padding for consistency */
         }
 
         .about-content p {
@@ -586,6 +591,7 @@
             margin-bottom: 1.5rem;
             font-size: 1.125rem;
             line-height: 1.7;
+            padding: 0 20px; /* Added padding for consistency */
         }
 
         .stats-grid {
@@ -593,6 +599,7 @@
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
+            padding: 0 20px; /* Added padding for consistency */
         }
 
         .stat-card {
@@ -650,6 +657,7 @@
             gap: 1.2rem;
             max-width: 1000px;
             margin: 0 auto 0.5rem auto;
+            padding: 0 20px; /* Added padding for consistency */
         }
 
         .contact-card {
@@ -709,6 +717,9 @@
             padding: 5rem 2rem 3rem;
             overflow: hidden;
             width: 100%;
+            /* ADDED to fix the left space */
+            margin-left: 0;
+            left: 0;
         }
 
         .footer-wave {
@@ -739,6 +750,7 @@
             gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px; /* Added padding for consistency */
         }
 
         .footer-logo {
@@ -832,6 +844,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.875rem;
+            padding: 0 20px; /* Added padding for consistency */
         }
 
         /* Animations */
