@@ -1,87 +1,102 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GauravGo Games - Media Coverage</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-green': '#00ff8c',
+                        'electric-blue': '#00a8ff',
+                        'deep-navy': '#0a1128',
+                        'midnight': '#050518',
+                        'dark-card': '#0c1226',
+                        'glow-green': 'rgba(0, 255, 140, 0.15)',
+                        'glow-blue': 'rgba(0, 168, 255, 0.15)',
+                    },
+                    fontFamily: {
+                        'orbitron': ['Orbitron', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulse-glow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'pulse-glow': {
+                            '0%, 100%': { boxShadow: '0 0 5px rgba(0, 255, 140, 0.5), 0 0 10px rgba(0, 255, 140, 0.3)' },
+                            '50%': { boxShadow: '0 0 20px rgba(0, 255, 140, 0.8), 0 0 30px rgba(0, 255, 140, 0.5)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         :root {
-            --neon-green: #4ade80;
-            --crystal-blue: #38bdf8;
-            --royal-purple: #b809bb;
-            --deep-navy: #0a0a1a;
-            --near-black: #050510;
+            --neon-green: #00ff8c;
+            --electric-blue: #00a8ff;
+            --deep-navy: #0a1128;
+            --midnight: #050518;
         }
 
         body {
-            background: linear-gradient(135deg, var(--deep-navy), var(--near-black));
+            background: linear-gradient(135deg, var(--deep-navy) 0%, var(--midnight) 70%);
             color: #f0f0f0;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
 
-        .orbitron {
-            font-family: 'Orbitron', sans-serif;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        .section-title {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+        ::-webkit-scrollbar-track {
+            background: var(--midnight);
         }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
+        ::-webkit-scrollbar-thumb {
             background: var(--neon-green);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--electric-blue);
         }
 
-        .editorial-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 24px;
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(0, 168, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 168, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
 
-        .editorial-feature {
-            grid-column: span 12;
-        }
-
-        .editorial-main {
-            grid-column: span 8;
-        }
-
-        .editorial-sidebar {
-            grid-column: span 4;
-        }
-
-        @media (max-width: 1024px) {
-            .editorial-main {
-                grid-column: span 12;
-            }
-            
-            .editorial-sidebar {
-                grid-column: span 12;
-            }
+        .hexagon-pattern {
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(0, 255, 140, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 0% 0%, rgba(0, 168, 255, 0.03) 0%, transparent 20%);
+            background-size: 60px 60px;
         }
 
         .press-card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(74, 222, 128, 0.1);
-            transition: all 0.3s ease;
+            background: linear-gradient(145deg, rgba(12, 18, 38, 0.8) 0%, rgba(10, 17, 40, 0.6) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 140, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
             position: relative;
+            transform-style: preserve-3d;
         }
 
         .press-card::before {
@@ -89,27 +104,52 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(74, 222, 128, 0.05) 0%, transparent 70%);
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+            z-index: 1;
+        }
+
+        .press-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 140, 0.03) 0%, transparent 80%);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
+            z-index: 0;
         }
 
         .press-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(74, 222, 128, 0.3);
+            transform: translateY(-8px) rotateX(2deg);
+            border-color: rgba(0, 255, 140, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 255, 140, 0.1);
         }
 
-        .press-card:hover::before {
+        .press-card:hover::after {
             opacity: 1;
         }
 
         .video-container {
             position: relative;
             overflow: hidden;
-            border-radius: 4px;
+            border-radius: 6px;
             aspect-ratio: 16/9;
+            transform: translateZ(10px);
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 255, 140, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .video-container:hover::before {
+            opacity: 1;
         }
 
         .video-container iframe {
@@ -120,21 +160,54 @@
             height: 100%;
         }
 
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-green), var(--electric-blue));
+            border-radius: 3px;
+        }
+
         .accent-line {
             width: 60px;
             height: 3px;
-            background: var(--neon-green);
+            background: linear-gradient(90deg, var(--neon-green), var(--electric-blue));
             margin-bottom: 16px;
+            border-radius: 3px;
         }
 
-        .hero-overlay {
-            background: linear-gradient(135deg, rgba(10, 10, 26, 0.9) 0%, rgba(5, 5, 16, 0.95) 100%);
+        .neon-text {
+            text-shadow: 0 0 5px rgba(0, 255, 140, 0.5),
+                         0 0 10px rgba(0, 255, 140, 0.3),
+                         0 0 15px rgba(0, 255, 140, 0.2);
+        }
+
+        .neon-border {
+            box-shadow: 0 0 5px rgba(0, 255, 140, 0.5),
+                        0 0 10px rgba(0, 255, 140, 0.3);
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(10, 17, 40, 0.9) 0%, rgba(5, 5, 24, 0.95) 100%);
         }
 
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .fade-in.visible {
@@ -146,70 +219,156 @@
             height: 24px;
             width: auto;
             opacity: 0.8;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
+            filter: brightness(0) invert(1);
         }
 
         .press-card:hover .press-logo {
             opacity: 1;
+            filter: brightness(1) invert(0);
+        }
+
+        .glow-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--neon-green);
+            box-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        .grid-main {
+            grid-column: span 8;
+        }
+
+        .grid-sidebar {
+            grid-column: span 4;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-main {
+                grid-column: span 12;
+            }
+            
+            .grid-sidebar {
+                grid-column: span 12;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Preloader Animation */
+        @keyframes preloader-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .preloader-dot {
+            animation: preloader-pulse 1.5s ease-in-out infinite both;
+        }
+
+        .preloader-dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .preloader-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .preloader-dot:nth-child(3) {
+            animation-delay: 0.4s;
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased hexagon-pattern">
     <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[--near-black] transition-opacity duration-500">
-        <div class="orbitron text-2xl md:text-3xl mb-4 text-[--neon-green]">GAURAVGO GAMES</div>
-        <div class="flex space-x-2">
-            <div class="w-3 h-3 bg-[--neon-green] rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
-            <div class="w-3 h-3 bg-[--crystal-blue] rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-            <div class="w-3 h-3 bg-[--royal-purple] rounded-full animate-bounce" style="animation-delay: 0.3s"></div>
+    <div id="preloader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-midnight transition-opacity duration-700">
+        <div class="absolute inset-0 grid-pattern"></div>
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="orbitron font-black text-3xl md:text-4xl mb-6 text-neon-green tracking-wider neon-text">GAURAVGO GAMES</div>
+            <div class="text-electric-blue font-poppins text-sm uppercase tracking-widest mb-8">MEDIA COVERAGE</div>
+            <div class="flex space-x-3">
+                <div class="w-3 h-3 bg-neon-green rounded-full preloader-dot"></div>
+                <div class="w-3 h-3 bg-electric-blue rounded-full preloader-dot"></div>
+                <div class="w-3 h-3 bg-neon-green rounded-full preloader-dot"></div>
+            </div>
         </div>
     </div>
 
     {% include "header.html" %}
 
     <!-- Hero Section -->
-    <section class="relative py-20 md:py-32 overflow-hidden">
+    <section class="relative py-24 md:py-36 overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-r from-[--neon-green]/10 to-[--royal-purple]/10"></div>
-            <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[--near-black] to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-neon-green/5 to-electric-blue/5"></div>
+            <div class="absolute top-0 left-0 w-72 h-72 bg-electric-blue/5 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-neon-green/5 rounded-full filter blur-3xl translate-x-1/3 translate-y-1/3"></div>
+            <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-midnight to-transparent"></div>
         </div>
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-4xl mx-auto text-center">
-                <h1 class="orbitron text-5xl md:text-7xl font-bold text-white mb-6">
-                    MEDIA <span class="text-[--neon-green]">COVERAGE</span>
+                <div class="flex justify-center mb-6">
+                    <div class="glow-dot"></div>
+                </div>
+                <h1 class="orbitron font-black text-5xl md:text-7xl lg:text-8xl text-white mb-6 tracking-tight">
+                    MEDIA <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-electric-blue">COVERAGE</span>
                 </h1>
-                <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
                     Recognized by press, celebrated by players. Explore our journey through the eyes of gaming media.
                 </p>
-                <div class="flex justify-center space-x-4">
-                    <div class="w-3 h-3 bg-[--neon-green] rounded-full"></div>
-                    <div class="w-3 h-3 bg-[--crystal-blue] rounded-full"></div>
-                    <div class="w-3 h-3 bg-[--royal-purple] rounded-full"></div>
+                <div class="flex justify-center space-x-3">
+                    <div class="w-2 h-2 bg-neon-green rounded-full"></div>
+                    <div class="w-2 h-2 bg-electric-blue rounded-full"></div>
+                    <div class="w-2 h-2 bg-neon-green rounded-full"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+            <div class="animate-bounce">
+                <div class="w-6 h-10 border-2 border-neon-green rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-neon-green rounded-full mt-2"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Featured Spotlight -->
-    <section class="py-16 bg-gradient-to-b from-[--near-black] to-[--deep-navy]">
-        <div class="container mx-auto px-4">
-            <div class="editorial-grid">
-                <div class="editorial-feature">
-                    <div class="accent-line"></div>
-                    <h2 class="orbitron text-3xl md:text-4xl text-white mb-6">Featured Spotlight</h2>
+    <section class="py-20 relative">
+        <div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-midnight to-transparent"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid-layout">
+                <div class="col-span-12">
+                    <div class="flex items-center mb-8">
+                        <div class="accent-line"></div>
+                        <h2 class="orbitron text-3xl md:text-4xl text-white ml-4">Featured Spotlight</h2>
+                    </div>
                     
-                    <div class="press-card rounded-lg overflow-hidden">
+                    <div class="press-card rounded-xl overflow-hidden pulse-glow">
                         <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/mYurblD-c2U" title="Bhoomiputra Gameplay Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                         </div>
-                        <div class="p-6">
-                            <h3 class="orbitron text-2xl text-white mb-2">Bhoomiputra Gameplay Trailer</h3>
-                            <p class="text-gray-300 mb-4">Experience the action-packed adventure that's capturing attention across gaming media.</p>
-                            <div class="flex items-center text-sm text-[--neon-green]">
-                                <span>Featured</span>
-                                <span class="mx-2">•</span>
-                                <span>Gameplay</span>
+                        <div class="p-8">
+                            <div class="flex flex-wrap items-center gap-3 mb-4">
+                                <span class="px-3 py-1 bg-neon-green/10 text-neon-green text-xs font-medium rounded-full">Featured</span>
+                                <span class="px-3 py-1 bg-electric-blue/10 text-electric-blue text-xs font-medium rounded-full">Gameplay</span>
+                                <span class="px-3 py-1 bg-gradient-to-r from-neon-green/10 to-electric-blue/10 text-gray-300 text-xs font-medium rounded-full">Exclusive</span>
+                            </div>
+                            <h3 class="orbitron text-2xl md:text-3xl text-white mb-3">Bhoomiputra Gameplay Trailer</h3>
+                            <p class="text-gray-300 mb-6 leading-relaxed">Experience the action-packed adventure that's capturing attention across gaming media with stunning visuals and immersive gameplay.</p>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-neon-green rounded-full mr-2"></div>
+                                <span class="text-sm text-neon-green font-medium">Trending on Gaming Platforms</span>
                             </div>
                         </div>
                     </div>
@@ -219,87 +378,130 @@
     </section>
 
     <!-- Bhoomiputra Coverage -->
-    <section class="py-16 bg-[--deep-navy]">
+    <section class="py-20 relative">
         <div class="container mx-auto px-4">
-            <div class="editorial-grid">
-                <div class="editorial-main">
-                    <div class="accent-line"></div>
-                    <h2 class="orbitron text-3xl text-white mb-6">Bhoomiputra Coverage</h2>
+            <div class="grid-layout">
+                <div class="grid-main">
+                    <div class="flex items-center mb-8">
+                        <div class="accent-line"></div>
+                        <h2 class="orbitron text-3xl text-white ml-4">Bhoomiputra Coverage</h2>
+                    </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                        <div class="press-card rounded-lg overflow-hidden fade-in">
+                        <div class="press-card rounded-xl overflow-hidden fade-in">
                             <div class="video-container">
                                 <iframe src="https://www.youtube.com/embed/NRd46b8jFdg" title="Developer Interview for Bhoomiputra" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                             </div>
-                            <div class="p-4">
+                            <div class="p-5">
                                 <h3 class="orbitron text-lg text-white mb-2">Developer Interview</h3>
-                                <p class="text-sm text-gray-400">The minds behind Bhoomiputra share their vision</p>
+                                <p class="text-sm text-gray-400 mb-3">The minds behind Bhoomiputra share their vision and development journey</p>
+                                <div class="flex items-center text-xs text-neon-green">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>15 min watch</span>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="press-card rounded-lg overflow-hidden fade-in">
+                        <div class="press-card rounded-xl overflow-hidden fade-in">
                             <div class="video-container">
                                 <iframe src="https://www.youtube.com/embed/n6fE8MWxcFc" title="Behind the Scenes of Bhoomiputra" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                             </div>
-                            <div class="p-4">
+                            <div class="p-5">
                                 <h3 class="orbitron text-lg text-white mb-2">Behind the Scenes</h3>
-                                <p class="text-sm text-gray-400">A look at the development process</p>
+                                <p class="text-sm text-gray-400 mb-3">Exclusive look at the development process and challenges</p>
+                                <div class="flex items-center text-xs text-neon-green">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>12 min watch</span>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="press-card rounded-lg overflow-hidden fade-in">
+                        <div class="press-card rounded-xl overflow-hidden fade-in">
                             <div class="video-container">
                                 <iframe src="https://www.youtube.com/embed/_i8ZM4u54tE" title="Cultural Impact of Bhoomiputra" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                             </div>
-                            <div class="p-4">
+                            <div class="p-5">
                                 <h3 class="orbitron text-lg text-white mb-2">Cultural Impact</h3>
-                                <p class="text-sm text-gray-400">How Bhoomiputra is making waves</p>
+                                <p class="text-sm text-gray-400 mb-3">How Bhoomiputra is making waves in the gaming community</p>
+                                <div class="flex items-center text-xs text-neon-green">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>18 min watch</span>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="press-card rounded-lg overflow-hidden fade-in">
+                        <div class="press-card rounded-xl overflow-hidden fade-in">
                             <div class="video-container">
                                 <iframe src="https://www.youtube.com/embed/6gY-Yhcm6SA" title="Technical Breakdown of Bhoomiputra" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                             </div>
-                            <div class="p-4">
+                            <div class="p-5">
                                 <h3 class="orbitron text-lg text-white mb-2">Technical Breakdown</h3>
-                                <p class="text-sm text-gray-400">Exploring the tech behind the game</p>
+                                <p class="text-sm text-gray-400 mb-3">Exploring the innovative tech behind the game's development</p>
+                                <div class="flex items-center text-xs text-neon-green">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>22 min watch</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="editorial-sidebar">
-                    <div class="accent-line"></div>
-                    <h2 class="orbitron text-2xl text-white mb-6">Press Highlights</h2>
+                <div class="grid-sidebar">
+                    <div class="flex items-center mb-8">
+                        <div class="accent-line"></div>
+                        <h2 class="orbitron text-2xl text-white ml-4">Press Highlights</h2>
+                    </div>
                     
                     <div class="space-y-6">
-                        <div class="press-card rounded-lg p-4 fade-in">
-                            <div class="flex items-center mb-3">
-                                <div class="w-10 h-10 rounded-full bg-[--neon-green] flex items-center justify-center">
-                                    <i class="fas fa-newspaper text-[--deep-navy]"></i>
+                        <div class="press-card rounded-xl p-5 fade-in">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-neon-green to-electric-blue flex items-center justify-center">
+                                    <i class="fas fa-newspaper text-deep-navy"></i>
                                 </div>
                                 <div class="ml-3">
-                                    <h3 class="orbitron text-white">Gaming Insider</h3>
+                                    <h3 class="orbitron text-white text-sm">Gaming Insider</h3>
                                     <p class="text-xs text-gray-400">Featured Article</p>
                                 </div>
                             </div>
-                            <p class="text-gray-300 text-sm mb-3">"Bhoomiputra sets a new standard for indie games with its compelling narrative and innovative gameplay mechanics."</p>
-                            <a href="#" class="text-[--neon-green] text-sm hover:underline">Read full article</a>
+                            <p class="text-gray-300 text-sm mb-4 leading-relaxed">"Bhoomiputra sets a new standard for indie games with its compelling narrative and innovative gameplay mechanics that rival AAA titles."</p>
+                            <a href="#" class="text-neon-green text-sm font-medium hover:underline inline-flex items-center">
+                                Read full article
+                                <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                            </a>
                         </div>
                         
-                        <div class="press-card rounded-lg p-4 fade-in">
-                            <div class="flex items-center mb-3">
-                                <div class="w-10 h-10 rounded-full bg-[--crystal-blue] flex items-center justify-center">
-                                    <i class="fas fa-play-circle text-[--deep-navy]"></i>
+                        <div class="press-card rounded-xl p-5 fade-in">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-neon-green flex items-center justify-center">
+                                    <i class="fas fa-play-circle text-deep-navy"></i>
                                 </div>
                                 <div class="ml-3">
-                                    <h3 class="orbitron text-white">GameStream</h3>
+                                    <h3 class="orbitron text-white text-sm">GameStream</h3>
                                     <p class="text-xs text-gray-400">Video Feature</p>
                                 </div>
                             </div>
-                            <p class="text-gray-300 text-sm mb-3">"We sat down with the developers to discuss the inspiration behind Bhoomiputra's unique art style."</p>
-                            <a href="#" class="text-[--neon-green] text-sm hover:underline">Watch feature</a>
+                            <p class="text-gray-300 text-sm mb-4 leading-relaxed">"We sat down with the developers to discuss the inspiration behind Bhoomiputra's unique art style and cultural influences."</p>
+                            <a href="#" class="text-neon-green text-sm font-medium hover:underline inline-flex items-center">
+                                Watch feature
+                                <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                            </a>
+                        </div>
+
+                        <div class="press-card rounded-xl p-5 fade-in">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-neon-green/70 to-electric-blue/70 flex items-center justify-center">
+                                    <i class="fas fa-star text-deep-navy"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h3 class="orbitron text-white text-sm">Tech Review</h3>
+                                    <p class="text-xs text-gray-400">Editor's Choice</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-sm mb-4 leading-relaxed">"A masterpiece of storytelling combined with cutting-edge gameplay. Bhoomiputra is redefining what indie games can achieve."</p>
+                            <a href="#" class="text-neon-green text-sm font-medium hover:underline inline-flex items-center">
+                                Read review
+                                <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -308,69 +510,88 @@
     </section>
 
     <!-- Sena Coverage -->
-    <section class="py-16 bg-gradient-to-b from-[--deep-navy] to-[--near-black]">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-12">
+    <section class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-deep-navy/50 to-midnight/50 z-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
                     <div class="flex justify-center mb-4">
                         <div class="accent-line"></div>
                     </div>
                     <h2 class="orbitron text-3xl md:text-4xl text-white mb-4">Sena Coverage</h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto">Exploring the patriotic action game that's capturing hearts and headlines</p>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Exploring the patriotic action game that's capturing hearts and headlines worldwide</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <div class="press-card rounded-lg overflow-hidden fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <div class="press-card rounded-xl overflow-hidden fade-in">
                         <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/qg6SMKZMbaw" title="Sena Game Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="p-6">
                             <h3 class="orbitron text-xl text-white mb-2">Official Game Trailer</h3>
-                            <p class="text-gray-300 mb-4">The thrilling announcement trailer for Sena</p>
-                            <div class="flex items-center text-sm text-[--crystal-blue]">
-                                <span>Trailer</span>
-                                <span class="mx-2">•</span>
-                                <span>Official</span>
+                            <p class="text-gray-300 mb-4">The thrilling announcement trailer for Sena that took the gaming world by storm</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-neon-green/10 text-neon-green text-xs font-medium rounded-full">Trailer</span>
+                                <span class="px-3 py-1 bg-electric-blue/10 text-electric-blue text-xs font-medium rounded-full">Official</span>
+                                <span class="px-3 py-1 bg-gradient-to-r from-neon-green/10 to-electric-blue/10 text-gray-300 text-xs font-medium rounded-full">Action</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="press-card rounded-lg overflow-hidden fade-in">
+                    <div class="press-card rounded-xl overflow-hidden fade-in">
                         <div class="video-container">
                             <iframe src="https://www.youtube.com/embed/f0lNhVt3QMI" title="Sena Gameplay Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="p-6">
                             <h3 class="orbitron text-xl text-white mb-2">Gameplay Reveal</h3>
-                            <p class="text-gray-300 mb-4">First look at Sena's action-packed gameplay</p>
-                            <div class="flex items-center text-sm text-[--crystal-blue]">
-                                <span>Gameplay</span>
-                                <span class="mx-2">•</span>
-                                <span>Exclusive</span>
+                            <p class="text-gray-300 mb-4">First look at Sena's action-packed gameplay mechanics and combat system</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-neon-green/10 text-neon-green text-xs font-medium rounded-full">Gameplay</span>
+                                <span class="px-3 py-1 bg-electric-blue/10 text-electric-blue text-xs font-medium rounded-full">Exclusive</span>
+                                <span class="px-3 py-1 bg-gradient-to-r from-neon-green/10 to-electric-blue/10 text-gray-300 text-xs font-medium rounded-full">Combat</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="press-card rounded-lg p-6 fade-in">
-                        <img src="https://gauravgo.com/wp-content/uploads/2024/09/image_2024-09-26_142517208.jpg" alt="Prabhat Khabar Feature" class="w-full h-40 object-cover rounded-md mb-4">
+                    <div class="press-card rounded-xl p-6 fade-in">
+                        <div class="h-40 overflow-hidden rounded-md mb-4 relative">
+                            <img src="https://gauravgo.com/wp-content/uploads/2024/09/image_2024-09-26_142517208.jpg" alt="Prabhat Khabar Feature" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-deep-navy to-transparent opacity-70"></div>
+                        </div>
                         <h3 class="orbitron text-lg text-white mb-2">Prabhat Khabar</h3>
-                        <p class="text-gray-300 text-sm mb-4">Featured coverage of Sena's development journey</p>
-                        <a href="https://www.prabhatkhabar.com/state/jharkhand/dhanbad/indian-air-force-wing-commander-abhinandan-sena-video-game-jharkhand-news-indian-army-prt" target="_blank" class="text-[--neon-green] text-sm hover:underline">Read Article</a>
+                        <p class="text-gray-300 text-sm mb-4">Featured coverage of Sena's development journey and cultural significance</p>
+                        <a href="https://www.prabhatkhabar.com/state/jharkhand/dhanbad/indian-air-force-wing-commander-abhinandan-sena-video-game-jharkhand-news-indian-army-prt" target="_blank" class="text-neon-green text-sm font-medium hover:underline inline-flex items-center">
+                            Read Article
+                            <i class="fas fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                        </a>
                     </div>
                     
-                    <div class="press-card rounded-lg p-6 fade-in">
-                        <img src="https://gauravgo.com/wp-content/uploads/2024/09/sena_coverage.png" alt="Jharkhand Updates" class="w-full h-40 object-cover rounded-md mb-4">
+                    <div class="press-card rounded-xl p-6 fade-in">
+                        <div class="h-40 overflow-hidden rounded-md mb-4 relative">
+                            <img src="https://gauravgo.com/wp-content/uploads/2024/09/sena_coverage.png" alt="Jharkhand Updates" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-deep-navy to-transparent opacity-70"></div>
+                        </div>
                         <h3 class="orbitron text-lg text-white mb-2">Jharkhand Updates</h3>
-                        <p class="text-gray-300 text-sm mb-4">Local coverage of Sena's impact on the gaming scene</p>
-                        <a href="https://jharkhandupdates.com/students-from-jharkhand-develop-video-game-sena-based-on-balakot-air-strikes/" target="_blank" class="text-[--neon-green] text-sm hover:underline">Read Article</a>
+                        <p class="text-gray-300 text-sm mb-4">Local coverage of Sena's impact on the regional gaming development scene</p>
+                        <a href="https://jharkhandupdates.com/students-from-jharkhand-develop-video-game-sena-based-on-balakot-air-strikes/" target="_blank" class="text-neon-green text-sm font-medium hover:underline inline-flex items-center">
+                            Read Article
+                            <i class="fas fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                        </a>
                     </div>
                     
-                    <div class="press-card rounded-lg p-6 fade-in">
-                        <img src="https://gauravgo.com/wp-content/uploads/2024/09/sena_dainik_jagran.png" alt="Dainik Jagran" class="w-full h-40 object-cover rounded-md mb-4">
+                    <div class="press-card rounded-xl p-6 fade-in">
+                        <div class="h-40 overflow-hidden rounded-md mb-4 relative">
+                            <img src="https://gauravgo.com/wp-content/uploads/2024/09/sena_dainik_jagran.png" alt="Dainik Jagran" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-deep-navy to-transparent opacity-70"></div>
+                        </div>
                         <h3 class="orbitron text-lg text-white mb-2">Dainik Jagran</h3>
-                        <p class="text-gray-300 text-sm mb-4">National coverage of Sena's release</p>
-                        <a href="https://www.jagran.com/jharkhand/dhanbad-local-video-game-sena-strike-encounter-for-nation-by-abhinandanlaunches-today-at-dhanbad-20985484.html" target="_blank" class="text-[--neon-green] text-sm hover:underline">Read Article</a>
+                        <p class="text-gray-300 text-sm mb-4">National coverage of Sena's release and reception among gaming communities</p>
+                        <a href="https://www.jagran.com/jharkhand/dhanbad-local-video-game-sena-strike-encounter-for-nation-by-abhinandanlaunches-today-at-dhanbad-20985484.html" target="_blank" class="text-neon-green text-sm font-medium hover:underline inline-flex items-center">
+                            Read Article
+                            <i class="fas fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -378,59 +599,81 @@
     </section>
 
     <!-- Company & Team Coverage -->
-    <section class="py-16 bg-[--near-black]">
-        <div class="container mx-auto px-4">
+    <section class="py-20 bg-midnight relative">
+        <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-deep-navy to-transparent"></div>
+        <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-12">
+                <div class="text-center mb-16">
                     <div class="flex justify-center mb-4">
                         <div class="accent-line"></div>
                     </div>
                     <h2 class="orbitron text-3xl md:text-4xl text-white mb-4">Company & Team Coverage</h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto">How the gaming industry is talking about GauravGo Games</p>
+                    <p class="text-gray-400 max-w-2xl mx-auto">How the gaming industry is talking about GauravGo Games and our talented team</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <div class="press-card rounded-lg p-6 fade-in">
+                    <div class="press-card rounded-xl p-6 fade-in">
                         <div class="flex items-center mb-4">
                             <img src="https://gauravgo.com/wp-content/uploads/2024/10/times_of_india-1-1024x611.png" alt="Times of India" class="h-8 w-auto press-logo">
                         </div>
                         <h3 class="orbitron text-xl text-white mb-3">Times of India Feature</h3>
-                        <p class="text-gray-300 mb-4">"From students to game developers: The GauravGo Games journey from a tier-2 college to international recognition."</p>
-                        <a href="https://timesofindia.indiatimes.com/technology/times-techies/they-learnt-to-build-games-from-free-online-sites/articleshow/112851603.cms" target="_blank" class="text-[--neon-green] hover:underline">Read Full Article</a>
+                        <p class="text-gray-300 mb-4 leading-relaxed">"From students to game developers: The GauravGo Games journey from a tier-2 college to international recognition in the competitive gaming industry."</p>
+                        <a href="https://timesofindia.indiatimes.com/technology/times-techies/they-learnt-to-build-games-from-free-online-sites/articleshow/112851603.cms" target="_blank" class="text-neon-green font-medium hover:underline inline-flex items-center">
+                            Read Full Article
+                            <i class="fas fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                        </a>
                     </div>
                     
-                    <div class="press-card rounded-lg p-6 fade-in">
+                    <div class="press-card rounded-xl p-6 fade-in">
                         <div class="flex items-center mb-4">
                             <img src="https://gauravgo.com/wp-content/uploads/2024/11/GG_AIGF_COVERAGE-transformed.png" alt="AIGF" class="h-8 w-auto press-logo">
                         </div>
                         <h3 class="orbitron text-xl text-white mb-3">AIGF Industry Report</h3>
-                        <p class="text-gray-300 mb-4">"GauravGo Games represents the new wave of Indian game development talent making waves on the global stage."</p>
-                        <a href="https://www.linkedin.com/pulse/have-query-online-gaming-india-write-relationsaigfin-kwohc/" target="_blank" class="text-[--neon-green] hover:underline">Read Full Report</a>
+                        <p class="text-gray-300 mb-4 leading-relaxed">"GauravGo Games represents the new wave of Indian game development talent making waves on the global stage with innovative concepts and technical excellence."</p>
+                        <a href="https://www.linkedin.com/pulse/have-query-online-gaming-india-write-relationsaigfin-kwohc/" target="_blank" class="text-neon-green font-medium hover:underline inline-flex items-center">
+                            Read Full Report
+                            <i class="fas fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="press-card rounded-lg p-6 fade-in">
-                        <img src="https://gauravgo.com/wp-content/uploads/2025/03/img.jpg" alt="Tech Panda" class="w-full h-40 object-cover rounded-md mb-4">
+                    <div class="press-card rounded-xl p-6 fade-in">
+                        <div class="h-40 overflow-hidden rounded-md mb-4 relative">
+                            <img src="https://gauravgo.com/wp-content/uploads/2025/03/img.jpg" alt="Tech Panda" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-deep-navy to-transparent opacity-70"></div>
+                        </div>
                         <h3 class="orbitron text-lg text-white mb-2">Tech Panda</h3>
-                        <p class="text-gray-300 text-sm mb-4">Startup watch: GauravGo Games' battle royale innovation</p>
-                        <a href="https://thetechpanda.com/startup-watch-gauravgo-games-a-battle-royale-game-launched-by-a-group-of-btech-students-from-a-tier-2-college-in-odisha/41499/" target="_blank" class="text-[--neon-green] text-sm hover:underline">Read Article</a>
+                        <p class="text-gray-300 text-sm mb-4">Startup watch: GauravGo Games' battle royale innovation and market impact</p>
+                        <a href="https://thetechpanda.com/startup-watch-gauravgo-games-a-battle-royale-game-launched-by-a-group-of-btech-students-from-a-tier-2-college-in-odisha/41499/" target="_blank" class="text-neon-green text-sm font-medium hover:underline inline-flex items-center">
+                            Read Article
+                            <i class="fas fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                        </a>
                     </div>
                     
-                    <div class="press-card rounded-lg p-6 fade-in">
-                        <img src="https://gauravgo.com/wp-content/uploads/2024/11/GG_Coverage-transformed-e1730961634621.png" alt="Interview Times" class="w-full h-40 object-cover rounded-md mb-4">
+                    <div class="press-card rounded-xl p-6 fade-in">
+                        <div class="h-40 overflow-hidden rounded-md mb-4 relative">
+                            <img src="https://gauravgo.com/wp-content/uploads/2024/11/GG_Coverage-transformed-e1730961634621.png" alt="Interview Times" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-deep-navy to-transparent opacity-70"></div>
+                        </div>
                         <h3 class="orbitron text-lg text-white mb-2">Interview Times</h3>
-                        <p class="text-gray-300 text-sm mb-4">Gaming revolution: Unveiling the vision of GauravGo Games</p>
-                        <a href="https://interviewtimes.net/gaming-revolution-unveiling-the-vision-of-gauravgo-games/" target="_blank" class="text-[--neon-green] text-sm hover:underline">Read Article</a>
+                        <p class="text-gray-300 text-sm mb-4">Gaming revolution: Unveiling the vision and mission of GauravGo Games</p>
+                        <a href="https://interviewtimes.net/gaming-revolution-unveiling-the-vision-of-gauravgo-games/" target="_blank" class="text-neon-green text-sm font-medium hover:underline inline-flex items-center">
+                            Read Article
+                            <i class="fas fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                        </a>
                     </div>
                     
-                    <div class="press-card rounded-lg p-6 fade-in">
+                    <div class="press-card rounded-xl p-6 fade-in">
                         <div class="video-container mb-4">
                             <iframe src="https://www.youtube.com/embed/JKbYD3jyBy0" title="Team Interview Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                         </div>
                         <h3 class="orbitron text-lg text-white mb-2">Team Interview</h3>
-                        <p class="text-gray-300 text-sm mb-4">The minds behind GauravGo Games share their story</p>
-                        <a href="#" class="text-[--neon-green] text-sm hover:underline">Watch Interview</a>
+                        <p class="text-gray-300 text-sm mb-4">The minds behind GauravGo Games share their inspiring story and future vision</p>
+                        <a href="#" class="text-neon-green text-sm font-medium hover:underline inline-flex items-center">
+                            Watch Interview
+                            <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -443,8 +686,8 @@
             const preloader = document.getElementById('preloader');
             setTimeout(() => {
                 preloader.style.opacity = '0';
-                setTimeout(() => preloader.remove(), 500);
-            }, 1000);
+                setTimeout(() => preloader.remove(), 700);
+            }, 1500);
         });
 
         // Scroll animations
@@ -454,10 +697,12 @@
             const fadeInObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, 100);
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.15 });
             
             fadeElements.forEach(element => {
                 fadeInObserver.observe(element);
@@ -468,12 +713,52 @@
             if (header) {
                 window.addEventListener('scroll', () => {
                     if (window.scrollY > 50) {
-                        header.classList.add('bg-[--near-black]', 'shadow-lg');
+                        header.classList.add('bg-midnight', 'shadow-xl');
+                        header.classList.add('backdrop-blur-md', 'bg-opacity-90');
                     } else {
-                        header.classList.remove('bg-[--near-black]', 'shadow-lg');
+                        header.classList.remove('bg-midnight', 'shadow-xl');
+                        header.classList.remove('backdrop-blur-md', 'bg-opacity-90');
                     }
                 });
             }
+
+            // Initialize GSAP animations
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Animate section titles
+            gsap.utils.toArray('.section-title').forEach(title => {
+                gsap.fromTo(title, 
+                    { opacity: 0, y: 20 },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 0.8,
+                        scrollTrigger: {
+                            trigger: title,
+                            start: "top 85%",
+                            toggleActions: "play none none none"
+                        }
+                    }
+                );
+            });
+
+            // Animate cards with stagger
+            gsap.utils.toAll('.press-card', cards => {
+                gsap.fromTo(cards, 
+                    { opacity: 0, y: 30 },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 0.6,
+                        stagger: 0.1,
+                        scrollTrigger: {
+                            trigger: cards[0].parentNode,
+                            start: "top 80%",
+                            toggleActions: "play none none none"
+                        }
+                    }
+                );
+            });
         });
     </script>
 
