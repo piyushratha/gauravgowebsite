@@ -109,15 +109,41 @@
             animation: letterFloat 1.2s ease forwards;
         }
 
-        .section-title:hover .title-letter:nth-child(2) { animation-delay: 0.05s; }
-        .section-title:hover .title-letter:nth-child(3) { animation-delay: 0.1s; }
-        .section-title:hover .title-letter:nth-child(4) { animation-delay: 0.15s; }
-        .section-title:hover .title-letter:nth-child(5) { animation-delay: 0.2s; }
-        .section-title:hover .title-letter:nth-child(6) { animation-delay: 0.25s; }
-        .section-title:hover .title-letter:nth-child(7) { animation-delay: 0.3s; }
-        .section-title:hover .title-letter:nth-child(8) { animation-delay: 0.35s; }
-        .section-title:hover .title-letter:nth-child(9) { animation-delay: 0.4s; }
-        .section-title:hover .title-letter:nth-child(10) { animation-delay: 0.45s; }
+        .section-title:hover .title-letter:nth-child(2) {
+            animation-delay: 0.05s;
+        }
+
+        .section-title:hover .title-letter:nth-child(3) {
+            animation-delay: 0.1s;
+        }
+
+        .section-title:hover .title-letter:nth-child(4) {
+            animation-delay: 0.15s;
+        }
+
+        .section-title:hover .title-letter:nth-child(5) {
+            animation-delay: 0.2s;
+        }
+
+        .section-title:hover .title-letter:nth-child(6) {
+            animation-delay: 0.25s;
+        }
+
+        .section-title:hover .title-letter:nth-child(7) {
+            animation-delay: 0.3s;
+        }
+
+        .section-title:hover .title-letter:nth-child(8) {
+            animation-delay: 0.35s;
+        }
+
+        .section-title:hover .title-letter:nth-child(9) {
+            animation-delay: 0.4s;
+        }
+
+        .section-title:hover .title-letter:nth-child(10) {
+            animation-delay: 0.45s;
+        }
 
         @keyframes letterFloat {
             0% {
@@ -125,11 +151,13 @@
                 text-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
                 color: var(--text-primary);
             }
+
             50% {
                 transform: translateY(-15px) scale(1.2);
                 text-shadow: 0 0 20px var(--electric-green), 0 0 30px var(--electric-green);
                 color: var(--electric-green);
             }
+
             100% {
                 transform: translateY(0) scale(1.05);
                 text-shadow: 0 0 15px rgba(46, 204, 113, 0.9);
@@ -150,8 +178,15 @@
         }
 
         @keyframes pulseLine {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* Slider Styles */
@@ -386,11 +421,11 @@
             .section-title {
                 font-size: 3rem;
             }
-            
+
             .swiper-button-prev {
                 left: 10px;
             }
-            
+
             .swiper-button-next {
                 right: 10px;
             }
@@ -400,7 +435,7 @@
             .section-title {
                 font-size: 2.5rem;
             }
-            
+
             .slider-title {
                 font-size: 1.6rem;
             }
@@ -411,19 +446,19 @@
                 font-size: 2.2rem;
                 letter-spacing: 2px;
             }
-            
+
             .slider-header {
                 flex-direction: column;
                 gap: 1rem;
                 align-items: flex-start;
                 margin-bottom: 2rem;
             }
-            
+
             .swiper-button-prev,
             .swiper-button-next {
                 display: none;
             }
-            
+
             .swiper-slide {
                 width: 280px;
             }
@@ -433,20 +468,20 @@
             .section-title {
                 font-size: 1.8rem;
             }
-            
+
             .slider-title {
                 font-size: 1.4rem;
             }
-            
+
             .view-all {
                 font-size: 0.9rem;
             }
-            
+
             .swiper-slide {
                 width: 260px;
                 padding: 1.5rem;
             }
-            
+
             .game-buttons {
                 flex-direction: column;
                 gap: 0.6rem;
@@ -490,7 +525,8 @@
                         <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
                             alt="Customizable Drone">
                         <h3>End-to-End Customizable Drone</h3>
-                        <p>Customize drone components and test flight in a realistic virtual environment with advanced physics simulation.</p>
+                        <p>Customize drone components and test flight in a realistic virtual environment with advanced
+                            physics simulation.</p>
                         <div class="game-buttons">
                             <a href="#" class="game-btn view-btn">View Details</a>
                             <a href="#" class="game-btn play-btn">Try Now</a>
@@ -502,7 +538,8 @@
                         <img src="https://images.unsplash.com/photo-1598009279576-1d7fca2bb5bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
                             alt="Flight Simulator">
                         <h3>Advanced Flight Simulator</h3>
-                        <p>Realistic flight simulation with dynamic weather and customizable scenarios for professional training.</p>
+                        <p>Realistic flight simulation with dynamic weather and customizable scenarios for professional
+                            training.</p>
                         <div class="game-buttons">
                             <a href="#" class="game-btn view-btn">View Details</a>
                             <a href="#" class="game-btn play-btn">Try Now</a>
@@ -514,7 +551,8 @@
                         <img src="https://images.unsplash.com/photo-1533924275610-4ff8475e8f15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
                             alt="Dock Simulator">
                         <h3>Dock/Port Simulator</h3>
-                        <p>Simulate maritime operations and optimize port logistics in various challenging conditions.</p>
+                        <p>Simulate maritime operations and optimize port logistics in various challenging conditions.
+                        </p>
                         <div class="game-buttons">
                             <a href="#" class="game-btn view-btn">View Details</a>
                             <a href="#" class="game-btn play-btn">Try Now</a>
@@ -532,7 +570,7 @@
                             <a href="#" class="game-btn play-btn">Try Now</a>
                         </div>
                     </div>
-                    
+
                     <!-- Card 5 -->
                     <div class="swiper-slide">
                         <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
@@ -553,19 +591,19 @@
 
     {% include 'footer.html' %}
 
-    <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const initSwiper = (selector) => {
                 const swiper = new Swiper(selector, {
                     slidesPerView: 1,
                     spaceBetween: 20,
                     loop: true,
+                    loopedSlides: 6, // ✅ fixes looping issue when few slides
+                    watchSlidesProgress: true, // ✅ keeps loop smooth
                     autoplay: {
                         delay: 4000,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true
+                        disableOnInteraction: false
                     },
                     speed: 800,
                     navigation: {
@@ -573,11 +611,11 @@
                         prevEl: `${selector} .swiper-button-prev`,
                     },
                     breakpoints: {
-                        640: { 
+                        640: {
                             slidesPerView: 2,
                             spaceBetween: 20
                         },
-                        1024: { 
+                        1024: {
                             slidesPerView: 3,
                             spaceBetween: 25
                         },
@@ -587,24 +625,29 @@
                         }
                     }
                 });
-                
+
                 return swiper;
             };
 
             const simulationSwiper = initSwiper('#simulation-slider');
-            
-            // Enhanced hover control
+
+            // ✅ Avoid double autoplay stop (Swiper already handles pauseOnMouseEnter if you want)
             const swiperContainer = document.querySelector('#simulation-slider');
-            
+
             swiperContainer.addEventListener('mouseenter', () => {
-                simulationSwiper.autoplay.stop();
+                if (simulationSwiper.autoplay.running) {
+                    simulationSwiper.autoplay.stop();
+                }
             });
-            
+
             swiperContainer.addEventListener('mouseleave', () => {
-                simulationSwiper.autoplay.start();
+                if (!simulationSwiper.autoplay.running) {
+                    simulationSwiper.autoplay.start();
+                }
             });
         });
     </script>
+
 </body>
 
 </html>

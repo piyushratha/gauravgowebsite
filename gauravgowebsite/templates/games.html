@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -20,6 +23,14 @@
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            width: 100%;
+            min-width: 0;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
         body {
             background: linear-gradient(135deg, #0a0a1a 0%, #050510 100%);
             font-family: 'Poppins', sans-serif;
@@ -27,7 +38,7 @@
             overflow-x: hidden;
             line-height: 1.6;
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
         }
 
         .orbitron {
@@ -43,27 +54,35 @@
         }
 
         @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .glow {
             text-shadow: 0 0 15px rgba(46, 204, 113, 0.7), 0 0 30px rgba(46, 204, 113, 0.4);
         }
 
-        /* Hero Section - Reduced height */
+        /* Hero Section */
         .hero-section {
             position: relative;
             width: 100vw;
-            height: 80vh; /* Reduced from 100vh */
+            height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             background: radial-gradient(circle at 20% 30%, rgba(46, 204, 113, 0.1) 0%, transparent 25%),
-                        radial-gradient(circle at 80% 70%, rgba(52, 152, 219, 0.1) 0%, transparent 25%),
-                        linear-gradient(135deg, #0a0a1a 0%, #050510 100%);
+                radial-gradient(circle at 80% 70%, rgba(52, 152, 219, 0.1) 0%, transparent 25%),
+                linear-gradient(135deg, #0a0a1a 0%, #050510 100%);
         }
 
         .hero-section::before {
@@ -76,30 +95,42 @@
             background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232ecc71' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
             opacity: 0.4;
         }
-        
+
         .hero-particles {
             position: absolute;
             width: 100%;
             height: 100%;
             pointer-events: none;
         }
-        
+
         .particle {
             position: absolute;
             background: rgba(46, 204, 113, 0.3);
             border-radius: 50%;
             animation: float 15s infinite ease-in-out;
         }
-        
+
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(20px, 15px) rotate(45deg); }
-            50% { transform: translate(10px, 30px) rotate(90deg); }
-            75% { transform: translate(-15px, 20px) rotate(135deg); }
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(20px, 15px) rotate(45deg);
+            }
+
+            50% {
+                transform: translate(10px, 30px) rotate(90deg);
+            }
+
+            75% {
+                transform: translate(-15px, 20px) rotate(135deg);
+            }
         }
 
         .hero-title {
-            font-size: clamp(2rem, 7vw, 4rem); /* Slightly reduced max size */
+            font-size: clamp(2rem, 7vw, 4rem);
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -117,7 +148,9 @@
         }
 
         @keyframes fadeIn {
-            to { opacity: 1; }
+            to {
+                opacity: 1;
+            }
         }
 
         .hero-title span:nth-child(n) {
@@ -129,10 +162,10 @@
             color: #ffffff;
             filter: drop-shadow(0 0 12px #2ecc71) drop-shadow(0 0 24px #2ecc71);
         }
-        
+
         .hero-subtitle {
-            font-size: 1.1rem; /* Slightly smaller */
-            margin-top: 1.2rem; /* Reduced margin */
+            font-size: 1.1rem;
+            margin-top: 1.2rem;
             text-align: center;
             max-width: 600px;
             opacity: 0.8;
@@ -140,9 +173,9 @@
             z-index: 10;
         }
 
-        /* Projects Section - Reduced padding */
+        /* Projects Section */
         #projects {
-            padding: 2.5rem 0; /* Reduced from 4rem */
+            padding: 2.5rem 0;
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -152,8 +185,8 @@
         #projects::after {
             content: "";
             position: absolute;
-            width: 300px; /* Slightly smaller */
-            height: 300px; /* Slightly smaller */
+            width: 300px;
+            height: 300px;
             background: radial-gradient(circle, rgba(46, 204, 113, 0.3) 0%, transparent 70%);
             animation: floatGlow 8s ease-in-out infinite;
             z-index: 0;
@@ -172,10 +205,12 @@
         }
 
         @keyframes floatGlow {
-            0%, 100% {
+            0%,
+            100% {
                 transform: translateY(0) scale(1);
                 opacity: 0.5;
             }
+
             50% {
                 transform: translateY(-30px) scale(1.2);
                 opacity: 0.8;
@@ -183,9 +218,9 @@
         }
 
         .section-title {
-            font-size: 2.2rem; /* Slightly smaller */
+            font-size: 2.2rem;
             font-weight: 800;
-            margin-bottom: 1.5rem; /* Reduced from 2rem */
+            margin-bottom: 1.5rem;
             text-align: center;
             position: relative;
         }
@@ -193,14 +228,14 @@
         .section-title::after {
             content: '';
             display: block;
-            width: 70px; /* Slightly smaller */
-            height: 3px; /* Slightly thinner */
+            width: 70px;
+            height: 3px;
             background: linear-gradient(90deg, #2ecc71, #3498db);
-            margin: 8px auto; /* Reduced margin */
+            margin: 8px auto;
             border-radius: 2px;
         }
-        
-        /* NEW SLIDER STYLES (from the first code) */
+
+        /* NEW SLIDER STYLES */
         .slider-section {
             margin-bottom: 2.5rem;
             margin-top: 2rem;
@@ -248,47 +283,57 @@
             position: relative;
         }
 
-        .swiper-wrapper {
-            padding: 10px 0;
-        }
-
+        /* NEW SLIDER CARD STYLES */
         .swiper-slide {
             width: clamp(260px, 25vw, 340px);
             background: rgba(15, 15, 30, 0.7);
-            border: 1px solid rgba(46, 204, 113, 0.2);
+            border: none; /* Removed the card border */
             border-radius: 0.75rem;
-            padding: 1.2rem 1.2rem 1rem 1.2rem;
+            padding: 0; /* Remove padding from card */
             display: flex;
             flex-direction: column;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             backdrop-filter: blur(5px);
             overflow: hidden;
-            min-height: 300px;
-            max-height: 340px;
+            min-height: 370px; /* Increased height for buttons */
+            max-height: none;  /* Remove max-height restriction */
+            position: relative;
+            background: linear-gradient(135deg, rgba(20, 20, 40, 0.8), rgba(10, 10, 25, 0.8));
         }
 
+        /* NEW card hover effect */
         .swiper-slide::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #2ecc71, #3498db);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
+            inset: 0;
+            border-radius: 0.75rem;
+            padding: 2px; /* Border thickness */
+            background: linear-gradient(45deg, #2ecc71, #3498db);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-
+        
         .swiper-slide:hover {
             transform: scale(1.05) translateY(-8px);
-            box-shadow: 0 10px 22px rgba(46, 204, 113, 0.4);
-            border-color: #27ae60;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
         }
 
         .swiper-slide:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
+        }
+
+        /* Content within card */
+        .game-card-content {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between; /* Ensure buttons stay at the bottom */
+            min-height: 220px; /* Ensure enough space for content + buttons */
         }
 
         .swiper-slide img {
@@ -296,14 +341,9 @@
             height: auto;
             aspect-ratio: 16/9;
             object-fit: cover;
-            border-radius: 0.5rem;
-            margin-bottom: 0.6rem;
+            border-radius: 0.75rem 0.75rem 0 0; /* Rounded top corners only */
+            margin-bottom: 0;
             transition: transform 0.3s ease, filter 0.3s ease;
-        }
-
-        .swiper-slide img:hover {
-            transform: scale(1.08);
-            filter: brightness(1.15);
         }
 
         .swiper-slide h3 {
@@ -312,10 +352,7 @@
             color: #2ecc71;
             margin-bottom: 0.4rem;
             transition: color 0.3s ease;
-        }
-
-        .swiper-slide:hover h3 {
-            color: #27ae60;
+            text-shadow: 0 0 5px rgba(46, 204, 113, 0.3);
         }
 
         .swiper-slide p {
@@ -329,80 +366,89 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            flex-grow: 1; /* FIX: Added to make paragraph take available space */
+            flex-grow: 1;
         }
 
-        .swiper-slide:hover p {
-            color: #e0e0e0;
-        }
-
+        /* New button styles */
         .game-buttons {
             display: flex;
-            gap: 0.4rem;
-            margin-top: auto; /* FIX: Changed to push buttons to bottom */
-            padding-top: 0.5rem; /* FIX: Added to maintain spacing */
+            gap: 0.6rem;
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .game-btn {
             flex: 1;
-            padding: 0.45rem;
+            padding: 0.5rem; /* Slightly more padding */
             text-align: center;
-            border-radius: 0.25rem;
-            font-size: 0.75rem;
+            border-radius: 0.5rem; /* More rounded corners */
+            font-size: 0.8rem; /* Slightly larger font */
             font-weight: 600;
             transition: all 0.3s ease;
             text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .view-btn {
             background: linear-gradient(90deg, #2ecc71, #3498db);
             color: #000;
+            border: none;
+            box-shadow: 0 2px 10px rgba(46, 204, 113, 0.3);
         }
 
         .view-btn:hover {
             background: linear-gradient(90deg, #27ae60, #2980b9);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.5);
         }
 
         .play-btn {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.05); /* Semi-transparent background */
             color: #2ecc71;
-            border: 1px solid #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.5); /* Thicker, semi-transparent border */
         }
 
         .play-btn:hover {
-            background: rgba(46, 204, 113, 0.1);
+            background: rgba(46, 204, 113, 0.15);
             color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.5);
         }
 
+        /* NEW NAVIGATION STYLES */
         .swiper-button-prev,
         .swiper-button-next {
-            background: rgba(20, 20, 35, 0.6);
-            border: 1px solid rgba(46, 204, 113, 0.2);
+            background: rgba(20, 20, 35, 0.8);
+            border: 2px solid #2ecc71; /* New border style */
             color: #2ecc71;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 8px;
+            width: 4rem; /* Larger buttons */
+            height: 4rem; /* Larger buttons */
+            border-radius: 50%; /* Circular buttons */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem; /* Larger icons */
             font-weight: 700;
             font-family: "Orbitron", sans-serif;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.2);
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px); /* Increased blur */
             position: absolute;
-            top: 45%;
+            top: 50%; /* Center vertically */
             transform: translateY(-50%);
             z-index: 10;
             cursor: pointer;
         }
-        .swiper-button-prev { left: 0.5rem; }
-        .swiper-button-next { right: 0.5rem; }
+
+        .swiper-button-prev {
+            left: 1rem;
+        }
+
+        .swiper-button-next {
+            right: 1rem;
+        }
 
         .swiper-button-prev::after,
         .swiper-button-next::after {
@@ -422,25 +468,26 @@
             background: linear-gradient(90deg, #2ecc71, #3498db);
             color: #000;
             transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 0 20px rgba(46, 204, 113, 0.7);
+            box-shadow: 0 0 25px rgba(46, 204, 113, 0.8);
         }
-
+        
+        /* Mobile styles */
         @media (max-width: 768px) {
             .swiper-button-prev,
             .swiper-button-next {
                 display: none;
             }
-            
+
             .slider-header {
                 flex-direction: column;
                 gap: 10px;
                 align-items: flex-start;
             }
-            
+
             .main-title {
                 font-size: 2rem;
             }
-            
+
             .subtitle {
                 font-size: 1rem;
                 padding: 0 15px;
@@ -454,13 +501,13 @@
             right: 20px;
             background: linear-gradient(90deg, #2ecc71, #3498db);
             color: #000;
-            width: 45px; /* Slightly smaller */
-            height: 45px; /* Slightly smaller */
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem; /* Slightly smaller */
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             opacity: 0;
             visibility: hidden;
@@ -481,29 +528,30 @@
         }
     </style>
 </head>
+
 <body>
-    
+
     {% include "header.html" %}
 
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-particles" id="particles"></div>
         <div class="text-center">
             <h1 class="hero-title orbitron">
                 <span style="--i: 1">O</span><span style="--i: 2">u</span><span style="--i: 3">r</span>
                 <span style="--i: 4">&nbsp;</span>
-                <span style="--i: 5" class="gradient-text glow">G</span><span style="--i: 6" class="gradient-text glow">a</span><span style="--i: 7" class="gradient-text glow">m</span><span style="--i: 8" class="gradient-text glow">e</span><span style="--i: 9" class="gradient-text glow">s</span>
+                <span style="--i: 5" class="gradient-text glow">G</span><span style="--i: 6"
+                    class="gradient-text glow">a</span><span style="--i: 7" class="gradient-text glow">m</span><span
+                    style="--i: 8" class="gradient-text glow">e</span><span style="--i: 9"
+                    class="gradient-text glow">s</span>
             </h1>
             <p class="hero-subtitle">Discover our collection of immersive gaming experiences across multiple genres</p>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
         <div class="container mx-auto px-4">
             <h2 class="section-title orbitron">Our Game Collection</h2>
-            
-            <!-- All Games Slider -->
+
             <div class="slider-section">
                 <div class="slider-header">
                     <h3 class="slider-title orbitron">All Games</h3>
@@ -518,21 +566,24 @@
                             <img src="{% static 'images/media-home-page/emoji-wizard.png' %}" alt="Emoji Wizard">
                             <div class="game-card-content">
                                 <h3>Emoji Wizard</h3>
-                                <p>A Magical Emoji Puzzle Adventure ✨ Match, combine, and strategize through exciting levels filled with animated emojis.</p>
+                                <p>A Magical Emoji Puzzle Adventure ✨ Match, combine, and strategize through exciting
+                                    levels filled with animated emojis.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/Untitled-design-2.png' %}" alt="Cosmic Alien Quest">
+                            <img src="{% static 'images/media-home-page/Untitled-design-2.png' %}"
+                                alt="Cosmic Alien Quest">
                             <div class="game-card-content">
                                 <h3>Cosmic Alien Quest</h3>
-                                <p>Explore, Battle, Conquer the Universe! 🌌🚀 Battle hostile extraterrestrial forces and uncover secrets of distant galaxies.</p>
+                                <p>Explore, Battle, Conquer the Universe! 🌌🚀 Battle hostile extraterrestrial forces
+                                    and uncover secrets of distant galaxies.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
@@ -540,10 +591,11 @@
                             <img src="{% static 'images/media-home-page/Ping-Pong-2.png' %}" alt="Ping Pong">
                             <div class="game-card-content">
                                 <h3>Ping Pong: Table Tennis Board</h3>
-                                <p>A fresh take on classic table tennis with engaging daily challenges and competitive gameplay for all skill levels.</p>
+                                <p>A fresh take on classic table tennis with engaging daily challenges and competitive
+                                    gameplay for all skill levels.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
@@ -551,21 +603,24 @@
                             <img src="{% static 'images/media-home-page/toon-flyers-768x480.png' %}" alt="Toon Flyers">
                             <div class="game-card-content">
                                 <h3>Toon Flyers</h3>
-                                <p>A vibrant twist on the classic flying adventure game with daily challenges and colorful cartoon graphics.</p>
+                                <p>A vibrant twist on the classic flying adventure game with daily challenges and
+                                    colorful cartoon graphics.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/Bounce-Fall-768x480.png' %}" alt="Bounce And Fall">
+                            <img src="{% static 'images/media-home-page/Bounce-Fall-768x480.png' %}"
+                                alt="Bounce And Fall">
                             <div class="game-card-content">
                                 <h3>Bounce And Fall</h3>
-                                <p>Test your reflexes in this arcade-style game with rotating circular discs and challenging obstacles.</p>
+                                <p>Test your reflexes in this arcade-style game with rotating circular discs and
+                                    challenging obstacles.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
@@ -573,21 +628,24 @@
                             <img src="{% static 'images/media-home-page/Puzzle-7.png' %}" alt="Puzzle Artful Armor">
                             <div class="game-card-content">
                                 <h3>Puzzle Artful Armor</h3>
-                                <p>A puzzle game that challenges your artistic skills with intricate patterns and mind-bending challenges.</p>
+                                <p>A puzzle game that challenges your artistic skills with intricate patterns and
+                                    mind-bending challenges.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}" alt="Galactic Shooter">
+                            <img src="{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}"
+                                alt="Galactic Shooter">
                             <div class="game-card-content">
                                 <h3>SENA : MayaVerse</h3>
-                                <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action.</p>
+                                <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing
+                                    boundaries with immersive action.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
@@ -595,21 +653,24 @@
                             <img src="{% static 'images/media-home-page/1.jpg' %}" alt="Survival Arena">
                             <div class="game-card-content">
                                 <h3>Bhoomiputra</h3>
-                                <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay.</p>
+                                <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his
+                                    heroic story to life through thrilling gameplay.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg' %}" alt="Epic Showdown">
+                            <img src="{% static 'images/media-home-page/hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg' %}"
+                                alt="Epic Showdown">
                             <div class="game-card-content">
                                 <h3>SENA : Strike & Encounter</h3>
-                                <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror.</p>
+                                <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission
+                                    against terror.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
@@ -618,130 +679,8 @@
                     <div class="swiper-button-next all-games-next"></div>
                 </div>
             </div>
-            
-            <!-- Battle Royale Slider -->
-            <div class="slider-section">
-                <div class="slider-header">
-                    <h3 class="slider-title orbitron">Battle Royale Games</h3>
-                    <a href="#" class="view-all">
-                        <span>View All</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div id="battle-royale-games-slider" class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}" alt="Galactic Shooter">
-                            <div class="game-card-content">
-                                <h3>SENA : MayaVerse</h3>
-                                <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action.</p>
-                                <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}" alt="Galactic Shooter">
-                            <div class="game-card-content">
-                                <h3>SENA : MayaVerse</h3>
-                                <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action.</p>
-                                <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}" alt="Galactic Shooter">
-                            <div class="game-card-content">
-                                <h3>SENA : MayaVerse</h3>
-                                <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action.</p>
-                                <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}" alt="Galactic Shooter">
-                            <div class="game-card-content">
-                                <h3>SENA : MayaVerse</h3>
-                                <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing boundaries with immersive action.</p>
-                                <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-button-prev battle-royale-prev"></div>
-                    <div class="swiper-button-next battle-royale-next"></div>
-                </div>
-            </div>
-            
-            <!-- FPS Slider -->
-            <div class="slider-section">
-                <div class="slider-header">
-                    <h3 class="slider-title orbitron">FPS Games</h3>
-                    <a href="#" class="view-all">
-                        <span>View All</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div id="fps-games-slider" class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/1.jpg' %}" alt="Survival Arena">
-                            <div class="game-card-content">
-                                <h3>Bhoomiputra</h3>
-                                <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay.</p>
-                                <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg' %}" alt="Epic Showdown">
-                            <div class="game-card-content">
-                                <h3>SENA : Strike & Encounter</h3>
-                                <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror.</p>
-                                <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/1.jpg' %}" alt="Survival Arena">
-                            <div class="game-card-content">
-                                <h3>Bhoomiputra</h3>
-                                <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his heroic story to life through thrilling gameplay.</p>
-                                <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg' %}" alt="Epic Showdown">
-                            <div class="game-card-content">
-                                <h3>SENA : Strike & Encounter</h3>
-                                <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission against terror.</p>
-                                <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-button-prev fps-prev"></div>
-                    <div class="swiper-button-next fps-next"></div>
-                </div>
-            </div>
-            
-            <!-- F2P Slider -->
+
+            <!-- Move F2P Games slider here -->
             <div class="slider-section">
                 <div class="slider-header">
                     <h3 class="slider-title orbitron">Free to Play Games</h3>
@@ -756,21 +695,36 @@
                             <img src="{% static 'images/media-home-page/emoji-wizard.png' %}" alt="Emoji Wizard">
                             <div class="game-card-content">
                                 <h3>Emoji Wizard</h3>
-                                <p>A Magical Emoji Puzzle Adventure ✨ Match, combine, and strategize through exciting levels filled with animated emojis.</p>
+                                <p>A Magical Emoji Puzzle Adventure ✨ Match, combine, and strategize through exciting
+                                    levels filled with animated emojis.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide game-card">
+                            <img src="{% static 'images/media-home-page/Untitled-design-2.png' %}"
+                                alt="Cosmic Alien Quest">
+                            <div class="game-card-content">
+                                <h3>Cosmic Alien Quest</h3>
+                                <p>Explore, Battle, Conquer the Universe! 🌌🚀 Battle hostile extraterrestrial forces
+                                    and uncover secrets of distant galaxies.</p>
+                                <div class="game-buttons">
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide game-card">
                             <img src="{% static 'images/media-home-page/Ping-Pong-2.png' %}" alt="Ping Pong">
                             <div class="game-card-content">
-                                <h3>Ping Pong</h3>
-                                <p>A fresh take on classic table tennis with engaging daily challenges and competitive gameplay for all skill levels.</p>
+                                <h3>Ping Pong: Table Tennis Board</h3>
+                                <p>A fresh take on classic table tennis with engaging daily challenges and competitive
+                                    gameplay for all skill levels.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
@@ -778,32 +732,24 @@
                             <img src="{% static 'images/media-home-page/toon-flyers-768x480.png' %}" alt="Toon Flyers">
                             <div class="game-card-content">
                                 <h3>Toon Flyers</h3>
-                                <p>A vibrant twist on the classic flying adventure game with daily challenges and colorful cartoon graphics.</p>
+                                <p>A vibrant twist on the classic flying adventure game with daily challenges and
+                                    colorful cartoon graphics.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/Bounce-Fall-768x480.png' %}" alt="Bounce And Fall">
+                            <img src="{% static 'images/media-home-page/Bounce-Fall-768x480.png' %}"
+                                alt="Bounce And Fall">
                             <div class="game-card-content">
                                 <h3>Bounce And Fall</h3>
-                                <p>Test your reflexes in this arcade-style game with rotating circular discs and challenging obstacles.</p>
+                                <p>Test your reflexes in this arcade-style game with rotating circular discs and
+                                    challenging obstacles.</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide game-card">
-                            <img src="{% static 'images/media-home-page/Puzzle-7.png' %}" alt="Puzzle Artful Armor">
-                            <div class="game-card-content">
-                                <h3>Puzzle Artful Armor</h3>
-                                <p>A puzzle game that challenges your artistic skills with intricate patterns and mind-bending challenges.</p>
-                                <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn">View Game</a>
-                                    <a href="#" class="game-btn play-btn">Play Now</a>
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
                         </div>
@@ -812,53 +758,174 @@
                     <div class="swiper-button-next f2p-next"></div>
                 </div>
             </div>
-        </div>
 
-        <!-- Scroll to Top Button -->
-        <button id="scrollToTop" class="scroll-to-top">↑</button>
+            <!-- Battle Royale Games slider now comes after F2P -->
+            <div class="slider-section">
+                <div class="slider-header">
+                    <h3 class="slider-title orbitron">Battle Royale Games</h3>
+                    <a href="#" class="view-all">
+                        <span>View All</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div id="battle-royale-games-slider" class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide game-card">
+                            <img src="{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}"
+                                alt="Galactic Shooter">
+                            <div class="game-card-content">
+                                <h3>SENA : MayaVerse</h3>
+                                <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing
+                                    boundaries with immersive action.</p>
+                                <div class="game-buttons">
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide game-card">
+                            <img src="{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}"
+                                alt="Galactic Shooter">
+                            <div class="game-card-content">
+                                <h3>SENA : MayaVerse</h3>
+                                <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing
+                                    boundaries with immersive action.</p>
+                                <div class="game-buttons">
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide game-card">
+                            <img src="{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}"
+                                alt="Galactic Shooter">
+                            <div class="game-card-content">
+                                <h3>SENA : MayaVerse</h3>
+                                <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing
+                                    boundaries with immersive action.</p>
+                                <div class="game-buttons">
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide game-card">
+                            <img src="{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}"
+                                alt="Galactic Shooter">
+                            <div class="game-card-content">
+                                <h3>SENA : MayaVerse</h3>
+                                <p>A futuristic Metaverse-based Indian Battle Royale by GauravGo Games, pushing
+                                    boundaries with immersive action.</p>
+                                <div class="game-buttons">
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev battle-royale-prev"></div>
+                    <div class="swiper-button-next battle-royale-next"></div>
+                </div>
+            </div>
+
+            <div class="slider-section">
+                <div class="slider-header">
+                    <h3 class="slider-title orbitron">FPS Games</h3>
+                    <a href="#" class="view-all">
+                        <span>View All</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div id="fps-games-slider" class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide game-card">
+                            <img src="{% static 'images/media-home-page/1.jpg' %}" alt="Survival Arena">
+                            <div class="game-card-content">
+                                <h3>Bhoomiputra</h3>
+                                <p>A tribute to Biju Patnaik's 1947 rescue mission in Indonesia, this game brings his
+                                    heroic story to life through thrilling gameplay.</p>
+                                <div class="game-buttons">
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide game-card">
+                            <img src="{% static 'images/media-home-page/hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg' %}"
+                                alt="Epic Showdown">
+                            <div class="game-card-content">
+                                <h3>SENA : Strike & Encounter</h3>
+                                <p>Based on the IAF's Pulwama revenge strike, join Captain Abhinandan on a bold mission
+                                    against terror.</p>
+                                <div class="game-buttons">
+                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev fps-prev"></div>
+                    <div class="swiper-button-next fps-next"></div>
+                </div>
+            </div>
+        </div>
     </section>
+
+    {% include "footer.html" %}
+
+    <a href="#" id="scrollToTop" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-        // Initialize AOS
         AOS.init({
+            duration: 800,
             once: true,
-            offset: 100,
+            disable: 'mobile'
         });
 
-        // Create particles for hero section
+        // Initialize particles
         function createParticles() {
             const container = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
+            const numParticles = 20;
+            for (let i = 0; i < numParticles; i++) {
+                let size = Math.random() * 5 + 2;
+                let particle = document.createElement('div');
                 particle.classList.add('particle');
-                
-                // Random size and position
-                const size = Math.random() * 8 + 2;
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                const opacity = Math.random() * 0.5 + 0.1;
-                const hue = Math.floor(Math.random() * 60) + 120; // Greenish hue
-                
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
-                particle.style.left = `${posX}%`;
-                particle.style.top = `${posY}%`;
-                particle.style.opacity = opacity;
-                particle.style.backgroundColor = `hsla(${hue}, 70%, 60%, ${opacity})`;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
                 particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-                
                 container.appendChild(particle);
             }
         }
+        createParticles();
+
+        // GSAP Hero Title Animation
+        const heroTitle = document.querySelector('.hero-title');
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        gsap.from(heroTitle.children, {
+            y: 50,
+            opacity: 0,
+            ease: "back.out(1.7)",
+            stagger: 0.1,
+            delay: 0.5
+        });
+        gsap.from(heroSubtitle, {
+            y: 20,
+            opacity: 0,
+            ease: "power2.out",
+            delay: 1.5
+        });
+
 
         // Initialize Swiper sliders with proper configuration
         function initSwipers() {
-            new Swiper('#all-games-slider', {
+            const commonConfig = {
                 slidesPerView: 1,
                 spaceBetween: 20,
                 loop: true,
@@ -868,77 +935,49 @@
                     pauseOnMouseEnter: true
                 },
                 speed: 900,
+                breakpoints: {
+                    640: { slidesPerView: 2, spaceBetween: 20 },
+                    1024: { slidesPerView: 3, spaceBetween: 25 },
+                    1280: { slidesPerView: 4, spaceBetween: 30 }
+                }
+            };
+
+            new Swiper('#all-games-slider', {
+                ...commonConfig,
                 navigation: {
                     nextEl: '.all-games-next',
                     prevEl: '.all-games-prev',
                 },
-                breakpoints: {
-                    640: { slidesPerView: 2, spaceBetween: 20 },
-                    1024: { slidesPerView: 3, spaceBetween: 25 },
-                    1280: { slidesPerView: 4, spaceBetween: 30 }
-                }
             });
+
             new Swiper('#battle-royale-games-slider', {
-                slidesPerView: 1,
-                spaceBetween: 20,
-                loop: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true
-                },
-                speed: 900,
+                ...commonConfig,
                 navigation: {
                     nextEl: '.battle-royale-next',
                     prevEl: '.battle-royale-prev',
                 },
-                breakpoints: {
-                    640: { slidesPerView: 2, spaceBetween: 20 },
-                    1024: { slidesPerView: 3, spaceBetween: 25 },
-                    1280: { slidesPerView: 4, spaceBetween: 30 }
-                }
             });
+
+            // FPS slider: always loop
             new Swiper('#fps-games-slider', {
-                slidesPerView: 1,
-                spaceBetween: 20,
+                ...commonConfig,
                 loop: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true
-                },
-                speed: 900,
                 navigation: {
                     nextEl: '.fps-next',
                     prevEl: '.fps-prev',
                 },
-                breakpoints: {
-                    640: { slidesPerView: 2, spaceBetween: 20 },
-                    1024: { slidesPerView: 3, spaceBetween: 25 },
-                    1280: { slidesPerView: 4, spaceBetween: 30 }
-                }
             });
+
             new Swiper('#f2p-games-slider', {
-                slidesPerView: 1,
-                spaceBetween: 20,
-                loop: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true
-                },
-                speed: 900,
+                ...commonConfig,
                 navigation: {
                     nextEl: '.f2p-next',
                     prevEl: '.f2p-prev',
                 },
-                breakpoints: {
-                    640: { slidesPerView: 2, spaceBetween: 20 },
-                    1024: { slidesPerView: 3, spaceBetween: 25 },
-                    1280: { slidesPerView: 4, spaceBetween: 30 }
-                }
             });
         }
+
+        document.addEventListener("DOMContentLoaded", initSwipers);
 
         // Scroll to top functionality
         const scrollToTopBtn = document.getElementById('scrollToTop');
@@ -955,151 +994,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
-
-        // Hamburger menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const dropdowns = document.querySelectorAll('.dropdown');
-        
-        if (hamburger && navLinks) {
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navLinks.classList.toggle('active');
-                
-                // Close all dropdowns when mobile menu closes
-                if (!navLinks.classList.contains('active')) {
-                    dropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('active');
-                    });
-                }
-                hamburger.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-            });
-        }
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.navbar') && window.innerWidth <= 768) {
-                if (hamburger) hamburger.classList.remove('active');
-                if (navLinks) navLinks.classList.remove('active');
-                
-                // Close all dropdowns
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-        });
-        
-        // Mobile dropdown functionality
-        dropdowns.forEach(dropdown => {
-            const trigger = dropdown.querySelector('a');
-            
-            if (trigger) {
-                trigger.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        dropdown.classList.toggle('active');
-                        
-                        // Close other dropdowns
-                        dropdowns.forEach(otherDropdown => {
-                            if (otherDropdown !== dropdown) {
-                                otherDropdown.classList.remove('active');
-                            }
-                        });
-                    }
-                });
-            }
-        });
-        
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (navbar && window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else if (navbar) {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // GSAP animations
-        gsap.registerPlugin(ScrollTrigger);
-        
-        // Animate navbar on scroll
-        if (document.querySelector('.navbar')) {
-            gsap.from('.navbar', {
-                y: -50,
-                opacity: 0,
-                duration: 0.8,
-                ease: "power3.out"
-            });
-        }
-        
-        // Animate logo on load
-        if (document.querySelector('.logo')) {
-            gsap.from('.logo', {
-                duration: 1,
-                x: -50,
-                opacity: 0,
-                ease: 'power3.out'
-            });
-        }
-        
-        // Animate nav items sequentially
-        if (document.querySelector('.nav-links li')) {
-            gsap.from('.nav-links li', {
-                duration: 0.5,
-                y: 20,
-                opacity: 0,
-                stagger: 0.1,
-                delay: 0.3,
-                ease: 'back.out(1.7)'
-            });
-        }
-        
-        // Animate hero title
-        gsap.from('.hero-title', {
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            delay: 0.3,
-            ease: "power3.out"
-        });
-        
-        // Animate section titles
-        gsap.utils.toArray('.section-title').forEach(title => {
-            gsap.from(title, {
-                scrollTrigger: {
-                    trigger: title,
-                    start: 'top 90%'
-                },
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                ease: "power3.out"
-            });
-        });
-        
-        // Animate game cards
-        gsap.utils.toArray('.swiper-slide').forEach(slide => {
-            gsap.from(slide, {
-                scrollTrigger: {
-                    trigger: slide,
-                    start: 'top 90%'
-                },
-                y: 30,
-                opacity: 0,
-                duration: 0.6,
-                ease: "power3.out"
-            });
-        });
-        
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            initSwipers();
-        });
     </script>
-
-    {% include 'footer.html' %}
-    
 </body>
+
 </html>

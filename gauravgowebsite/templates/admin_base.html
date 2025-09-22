@@ -20,16 +20,17 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: #0d1117;
-      color: #fff;
+      background: linear-gradient(135deg, #0d1117 0%, #232946 100%);
+      color: #f4f4f4;
+      min-height: 100vh;
     }
 
     /* Sidebar */
     .vertical-nav {
-      min-width: 250px;
-      max-width: 250px;
+      min-width: 240px;
+      max-width: 240px;
       height: 100vh;
-      background: #0a0a1f;
+      background: linear-gradient(160deg, #181c2f 70%, #232946 100%);
       background-image: url("{% static 'images/sidebar-bg.png' %}");
       background-size: cover;
       color: #fff;
@@ -37,132 +38,217 @@
       top: 0;
       left: 0;
       z-index: 100;
-      padding-top: 20px;
-      box-shadow: 0 0 10px #00f0ff33;
+      padding-top: 28px;
+      box-shadow: 2px 0 18px 0 #00f0ff22;
+      border-right: 1px solid #232946;
+      transition: left 0.3s;
     }
 
     .vertical-nav .sidebar-title {
-      font-size: 1.5rem;
+      font-size: 2rem;
       text-align: center;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       font-family: 'Orbitron', sans-serif;
       color: #00f0ff;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      text-shadow: 0 2px 8px #00f0ff44;
     }
 
     .vertical-nav .nav-link {
-      font-size: 15px;
-      color: #ccc;
-      padding: 12px 20px;
+      font-size: 1rem;
+      color: #c9d1d9;
+      padding: 14px 28px;
       display: flex;
       align-items: center;
-      transition: 0.3s;
+      border-radius: 0 24px 24px 0;
+      margin-bottom: 6px;
+      transition: background 0.2s, color 0.2s, border-left 0.2s;
+      font-weight: 500;
+      letter-spacing: 0.5px;
     }
 
     .vertical-nav .nav-link i {
-      margin-right: 12px;
-      font-size: 16px;
+      margin-right: 14px;
+      font-size: 1.2rem;
       color: #00f0ff;
       filter: drop-shadow(0 0 3px #00f0ff);
+      min-width: 22px;
+      text-align: center;
     }
 
     .vertical-nav .nav-link:hover,
     .vertical-nav .nav-link.active {
-      background: #111;
+      background: linear-gradient(90deg, #00f0ff22 0%, #232946 100%);
       color: #fff;
-      border-left: 3px solid #00f0ff;
+      border-left: 4px solid #00f0ff;
+      box-shadow: 0 2px 12px #00f0ff22;
     }
 
     /* Profile Section */
     .profile {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 32px;
     }
 
     .profile img {
-      width: 150px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       border: 3px solid #00f0ff;
-      margin-bottom: 10px;
-      box-shadow: 0 0 10px #00f0ff;
+      margin-bottom: 12px;
+      box-shadow: 0 0 18px #00f0ff55;
+      object-fit: cover;
+      background: #232946;
+    }
+
+    .profile h5 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+      color: #fff;
+    }
+
+    .profile p {
+      color: #8ca0b3;
+      font-size: 0.92rem;
+      margin-bottom: 0;
     }
 
     /* Page Content */
     .page-content {
-      margin-left: 250px;
-      padding: 30px;
-      background-color: #121829;
+      margin-left: 240px;
+      padding: 40px 32px 32px 32px;
+      background: transparent;
+      min-height: 100vh;
+      transition: margin-left 0.3s;
     }
 
     .navbar-custom {
-      background: #121829;
-      padding: 12px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #00f0ff44;
+      background: #181c2f;
+      padding: 14px 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px #00f0ff22;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .navbar-custom .btn {
       color: #fff;
-      background: #00f0ff;
+      background: linear-gradient(90deg, #00f0ff 60%, #00c0cc 100%);
       border: none;
-      transition: 0.3s;
+      border-radius: 6px;
+      font-weight: 500;
+      padding: 8px 20px;
+      box-shadow: 0 2px 8px #00f0ff33;
+      transition: background 0.2s, box-shadow 0.2s;
     }
 
     .navbar-custom .btn:hover {
-      background: #00c0cc;
+      background: linear-gradient(90deg, #00c0cc 60%, #00f0ff 100%);
+      box-shadow: 0 4px 16px #00f0ff55;
     }
 
     /* Welcome Area */
     .welcome-area {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
 
     .welcome-area h2 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: #00f0ff;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 12px #00f0ff33;
     }
 
     .welcome-area p {
-      color: #aaa;
-      font-size: 0.95rem;
+      color: #b3b3b3;
+      font-size: 1.08rem;
+      margin-bottom: 0;
+      font-weight: 400;
     }
 
     /* Cards */
     .card-box {
-      background: #121829;
-      border-radius: 10px;
-      padding: 25px;
+      background: linear-gradient(135deg, #181c2f 60%, #232946 100%);
+      border-radius: 14px;
+      padding: 32px 20px 28px 20px;
       color: #fff;
-      box-shadow: 0 0 10px #00f0ff22;
-      transition: 0.3s;
+      box-shadow: 0 4px 24px #00f0ff18;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #232946;
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .card-box:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 20px #00f0ff66;
+      transform: translateY(-6px) scale(1.025);
+      box-shadow: 0 8px 32px #00f0ff44;
+      border-color: #00f0ff;
     }
 
     .card-box i {
-      font-size: 2rem;
+      font-size: 2.4rem;
       color: #00f0ff;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 12px #00f0ff33;
+    }
+
+    .card-box h5 {
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: #00f0ff;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .card-box p {
+      color: #b3b3b3;
+      font-size: 1rem;
+      margin-bottom: 0;
+      font-weight: 400;
     }
 
     /* Responsive */
+    @media (max-width: 991px) {
+      .page-content {
+        padding: 28px 8px 8px 8px;
+      }
+      .card-box {
+        min-height: 180px;
+        padding: 24px 10px 20px 10px;
+      }
+    }
     @media (max-width: 768px) {
       .vertical-nav {
-        left: -250px;
+        left: -240px;
       }
-
       .vertical-nav.active {
         left: 0;
       }
-
       .page-content {
         margin-left: 0;
+      }
+      .navbar-custom {
+        padding: 10px 10px;
+      }
+    }
+    @media (max-width: 575px) {
+      .card-box {
+        min-height: 120px;
+        padding: 16px 4px 12px 4px;
+      }
+      .welcome-area h2 {
+        font-size: 1.3rem;
       }
     }
   </style>
@@ -174,7 +260,7 @@
     <p class="sidebar-title">GAURAVGO</p>
 
     <div class="profile">
-      <img src="{% static 'images\media-home-page\logo.png' %}" alt="Admin Avatar">
+      <img src="{% static 'images/media-home-page/logo.png' %}" alt="Admin Avatar">
       <h5 class="mb-0">Admin</h5>
       <p class="text-muted small">{{ request.user.email }}</p>
     </div>
@@ -210,7 +296,7 @@
 
   <!-- Page Content -->
   <div class="page-content" id="content">
-    <nav class="navbar navbar-custom d-flex justify-content-between">
+    <nav class="navbar navbar-custom">
       <button id="sidebarCollapse" class="btn"><i class="fas fa-bars"></i></button>
       <a href="{% url 'logout' %}" class="btn">Logout</a>
     </nav>
