@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from gauravgowebsite import views
 from gauravgowebsite.views import *
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -44,7 +47,10 @@ urlpatterns = [
     path('logout', Logout, name="logout"),
     path('search', search, name="search"),
     path('change_password', change_password, name="change_password"),
-    
+    path('add_games', add_games, name="add_games"),
+    path('manage_games', manage_games, name="manage_games"),
+    path('edit_game/<int:pid>', edit_games, name="edit_game"),
+    # path('delete_game/<int:pid>', delete_game, name="delete_game"),
         
         
 ]

@@ -1,0 +1,130 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+{% block main %}
+<div class="card shadow m-2">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="p-2 text-danger" style="border-bottom:2px solid orange">Manage Games</h5>
+      <a href="{% url 'add_games' %}" class="btn btn-primary">+ Add New Game</a>
+    </div>
+
+    <div class="container-fluid">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="example">
+          <thead class="table-light">
+            <tr>
+              <th style="width:60px;">S No.</th>
+              <th style="width:110px;">Logo</th>
+              <th style="width:110px;">Image</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th style="width:150px;">Creation Date</th>
+              <th style="width:140px;">Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for i in services %}
+            <tr>
+              <td class="align-middle text-center">{{ forloop.counter }}</td>
+
+              <td class="align-middle text-center">
+                {% if i.logo %}
+                  <img src="{{ i.logo.url }}" alt="{{ i.title }} logo" style="max-width:90px; max-height:90px; object-fit:cover; border-radius:6px;">
+                {% else %}
+                  <img src="{% static 'img/placeholder-100.png' %}" alt="no logo" style="max-width:90px; max-height:90px; object-fit:cover; border-radius:6px; opacity:0.6;">
+                {% endif %}
+              </td>
+
+              <td class="align-middle text-center">
+                {% if i.image %}
+                  <img src="{{ i.image.url }}" alt="{{ i.title }} image" style="max-width:90px; max-height:90px; object-fit:cover; border-radius:6px;">
+                {% else %}
+                  <img src="{% static 'img/placeholder-100.png' %}" alt="no image" style="max-width:90px; max-height:90px; object-fit:cover; border-radius:6px; opacity:0.6;">
+                {% endif %}
+              </td>
+
+              <td class="align-middle">{{ i.title }}</td>
+
+              <td class="align-middle">
+                {{ i.description|truncatechars:120 }}
+                {% if i.description|length > 120 %}
+                  <br>
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#gameModal{{ forloop.counter }}">Read more</a>
+                {% endif %}
+              </td>
+
+              <td class="align-middle">{{ i.creationdate|date:"d M Y, H:i" }}</td>
+
+              <td class="align-middle text-center">
+                <a href="{% url 'edit_game' i.id %}" class="btn btn-sm btn-success" style="width:70px">Edit</a>
+                <a href="{% url 'delete_game' i.id %}" class="btn btn-sm btn-danger mt-2" style="width:70px" onclick="return confirm('Are you sure you want to delete this game?')">Delete</a>
+                <br>
+                <a href="#" class="btn btn-sm btn-info mt-2" data-bs-toggle="modal" data-bs-target="#gameModal{{ forloop.counter }}" style="width:70px">View</a>
+              </td>
+            </tr>
+
+            <!-- Modal: view full description & larger images -->
+            <div class="modal fade" id="gameModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="gameModalLabel{{ forloop.counter }}" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="gameModalLabel{{ forloop.counter }}">{{ i.title }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-3">
+                      <div class="col-md-5 text-center">
+                        {% if i.image %}
+                          <img src="{{ i.image.url }}" alt="{{ i.title }}" class="img-fluid rounded" style="max-height:320px; object-fit:cover;">
+                        {% else %}
+                          <img src="{% static 'img/placeholder-400.png' %}" alt="no image" class="img-fluid rounded" style="max-height:320px; object-fit:cover; opacity:0.6;">
+                        {% endif %}
+                      </div>
+                      <div class="col-md-7">
+                        <p><strong>Logo:</strong></p>
+                        {% if i.logo %}
+                          <img src="{{ i.logo.url }}" alt="{{ i.title }} logo" style="max-width:120px; max-height:120px; object-fit:cover; border-radius:6px;">
+                        {% else %}
+                          <img src="{% static 'img/placeholder-100.png' %}" alt="no logo" style="max-width:120px; max-height:120px; object-fit:cover; border-radius:6px; opacity:0.6;">
+                        {% endif %}
+                        <hr>
+                        <p><strong>Description</strong></p>
+                        <p style="white-space:pre-wrap;">{{ i.description }}</p>
+                        <hr>
+                        <p class="mb-0"><small class="text-muted">Created on: {{ i.creationdate|date:"d M Y, H:i" }}</small></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="{% url 'edit_games' i.id %}" class="btn btn-success">Edit</a>
+                    <a href="{% url 'delete_games' i.id %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this game?')">Delete</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Optional: include DataTables initialization if you use DataTables -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof $ !== 'undefined' && $.fn && $.fn.DataTable) {
+      $('#example').DataTable({
+        "order": [[ 0, "asc" ]],
+        "columnDefs": [
+          { "orderable": false, "targets": [1,2,4,6] }
+        ],
+        "pageLength": 10
+      });
+    }
+  });
+</script>
+{% endblock %}

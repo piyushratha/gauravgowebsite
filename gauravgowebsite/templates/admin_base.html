@@ -1,6 +1,6 @@
 {% load static %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,7 +13,7 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom CSS -->
@@ -86,218 +86,115 @@
     }
 
     /* Profile Section */
-    .profile {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    .profile img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      border: 3px solid #00f0ff;
-      margin-bottom: 12px;
-      box-shadow: 0 0 18px #00f0ff55;
-      object-fit: cover;
-      background: #232946;
-    }
-
-    .profile h5 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 2px;
-      color: #fff;
-    }
-
-    .profile p {
-      color: #8ca0b3;
-      font-size: 0.92rem;
-      margin-bottom: 0;
-    }
+    .profile { text-align: center; margin-bottom: 32px; }
+    .profile img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #00f0ff; margin-bottom: 12px; box-shadow: 0 0 18px #00f0ff55; object-fit: cover; background: #232946; }
+    .profile h5 { font-size: 1.1rem; font-weight: 600; margin-bottom: 2px; color: #fff; }
+    .profile p { color: #8ca0b3; font-size: 0.92rem; margin-bottom: 0; }
 
     /* Page Content */
-    .page-content {
-      margin-left: 240px;
-      padding: 40px 32px 32px 32px;
-      background: transparent;
-      min-height: 100vh;
-      transition: margin-left 0.3s;
-    }
-
-    .navbar-custom {
-      background: #181c2f;
-      padding: 14px 24px;
-      border-radius: 12px;
-      box-shadow: 0 2px 16px #00f0ff22;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .navbar-custom .btn {
-      color: #fff;
-      background: linear-gradient(90deg, #00f0ff 60%, #00c0cc 100%);
-      border: none;
-      border-radius: 6px;
-      font-weight: 500;
-      padding: 8px 20px;
-      box-shadow: 0 2px 8px #00f0ff33;
-      transition: background 0.2s, box-shadow 0.2s;
-    }
-
-    .navbar-custom .btn:hover {
-      background: linear-gradient(90deg, #00c0cc 60%, #00f0ff 100%);
-      box-shadow: 0 4px 16px #00f0ff55;
-    }
+    .page-content { margin-left: 240px; padding: 40px 32px 32px 32px; background: transparent; min-height: 100vh; transition: margin-left 0.3s; }
+    .navbar-custom { background: #181c2f; padding: 14px 24px; border-radius: 12px; box-shadow: 0 2px 16px #00f0ff22; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-custom .btn { color: #fff; background: linear-gradient(90deg, #00f0ff 60%, #00c0cc 100%); border: none; border-radius: 6px; font-weight: 500; padding: 8px 20px; box-shadow: 0 2px 8px #00f0ff33; transition: background 0.2s, box-shadow 0.2s; }
+    .navbar-custom .btn:hover { background: linear-gradient(90deg, #00c0cc 60%, #00f0ff 100%); box-shadow: 0 4px 16px #00f0ff55; }
 
     /* Welcome Area */
-    .welcome-area {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .welcome-area h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.2rem;
-      color: #00f0ff;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      margin-bottom: 10px;
-      text-shadow: 0 2px 12px #00f0ff33;
-    }
-
-    .welcome-area p {
-      color: #b3b3b3;
-      font-size: 1.08rem;
-      margin-bottom: 0;
-      font-weight: 400;
-    }
+    .welcome-area { text-align: center; margin-bottom: 48px; }
+    .welcome-area h2 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; color: #00f0ff; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 10px; text-shadow: 0 2px 12px #00f0ff33; }
+    .welcome-area p { color: #b3b3b3; font-size: 1.08rem; margin-bottom: 0; font-weight: 400; }
 
     /* Cards */
-    .card-box {
-      background: linear-gradient(135deg, #181c2f 60%, #232946 100%);
-      border-radius: 14px;
-      padding: 32px 20px 28px 20px;
-      color: #fff;
-      box-shadow: 0 4px 24px #00f0ff18;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid #232946;
-      min-height: 210px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .card-box:hover {
-      transform: translateY(-6px) scale(1.025);
-      box-shadow: 0 8px 32px #00f0ff44;
-      border-color: #00f0ff;
-    }
-
-    .card-box i {
-      font-size: 2.4rem;
-      color: #00f0ff;
-      margin-bottom: 14px;
-      text-shadow: 0 2px 12px #00f0ff33;
-    }
-
-    .card-box h5 {
-      font-size: 1.18rem;
-      font-weight: 600;
-      color: #00f0ff;
-      margin-bottom: 8px;
-      letter-spacing: 0.5px;
-    }
-
-    .card-box p {
-      color: #b3b3b3;
-      font-size: 1rem;
-      margin-bottom: 0;
-      font-weight: 400;
-    }
+    .card-box { background: linear-gradient(135deg, #181c2f 60%, #232946 100%); border-radius: 14px; padding: 32px 20px 28px 20px; color: #fff; box-shadow: 0 4px 24px #00f0ff18; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #232946; min-height: 210px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .card-box:hover { transform: translateY(-6px) scale(1.025); box-shadow: 0 8px 32px #00f0ff44; border-color: #00f0ff; }
+    .card-box i { font-size: 2.4rem; color: #00f0ff; margin-bottom: 14px; text-shadow: 0 2px 12px #00f0ff33; }
+    .card-box h5 { font-size: 1.18rem; font-weight: 600; color: #00f0ff; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .card-box p { color: #b3b3b3; font-size: 1rem; margin-bottom: 0; font-weight: 400; }
 
     /* Responsive */
     @media (max-width: 991px) {
-      .page-content {
-        padding: 28px 8px 8px 8px;
-      }
-      .card-box {
-        min-height: 180px;
-        padding: 24px 10px 20px 10px;
-      }
+      .page-content { padding: 28px 8px 8px 8px; }
+      .card-box { min-height: 180px; padding: 24px 10px 20px 10px; }
     }
     @media (max-width: 768px) {
-      .vertical-nav {
-        left: -240px;
-      }
-      .vertical-nav.active {
-        left: 0;
-      }
-      .page-content {
-        margin-left: 0;
-      }
-      .navbar-custom {
-        padding: 10px 10px;
-      }
+      .vertical-nav { left: -240px; }
+      .vertical-nav.active { left: 0; }
+      .page-content { margin-left: 0; }
+      .navbar-custom { padding: 10px 10px; }
     }
     @media (max-width: 575px) {
-      .card-box {
-        min-height: 120px;
-        padding: 16px 4px 12px 4px;
-      }
-      .welcome-area h2 {
-        font-size: 1.3rem;
-      }
+      .card-box { min-height: 120px; padding: 16px 4px 12px 4px; }
+      .welcome-area h2 { font-size: 1.3rem; }
     }
   </style>
 </head>
 <body>
 
   <!-- Sidebar -->
-  <div class="vertical-nav" id="sidebar">
+  <aside class="vertical-nav" id="sidebar" aria-label="Sidebar navigation">
     <p class="sidebar-title">GAURAVGO</p>
 
     <div class="profile">
       <img src="{% static 'images/media-home-page/logo.png' %}" alt="Admin Avatar">
       <h5 class="mb-0">Admin</h5>
-      <p class="text-muted small">{{ request.user.email }}</p>
+      <p class="text-muted small">
+        {% if request.user.is_authenticated %}
+          {{ request.user.email }}
+        {% else %}
+          Guest
+        {% endif %}
+      </p>
     </div>
 
-    <ul class="nav flex-column">
+    <ul class="nav flex-column px-2">
       <li class="nav-item">
         <a href="{% url 'admin_home' %}" class="nav-link active">
           <i class="fas fa-tachometer-alt"></i> Dashboard
         </a>
       </li>
+
+      <!-- Games menu using Bootstrap 5 collapse -->
       <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="fas fa-wrench"></i> Services
+        <a class="nav-link d-flex justify-content-between align-items-center"
+          data-bs-toggle="collapse"
+          href="#gamesMenu"
+          role="button"
+          aria-expanded="false"
+          aria-controls="gamesMenu">
+          <span><i class="fas fa-wrench fa-fw me-2 text-primary"></i> Games</span>
+          <i class="fas fa-chevron-down small"></i>
         </a>
+
+        <div class="collapse ps-3" id="gamesMenu">
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="{% url 'add_games' %}">Add Games</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'manage_games' %}">Manage Games</a></li>
+          </ul>
+        </div>
       </li>
+
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="fas fa-search"></i> Search
         </a>
       </li>
+
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="{% url 'change_password' %}" class="nav-link">
           <i class="fas fa-key"></i> Change Password
         </a>
       </li>
-      <li class="nav-item">
+
+      <li class="nav-item mt-3">
         <a href="{% url 'logout' %}" class="nav-link">
           <i class="fas fa-sign-out-alt"></i> Logout
         </a>
       </li>
     </ul>
-  </div>
+  </aside>
 
   <!-- Page Content -->
-  <div class="page-content" id="content">
+  <main class="page-content" id="content">
     <nav class="navbar navbar-custom">
-      <button id="sidebarCollapse" class="btn"><i class="fas fa-bars"></i></button>
+      <button id="sidebarCollapse" class="btn" type="button" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
       <a href="{% url 'logout' %}" class="btn">Logout</a>
     </nav>
 
@@ -306,42 +203,77 @@
       <p>Manage your galaxy of games and services from one futuristic dashboard.</p>
     </div>
 
-    <!-- Dashboard Cards -->
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card-box text-center">
-          <i class="fas fa-gamepad"></i>
-          <h5 class="mt-2">Manage Games</h5>
-          <p>Add, edit, or remove games in your universe.</p>
+{# dashboard cards — paste this in place of your commented block #}
+<div class="row g-4 mb-4">
+
+  <!-- Manage Games -->
+  <div class="col-sm-6 col-md-4">
+    <a href="{% url 'manage_games' %}" class="text-decoration-none" aria-label="Manage Games">
+      <div class="card-box h-100 d-flex flex-column align-items-center justify-content-center" role="button" tabindex="0" title="Manage Games">
+        <div style="position:relative;width:56px;height:56px;border-radius:12px;background:#071428;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+          <i class="fas fa-gamepad" style="color:#00f0ff;font-size:22px;"></i>
+          <span style="position:absolute;right:-8px;top:-8px;background:#ff6b00;color:#fff;border-radius:12px;padding:3px 8px;font-size:12px;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.35);">
+            {% if total_games %}{{ total_games }}{% elif services %}{{ services|length }}{% else %}0{% endif %}
+          </span>
         </div>
+        <h5 class="mt-2" style="color:#00f0ff;font-weight:700;">Manage Games</h5>
+        <p class="mb-0 text-muted" style="font-size:0.95rem;">Add, edit or remove games</p>
       </div>
-      <div class="col-md-4">
-        <div class="card-box text-center">
-          <i class="fas fa-tools"></i>
-          <h5 class="mt-2">Services</h5>
-          <p>Control backend services and infrastructure.</p>
+    </a>
+  </div>
+
+  <!-- Services -->
+  <div class="col-sm-6 col-md-4">
+    <a href="{% url 'manage_games' %}" class="text-decoration-none" aria-label="Manage Services">
+      <div class="card-box h-100 d-flex flex-column align-items-center justify-content-center" role="button" tabindex="0" title="Services">
+        <div style="width:56px;height:56px;border-radius:12px;background:#071428;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+          <i class="fas fa-tools" style="color:#00f0ff;font-size:22px;"></i>
         </div>
+        <h5 class="mt-2" style="color:#00f0ff;font-weight:700;">Services</h5>
+        <p class="mb-0 text-muted" style="font-size:0.95rem;">Backend & infrastructure controls</p>
       </div>
-      <div class="col-md-4">
-        <div class="card-box text-center">
-          <i class="fas fa-users-cog"></i>
-          <h5 class="mt-2">Users & Admins</h5>
-          <p>Manage access and permissions across your team.</p>
+    </a>
+  </div>
+
+  <!-- Users & Admins -->
+  <div class="col-sm-6 col-md-4">
+    <a href="#" class="text-decoration-none" aria-label="Users and Admins">
+      <div class="card-box h-100 d-flex flex-column align-items-center justify-content-center" role="button" tabindex="0" title="Users & Admins">
+        <div style="width:56px;height:56px;border-radius:12px;background:#071428;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+          <i class="fas fa-users-cog" style="color:#00f0ff;font-size:22px;"></i>
         </div>
+        <h5 class="mt-2" style="color:#00f0ff;font-weight:700;">Users & Admins</h5>
+        <p class="mb-0 text-muted" style="font-size:0.95rem;">Manage roles & permissions</p>
       </div>
-    </div>
+    </a>
+  </div>
+
+</div>
 
     {% block main %}
     {% endblock %}
-  </div>
+  </main>
 
-  <!-- JS -->
+  <!-- Bootstrap 5 bundle (includes Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.getElementById("sidebarCollapse").addEventListener("click", function () {
-      document.getElementById("sidebar").classList.toggle("active");
-    });
-  </script>
 
+{# Optional small JS: make keyboard Enter/Space activate the card if browser doesn't focus anchors properly.
+   Anchors normally handle Enter — this is a safe enhancement. #}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.card-box[role="button"]').forEach(function(card) {
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        // find nearest anchor parent and follow it
+        const a = card.closest('a');
+        if (a) {
+          a.click();
+          e.preventDefault();
+        }
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
