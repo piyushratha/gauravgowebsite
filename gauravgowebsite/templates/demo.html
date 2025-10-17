@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Wizard - Gauravgo Games</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: 
+                linear-gradient(rgba(12, 15, 29, 0.85), rgba(12, 15, 29, 0.9)),
+                url('https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?auto=format&fit=crop&w=2070&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .game-header {
+            text-align: center;
+            padding: 40px 0 30px;
+            position: relative;
+        }
+        
+        .game-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #5be592, #4acf7f, #6b0cc9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(91, 229, 146, 0.7);
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .game-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #5be592, transparent);
+        }
+        
+        .game-subtitle {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            color: #a0a8c3;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+        
+        .game-category {
+            display: inline-block;
+            background: rgba(91, 229, 146, 0.2);
+            color: #5be592;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-size: 1rem;
+            border: 1px solid rgba(91, 229, 146, 0.5);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        
+        /* Game Content */
+        .game-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: flex-start;
+        }
+        
+        .game-media {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .game-trailer, .game-image {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(91, 229, 146, 0.3);
+            background: #000;
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .game-trailer iframe {
+            width: 100%;
+            height: 300px;
+        }
+        
+        .game-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .game-details {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .game-description h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 20px;
+            color: #5be592;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .game-description h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: #5be592;
+            box-shadow: 0 0 10px #5be592;
+        }
+        
+        .game-description p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #c5cae9;
+            line-height: 1.7;
+        }
+        
+        .game-specs {
+            background: rgba(18, 22, 40, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(91, 229, 146, 0.2);
+            position: relative;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+        
+        .specs-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #5be592;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .spec-label {
+            color: #a0a8c3;
+            font-weight: 500;
+        }
+        
+        .spec-value {
+            color: #fff;
+            font-weight: 700;
+        }
+        
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(12, 15, 29, 0.8);
+            border-radius: 20px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(91, 229, 146, 0.2);
+        }
+        
+        .download-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: 20px;
+            color: #5be592;
+            text-transform: uppercase;
+        }
+        
+        .download-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            margin-bottom: 30px;
+            color: #c5cae9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #5be592, #4acf7f);
+            color: #0c0f1d;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(91, 229, 146, 0.5);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(91, 229, 146, 0.7);
+        }
+        
+        .platforms {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .platform {
+            background: rgba(18, 22, 40, 0.8);
+            padding: 15px 25px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(91, 229, 146, 0.2);
+            min-width: 150px;
+            justify-content: center;
+        }
+        
+        .platform i {
+            font-size: 1.8rem;
+            color: #5be592;
+        }
+        
+        .platform span {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        
+        /* Footer */
+        .game-footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(91, 229, 146, 0.2);
+            color: #a0a8c3;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .game-content {
+                flex-direction: column;
+            }
+            
+            .game-trailer iframe {
+                height: 250px;
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .platform {
+                min-width: 120px;
+                padding: 12px 20px;
+            }
+            
+            .download-btn {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .game-header {
+                padding: 30px 0 20px;
+            }
+            
+            .game-trailer iframe {
+                height: 200px;
+            }
+            
+            .game-specs {
+                padding: 20px;
+            }
+            
+            .platforms {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .platform {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="game-header">
+            <h1 class="game-title">Emoji Wizard</h1>
+            <p class="game-subtitle">A Magical Emoji Snake Adventure Like Never Before!</p>
+            <div class="game-category">F2P</div>
+        </header>
+
+        <section class="game-content">
+            <div class="game-media">
+                <div class="game-trailer">
+                    <iframe src="https://www.youtube.com/embed/BvYkoJ670rc" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="game-image">
+                    <img src="https://images.unsplash.com/photo-1633467189093-6ba982ebe7c4?auto=format&fit=crop&w=2070&q=80" alt="Emoji Wizard">
+                </div>
+            </div>
+
+            <div class="game-details">
+                <div class="game-description">
+                    <h2>What Is Emoji Wizard?</h2>
+                    <p><strong>Emoji Wizard</strong> is a fun-filled, magical twist on the classic snake game, where you take control of a <strong>wizard emoji snake</strong>. As you slither through colorful arenas, your goal is simple: <strong>eat to grow, use magical powers, and outsmart your opponents</strong>.</p>
+                    <p>This game isn't just about growing longer; it's about <strong>thinking smarter</strong>, casting the right spell at the right time, and learning when to dodge and when to strike. Whether you're a casual player or a competitive gamer, <strong>Emoji Wizard</strong> offers something unique, engaging, and irresistibly fun.</p>
+                    <p><strong>Become a Magical Emoji Snake</strong> — Unlike traditional snake games, Emoji Wizard gives you magical powers! As a snake wizard, you can cast spells that give you speed boosts, defensive shields, or even powers to freeze other snakes in place.</p>
+                    <p><strong>Eat Magical Food to Grow</strong> — Food appears randomly across the map. Eating food not only helps your snake grow longer, but also charges up your magical abilities. Choose your path wisely — and don't let other snakes steal your snacks!</p>
+                    <p><strong>Use Cool Powers & Boosts</strong> — Every snake has access to special abilities. Boost your speed to escape danger, shield yourself from attacks, or slow down your enemies. Timing is everything in the world of Emoji Wizard!</p>
+                    <p><strong>Play with Players Worldwide</strong> — Join thousands of players from all over the world in real-time. Whether you're playing on mobile or browser, you'll be matched with opponents who are ready to challenge your wizard skills.</p>
+                </div>
+
+                <div class="game-specs">
+                    <h3 class="specs-title">Game Specifications</h3>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Released On</span>
+                            <span class="spec-value">8th June 2025</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Publisher</span>
+                            <span class="spec-value">GauravGo Games</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Rating</span>
+                            <span class="spec-value">5.0 ⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">File Size</span>
+                            <span class="spec-value">31 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="download-section">
+            <h2 class="download-title">Ready to Begin Your Magical Journey?</h2>
+            <p class="download-subtitle">So what are you waiting for? Grab your wand, don your wizard emoji hat, and jump into the whimsical, fast-paced world of <strong>Emoji Wizard</strong>. Eat. Grow. Battle. Repeat!</p>
+            <a href="#" class="download-btn">Download Now</a>
+
+            <div class="platforms">
+                <div class="platform">
+                    <i class="fab fa-android"></i>
+                    <span>Android</span>
+                </div>
+                <div class="platform">
+                    <i class="fab fa-apple"></i>
+                    <span>iOS</span>
+                </div>
+                <div class="platform">
+                    <i class="fab fa-windows"></i>
+                    <span>Windows</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="game-footer">
+            <p>All Rights Reserved. <span style="color:#5be592;">Gauravgo Games Technologies Pvt. Ltd</span></p>
+        </footer>
+    </div>
+</body>
+</html>

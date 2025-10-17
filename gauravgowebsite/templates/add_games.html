@@ -6,62 +6,52 @@
     <div class="card body">
         <h5 class="p-2 text-danger" style="border-bottom:2px solid orange">Add Game Detail</h5>
 
+        <div class="container-fluid">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
 
-<div class="container-fluid">
-    <form method="post" enctype="multipart/form-data">
-    {%csrf_token%}
-        <div class="form-row">
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label>Games Title</label>
-                    <input type="text" name="servicetitle" class="form-control" placeholder="Service Title" >
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Game Title</label>
+                            <input type="text" name="game_title" class="form-control" placeholder="Enter Game Title">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Game Description</label>
+                            <textarea name="game_description" class="form-control" placeholder="Enter Game Description"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>YouTube Link</label>
+                            <input type="text" name="youtube_link" class="form-control" placeholder="Paste YouTube Trailer/Gameplay Link">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Background Image</label>
+                            <input type="file" name="background_image" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Game Icon</label>
+                            <input type="file" name="game_icon" class="form-control">
+                        </div>
+                    </div>
+
                 </div>
-            </div>
 
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea name="description" class="form-control" placeholder="Description" ></textarea>
-
-                </div>
-
-            </div><div class="col-sm-12">
-                <div class="form-group">
-                    <label>Type</label>
-                    <select name="game_type" class="form-control">
-                        <option value="ftp">Free to Play Games</option>
-                        <option value="br">Battle Royale Games</option>
-                        <option value="fps">FPS Games</option>
-                        <option value="rpg">RPG Games</option>
-                        <option value="sim">Simulation Games</option>
-                        <option value="other" selected>Other</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label>Image</label>
-                    <input type="file" name="image" class="form-control"  >
-                </div>
-            </div>
-
-            </div><div class="col-sm-12">
-                <div class="form-group">
-                    <label>Logo</label>
-                    <input type="file" name="logo" class="form-control"  >
-                </div>
-            </div>
-
-            
+                <input type="submit" value="Submit" class="m-2 px-3 btn btn-primary">
+            </form>
         </div>
-
-
-        <input type="submit" value="submit" class="m-2 px-3 btn btn-primary">
-
-    </form>
-
-</div>
-</div>
+    </div>
 </div>
 
 {% if error == "no" %}
@@ -70,12 +60,11 @@
     window.location = '{% url "manage_games" %}';
 </script>
 {% endif %}
+
 {% if error == "yes" %}
 <script>
-    alert('Something went wrong ,Please try Again');
+    alert('Something went wrong, please try again');
 </script>
 {% endif %}
 
-
 {% endblock %}
-
