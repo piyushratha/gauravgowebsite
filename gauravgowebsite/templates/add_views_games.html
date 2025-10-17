@@ -1,0 +1,70 @@
+{% extends 'admin_base.html' %}
+
+{% block main %}
+
+<div class="card shadow m-2">
+    <div class="card body">
+        <h5 class="p-2 text-danger" style="border-bottom:2px solid orange">Add Game Detail</h5>
+
+        <div class="container-fluid">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Game Title</label>
+                            <input type="text" name="game_title" class="form-control" placeholder="Enter Game Title">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Game Description</label>
+                            <textarea name="game_description" class="form-control" placeholder="Enter Game Description"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>YouTube Link</label>
+                            <input type="text" name="youtube_link" class="form-control" placeholder="Paste YouTube Trailer/Gameplay Link">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Background Image</label>
+                            <input type="file" name="background_image" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Game Icon</label>
+                            <input type="file" name="game_icon" class="form-control">
+                        </div>
+                    </div>
+
+                </div>
+
+                <input type="submit" value="Submit" class="m-2 px-3 btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert('Game has been added');
+    window.location = '{% url "manage_games" %}';
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong, please try again');
+</script>
+{% endif %}
+
+{% endblock %}
