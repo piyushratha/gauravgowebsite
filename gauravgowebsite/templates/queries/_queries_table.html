@@ -1,0 +1,56 @@
+{% if queries %}
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th>Company</th>
+          <th>Message</th>
+          <th>Received</th>
+          <th>Status</th>
+          <th class="text-end">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for q in queries %}
+        <tr class="{% if not q.is_resolved %}table-warning{% endif %}">
+          <td>{{ forloop.counter }}</td>
+          <td>{{ q.name|default:"—" }}</td>
+          <td>{{ q.emailid|default:"—" }}</td>
+          <td>{{ q.contact|default:"—" }}</td>
+          <td>{{ q.company|default:"—" }}</td>
+          <td style="max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ q.message }}</td>
+          <td>{{ q.created_at|date:"d M Y, H:i" }}</td>
+          <td>
+            {% if q.is_resolved %}
+              <span class="badge bg-success">Resolved</span>
+            {% else %}
+              <span class="badge bg-warning text-dark">Unread</span>
+            {% endif %}
+          </td>
+          <td class="text-end">
+            <a href="{% url 'queries:detail' q.id %}" class="btn btn-sm btn-outline-primary me-1" title="View">View</a>
+
+            <form action="{% url 'queries:toggle_resolved' q.id %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-sm btn-outline-{% if q.is_resolved %}secondary{% else %}success{% endif %}">
+                {% if q.is_resolved %}Unresolve{% else %}Resolve{% endif %}
+              </button>
+            </form>
+
+            <form action="{% url 'queries:delete' q.id %}" method="post" class="d-inline ms-1" onsubmit="return confirm('Delete this query?');">
+              {% csrf_token %}
+              <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <div class="alert alert-info">{{ empty_message }}</div>
+{% endif %}

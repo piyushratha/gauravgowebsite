@@ -1,13 +1,20 @@
-from pyexpat.errors import messages
+from django.contrib import messages
+from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import login, logout, authenticate
-from gauravgowebsite.models import Games
+from django.contrib.auth.models import User
+from django.db.models import Q
+
+from GauravGoWeb import settings
+from gauravgowebsite.models import Games, Contact
+
 
 def index(request):
     return render(request, 'index.html')
 
 def games(request):
-    return render(request, 'games.html')
+    games = Games.objects.all().order_by('-creationdate')
+    return render(request, 'games.html', {'games': games})
 
 def about(request):
     return render(request, 'about.html')
@@ -87,7 +94,7 @@ def search(request):
     if request.method == 'POST':
         sd = request.POST['searchdata']
     try:
-        booking = SiteUser.objects.filter(Q(name=sd) | Q(mobile=sd))
+        booking = Games.objects.filter(Q(title__icontains=sd) | Q(description__icontains=sd))
     except:
         booking = ""
     print(booking)
@@ -205,20 +212,64 @@ def edit_games(request, pid):
 
 
 def delete_games(request, pid):
-    """
-    GET:  show delete confirmation page (delete_games.html) with 'game' in context
-    POST: actually delete the object and redirect to manage_games
-    """
-    game = get_object_or_404(Games, id=pid)
+    service = Games.objects.get(id=pid)
+    service.delete()
+    return redirect('manage_games')
 
-    if request.method == "POST":
-        try:
-            game.delete()
-            messages.success(request, "Game deleted successfully.")
-        except Exception as e:
-            # optionally log e
-            messages.error(request, "Could not delete game. Try again later.")
-        return redirect('manage_games')
+def queries_list_all(request):
+    unread_list = Contact.objects.filter(is_resolved=False).order_by('-created_at')
+    read_list = Contact.objects.filter(is_resolved=True).order_by('-created_at')
+    all_list = Contact.objects.all().order_by('-created_at')
+    return render(request, 'queries/list.html', {
+        'unread_list': unread_list,
+        'read_list': read_list,
+        'all_list': all_list,
+    })
 
-    # GET -> render a confirmation template
-    return render(request, 'delete_games.html', {'game': game})
+def queries_unread(request):
+    unread_list = Contact.objects.filter(is_resolved=False).order_by('-created_at')
+    return render(request, 'queries/list.html', {'unread_list': unread_list, 'read_list': [], 'all_list': unread_list})
+
+def queries_read(request):
+    read_list = Contact.objects.filter(is_resolved=True).order_by('-created_at')
+    return render(request, 'queries/list.html', {'unread_list': [], 'read_list': read_list, 'all_list': read_list})
+
+def query_detail(request, pk):
+    q = get_object_or_404(Contact, pk=pk)
+    # Optionally mark as read when opening:
+    if not q.is_resolved:
+        # don't auto-mark resolved — only mark as read flag if you have that field; here is_resolved used as unread/resolved
+        pass
+    return render(request, 'queries/detail.html', {'query': q})
+
+def toggle_resolved(request, pk):
+    q = get_object_or_404(Contact, pk=pk)
+    if request.method == 'POST':
+        q.is_resolved = not q.is_resolved
+        q.save()
+        messages.success(request, 'Status updated.')
+    return redirect(request.META.get('HTTP_REFERER', 'queries:all'))
+
+def reply_to_query(request, pk):
+    q = get_object_or_404(Contact, pk=pk)
+    if request.method == 'POST':
+        subject = request.POST.get('subject', '').strip()
+        body = request.POST.get('body', '').strip()
+        # send email (ensure EMAIL settings configured in settings.py)
+        if q.emailid:
+            try:
+                send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, [q.emailid])
+                messages.success(request, 'Reply sent.')
+            except Exception as e:
+                messages.error(request, f'Failed to send email: {e}')
+        else:
+            messages.error(request, 'No email available for this contact.')
+    return redirect('queries:detail', pk=pk)
+
+def delete_query(request, pk):
+    q = get_object_or_404(Contact, pk=pk)
+    if request.method == 'POST':
+        q.delete()
+        messages.success(request, 'Query deleted.')
+        return redirect('queries:all')
+    return redirect('queries:detail', pk=pk)

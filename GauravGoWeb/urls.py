@@ -21,11 +21,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+app_name = 'queries'   # <-- required for namespacing
+
 
 urlpatterns = [
+    path('admin/queries/', include('gauravgowebsite.urls', namespace='queries')),
     path('admin/', admin.site.urls),
-    path('djadmin/', admin.site.urls),  
-    path('admin/', views.admin_home, name="admin_home"),
+    path('djadmin/', admin.site.urls),
+    path('admin_home/', views.admin_home, name="admin_home"),
     path('', index, name="index"),
     path('games', games, name="games"),
     path('services', services, name="services"),
@@ -50,7 +53,15 @@ urlpatterns = [
     path('add_games', add_games, name="add_games"),
     path('manage_games', manage_games, name="manage_games"),
     path('edit_game/<int:pid>', edit_games, name="edit_game"),
-    # path('delete_game/<int:pid>', delete_game, name="delete_game"),
-        
-        
-]
+    path('delete_game/<int:pid>', delete_games, name="delete_game"),
+    path('', views.queries_list_all, name='all'),
+    path('unread/', views.queries_unread, name='unread'),
+    path('read/', views.queries_read, name='read'),
+    path('<int:pk>/', views.query_detail, name='detail'),
+    path('<int:pk>/toggle/', views.toggle_resolved, name='toggle_resolved'),
+    path('<int:pk>/reply/', views.reply_to_query, name='reply'),
+    path('<int:pk>/delete/', views.delete_query, name='delete'),
+
+        # ... other paths ...
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

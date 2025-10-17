@@ -1,0 +1,199 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #0a0a0a;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 50px;
+    background-color: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px rgba(57, 255, 20, 0.2);
+    border-bottom: 1px solid #1c1c1c;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100vw;
+    transition: background 0.3s ease-in-out;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+.logo:hover {
+    transform: scale(1.05);
+}
+.logo img {
+    height: 60px;
+    width: auto;
+}
+.logo span {
+    font-size: 40px;
+    font-weight: 700;
+    color: 	#2ECC71;
+    text-shadow: 0 0 8px rgba(26, 168, 54, 0.7);
+    line-height: 60px;
+}
+
+/* Nav Links */
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+.nav-links li {
+    position: relative;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #e0e0e0;
+    padding: 8px 14px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+.nav-links a:hover {
+    background-color: rgba(57, 255, 20, 0.12);
+    border-color: rgba(57, 255, 20, 0.4);
+    color: 	#2ECC71;
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.4);
+}
+
+/* Dropdown Menu Animation */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    transform-origin: top center;
+    background-color: #131313;
+    border: 1px solid #232323;
+    border-radius: 8px;
+    min-width: 160px;
+    padding: 8px 0;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+    z-index: 999;
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+}
+
+/* Dropdown link animations */
+.dropdown-menu li {
+    overflow: hidden;
+}
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 16px;
+    color: #cfcfcf;
+    font-size: 13px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.dropdown:hover .dropdown-menu li a {
+    transform: translateX(0);
+    opacity: 1;
+}
+.dropdown:hover .dropdown-menu li:nth-child(1) a { transition-delay: 0.1s; }
+.dropdown:hover .dropdown-menu li:nth-child(2) a { transition-delay: 0.2s; }
+.dropdown:hover .dropdown-menu li:nth-child(3) a { transition-delay: 0.3s; }
+
+.dropdown-menu li a:hover {
+    background-color: #1a1a1a;
+    color: 	#2ECC71;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+.social-icons a {
+    color: #b0b0b0;
+    font-size: 20px;
+    transition: 0.3s ease;
+}
+.social-icons a:hover {
+    color: 	#2ECC71;
+    transform: scale(1.2) translateY(-2px);
+    text-shadow: 2 2 4px #39ff14;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 8px 30px;
+        flex-wrap: wrap;
+    }
+    .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .social-icons {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        padding: 8px 16px;
+    }
+    .logo img {
+        height: 50px;
+    }
+    .logo span {
+        font-size: 32px;
+        line-height: 50px;
+    }
+    .nav-links {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 10px;
+    }
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        opacity: 1;
+        box-shadow: none;
+        border: none;
+        background: #171717;
+    }
+    .dropdown-menu li a {
+        transform: none;
+        opacity: 1;
+    }
+    .dropdown:hover .dropdown-menu li a {
+        transition-delay: 0s;
+    }
+}
+html, body {
+    overflow-x: hidden;
+}

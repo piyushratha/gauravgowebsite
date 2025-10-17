@@ -1,6 +1,5 @@
 {% load static %}
 
-<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -170,6 +169,39 @@
           </ul>
         </div>
       </li>
+
+
+<li class="nav-item">
+  <a class="nav-link d-flex justify-content-between align-items-center"
+     data-bs-toggle="collapse"
+     href="#queriesMenuCollapse"
+     role="button"
+     aria-expanded="false"
+     aria-controls="queriesMenuCollapse">
+    <span><i class="fas fa-wrench fa-fw me-2 text-primary"></i>Queries</span>
+    <i class="fas fa-chevron-down small"></i>
+  </a>
+
+  <div class="collapse ps-3" id="queriesMenuCollapse">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.namespace == 'queries' and request.resolver_match.url_name == 'unread' %}active{% endif %}"
+           href="{% url 'queries:unread' %}">Unread Queries
+           <span class="badge bg-danger ms-2">{{ unread_count|default:0 }}</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.namespace == 'queries' and request.resolver_match.url_name == 'read' %}active{% endif %}"
+           href="{% url 'queries:read' %}">Read Queries</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.resolver_match.namespace == 'queries' and request.resolver_match.url_name == 'all' %}active{% endif %}"
+           href="{% url 'queries:all' %}">All Queries</a>
+      </li>
+    </ul>
+  </div>
+</li>
+
 
       <li class="nav-item">
         <a href="#" class="nav-link">

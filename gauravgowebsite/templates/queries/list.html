@@ -1,0 +1,52 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block title %}Queries - Manage{% endblock %}
+
+{% block main %}
+<div class="card shadow m-2">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="mb-0">Queries</h5>
+      <div>
+        <a href="{% url 'queries:all' %}" class="btn btn-sm btn-outline-secondary">Refresh</a>
+      </div>
+    </div>
+
+    <!-- Tabs for Unread / Read / All -->
+    <ul class="nav nav-tabs" id="queriesTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="unread-tab" data-bs-toggle="tab" data-bs-target="#unread" type="button" role="tab" aria-controls="unread" aria-selected="true">
+          Unread <span class="badge bg-danger ms-1">{{ unread_list|length }}</span>
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="read-tab" data-bs-toggle="tab" data-bs-target="#read" type="button" role="tab" aria-controls="read" aria-selected="false">
+          Read <span class="badge bg-secondary ms-1">{{ read_list|length }}</span>
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="false">
+          All <span class="badge bg-info ms-1">{{ all_list|length }}</span>
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content mt-3" id="queriesTabContent">
+      <!-- Unread -->
+      <div class="tab-pane fade show active" id="unread" role="tabpanel" aria-labelledby="unread-tab">
+        {% include "queries/_queries_table.html" with queries=unread_list empty_message="No unread queries." %}
+      </div>
+
+      <!-- Read -->
+      <div class="tab-pane fade" id="read" role="tabpanel" aria-labelledby="read-tab">
+        {% include "queries/_queries_table.html" with queries=read_list empty_message="No read queries." %}
+      </div>
+
+      <!-- All -->
+      <div class="tab-pane fade" id="all" role="tabpanel" aria-labelledby="all-tab">
+        {% include "queries/_queries_table.html" with queries=all_list empty_message="No queries found." %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
