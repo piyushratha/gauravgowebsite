@@ -27,6 +27,19 @@
 
             </div><div class="col-sm-12">
                 <div class="form-group">
+                    <label>Type</label>
+                    <select name="game_type" class="form-control">
+                        <option value="ftp">Free to Play Games</option>
+                        <option value="br">Battle Royale Games</option>
+                        <option value="fps">FPS Games</option>
+                        <option value="rpg">RPG Games</option>
+                        <option value="sim">Simulation Games</option>
+                        <option value="other" selected>Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
                     <label>Image</label>
                     <input type="file" name="image" class="form-control"  >
                 </div>
@@ -54,7 +67,7 @@
 {% if error == "no" %}
 <script>
     alert('Game has been added');
-    window.location=('{% url 'manage_games' %}');
+    window.location = '{% url "manage_games" %}';
 </script>
 {% endif %}
 {% if error == "yes" %}

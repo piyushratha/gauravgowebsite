@@ -13,8 +13,29 @@ def index(request):
     return render(request, 'index.html')
 
 def games(request):
-    games = Games.objects.all().order_by('-creationdate')
-    return render(request, 'games.html', {'games': games})
+    # Optional type filter by query param: ?type=ftp|br|fps|rpg|sim|other
+    gtype = request.GET.get('type')
+    if gtype:
+        games_qs = Games.objects.filter(game_type=gtype).order_by('-creationdate')
+    else:
+        games_qs = Games.objects.all().order_by('-creationdate')
+    # also provide per-type lists for the sliders
+    ftp_games = Games.objects.filter(game_type='ftp').order_by('-creationdate')
+    br_games = Games.objects.filter(game_type='br').order_by('-creationdate')
+    fps_games = Games.objects.filter(game_type='fps').order_by('-creationdate')
+    rpg_games = Games.objects.filter(game_type='rpg').order_by('-creationdate')
+    sim_games = Games.objects.filter(game_type='sim').order_by('-creationdate')
+
+    context = {
+        'games': games_qs,
+        'selected_type': gtype,
+        'ftp_games': ftp_games,
+        'br_games': br_games,
+        'fps_games': fps_games,
+        'rpg_games': rpg_games,
+        'sim_games': sim_games,
+    }
+    return render(request, 'games.html', context)
 
 def about(request):
     return render(request, 'about.html')
@@ -130,6 +151,7 @@ def add_games(request):
         description = request.POST.get('description', '').strip()
         image = request.FILES.get('image')
         logo  = request.FILES.get('logo')
+        game_type = request.POST.get('game_type', 'other')
 
         if not title:
             messages.error(request, "Please provide a title.")
@@ -140,7 +162,8 @@ def add_games(request):
                 title=title,
                 description=description,
                 image=image,
-                logo=logo
+                logo=logo,
+                game_type=game_type,
             )
             messages.success(request, "Game added successfully.")
             return redirect('manage_games')
@@ -173,6 +196,7 @@ def edit_games(request, pid):
         # field names kept same as your form: servicetitle, description, image
         title = request.POST.get('servicetitle', '').strip()
         description = request.POST.get('description', '').strip()
+        game_type = request.POST.get('game_type', game.game_type if hasattr(game, 'game_type') else 'other')
 
         # Basic validation
         if not title:
@@ -199,6 +223,12 @@ def edit_games(request, pid):
 
         try:
             game.save()
+            # save game_type if provided
+            try:
+                game.game_type = game_type
+                game.save()
+            except Exception:
+                pass
             messages.success(request, "Game updated successfully.")
             return redirect('manage_games')
         except Exception as e:
@@ -273,3 +303,37 @@ def delete_query(request, pk):
         messages.success(request, 'Query deleted.')
         return redirect('queries:all')
     return redirect('queries:detail', pk=pk)
+
+
+def submit_query(request):
+    """
+    Accept POST from the public contact form and save a Contact record.
+    Expected POST fields: name, email (emailid), contact, company, message
+    """
+    if request.method == 'POST':
+        name = request.POST.get('name', '').strip() or None
+        email = request.POST.get('email', '').strip() or None
+        contact = request.POST.get('contact', '').strip() or None
+        company = request.POST.get('company', '').strip() or None
+        message_text = request.POST.get('message', '').strip() or ''
+
+        # Basic validation: message required
+        if not message_text:
+            messages.error(request, 'Please provide a message.')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+        try:
+            Contact.objects.create(
+                name=name,
+                emailid=email,
+                contact=contact,
+                company=company,
+                message=message_text,
+            )
+            messages.success(request, 'Your query has been submitted. Thank you!')
+        except Exception as e:
+            # log or print for debugging
+            print('Failed to save contact:', e)
+            messages.error(request, 'Failed to submit your query. Please try again later.')
+
+    return redirect(request.META.get('HTTP_REFERER', '/'))

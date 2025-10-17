@@ -21,6 +21,16 @@ class Games(models.Model):
     description = models.CharField(max_length=5000, null=True)
     logo = models.ImageField(upload_to='logos/', null=True, blank=True)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
+    # categorize games by type
+    GAME_TYPE_CHOICES = [
+        ('ftp', 'Free to Play Games'),
+        ('br', 'Battle Royale Games'),
+        ('fps', 'FPS Games'),
+        ('rpg', 'RPG Games'),
+        ('sim', 'Simulation Games'),
+        ('other', 'Other'),
+    ]
+    game_type = models.CharField(max_length=20, choices=GAME_TYPE_CHOICES, default='other')
     creationdate = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.title

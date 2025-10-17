@@ -357,7 +357,8 @@
                     <p class="text-[#a8b2d1]">Have questions about our services? Reach out to our team for more information.</p>
                 </div>
                 
-                <form class="space-y-6">
+                <form method="post" action="{% url 'submit_query' %}" class="space-y-6">
+                    {% csrf_token %}
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up">
                         <div>
                             <label for="name" class="block text-sm font-medium text-[#a8b2d1] mb-2">Name *</label>

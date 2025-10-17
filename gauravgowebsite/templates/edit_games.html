@@ -25,6 +25,19 @@
 
                 </div>
             </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Type</label>
+                    <select name="game_type" class="form-control">
+                        <option value="ftp" {% if game.game_type == 'ftp' %}selected{% endif %}>Free to Play Games</option>
+                        <option value="br" {% if game.game_type == 'br' %}selected{% endif %}>Battle Royale Games</option>
+                        <option value="fps" {% if game.game_type == 'fps' %}selected{% endif %}>FPS Games</option>
+                        <option value="rpg" {% if game.game_type == 'rpg' %}selected{% endif %}>RPG Games</option>
+                        <option value="sim" {% if game.game_type == 'sim' %}selected{% endif %}>Simulation Games</option>
+                        <option value="other" {% if game.game_type == 'other' %}selected{% endif %}>Other</option>
+                    </select>
+                </div>
+            </div>
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Image</label>
@@ -71,7 +84,7 @@
 {% if error == "no" %}
 <script>
     alert('Game  detail has been updated');
-    window.location=('{% url 'edit_games' service.id %}');
+    window.location = '{% url "edit_games" service.id %}';
 </script>
 {% endif %}
 {% if error == "yes" %}

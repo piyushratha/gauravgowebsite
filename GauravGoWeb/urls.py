@@ -54,6 +54,8 @@ urlpatterns = [
     path('manage_games', manage_games, name="manage_games"),
     path('edit_game/<int:pid>', edit_games, name="edit_game"),
     path('delete_game/<int:pid>', delete_games, name="delete_game"),
+    # Public contact form submission endpoint
+    path('submit-query/', views.submit_query, name='submit_query'),
     path('', views.queries_list_all, name='all'),
     path('unread/', views.queries_unread, name='unread'),
     path('read/', views.queries_read, name='read'),
