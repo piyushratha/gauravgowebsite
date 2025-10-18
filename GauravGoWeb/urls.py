@@ -48,7 +48,6 @@ urlpatterns = [
     path('admin_login', admin_login, name="admin_login"),
     path('admin_home', admin_home, name="admin_home"),
     path('logout', Logout, name="logout"),
-    path('search', search, name="search"),
     path('change_password', change_password, name="change_password"),
     path('add_games', add_games, name="add_games"),
     path('manage_games', manage_games, name="manage_games"),

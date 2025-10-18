@@ -108,19 +108,6 @@ def Logout(request):
     logout(request)
     return redirect(index)
 
-def search(request):
-    if not request.user.is_authenticated:
-        return redirect('admin_login')
-    sd = None
-    if request.method == 'POST':
-        sd = request.POST['searchdata']
-    try:
-        booking = Games.objects.filter(Q(title__icontains=sd) | Q(description__icontains=sd))
-    except:
-        booking = ""
-    print(booking)
-    return render(request, 'search.html', locals())
-
 
 def change_password(request):
     if not request.user.is_authenticated:
