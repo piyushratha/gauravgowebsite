@@ -1,0 +1,109 @@
+{% extends 'admin_base.html' %}
+
+{% block main %}
+
+<div class="card shadow m-2">
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom:2px solid orange">Add Details for {{ game.title }}</h5>
+
+        <div class="container-fluid">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label><strong>Game Name:</strong></label>
+                            <input type="text" class="form-control" value="{{ game.title }}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label><strong>Game Type:</strong></label>
+                            <input type="text" class="form-control" value="{{ game.get_game_type_display }}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea name="additional_description" class="form-control" placeholder="Description..." rows="5">{{ game.additional_description|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Background Image</label>
+                            <input type="file" name="background_image" class="form-control" accept="image/*">
+                            {% if game.background_image %}
+                                <small class="text-muted">Current: <a href="{{ game.background_image.url }}" target="_blank">{{ game.background_image.name }}</a></small>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label><strong>Logo:</strong></label>
+                            {% if game.logo %}
+                                <img src="{{ game.logo.url }}" alt="{{ game.title }} logo" style="max-width:120px; max-height:120px; object-fit:cover; border-radius:6px;">
+                            {% else %}
+                                <span class="text-muted">No logo uploaded</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Release Date</label>
+                            <input type="date" name="release_date" class="form-control" value="{% if game.release_date %}{{ game.release_date|date:'Y-m-d' }}{% else %}{% now 'Y-m-d' %}{% endif %}">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Publisher</label>
+                            <input type="text" name="publisher" class="form-control" value="{{ game.publisher }}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Rating</label>
+                            <input type="number" step="0.1" min="0" max="5" name="rating" class="form-control" value="{{ game.rating }}">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>File Size</label>
+                            <input type="text" name="file_size" class="form-control" value="{{ game.file_size }}">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Platforms</label>
+                            <input type="text" name="platforms" class="form-control" value="{{ game.platforms }}">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>File Upload</label>
+                            <input type="file" name="file_upload" class="form-control">
+                            {% if game.file_upload %}
+                                <small class="text-muted">Current: <a href="{{ game.file_upload.url }}" target="_blank">{{ game.file_upload.name }}</a></small>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <input type="submit" value="Save Details" class="m-2 px-3 btn btn-primary">
+                <a href="{% url 'manage_games' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

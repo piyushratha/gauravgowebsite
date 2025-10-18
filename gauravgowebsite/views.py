@@ -246,6 +246,52 @@ def delete_games(request, pid):
     service.delete()
     return redirect('manage_games')
 
+def add_game_details(request, pid):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+
+    game = get_object_or_404(Games, id=pid)
+
+    if request.method == "POST":
+        background_image = request.FILES.get('background_image')
+        additional_description = request.POST.get('additional_description', '').strip()
+        file_upload = request.FILES.get('file_upload')
+        release_date = request.POST.get('release_date')
+        publisher = request.POST.get('publisher', 'GauravGo Games').strip()
+        rating = request.POST.get('rating', '5.0')
+        file_size = request.POST.get('file_size', '31mb').strip()
+        platforms = request.POST.get('platforms', 'Web, Android, iOS').strip()
+
+        # Update the game instance
+        if background_image:
+            game.background_image = background_image
+        if additional_description:
+            game.additional_description = additional_description
+        if file_upload:
+            game.file_upload = file_upload
+        if release_date:
+            from datetime import datetime
+            game.release_date = datetime.strptime(release_date, '%Y-%m-%d').date()
+        if publisher:
+            game.publisher = publisher
+        if rating:
+            game.rating = float(rating)
+        if file_size:
+            game.file_size = file_size
+        if platforms:
+            game.platforms = platforms
+
+        try:
+            game.save()
+            messages.success(request, "Game details added successfully.")
+            return redirect('manage_games')
+        except Exception as e:
+            messages.error(request, "Something went wrong while saving the details.")
+            return render(request, 'add_game_details.html', {'game': game})
+
+    # GET
+    return render(request, 'add_game_details.html', {'game': game})
+
 def queries_list_all(request):
     unread_list = Contact.objects.filter(is_resolved=False).order_by('-created_at')
     read_list = Contact.objects.filter(is_resolved=True).order_by('-created_at')

@@ -51,10 +51,10 @@ urlpatterns = [
     path('search', search, name="search"),
     path('change_password', change_password, name="change_password"),
     path('add_games', add_games, name="add_games"),
-    # path('add_views_games', add_views_games, name="add_views_games"),
     path('manage_games', manage_games, name="manage_games"),
     path('edit_game/<int:pid>', edit_games, name="edit_game"),
     path('delete_game/<int:pid>', delete_games, name="delete_game"),
+    path('add_game_details/<int:pid>', add_game_details, name="add_game_details"),
     # Public contact form submission endpoint
     path('submit-query/', views.submit_query, name='submit_query'),
     path('', views.queries_list_all, name='all'),
@@ -68,9 +68,3 @@ urlpatterns = [
         # ... other paths ...
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-
-
-
-

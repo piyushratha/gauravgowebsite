@@ -32,5 +32,14 @@ class Games(models.Model):
     ]
     game_type = models.CharField(max_length=20, choices=GAME_TYPE_CHOICES, default='other')
     creationdate = models.DateTimeField(auto_now_add=True)
+    # Additional details fields
+    background_image = models.ImageField(upload_to='backgrounds/', null=True, blank=True)
+    additional_description = models.TextField(null=True, blank=True)
+    file_upload = models.FileField(upload_to='game_files/', null=True, blank=True)
+    release_date = models.DateField(null=True, blank=True)
+    publisher = models.CharField(max_length=200, default='GauravGo Games')
+    rating = models.DecimalField(max_digits=3, decimal_places=1, default=5.0)
+    file_size = models.CharField(max_length=50, default='31mb')
+    platforms = models.CharField(max_length=200, default='Web, Android, iOS')
     def __str__(self):
         return self.title
