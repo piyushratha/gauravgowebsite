@@ -21,13 +21,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-app_name = 'queries'   # <-- required for namespacing
-
-
 urlpatterns = [
     path('admin/queries/', include('gauravgowebsite.urls', namespace='queries')),
     path('admin/', admin.site.urls),
-    path('djadmin/', admin.site.urls),
     path('admin_home/', views.admin_home, name="admin_home"),
     path('', index, name="index"),
     path('games', games, name="games"),
