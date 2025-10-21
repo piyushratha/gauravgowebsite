@@ -991,13 +991,32 @@
         <div class="slider-section">
             <div class="slider-header">
                 <h3 class="slider-title orbitron">Featured Games</h3>
-                <a href="#" class="view-all">
+                <a href="{% url 'games' %}" class="view-all">
                     <span>View All</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
+                    {% for game in latest_games %}
+                    <div class="swiper-slide">
+                        {% if game.image %}
+                        <img src="{{ game.image.url }}" alt="{{ game.title }} Gameplay">
+                        {% else %}
+                        <img src="{% static 'images\media-home-page\default-game.jpg' %}" alt="{{ game.title }} Gameplay">
+                        {% endif %}
+                        <h3>{{ game.title }}</h3>
+                        <p>{{ game.description|truncatechars:100 }}</p>
+                        <div class="game-buttons">
+                            <a href="{% url 'game_detail' game.id %}" class="game-btn view-btn">View Game</a>
+                            {% if game.file_upload %}
+                            <a href="{{ game.file_upload.url }}" class="game-btn play-btn">Download</a>
+                            {% else %}
+                            <a href="#" class="game-btn play-btn">Play Now</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% empty %}
                     <div class="swiper-slide">
                         <img src="{% static 'images\media-home-page\hizir-kaya-0q90Mumo-xE-unsplash-1-800x500.jpg' %}" alt="SENA: Strike & Encounter Gameplay">
                         <h3>SENA: Strike & Encounter</h3>
@@ -1034,6 +1053,7 @@
                             <a href="#initialReleases" class="game-btn play-btn">Play Now</a>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
@@ -1050,13 +1070,32 @@
         <div class="slider-section">
             <div class="slider-header">
                 <h3 class="slider-title orbitron">Latest Releases</h3>
-                <a href="#" class="view-all">
+                <a href="{% url 'games' %}" class="view-all">
                     <span>View All</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
+                    {% for game in latest_games %}
+                    <div class="swiper-slide">
+                        {% if game.image %}
+                        <img src="{{ game.image.url }}" alt="{{ game.title }} Gameplay">
+                        {% else %}
+                        <img src="{% static 'images\media-home-page\default-game.jpg' %}" alt="{{ game.title }} Gameplay">
+                        {% endif %}
+                        <h3>{{ game.title }}</h3>
+                        <p>{{ game.description|truncatechars:100 }}</p>
+                        <div class="game-buttons">
+                            <a href="{% url 'game_detail' game.id %}" class="game-btn view-btn">View Game</a>
+                            {% if game.file_upload %}
+                            <a href="{{ game.file_upload.url }}" class="game-btn play-btn">Download</a>
+                            {% else %}
+                            <a href="#" class="game-btn play-btn">Play Now</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% empty %}
                     <div class="swiper-slide">
                         <img src="{% static 'images\media-home-page\MayaVerse-800x500.jpg' %}" alt="SENA: MayaVerse Gameplay">
                         <h3>SENA: MayaVerse</h3>
@@ -1111,6 +1150,7 @@
                             <a href="#initialReleases" class="game-btn play-btn">Play Now</a>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>

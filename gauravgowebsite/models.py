@@ -41,5 +41,6 @@ class Games(models.Model):
     rating = models.DecimalField(max_digits=3, decimal_places=1, default=5.0)
     file_size = models.CharField(max_length=50, default='31mb')
     platforms = models.CharField(max_length=200, default='Web, Android, iOS')
+    youtube_link = models.URLField(null=True, blank=True)
     def __str__(self):
         return self.title

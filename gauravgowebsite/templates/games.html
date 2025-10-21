@@ -577,7 +577,7 @@
                                 <h3>{{ game.title }}</h3>
                                 <p>{{ game.description|truncatechars:120 }}</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="{% url 'game_detail' game.id %}" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
                                     <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
@@ -611,7 +611,7 @@
                                 <h3>{{ g.title }}</h3>
                                 <p>{{ g.description|truncatechars:120 }}</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="{% url 'game_detail' g.id %}" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
                                     <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
@@ -647,7 +647,7 @@
                                 <h3>{{ g.title }}</h3>
                                 <p>{{ g.description|truncatechars:120 }}</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="{% url 'game_detail' g.id %}" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
                                     <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>
@@ -682,7 +682,7 @@
                                 <h3>{{ g.title }}</h3>
                                 <p>{{ g.description|truncatechars:120 }}</p>
                                 <div class="game-buttons">
-                                    <a href="#" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
+                                    <a href="{% url 'game_detail' g.id %}" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
                                     <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
                                 </div>
                             </div>

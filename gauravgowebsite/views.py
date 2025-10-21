@@ -9,8 +9,24 @@ from GauravGoWeb import settings
 from gauravgowebsite.models import Games, Contact
 
 
+def get_file_size(file):
+    """Convert file size in bytes to human-readable format."""
+    size = file.size
+    if size < 1024:
+        return f"{size} bytes"
+    elif size < 1024 * 1024:
+        return f"{size // 1024} KB"
+    else:
+        return f"{size // (1024 * 1024)} MB"
+
+
 def index(request):
-    return render(request, 'index.html')
+    # Fetch latest games for display on home page
+    latest_games = Games.objects.all().order_by('-creationdate')[:8]  # Get latest 8 games
+    context = {
+        'latest_games': latest_games,
+    }
+    return render(request, 'index.html', context)
 
 def games(request):
     # Optional type filter by query param: ?type=ftp|br|fps|rpg|sim|other
@@ -36,6 +52,10 @@ def games(request):
         'sim_games': sim_games,
     }
     return render(request, 'games.html', context)
+
+def game_detail(request, pid):
+    game = get_object_or_404(Games, id=pid)
+    return render(request, 'game_detail.html', {'game': game})
 
 def about(request):
     return render(request, 'about.html')
@@ -107,6 +127,19 @@ def admin_home(request):
 def Logout(request):
     logout(request)
     return redirect(index)
+
+def search(request):
+    if not request.user.is_authenticated:
+        return redirect('admin_login')
+    sd = None
+    if request.method == 'POST':
+        sd = request.POST['searchdata']
+    try:
+        booking = Games.objects.filter(Q(title__icontains=sd) | Q(description__icontains=sd))
+    except:
+        booking = ""
+    print(booking)
+    return render(request, 'search.html', locals())
 
 
 def change_password(request):
@@ -248,6 +281,11 @@ def add_game_details(request, pid):
         rating = request.POST.get('rating', '5.0')
         file_size = request.POST.get('file_size', '31mb').strip()
         platforms = request.POST.get('platforms', 'Web, Android, iOS').strip()
+        youtube_link = request.POST.get('youtube_link', '').strip()
+
+        # Calculate file size if file is uploaded
+        if file_upload:
+            file_size = get_file_size(file_upload)
 
         # Update the game instance
         if background_image:
@@ -267,6 +305,8 @@ def add_game_details(request, pid):
             game.file_size = file_size
         if platforms:
             game.platforms = platforms
+        if youtube_link:
+            game.youtube_link = youtube_link
 
         try:
             game.save()
