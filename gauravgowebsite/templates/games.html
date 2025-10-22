@@ -165,7 +165,7 @@
 
         .hero-subtitle {
             font-size: 1.1rem;
-            margin-top: 1.2rem;
+            margin-top: 2.4rem;
             text-align: center;
             max-width: 600px;
             opacity: 0.8;
@@ -235,11 +235,11 @@
             border-radius: 2px;
         }
 
-            .type-filters { display:flex; gap:8px; justify-content:center; margin-bottom:18px }
-            .type-filters a { padding:6px 10px; border-radius:6px; color:#cfeee1; background:rgba(255,255,255,0.03); text-decoration:none }
-            .type-badge { display:inline-block; padding:4px 8px; font-size:0.75rem; border-radius:6px; background:#2ecc71; color:#012; font-weight:700 }
+        .type-filters { display:flex; gap:8px; justify-content:center; margin-bottom:18px }
+        .type-filters a { padding:6px 10px; border-radius:6px; color:#cfeee1; background:rgba(255,255,255,0.03); text-decoration:none }
+        .type-badge { display:inline-block; padding:4px 8px; font-size:0.75rem; border-radius:6px; background:#2ecc71; color:#012; font-weight:700 }
 
-        /* NEW SLIDER STYLES */
+        /* SLIDER STYLES */
         .slider-section {
             margin-bottom: 2.5rem;
             margin-top: 2rem;
@@ -287,32 +287,31 @@
             position: relative;
         }
 
-        /* NEW SLIDER CARD STYLES */
+        /* SLIDER CARD STYLES */
         .swiper-slide {
             width: clamp(260px, 25vw, 340px);
             background: rgba(15, 15, 30, 0.7);
-            border: none; /* Removed the card border */
+            border: none;
             border-radius: 0.75rem;
-            padding: 0; /* Remove padding from card */
+            padding: 0;
             display: flex;
             flex-direction: column;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             backdrop-filter: blur(5px);
             overflow: hidden;
-            min-height: 370px; /* Increased height for buttons */
-            max-height: none;  /* Remove max-height restriction */
+            min-height: 370px;
+            max-height: none;
             position: relative;
             background: linear-gradient(135deg, rgba(20, 20, 40, 0.8), rgba(10, 10, 25, 0.8));
         }
 
-        /* NEW card hover effect */
         .swiper-slide::before {
             content: '';
             position: absolute;
             inset: 0;
             border-radius: 0.75rem;
-            padding: 2px; /* Border thickness */
+            padding: 2px;
             background: linear-gradient(45deg, #2ecc71, #3498db);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -330,14 +329,13 @@
             opacity: 1;
         }
 
-        /* Content within card */
         .game-card-content {
             padding: 1.2rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
-            justify-content: space-between; /* Ensure buttons stay at the bottom */
-            min-height: 220px; /* Ensure enough space for content + buttons */
+            justify-content: space-between;
+            min-height: 220px;
         }
 
         .swiper-slide img {
@@ -345,7 +343,7 @@
             height: auto;
             aspect-ratio: 16/9;
             object-fit: cover;
-            border-radius: 0.75rem 0.75rem 0 0; /* Rounded top corners only */
+            border-radius: 0.75rem 0.75rem 0 0;
             margin-bottom: 0;
             transition: transform 0.3s ease, filter 0.3s ease;
         }
@@ -373,7 +371,6 @@
             flex-grow: 1;
         }
 
-        /* New button styles */
         .game-buttons {
             display: flex;
             gap: 0.6rem;
@@ -384,10 +381,10 @@
 
         .game-btn {
             flex: 1;
-            padding: 0.5rem; /* Slightly more padding */
+            padding: 0.5rem;
             text-align: center;
-            border-radius: 0.5rem; /* More rounded corners */
-            font-size: 0.8rem; /* Slightly larger font */
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
             font-weight: 600;
             transition: all 0.3s ease;
             text-decoration: none;
@@ -409,9 +406,9 @@
         }
 
         .play-btn {
-            background: rgba(255, 255, 255, 0.05); /* Semi-transparent background */
+            background: rgba(255, 255, 255, 0.05);
             color: #2ecc71;
-            border: 1px solid rgba(46, 204, 113, 0.5); /* Thicker, semi-transparent border */
+            border: 1px solid rgba(46, 204, 113, 0.5);
         }
 
         .play-btn:hover {
@@ -421,26 +418,26 @@
             box-shadow: 0 4px 15px rgba(46, 204, 113, 0.5);
         }
 
-        /* NEW NAVIGATION STYLES */
+        /* NAVIGATION STYLES */
         .swiper-button-prev,
         .swiper-button-next {
             background: rgba(20, 20, 35, 0.8);
-            border: 2px solid #2ecc71; /* New border style */
+            border: 2px solid #2ecc71;
             color: #2ecc71;
-            width: 4rem; /* Larger buttons */
-            height: 4rem; /* Larger buttons */
-            border-radius: 50%; /* Circular buttons */
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem; /* Larger icons */
+            font-size: 1.8rem;
             font-weight: 700;
             font-family: "Orbitron", sans-serif;
             box-shadow: 0 0 15px rgba(46, 204, 113, 0.2);
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px); /* Increased blur */
+            backdrop-filter: blur(10px);
             position: absolute;
-            top: 50%; /* Center vertically */
+            top: 50%;
             transform: translateY(-50%);
             z-index: 10;
             cursor: pointer;
@@ -475,29 +472,6 @@
             box-shadow: 0 0 25px rgba(46, 204, 113, 0.8);
         }
         
-        /* Mobile styles */
-        @media (max-width: 768px) {
-            .swiper-button-prev,
-            .swiper-button-next {
-                display: none;
-            }
-
-            .slider-header {
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-            }
-
-            .main-title {
-                font-size: 2rem;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-                padding: 0 15px;
-            }
-        }
-
         /* Scroll to top button */
         .scroll-to-top {
             position: fixed;
@@ -529,6 +503,255 @@
         .scroll-to-top:hover {
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 0 15px rgba(46, 204, 113, 0.6);
+        }
+
+        /* RESPONSIVE STYLES */
+        
+        /* Large tablets and small desktops */
+        @media (max-width: 1024px) {
+            .hero-section {
+                height: 70vh;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .slider-title {
+                font-size: 1.4rem;
+            }
+            
+            .swiper-button-prev,
+            .swiper-button-next {
+                width: 3.5rem;
+                height: 3.5rem;
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Tablets */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 60vh;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-top: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            /* Hide subtitle on tablet and smaller devices */
+            .hero-subtitle {
+                display: none;
+            }
+            
+            #projects {
+                padding: 2rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .slider-section {
+                margin-top: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            .slider-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .slider-title {
+                font-size: 1.3rem;
+            }
+            
+            .view-all {
+                align-self: flex-end;
+                font-size: 0.9rem;
+            }
+            
+            .swiper-slide {
+                min-height: 350px;
+            }
+            
+            .game-card-content {
+                padding: 1rem;
+            }
+            
+            .game-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .swiper-button-prev,
+            .swiper-button-next {
+                display: none;
+            }
+        }
+        
+        /* Mobile devices */
+        @media (max-width: 640px) {
+            .hero-section {
+                height: 50vh;
+            }
+            
+            .hero-title {
+                font-size: clamp(1.5rem, 8vw, 2.5rem);
+            }
+            
+            .hero-subtitle {
+                font-size: 0.9rem;
+                margin-top: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .slider-title {
+                font-size: 1.2rem;
+            }
+            
+            .swiper-slide {
+                width: 280px;
+                min-height: 320px;
+            }
+            
+            .game-card-content {
+                padding: 0.8rem;
+            }
+            
+            .game-buttons {
+                margin-top: 0.8rem;
+            }
+            
+            .game-btn {
+                padding: 0.6rem;
+                font-size: 0.75rem;
+            }
+            
+            .scroll-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            #projects::before,
+            #projects::after {
+                width: 200px;
+                height: 200px;
+            }
+        }
+        
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .hero-section {
+                height: 45vh;
+            }
+            
+            .hero-title {
+                font-size: clamp(1.3rem, 9vw, 2rem);
+            }
+            
+            .hero-subtitle {
+                font-size: 0.85rem;
+            }
+            
+            #projects {
+                padding: 1.5rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .slider-section {
+                margin-top: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .slider-header {
+                padding: 0 0.5rem;
+            }
+            
+            .slider-title {
+                font-size: 1.1rem;
+            }
+            
+            .swiper-slide {
+                width: 260px;
+                min-height: 300px;
+            }
+            
+            .game-card-content {
+                padding: 0.7rem;
+            }
+            
+            .swiper-slide h3 {
+                font-size: 0.9rem;
+            }
+            
+            .swiper-slide p {
+                font-size: 0.75rem;
+            }
+            
+            .game-buttons {
+                margin-top: 0.6rem;
+                gap: 0.4rem;
+            }
+            
+            .game-btn {
+                padding: 0.5rem;
+                font-size: 0.7rem;
+            }
+        }
+        
+        /* Extra small mobile devices */
+        @media (max-width: 360px) {
+            .hero-section {
+                height: 40vh;
+            }
+            
+            .hero-title {
+                font-size: 1.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.8rem;
+                margin-top: 0.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            .slider-title {
+                font-size: 1rem;
+            }
+            
+            .view-all {
+                font-size: 0.8rem;
+            }
+            
+            .swiper-slide {
+                width: 240px;
+                min-height: 280px;
+            }
+            
+            .game-card-content {
+                padding: 0.6rem;
+            }
+            
+            .game-buttons {
+                margin-top: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -763,6 +986,7 @@
                 },
                 speed: 900,
                 breakpoints: {
+                    480: { slidesPerView: 1, spaceBetween: 15 },
                     640: { slidesPerView: 2, spaceBetween: 20 },
                     1024: { slidesPerView: 3, spaceBetween: 25 },
                     1280: { slidesPerView: 4, spaceBetween: 30 }
