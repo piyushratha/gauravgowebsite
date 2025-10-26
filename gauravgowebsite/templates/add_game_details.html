@@ -88,13 +88,11 @@
                         </div>
                     </div>
 
+                    <!-- Play Store Link Section (Replaces File Upload) -->
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <label>File Upload</label>
-                            <input type="file" name="file_upload" class="form-control">
-                            {% if game.file_upload %}
-                                <small class="text-muted">Current: <a href="{{ game.file_upload.url }}" target="_blank">{{ game.file_upload.name }}</a></small>
-                            {% endif %}
+                            <label>Play Store Link</label>
+                            <input type="url" name="playstore_link" class="form-control" value="{{ game.playstore_link }}" placeholder="https://play.google.com/store/apps/details?id=...">
                         </div>
                     </div>
 

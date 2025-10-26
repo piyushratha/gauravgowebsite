@@ -975,7 +975,37 @@
         });
 
 
-        // Initialize Swiper sliders with proper configuration
+        // Deduplicate duplicate slides (by title or image src) BEFORE Swiper init
+        function dedupeSwiperSlides() {
+            document.querySelectorAll('.swiper-container').forEach(container => {
+                const wrapper = container.querySelector('.swiper-wrapper');
+                if (!wrapper) return;
+                const seen = new Set();
+                // Collect current slides snapshot (Array to avoid live DOM issues)
+                const slides = Array.from(wrapper.children);
+                slides.forEach(slide => {
+                    // determine key: prefer title text, fallback to image src
+                    let key = '';
+                    const titleEl = slide.querySelector('h3');
+                    if (titleEl && titleEl.textContent.trim()) {
+                        key = titleEl.textContent.trim();
+                    } else {
+                        const img = slide.querySelector('img');
+                        if (img && img.getAttribute('src')) key = img.getAttribute('src');
+                        else key = slide.textContent.trim().slice(0, 100);
+                    }
+                    if (!key) return;
+                    if (seen.has(key)) {
+                        // remove duplicate slide
+                        wrapper.removeChild(slide);
+                    } else {
+                        seen.add(key);
+                    }
+                });
+            });
+        }
+
+        // Initialize Swipers
         function initSwipers() {
             const commonConfig = {
                 slidesPerView: 1,
@@ -1030,7 +1060,11 @@
             });
         }
 
-        document.addEventListener("DOMContentLoaded", initSwipers);
+        // Run dedupe then initialize swipers once DOM ready
+        document.addEventListener("DOMContentLoaded", function() {
+            dedupeSwiperSlides();
+            initSwipers();
+        });
 
         // Scroll to top functionality
         const scrollToTopBtn = document.getElementById('scrollToTop');
