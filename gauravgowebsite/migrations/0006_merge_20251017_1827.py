@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gauravgowebsite', '0003_remove_contact_isread_remove_contact_mdate_and_more'),
+        ('gauravgowebsite', '0004_remove_contact_isread_remove_contact_mdate_and_more'),
         ('gauravgowebsite', '0005_games_game_type'),
     ]
 

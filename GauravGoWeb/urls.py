@@ -21,8 +21,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-app_name = 'queries'   # <-- required for namespacing
-
 
 urlpatterns = [
     path('admin/queries/', include('gauravgowebsite.urls', namespace='queries')),
@@ -57,14 +55,7 @@ urlpatterns = [
     path('add_game_details/<int:pid>', add_game_details, name="add_game_details"),
     path('game/<int:pid>/', views.game_detail, name="game_detail"),
     # Public contact form submission endpoint
-    path('submit-query/', views.submit_query, name='submit_query'),
-    path('', views.queries_list_all, name='all'),
-    path('unread/', views.queries_unread, name='unread'),
-    path('read/', views.queries_read, name='read'),
-    path('<int:pk>/', views.query_detail, name='detail'),
-    path('<int:pk>/toggle/', views.toggle_resolved, name='toggle_resolved'),
-    path('<int:pk>/reply/', views.reply_to_query, name='reply'),
-    path('<int:pk>/delete/', views.delete_query, name='delete'),
+
 
         # ... other paths ...
 
