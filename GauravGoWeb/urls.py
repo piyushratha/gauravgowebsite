@@ -55,6 +55,7 @@ urlpatterns = [
     path('add_game_details/<int:pid>', add_game_details, name="add_game_details"),
     path('game/<int:pid>/', views.game_detail, name="game_detail"),
     # Public contact form submission endpoint
+    path('submit-query/', views.submit_query, name='submit_query'),
 
 
         # ... other paths ...
