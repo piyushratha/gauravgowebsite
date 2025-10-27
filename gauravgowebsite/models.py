@@ -35,7 +35,7 @@ class Games(models.Model):
     # Additional details fields
     background_image = models.ImageField(upload_to='backgrounds/', null=True, blank=True)
     additional_description = models.TextField(null=True, blank=True)
-    file_upload = models.FileField(upload_to='game_files/', null=True, blank=True)
+    playstore_link = models.URLField(max_length=500, null=True, blank=True)
     release_date = models.DateField(null=True, blank=True)
     publisher = models.CharField(max_length=200, default='GauravGo Games')
     rating = models.DecimalField(max_digits=3, decimal_places=1, default=5.0)
