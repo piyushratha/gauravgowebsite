@@ -88,13 +88,28 @@
                         </div>
                     </div>
 
-                    <!-- Play Store Link Section (Replaces File Upload) -->
+                    
                     <div class="col-sm-12">
-                        <div class="form-group">
-                            <label>Play Store Link</label>
-                            <input type="url" name="playstore_link" class="form-control" value="{{ game.playstore_link }}" placeholder="https://play.google.com/store/apps/details?id=...">
-                        </div>
-                    </div>
+  <div class="form-group">
+    <label>Play Store Link</label>
+    <input 
+      type="url" 
+      name="play_store_link" 
+      class="form-control" 
+      placeholder="Enter Play Store URL" 
+      value="{{ game.play_store_link|default:'' }}"
+    >
+    {% if game.play_store_link %}
+      <small class="text-muted">
+        Current: 
+        <a href="{{ game.play_store_link }}" target="_blank">
+          {{ game.play_store_link }}
+        </a>
+      </small>
+    {% endif %}
+  </div>
+</div>
+
 
                     <div class="col-sm-12">
                         <div class="form-group">
