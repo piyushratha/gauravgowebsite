@@ -1011,11 +1011,6 @@
                         <p>{{ game.description|truncatechars:100 }}</p>
                         <div class="game-buttons">
                             <a href="{% url 'game_detail' game.id %}" class="game-btn view-btn">View Game</a>
-                            {% if game.file_upload %}
-                            <a href="{{ game.file_upload.url }}" class="game-btn play-btn">Download</a>
-                            {% else %}
-                            <a href="#" class="game-btn play-btn">Play Now</a>
-                            {% endif %}
                         </div>
                     </div>
                     {% empty %}
@@ -1025,7 +1020,6 @@
                         <p>Take command as an IAF captain in this mission-driven airstrike inspired by real events. Experience intense aerial combat in a realistic environment.</p>
                         <div class="game-buttons">
                             <a href="#initialReleases" class="game-btn view-btn">View Game</a>
-                            <a href="#initialReleases" class="game-btn play-btn">Play Now</a>
                         </div>
                     </div>
                     <div class="swiper-slide">
@@ -1034,7 +1028,6 @@
                         <p>A futuristic metaverse shooter merging Indian lore with sci-fi survival gameplay. Explore vast virtual worlds and battle against mythical creatures.</p>
                         <div class="game-buttons">
                             <a href="#initialReleases" class="game-btn view-btn">View Game</a>
-                            <a href="#initialReleases" class="game-btn play-btn">Play Now</a>
                         </div>
                     </div>
                     <div class="swiper-slide">
@@ -1043,7 +1036,6 @@
                         <p>Test your reflexes as you sprint through a fast-paced urban maze full of chaos. Collect power-ups and beat your high score in this addictive runner.</p>
                         <div class="game-buttons">
                             <a href="#initialReleases" class="game-btn view-btn">View Game</a>
-                            <a href="#initialReleases" class="game-btn play-btn">Play Now</a>
                         </div>
                     </div>
                     <div class="swiper-slide">
@@ -1052,7 +1044,6 @@
                         <p>Solve magical puzzles and cast emoji-based spells in this quirky, spellbinding game. Perfect for players of all ages with colorful graphics.</p>
                         <div class="game-buttons">
                             <a href="#initialReleases" class="game-btn view-btn">View Game</a>
-                            <a href="#initialReleases" class="game-btn play-btn">Play Now</a>
                         </div>
                     </div>
                     {% endfor %}
@@ -1090,11 +1081,6 @@
                         <p>{{ game.description|truncatechars:100 }}</p>
                         <div class="game-buttons">
                             <a href="{% url 'game_detail' game.id %}" class="game-btn view-btn">View Game</a>
-                            {% if game.file_upload %}
-                            <a href="{{ game.file_upload.url }}" class="game-btn play-btn">Download</a>
-                            {% else %}
-                            <a href="#" class="game-btn play-btn">Play Now</a>
-                            {% endif %}
                         </div>
                     </div>
                     {% empty %}
@@ -1104,7 +1090,6 @@
                         <p>A metaverse-based battle royale featuring immersive gameplay and futuristic Indian gaming lore.</p>
                         <div class="game-buttons">
                             <a href="#initialReleases" class="game-btn view-btn">View Game</a>
-                            <a href="#initialReleases" class="game-btn play-btn">Play Now</a>
                         </div>
                     </div>
                     <div class="swiper-slide">
@@ -1113,7 +1098,6 @@
                         <p>Dash, dodge, and survive through chaotic metropolitan streets in this high-speed endless runner.</p>
                         <div class="game-buttons">
                             <a href="#initialReleases" class="game-btn view-btn">View Game</a>
-                            <a href="#initialReleases" class="game-btn play-btn">Play Now</a>
                         </div>
                     </div>
                     <div class="swiper-slide">
@@ -1122,7 +1106,6 @@
                         <p>A magical emoji puzzle game where you become a powerful wizard who casts spells using emoji magic!</p>
                         <div class="game-buttons">
                             <a href="#initialReleases" class="game-btn view-btn">View Game</a>
-                            <a href="#initialReleases" class="game-btn play-btn">Play Now</a>
                         </div>
                     </div>
                     <div class="swiper-slide">
@@ -1131,7 +1114,6 @@
                         <p>A thrilling FPS based on the Indian Air Force's Pulwama response. Take command as IAF pilot Abhinandan.</p>
                         <div class="game-buttons">
                             <a href="#initialReleases" class="game-btn view-btn">View Game</a>
-                            <a href="#initialReleases" class="game-btn play-btn">Play Now</a>
                         </div>
                     </div>
                     <div class="swiper-slide">
@@ -1140,7 +1122,6 @@
                         <p>Your ultimate 3D open-world driving experience. Cruise, explore, and conquer urban streets.</p>
                         <div class="game-buttons">
                             <a href="#initialReleases" class="game-btn view-btn">View Game</a>
-                            <a href="#initialReleases" class="game-btn play-btn">Play Now</a>
                         </div>
                     </div>
                     <div class="swiper-slide">
@@ -1149,7 +1130,6 @@
                         <p>Explore, battle, and conquer the universe as a fearless space explorer! Face alien forces.</p>
                         <div class="game-buttons">
                             <a href="#initialReleases" class="game-btn view-btn">View Game</a>
-                            <a href="#initialReleases" class="game-btn play-btn">Play Now</a>
                         </div>
                     </div>
                     {% endfor %}

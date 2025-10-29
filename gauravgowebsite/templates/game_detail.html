@@ -337,9 +337,9 @@
 
         <section class="game-content">
             <div class="game-media">
-                {% if game.youtube_link %}
+                {% if game.get_youtube_embed_url %}
                 <div class="game-trailer">
-                    <iframe src="https://www.youtube.com/embed/{{ game.youtube_link|slice:'32:' }}" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="{{ game.get_youtube_embed_url }}" frameborder="0" allowfullscreen></iframe>
                 </div>
                 {% endif %}
                 {% if game.image %}
@@ -385,11 +385,7 @@
         <section class="download-section">
             <h2 class="download-title">Ready to Begin Your Adventure?</h2>
             <p class="download-subtitle">Download {{ game.title }} now and start playing!</p>
-            {% if game.file_upload %}
-            <a href="{{ game.file_upload.url }}" class="download-btn">Download Now</a>
-            {% else %}
-            <a href="#" class="download-btn">Download Now</a>
-            {% endif %}
+            <a href="{{ game.get_download_link }}" class="download-btn" {% if game.get_download_link != '#' %}target="_blank"{% endif %}>Download Now</a>
 
             <div class="platforms">
                 {% for platform in game.platforms.split %}

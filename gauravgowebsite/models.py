@@ -42,5 +42,35 @@ class Games(models.Model):
     file_size = models.CharField(max_length=50, default='31mb')
     platforms = models.CharField(max_length=200, default='Web, Android, iOS')
     youtube_link = models.URLField(null=True, blank=True)
+
+    @property
+    def get_download_link(self):
+        if self.play_store_link:
+            return self.play_store_link
+        elif self.file_upload:
+            return self.file_upload.url
+        else:
+            return '#'
+
+    @property
+    def get_youtube_embed_url(self):
+        if self.youtube_link:
+            import re
+            # Patterns for YouTube URLs
+            patterns = [
+                r'(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})',
+                r'youtube\.com\/embed\/([a-zA-Z0-9_-]{11})',
+            ]
+            for pattern in patterns:
+                match = re.search(pattern, self.youtube_link)
+                if match:
+                    return f'https://www.youtube.com/embed/{match.group(1)}'
+            # If no match, assume it's the video ID
+            if len(self.youtube_link) == 11 and re.match(r'[a-zA-Z0-9_-]{11}', self.youtube_link):
+                return f'https://www.youtube.com/embed/{self.youtube_link}'
+            # Fallback to the link as is, but try to make it embed
+            return self.youtube_link.replace('watch?v=', 'embed/')
+        return ''
+
     def __str__(self):
         return self.title

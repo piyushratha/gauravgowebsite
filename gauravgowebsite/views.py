@@ -44,6 +44,7 @@ def games(request):
 
     context = {
         'games': games_qs,
+        'total_games': games_qs.count(),
         'selected_type': gtype,
         'ftp_games': ftp_games,
         'br_games': br_games,
@@ -281,6 +282,7 @@ def add_game_details(request, pid):
         rating = request.POST.get('rating', '5.0')
         file_size = request.POST.get('file_size', '31mb').strip()
         platforms = request.POST.get('platforms', 'Web, Android, iOS').strip()
+        play_store_link = request.POST.get('play_store_link', '').strip()
         youtube_link = request.POST.get('youtube_link', '').strip()
 
         # Calculate file size if file is uploaded
@@ -294,6 +296,10 @@ def add_game_details(request, pid):
             game.additional_description = additional_description
         if file_upload:
             game.file_upload = file_upload
+        if play_store_link:
+            if not play_store_link.startswith(('http://', 'https://')):
+                play_store_link = 'https://' + play_store_link
+            game.play_store_link = play_store_link
         if release_date:
             from datetime import datetime
             game.release_date = datetime.strptime(release_date, '%Y-%m-%d').date()

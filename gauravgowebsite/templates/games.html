@@ -779,7 +779,7 @@
 
     <section id="projects">
         <div class="container mx-auto px-4">
-            <h2 class="section-title orbitron">Our Game Collection</h2>
+            <h2 class="section-title orbitron">Our Game Collection ({{ total_games }} Games)</h2>
 
             <div class="slider-section">
                 <div class="slider-header">
@@ -802,8 +802,7 @@
                                 <h3>{{ game.title }}</h3>
                                 <p>{{ game.description|truncatechars:120 }}</p>
                                 <div class="game-buttons">
-                                    <a href="{% url 'game_detail' game.id %}" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
-                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
+                                    <a href="{% url 'game_detail' game.id %}" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2; padding: 0.75rem 1rem;">View Game</a>
                                 </div>
                             </div>
                         </div>
@@ -836,8 +835,7 @@
                                 <h3>{{ g.title }}</h3>
                                 <p>{{ g.description|truncatechars:120 }}</p>
                                 <div class="game-buttons">
-                                    <a href="{% url 'game_detail' g.id %}" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
-                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
+                                    <a href="{% url 'game_detail' g.id %}" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2; padding: 0.75rem 1rem;">View Game</a>
                                 </div>
                             </div>
                         </div>
@@ -872,8 +870,7 @@
                                 <h3>{{ g.title }}</h3>
                                 <p>{{ g.description|truncatechars:120 }}</p>
                                 <div class="game-buttons">
-                                    <a href="{% url 'game_detail' g.id %}" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
-                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
+                                    <a href="{% url 'game_detail' g.id %}" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2; padding: 0.75rem 1rem;">View Game</a>
                                 </div>
                             </div>
                         </div>
@@ -907,8 +904,7 @@
                                 <h3>{{ g.title }}</h3>
                                 <p>{{ g.description|truncatechars:120 }}</p>
                                 <div class="game-buttons">
-                                    <a href="{% url 'game_detail' g.id %}" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2;">View Game</a>
-                                    <a href="#" class="game-btn play-btn" tabindex="0" style="position:relative;z-index:2;">Play Now</a>
+                                    <a href="{% url 'game_detail' g.id %}" class="game-btn view-btn" tabindex="0" style="position:relative;z-index:2; padding: 0.75rem 1rem;">View Game</a>
                                 </div>
                             </div>
                         </div>
@@ -1010,7 +1006,6 @@
             const commonConfig = {
                 slidesPerView: 1,
                 spaceBetween: 20,
-                loop: true,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,
@@ -1025,34 +1020,44 @@
                 }
             };
 
+            // All Games slider
+            const allGamesSlides = document.querySelectorAll('#all-games-slider .swiper-slide').length;
             new Swiper('#all-games-slider', {
                 ...commonConfig,
+                loop: allGamesSlides > 3,
                 navigation: {
                     nextEl: '.all-games-next',
                     prevEl: '.all-games-prev',
                 },
             });
 
+            // Battle Royale slider
+            const brSlides = document.querySelectorAll('#battle-royale-games-slider .swiper-slide').length;
             new Swiper('#battle-royale-games-slider', {
                 ...commonConfig,
+                loop: brSlides > 3,
                 navigation: {
                     nextEl: '.battle-royale-next',
                     prevEl: '.battle-royale-prev',
                 },
             });
 
-            // FPS slider: always loop
+            // FPS slider
+            const fpsSlides = document.querySelectorAll('#fps-games-slider .swiper-slide').length;
             new Swiper('#fps-games-slider', {
                 ...commonConfig,
-                loop: true,
+                loop: fpsSlides > 3,
                 navigation: {
                     nextEl: '.fps-next',
                     prevEl: '.fps-prev',
                 },
             });
 
+            // F2P slider
+            const f2pSlides = document.querySelectorAll('#f2p-games-slider .swiper-slide').length;
             new Swiper('#f2p-games-slider', {
                 ...commonConfig,
+                loop: f2pSlides > 3,
                 navigation: {
                     nextEl: '.f2p-next',
                     prevEl: '.f2p-prev',
