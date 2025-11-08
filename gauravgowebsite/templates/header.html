@@ -1,377 +1,460 @@
 {% load static %}
 
+<nav class="navbar">
+    <!-- Logo -->
+    <div class="logo">
+        <img src="{% static 'images/media-home-page/logo.png' %}" alt="GauravGo Logo">
+        <span>GauravGo</span>
+    </div>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GauravGo Navbar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Favicon (site-wide) -->
-    <link rel="icon" href="{% static 'images/media-home-page/logo.png' %}" type="image/png">
-    <link rel="apple-touch-icon" href="{% static 'images/media-home-page/logo.png' %}">
-    <style>
-        :root {
-            --primary-green: #4ade80;
-            --crystal-blue: #38bdf8;
-            --deep-navy: #0a0a1a;
-            --near-black: #050510;
-        }
+    <!-- Navigation Links -->
+    <ul class="nav-links">
+        <li><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
+        <li><a class="nav-link {% if request.path == '/games/' %}active{% endif %}" href="{% url 'games' %}">Games</a></li>
+        <li><a class="nav-link {% if request.path == '/services/' %}active{% endif %}" href="{% url 'services' %}">Services</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle">More <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a class="nav-link {% if request.path == '/advertisers/' %}active{% endif %}" href="{% url 'advertisers' %}">Advertisers</a></li>
+                <li><a class="nav-link {% if request.path == '/our-supporters/' %}active{% endif %}" href="{% url 'our_supporters' %}">Supporters</a></li>
+                <li><a class="nav-link {% if request.path == '/media-coverage/' %}active{% endif %}" href="{% url 'media_coverage' %}">Media</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Contact <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+                <li><a class="nav-link {% if request.path == '/privacy-policy/' %}active{% endif %}" href="{% url 'privacy_policy' %}">Privacy</a></li>
+            </ul>
+        </li>
+        <li><a class="nav-link {% if request.path == '/careers/' %}active{% endif %}" href="{% url 'careers' %}">Careers</a></li>
+    </ul>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            text-decoration: none;
-        }
+    <!-- Hamburger Menu -->
+    <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</nav>
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--near-black);
-        }
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-        .orbitron {
-            font-family: 'Orbitron', sans-serif;
-        }
+    :root {
+        --primary-green: #4ade80;
+        --crystal-blue: #38bdf8;
+        --deep-navy: #0a0a1a;
+        --near-black: #050510;
+        --light-accent: #ffffff;
+    }
 
-        /* Navbar Styles */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+
+    /* Use Montserrat for body with Orbitron for gaming elements */
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background: var(--deep-navy);
+    }
+
+    .orbitron {
+        font-family: 'Orbitron', sans-serif;
+    }
+
+    /* Navbar Styles - Green & Blue Inspired */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 2rem;
+        background: rgba(10, 10, 26, 0.95);
+        backdrop-filter: blur(15px);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        border-bottom: 2px solid var(--primary-green);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 25px rgba(74, 222, 128, 0.1);
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Animated Border */
+    .navbar::before {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            var(--primary-green) 20%, 
+            var(--crystal-blue) 50%, 
+            var(--primary-green) 80%, 
+            transparent 100%);
+        animation: borderSlide 3s ease-in-out infinite;
+    }
+
+    @keyframes borderSlide {
+        0%, 100% { transform: translateX(-100%); }
+        50% { transform: translateX(100%); }
+    }
+
+    .navbar.scrolled {
+        padding: 0.5rem 2rem;
+        background: rgba(10, 10, 26, 0.98);
+        box-shadow: 0 2px 20px rgba(74, 222, 128, 0.15);
+    }
+
+    /* Logo Styles */
+    .navbar .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(56, 189, 248, 0.1));
+        border-radius: 4px;
+        border: 1px solid rgba(74, 222, 128, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .navbar .logo:hover {
+        background: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(56, 189, 248, 0.2));
+        border-color: var(--primary-green);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(74, 222, 128, 0.3);
+    }
+
+    .navbar .logo img {
+        height: 2rem;
+        width: auto;
+        transition: all 0.3s ease;
+        filter: brightness(1.2);
+    }
+
+    .navbar .logo:hover img {
+        transform: scale(1.1) rotate(5deg);
+        filter: drop-shadow(0 0 8px var(--primary-green));
+    }
+
+    .navbar .logo span {
+        font-size: 1.5rem;
+        font-weight: 800;
+        font-family: 'Orbitron', sans-serif;
+        background: linear-gradient(135deg, var(--primary-green), var(--crystal-blue));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Nav Links */
+    .navbar .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .navbar .nav-links a {
+        color: var(--light-accent);
+        font-weight: 600;
+        font-size: 0.95rem;
+        position: relative;
+        padding: 0.75rem 1rem;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .navbar .nav-links a::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary-green), var(--crystal-blue));
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .navbar .nav-links a::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), transparent);
+        border-radius: 4px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .navbar .nav-links a:hover::before,
+    .navbar .nav-links .active::before {
+        width: 80%;
+    }
+
+    .navbar .nav-links a:hover::after,
+    .navbar .nav-links .active::after {
+        opacity: 1;
+    }
+
+    .navbar .nav-links a:hover,
+    .navbar .nav-links .active {
+        color: white;
+        text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+    }
+
+    /* Dropdown Styles */
+    .navbar .dropdown {
+        position: relative;
+    }
+
+    .navbar .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 0;
+        background: linear-gradient(135deg, var(--deep-navy), var(--near-black));
+        backdrop-filter: blur(20px);
+        min-width: 220px;
+        padding: 0.5rem 0;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        border: 1px solid var(--primary-green);
+        z-index: 1010;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+
+    .navbar .dropdown-menu::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: 20px;
+        width: 10px;
+        height: 10px;
+        background: var(--primary-green);
+        transform: rotate(45deg);
+    }
+
+    .navbar .dropdown:hover .dropdown-menu,
+    .navbar .dropdown.active .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .navbar .dropdown-menu li a {
+        padding: 0.75rem 1.5rem;
+        color: var(--light-accent);
+        display: block;
+        font-size: 0.9rem;
+        border-left: 3px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .navbar .dropdown-menu li a:hover {
+        color: white;
+        background: linear-gradient(90deg, rgba(74, 222, 128, 0.2), transparent);
+        border-left-color: var(--primary-green);
+        padding-left: 2rem;
+        text-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+    }
+
+    /* Hamburger Menu */
+    .navbar .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 0.25rem;
+        cursor: pointer;
+        padding: 0.75rem;
+        background: rgba(74, 222, 128, 0.1);
+        border-radius: 4px;
+        border: 1px solid rgba(74, 222, 128, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .navbar .hamburger:hover {
+        background: rgba(74, 222, 128, 0.2);
+        border-color: var(--primary-green);
+    }
+
+    .navbar .hamburger div {
+        width: 1.75rem;
+        height: 0.2rem;
+        background: var(--light-accent);
+        transition: all 0.3s ease;
+        border-radius: 2px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar .hamburger.active {
+        background: rgba(74, 222, 128, 0.3);
+        border-color: var(--primary-green);
+    }
+
+    .navbar .hamburger.active div:nth-child(1) {
+        transform: rotate(45deg) translate(0.4rem, 0.4rem);
+        background: var(--primary-green);
+    }
+
+    .navbar .hamburger.active div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar .hamburger.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(0.4rem, -0.4rem);
+        background: var(--primary-green);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
         .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 1.5rem;
-            background: rgba(10, 10, 26, 0.9);
-            backdrop-filter: blur(10px);
+            padding: 0.75rem 1rem;
+        }
+
+        .navbar .nav-links {
             position: fixed;
             top: 0;
-            width: 100%;
-            z-index: 1000; /* Increased z-index */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            right: -100%;
+            height: 100vh;
+            width: 80%;
+            max-width: 350px;
+            background: linear-gradient(135deg, var(--deep-navy), var(--near-black));
+            backdrop-filter: blur(30px);
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 6rem 2rem 2rem;
+            gap: 1.5rem;
+            transition: right 0.4s ease;
+            box-shadow: -5px 0 30px rgba(74, 222, 128, 0.2);
+            border-left: 2px solid var(--primary-green);
+            z-index: 999;
         }
 
-        /* Animated Background */
-        .navbar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-            z-index: -1;
-            animation: pulseGlow 8s ease-in-out infinite;
-        }
-
-        .navbar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(56, 189, 248, 0.6)" /><circle cx="20" cy="20" r="1.5" fill="rgba(74, 222, 128, 0.4)" /><circle cx="80" cy="80" r="1" fill="rgba(56, 189, 248, 0.5)" /></svg>') repeat;
-            opacity: 0.25;
-            z-index: -1;
-            animation: particleDrift 15s linear infinite;
-        }
-
-        @keyframes pulseGlow {
-            0% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.15); opacity: 0.3; }
-            100% { transform: scale(1); opacity: 0.7; }
-        }
-
-        @keyframes particleDrift {
-            0% { background-position: 0 0; }
-            100% { background-position: 150px 150px; }
-        }
-
-        .navbar.scrolled {
-            padding: 0.5rem 1.5rem;
-            background: rgba(8, 8, 16, 0.98);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Logo Styles */
-        .navbar .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-        }
-
-        .navbar .logo img {
-            height: 2rem;
-            width: auto;
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-
-        .navbar .logo:hover img {
-            transform: rotate(15deg);
-            filter: drop-shadow(0 0 8px var(--primary-green));
-        }
-
-        .navbar .logo span {
-            font-size: 1.25rem;
-            font-weight: 700;
-            font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(to right, var(--primary-green), var(--crystal-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 0.5px;
-            text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
-        }
-
-        /* Nav Links */
-        .navbar .nav-links {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .navbar .nav-links a {
-            color: white;
-            font-weight: 500;
-            font-size: 0.9375rem;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: color 0.3s ease;
-        }
-
-        .navbar .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary-green), var(--crystal-blue));
-            transition: width 0.3s ease;
-        }
-
-        .navbar .nav-links a:hover::after,
-        .navbar .nav-links .active::after {
-            width: 100%;
-        }
-
-        .navbar .nav-links a:hover,
-        .navbar .nav-links .active {
-            color: var(--primary-green);
-        }
-
-        /* Dropdown Styles */
-        .navbar .dropdown {
-            position: relative;
+        .navbar .nav-links.active {
+            right: 0;
         }
 
         .navbar .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: rgba(30, 30, 30, 0.95);
-            backdrop-filter: blur(10px);
-            min-width: 180px;
-            padding: 0.75rem 0;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1010; /* Increased z-index */
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-        }
-
-        .navbar .dropdown:hover .dropdown-menu,
-        .navbar .dropdown.active .dropdown-menu {
+            position: static;
+            display: none;
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: none;
+            box-shadow: none;
+            width: 100%;
+            padding: 0.5rem 0;
+            margin: 0.5rem 0 0 1rem;
+            background: rgba(8, 8, 16, 0.8);
+            border: 1px solid rgba(74, 222, 128, 0.5);
+            border-radius: 4px;
         }
 
-        .navbar .dropdown-menu li a {
-            padding: 0.5rem 1.25rem;
-            color: #ddd;
+        .navbar .dropdown.active .dropdown-menu {
             display: block;
-            font-size: 0.875rem;
+            animation: slideDown 0.3s ease;
         }
 
-        .navbar .dropdown-menu li a:hover {
-            color: var(--primary-green);
-            background-color: rgba(255, 255, 255, 0.05);
-            padding-left: 1.5rem;
-        }
-
-        /* Hamburger Menu */
         .navbar .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 0.2rem;
-            cursor: pointer;
-            padding: 0.5rem;
+            display: flex;
+            z-index: 1001;
         }
 
-        .navbar .hamburger div {
-            width: 1.5rem;
-            height: 0.15rem;
-            background-color: white;
-            transition: all 0.3s ease;
-            border-radius: 2px;
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+    }
 
-        .navbar .hamburger.active div:nth-child(1) {
-            transform: rotate(45deg) translate(0.3rem, 0.3rem);
-            background-color: var(--primary-green);
-        }
+    /* Additional Elements */
+    .navbar .nav-links li {
+        position: relative;
+    }
 
-        .navbar .hamburger.active div:nth-child(2) {
-            opacity: 0;
-        }
+    .navbar .nav-links li::before {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 50%;
+        width: 4px;
+        height: 0;
+        background: var(--primary-green);
+        transform: translateY(-50%);
+        transition: height 0.3s ease;
+        border-radius: 2px;
+    }
 
-        .navbar .hamburger.active div:nth-child(3) {
-            transform: rotate(-45deg) translate(0.3rem, -0.3rem);
-            background-color: var(--primary-green);
-        }
+    .navbar .nav-links li:hover::before {
+        height: 60%;
+    }
+</style>
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .navbar .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background: rgba(10, 10, 26, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 5rem 1.5rem 2rem;
-                gap: 1.25rem;
-                transition: right 0.5s ease;
-                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
-                z-index: 1000;
-            }
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.querySelector('.navbar .hamburger');
+        const navLinks = document.querySelector('.navbar .nav-links');
+        const dropdowns = document.querySelectorAll('.navbar .dropdown');
+        const dropdownToggles = document.querySelectorAll('.navbar .dropdown-toggle');
 
-            .navbar .nav-links.active {
-                right: 0;
-            }
-
-            .navbar .dropdown-menu {
-                position: static;
-                display: none;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                width: 100%;
-                padding: 0.5rem 0;
-                margin-left: 1rem;
-                background: rgba(20, 20, 36, 0.8);
-                border-left: 2px solid var(--primary-green);
-                border-radius: 0.25rem;
-            }
-
-            .navbar .dropdown.active .dropdown-menu {
-                display: block;
-            }
-
-            .navbar .hamburger {
-                display: flex;
-            }
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <!-- Logo -->
-        <div class="logo">
-            <img src="{% static 'images/media-home-page/logo.png' %}" alt="GauravGo Logo">
-            <span>GauravGo</span>
-        </div>
-
-        <!-- Navigation Links -->
-        <ul class="nav-links">
-            <li><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
-            <li><a class="nav-link {% if request.path == '/games/' %}active{% endif %}" href="{% url 'games' %}">Games</a></li>
-            <li><a class="nav-link {% if request.path == '/services/' %}active{% endif %}" href="{% url 'services' %}">Services</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">More <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link {% if request.path == '/advertisers/' %}active{% endif %}" href="{% url 'advertisers' %}">Advertisers</a></li>
-                    <li><a class="nav-link {% if request.path == '/our-supporters/' %}active{% endif %}" href="{% url 'our_supporters' %}">Supporters</a></li>
-                    <li><a class="nav-link {% if request.path == '/media-coverage/' %}active{% endif %}" href="{% url 'media_coverage' %}">Media</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Contact <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
-                    <li><a class="nav-link {% if request.path == '/privacy-policy/' %}active{% endif %}" href="{% url 'privacy_policy' %}">Privacy</a></li>
-                </ul>
-            </li>
-            <li><a class="nav-link {% if request.path == '/careers/' %}active{% endif %}" href="{% url 'careers' %}">Careers</a></li>
-        </ul>
-
-        <!-- Hamburger Menu -->
-        <div class="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </nav>
-
-    <script>
-        // Ensure DOM is fully loaded before attaching events
-        document.addEventListener('DOMContentLoaded', () => {
-            const hamburger = document.querySelector('.navbar .hamburger');
-            const navLinks = document.querySelector('.navbar .nav-links');
-            const dropdowns = document.querySelectorAll('.navbar .dropdown');
-            const dropdownToggles = document.querySelectorAll('.navbar .dropdown-toggle');
-
-            // Hamburger Menu Toggle
-            hamburger.addEventListener('click', () => {
+        if (hamburger) {
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
                 hamburger.classList.toggle('active');
                 navLinks.classList.toggle('active');
                 if (!navLinks.classList.contains('active')) {
                     dropdowns.forEach(d => d.classList.remove('active'));
                 }
             });
+        }
 
-            // Close Menu on Outside Click
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.navbar') && window.innerWidth <= 768) {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    dropdowns.forEach(d => d.classList.remove('active'));
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar') && window.innerWidth <= 768) {
+                if (hamburger) hamburger.classList.remove('active');
+                if (navLinks) navLinks.classList.remove('active');
+                dropdowns.forEach(d => d.classList.remove('active'));
+            }
+        });
+
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = toggle.closest('.dropdown');
+                    dropdown.classList.toggle('active');
+                    dropdowns.forEach(other => {
+                        if (other !== dropdown) other.classList.remove('active');
+                    });
                 }
             });
-
-            // Dropdown Toggle for Mobile
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        const dropdown = toggle.closest('.dropdown');
-                        dropdown.classList.toggle('active');
-                        dropdowns.forEach(other => {
-                            if (other !== dropdown) other.classList.remove('active');
-                        });
-                    }
-                });
-            });
-
-            // Navbar Scroll Effect
-            window.addEventListener('scroll', () => {
-                const navbar = document.querySelector('.navbar');
-                navbar.classList.toggle('scrolled', window.scrollY > 50);
-            });
         });
-    </script>
-</body>
-</html>
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                if (hamburger) hamburger.classList.remove('active');
+                if (navLinks) navLinks.classList.remove('active');
+                dropdowns.forEach(d => d.classList.remove('active'));
+            }
+        });
+    });
+</script>
