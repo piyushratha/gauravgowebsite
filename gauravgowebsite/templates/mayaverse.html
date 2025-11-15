@@ -13,8 +13,8 @@
     <link rel="apple-touch-icon" href="{% static 'images/media-home-page/logo.png' %}">
     <style>
         body {
+            /* default gradient; image applied by JS if reachable */
             background: linear-gradient(135deg, #0a0a1a 0%, #050510 100%);
-            /* unified gaming font */
             font-family: 'Orbitron', sans-serif;
             color: #f0f0f0;
             min-height: 100vh;
@@ -167,5 +167,19 @@
     </section>
 
     {% include "footer.html" %}
+    <script>
+        (function() {
+            const mediaUrl = window.location.origin + '/media/backgrounds/bg-image.jpg';
+            const staticFallback = "{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}";
+            const applyBg = (url) => {
+                document.body.style.background = `linear-gradient(rgba(10,10,25,0.45), rgba(5,5,16,0.45)), url('${url}') center/cover fixed no-repeat`;
+            };
+            const img = new Image();
+            img.onload = () => applyBg(mediaUrl);
+            img.onerror = () => applyBg(staticFallback);
+            img.src = mediaUrl;
+            setTimeout(() => { if (!img.complete) applyBg(staticFallback); }, 2500);
+        })();
+    </script>
 </body>
 </html>

@@ -52,6 +52,7 @@
         }
         
         body {
+            /* start with dark gradient; image applied by JS if available */
             background: linear-gradient(135deg, var(--primary-gradient-end), #020c1b);
             color: var(--text-primary);
             font-family: 'Poppins', sans-serif;
@@ -493,6 +494,20 @@
             // Check on scroll
             window.addEventListener('scroll', checkFade);
         });
+    </script>
+    <script>
+        (function() {
+            const mediaUrl = window.location.origin + '/media/backgrounds/bg-image.jpg';
+            const staticFallback = "{% static 'images/media-home-page/MayaVerse-800x500.jpg' %}";
+            const applyBg = (url) => {
+                document.body.style.background = `linear-gradient(rgba(10,10,25,0.45), rgba(5,5,16,0.45)), url('${url}') center/cover fixed no-repeat`;
+            };
+            const img = new Image();
+            img.onload = () => applyBg(mediaUrl);
+            img.onerror = () => applyBg(staticFallback);
+            img.src = mediaUrl;
+            setTimeout(() => { if (!img.complete) applyBg(staticFallback); }, 2500);
+        })();
     </script>
 </body>
 </html>
