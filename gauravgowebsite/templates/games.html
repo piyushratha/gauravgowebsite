@@ -92,8 +92,6 @@
             background: transparent;
         }
 
-        /* REMOVED PARTICLE STYLES - No more floating particles */
-
         .hero-title {
             font-size: clamp(2rem, 7vw, 4rem);
             font-weight: 800;
@@ -224,9 +222,9 @@
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             backdrop-filter: blur(5px);
             overflow: hidden;
-            aspect-ratio: 1 / 1; /* Perfect 1:1 aspect ratio */
+            aspect-ratio: 1 / 1;
             position: relative;
-            background: rgba(20, 20, 40, 0.7); /* Semi-transparent dark background */
+            background: rgba(20, 20, 40, 0.7);
             cursor: pointer;
         }
 
@@ -298,13 +296,13 @@
             align-items: center;
             justify-content: center;
             z-index: 4;
-            opacity: 0; /* Initially hidden */
+            opacity: 0;
             transform: translateY(10px);
             transition: all 0.4s ease;
         }
 
         .swiper-slide:hover .game-title-container {
-            opacity: 1; /* Show on hover */
+            opacity: 1;
             transform: translateY(0);
         }
 
@@ -331,7 +329,7 @@
         }
 
         .swiper-slide:hover .slide-up-overlay {
-            height: 25%; /* Adjust this value to control how much of the card is covered */
+            height: 25%;
         }
 
         .game-hover-effect {
@@ -459,8 +457,6 @@
         }
 
         /* RESPONSIVE STYLES */
-        
-        /* Large tablets and small desktops */
         @media (max-width: 1024px) {
             .hero-section {
                 height: 70vh;
@@ -482,7 +478,6 @@
             }
         }
         
-        /* Tablets */
         @media (max-width: 768px) {
             .hero-section {
                 height: 60vh;
@@ -494,7 +489,6 @@
                 padding: 0 1rem;
             }
 
-            /* Hide subtitle on tablet and smaller devices */
             .hero-subtitle {
                 display: none;
             }
@@ -538,7 +532,6 @@
             }
         }
         
-        /* Mobile devices */
         @media (max-width: 640px) {
             .hero-section {
                 height: 50vh;
@@ -574,7 +567,6 @@
             }
         }
         
-        /* Small mobile devices */
         @media (max-width: 480px) {
             .hero-section {
                 height: 45vh;
@@ -586,6 +578,7 @@
             
             .hero-subtitle {
                 font-size: 0.85rem;
+                margin-top: 1rem;
             }
             
             #projects {
@@ -614,7 +607,6 @@
             }
         }
         
-        /* Extra small mobile devices */
         @media (max-width: 360px) {
             .hero-section {
                 height: 40vh;
@@ -682,7 +674,8 @@
                 <div id="all-games-slider" class="swiper-container">
                     <div class="swiper-wrapper">
                         {% for game in games %}
-                        <div class="swiper-slide game-card">
+                        <!-- data-url for JS redirect -->
+                        <div class="swiper-slide game-card" data-url="{% url 'game_detail' pid=game.id %}">
                             <div class="game-card-content">
                                 <div class="game-image-container">
                                     {% if game.logo %}
@@ -719,7 +712,7 @@
                 <div id="f2p-games-slider" class="swiper-container">
                     <div class="swiper-wrapper">
                         {% for g in ftp_games %}
-                        <div class="swiper-slide game-card">
+                        <div class="swiper-slide game-card" data-url="{% url 'game_detail' pid=g.id %}">
                             <div class="game-card-content">
                                 <div class="game-image-container">
                                     {% if g.logo %}
@@ -771,7 +764,7 @@
                 <div id="battle-royale-games-slider" class="swiper-container">
                     <div class="swiper-wrapper">
                         {% for g in br_games %}
-                        <div class="swiper-slide game-card">
+                        <div class="swiper-slide game-card" data-url="{% url 'game_detail' pid=g.id %}">
                             <div class="game-card-content">
                                 <div class="game-image-container">
                                     {% if g.logo %}
@@ -822,7 +815,7 @@
                 <div id="fps-games-slider" class="swiper-container">
                     <div class="swiper-wrapper">
                         {% for g in fps_games %}
-                        <div class="swiper-slide game-card">
+                        <div class="swiper-slide game-card" data-url="{% url 'game_detail' pid=g.id %}">
                             <div class="game-card-content">
                                 <div class="game-image-container">
                                     {% if g.logo %}
@@ -864,8 +857,6 @@
         </div>
     </section>
 
-    
-
     {% include "footer.html" %}
 
     <a href="#" id="scrollToTop" class="scroll-to-top">
@@ -880,8 +871,6 @@
             once: true,
             disable: 'mobile'
         });
-
-        // REMOVED PARTICLE CREATION FUNCTION - No more floating particles
 
         // GSAP Hero Title Animation
         const heroTitle = document.querySelector('.hero-title');
@@ -899,7 +888,6 @@
             ease: "power2.out",
             delay: 1.5
         });
-
 
         // Deduplicate duplicate slides (by title or image src) BEFORE Swiper init
         function dedupeSwiperSlides() {
@@ -1000,11 +988,13 @@
             dedupeSwiperSlides();
             initSwipers();
             
-            // Add click handlers to game cards
-            document.querySelectorAll('.swiper-slide').forEach(slide => {
+            // Add click handlers to game cards => redirect to data-url
+            document.querySelectorAll('.swiper-slide[data-url]').forEach(slide => {
                 slide.addEventListener('click', function() {
-                    const title = this.querySelector('h3').textContent;
-                    alert(`You clicked on ${title}! This would navigate to the game detail page.`);
+                    const url = this.dataset.url;
+                    if (url) {
+                        window.location.href = url;
+                    }
                 });
             });
         });
